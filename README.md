@@ -7,4 +7,7 @@ A collection of research and development performed and written up by @tpmccallum
 
 - [Running an Ethereum private network for experimentation and testing](https://medium.com/cybermiles/running-a-quick-ethereum-private-network-for-experimentation-and-testing-6b1c23605bce)
 
+- [Distributed Ledger Information Sharing - DLISh](https://github.com/CyberMiles/tim-research/tree/master/distributed_ledger_information_sharing_DLISh)
+DLISh seeks to help solve the problem of decentralized storage by removing redundancy and taking advantage of proxy re-encryption. 
+
 
