@@ -1,6 +1,6 @@
 # Distributed Ledger Information Sharing (DLISh)
 
-![DLISh architecture](https://github.com/tpmccallum/distributed_ledger_information_sharing_DLISh/blob/master/dlish_architecture.png)
+![DLISh architecture](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/dlish_architecture.png)
 
 ## Overall architecture
 This specific GitHub repository deals with the encoding and decoding of information. The diagram above shows a simplified overview of how NuCypher's pyUmbral and blockchain software can be used to complete the secure information sharing process.
@@ -56,7 +56,7 @@ The algorithms in this system are all predefined.
 
 This is an open source project. If you would like to claim one of the 50 available algorithms, please add your information to the following file and create a pull request.
 
-https://github.com/tpmccallum/distributed_ledger_information_sharing_DLISh/blob/master/create_your_own_algorithm.md
+https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/create_your_own_algorithm.md
 
 As you will see in the above file, all of the algorithms are called using a single UTF-8 alphabetic character as the prefix i.e. a_encode, a_decode. The encoding algorithms have a qualifier which the number/key, to be encoded, must pass. Once qualified, the key is passed to the appropriate encoding algorithm. The encoding algorithm returns two single digit numbers. The first digit returned is the reduced number. The second number returned is a "helper" which can be passed to the decode function when decoding takes place. The "helper" is created dynamically by the encode function and is stored so that it can be later passed to the decode function as an argument. This way the decoding function can learn how many times the encoding function operated on the original number i.e. how many times the encoding function performed, say, the square root function on the number. 
 
@@ -64,7 +64,7 @@ Once encoded, DLISh allows for information to be encrypted and transmitted insid
 
 Now, let's consider the following hypothetical master list.
 
-![master table](https://github.com/tpmccallum/distributed_ledger_information_sharing_DLISh/blob/master/master_table.png)
+![master table](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/master_table.png)
 
 If we were to store and/or transmit a users full name and address our application would do so by performing the following steps:
 - allow the user to enter data using the app
@@ -212,7 +212,7 @@ Essentially, the system will eventually learn about the most frequently used (to
 
 An example of the master compression table is below.
 
-![Compression table](https://github.com/tpmccallum/distributed_ledger_information_sharing_DLISh/blob/master/compression_table.png)
+![Compression table](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/compression_table.png)
 
 ## Formatting
 At this early stage the default formatting may capitalize all words and allow for a special character to trigger lower case. It is hoped that we could also have a default single space between words and allow for a special character to remove the space or replace the space with a hyphen. It is hoped that other formatting like $ signs will be implemented at each end of the data exchange (defined by what the application is trying to do). Just a point to remember DLISh only uses a-z and A-Z as we as 0-9 of the UTF-8 character set and therefore there are a range of special characters which could be implemented as part of the solution.
