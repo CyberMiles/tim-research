@@ -4,6 +4,8 @@ Are you a thriving mathematician who loves a challenge?
 
 There are 50 algorithms waiting to be claimed.
 
+Read the backstory [here now.](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/distributed_ledger_information_sharing_DLISh.md)
+
 # The challenge
 Create an algorithm which can reversibly reduce a set of numbers (within the range of 100 to 9 999 999) to a single numerical digit.
 
