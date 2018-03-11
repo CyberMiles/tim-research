@@ -1,7 +1,6 @@
 # Hello World
 
-#The following contract has been deployed on the Ethereum main net at address ...
-#0x6cbbf7258a39cdffa802b3eed325f4a888229057
+#The following contract has been deployed on the Ethereum main net at address 0x6cbbf7258a39cdffa802b3eed325f4a888229057
 
 #Global variables
 helloMessage: public(bytes32)
