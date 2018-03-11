@@ -9,4 +9,4 @@ A collection of research and development performed and written up by @tpmccallum
 
 - [Distributed Ledger Information Sharing - DLISh](https://github.com/CyberMiles/tim-research/tree/master/distributed_ledger_information_sharing_DLISh) 
 
-
+- [Vyper smart contracts](https://github.com/CyberMiles/tim-research/tree/master/ethereum_vyper)
