@@ -1,4 +1,23 @@
+We need you!
+
+Are you a thriving mathematician who loves a challenge?
+
 There are 50 algorithms waiting to be claimed.
+
+# The challenge
+Create an algorithm which can reversibly reduce a set of numbers (within the range of 100 to 9 999 999) to a single numerical digit.
+
+For example: 
+- reducing a number like 65536 to the number 2 (by finding the square root 4 times over)
+
+Your algorithm will be assigned a single aphabetic character like "a"
+
+Your encoding algorith is allowed to create a single **helper** digit as part of its output. The **helper** digit will be passed into your decode function.
+
+For example:
+- if your algorithm is called "a" and it encodes (reduces) the number 65536 into 2 by finding the square root 4 times, the reduced number will be 2 (65536 -> 256 -> 16 -> 4 -> 2) and the helper number will be 4. The final encoding would be a24.
+
+When your decode algorithm is run it will receive both the number 2 and the helper number 4. The decode algorithm will reverse the finding of the square root (shown above) 4 times i.e. 2x2=4 4x4=16 16x16=256 256x256=65536
 
 If you would like to take care of reducing a set of numbers please complete the following and create a pull request.
 
