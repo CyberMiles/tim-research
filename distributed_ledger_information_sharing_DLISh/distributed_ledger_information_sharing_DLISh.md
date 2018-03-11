@@ -45,7 +45,7 @@ Fortunately languages are all very repetative and traditional storage of data ho
 
 Put simply, a master file containing over 1/2 million words **takes up 30 thousand times less space** (storage on computer hard drive) than the bitcoin blockchain.
 
-If the encoded and encrypted address used at the start of this document is stored 5 million times on the blockchain it will take up less than 1GB (156bytes x 5, 000 000 = 0.78GB)
+If the encoded and encrypted address used at the start of this document is stored **5 million** times on the blockchain it will take up less than 1GB (156bytes x 5, 000 000 = 0.78GB)
 
 ## How DLISh works
 Imagine now, that each of the words stored in the master file can be compressed to 2 UTF-8 numbers. DLISh works by looking up a word, finding the corresponding numerical key, then performing a mathematical operation on that key in order to reduce the key to the size of 2 UTF-8 numerical characters.
