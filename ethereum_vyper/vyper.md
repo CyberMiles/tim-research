@@ -20,12 +20,15 @@ Unlike Solidity, in Vyper, all pre-conditions as well as post-conditions and sta
 
 An example of checkpoints within a Vyper function would/should include the following (in the order provided):
 - 1 Conditions
+
 #Check the condition (what is the current state of everything you can think of check/assert?). Log what you can.
 
 - 2 Effects
+
 #What effects will the execution of the code in this function have on everything (that can be effected)?
 
 - 3 Interaction
+
 #The actual execution of what ever code was deemed necessary to run. Again, log what you can.
 
 Vyper is anti class inheritance because inheritance requires the programmer and/or security auditor to fully understand the given rules of precedence. Vyper will be written with more repetition due to this design decision. However, Vyper will be much more readable (code can be more easily audited).
@@ -33,9 +36,6 @@ Vyper is anti class inheritance because inheritance requires the programmer and/
 Vyper is anti operator overloading because the programmer might think that an operator is doing one thing (like adding) whereas in reality they are oblivious to the fact that it has been overloaded to do something completely different like sum all funds for sending.
 
 Vyper has fixed loops (unlike Solidity which has dynamic loops). Vyper's fixed iteration requires that the developer specifies how many times to loop up-front. This provides an element of safety, and also makes the estimation of gas easier. Vyper does not support recursion.
-
-# Further development of Vyper
-Vyper will be audited prior to its production release. One of the main goals 
 
 # Installing Vyper on Ubuntu 16.04LTS
 
@@ -69,11 +69,11 @@ There is a hello world example of what we are about to discuss below available a
 
 ## Global variables
 
-Global variables can be set (at the top of your file) like this
+State variables can be set (at the top of your file) like this. Notice that we created a public getter for both of these state variables.
 
 ```
 
-#Global variables
+#State variables
 helloMessage: public(bytes32)
 owner: public(address)
 
@@ -81,21 +81,25 @@ owner: public(address)
 
 ## Constructor
 
-This constructor takes a message and sets the two global variables as demonstrated below.
+This constructor takes a message and sets the two global variables.
 
 ```
 
 #Constructor
 @public
 def __init__(_message: bytes32):
-	#Sets the message which is passed in at execution
+    #Sets the message which is passed in at execution
     self.helloMessage = _message
     #Sets the owner at excecution
     self.owner = msg.sender
     
 ```
+
 ## Functions
-As you can see below, the sayHello function takes no arguments and returns the global helloMessage of type bytes32
+
+As you can see below, the sayHello function takes no arguments and returns the global helloMessage of type bytes32.
+
+Importantly, Vyper functions default to private (if not specified otherwise) and can not transfer value (unless specified). To make a function public the developer must specify the @public decorator. To allow a function to transact value the developer must specify @payable decorator. 
 
 ```
 
