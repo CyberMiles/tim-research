@@ -2,7 +2,7 @@
 
 #The following contract has been deployed on the Ethereum main net at address 0x6cbbf7258a39cdffa802b3eed325f4a888229057
 
-#Global variables
+#State variables
 helloMessage: public(bytes32)
 owner: public(address)
 
