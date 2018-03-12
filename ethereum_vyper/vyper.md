@@ -110,6 +110,10 @@ def sayHello() -> bytes32:
     
 ```
 
+You will notice that the @constant decorator is just above the sayHello function. This lets the compiler know that this function does not change the state of the blockchain. This is another safety feature which will result in the following compiler error (if you try and change state variables in the sayHello function "vyper.exceptions.ConstancyViolationException: Cannot modify storage inside a constant function".
+
+If you would like to know more about blockchain state you can read this [Medium article](https://medium.com/cybermiles/diving-into-ethereums-world-state-c893102030ed).
+
 The official documentation for Vyper can be found at [this link](https://vyper.readthedocs.io/en/latest/index.html).
 
 # Compiling your Vyper smart contract - Generating your bytecode
