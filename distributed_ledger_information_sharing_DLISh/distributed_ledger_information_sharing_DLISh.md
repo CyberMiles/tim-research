@@ -3,7 +3,8 @@
 ![DLISh architecture](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/dlish_architecture.png)
 
 **UPDATE START 2018-03-13**
-**Please read this first, then move on the re background etc. but ignore the algorithm section entirely for now**
+
+**Please read this first**
 
 We can by pass all of the work previously suggested by simply creating the master file using explicit combinations of alphumeric characters (both upper case and lower case letters as well as double digit numbers starting at 01) in the following order 
 
@@ -60,6 +61,7 @@ Decentralized systems are inherently bad at storing and sharing data. This is du
 ## Storage format
 All data is exclusively UTF-8. The system comprises of a master list of key value pairs. The values are groups of letters (words) only. The keys are numbers (sequentially allocated as values are added) only. All numbers for use in e-commerce setting are spelled out explicitly. For example one thousand and twenty six dollars and fourteen cents. All of the relevant words associated with storing numbers and currency etc. are stored in the master list of words i.e. hundred, thousand, million ... seventy, eighty, ninety etc.
 
+Just as in traditional situations, an application should have data validation for every data entry field. Further, it is the job of the application to correctly read, write and provide display formatting. 
 ## Premis
 Some say that the blockchain can be considered a world computer (which has promised to decentralize everything). A world computer needs to store the world's data. In the case of decentralization there is no single "server" to store the data for reference. Instead, in a decentralized architecture, all of the data must be stored only on the peers (which make up the peer to peer network). Simply mirroring the data (verbosely) as traditionally done in blockchains is not sustainable. For example, the bitcoin blockchain is over 150GB < https://blockchain.info/charts/blocks-size >. This means that each participating full node has to download and store more than 150GB of data to participate. As time goes on, blockchains will continue to grow. It is important to note that less users are using desktop PCs and servers and more users are using hand-held mobile devices. Mobile devices have limited storage. Some of the latest mobile devices have only between 32 and 128 GB of **total** storage.
 
