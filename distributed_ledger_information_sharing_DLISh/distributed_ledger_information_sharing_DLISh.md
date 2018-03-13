@@ -2,6 +2,15 @@
 
 ![DLISh architecture](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/dlish_architecture.png)
 
+**UPDATE 2018-03-13**
+We can by pass all of the work by simply creating a master file which uses combinations of alphumeric characters in the following explicit order 
+
+```
+
+letter, letter, number, number i.e. aa01, aa02 ... zz99
+
+```
+
 ## Overall architecture
 This specific GitHub repository deals with the encoding and decoding of information. The diagram above shows a simplified overview of how NuCypher's pyUmbral and blockchain software can be used to complete the secure information sharing process.
 
