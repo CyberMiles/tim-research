@@ -2,14 +2,29 @@
 
 ![DLISh architecture](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/dlish_architecture.png)
 
-**UPDATE 2018-03-13**
-We can by pass all of the work by simply creating a master file which uses combinations of alphumeric characters in the following explicit order 
+**UPDATE START 2018-03-13**
+**Please read this first, then move on the re background etc. but ignore the algorithm section entirely for now**
+
+We can by pass all of the work previously suggested by simply creating the master file using explicit combinations of alphumeric characters (both upper case and lower case letters as well as double digit numbers starting at 01) in the following order 
 
 ```
 
-letter, letter, number, number i.e. aa01, aa02 ... zz99
+letter, letter, number, number i.e. aa01, aa02 ... yz99, ... ZZ99
 
 ```
+This way every word can be reduced to 4 characters. 
+
+Further compression can be facilitated by compressing double characters to single characters.
+
+```
+aa11 becomes a1 or ab44 becomes ab4
+
+```
+
+This will work on the premis that the first occurrence of a letter like a or A is the start of a new cycle.
+
+**UPDATE END**
+
 
 ## Overall architecture
 This specific GitHub repository deals with the encoding and decoding of information. The diagram above shows a simplified overview of how NuCypher's pyUmbral and blockchain software can be used to complete the secure information sharing process.
