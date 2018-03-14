@@ -58,6 +58,10 @@ Once encoded, the DLISh string can be encrypted and stored or shared between use
 ## Background
 Decentralized systems are inherently bad at storing and sharing data. This is due, in part, to the fact that all parties store a redundant copy of all data. DLISh seeks to solve this problem. DLISh is a storage and communication system for decentralized ledger applications i.e. blockchains.
 
+## Storage architecture
+You can see from the above diagram that pyUmbral's encrypt function creates two things 1) a cipher of the text and 2) a capsule. The cipher of the text is very small if the text is very small - this part is stored on the blockchain (to be stored as a record of party "a" sharing their information with party "b" at block height "x" etc.
+The capsule on the other hand is disposable. The capsule is not stored on the blockchain. Instead it can ba accessed via https link to assist in the proxy re-encryption process. A new capsule can be created everytime a new particular set of information is being ready for sharing. The capsule can be destroyed as soon as the information has been successfully delivered to the recipient. Another request - another capsule!
+
 ## Storage format
 All data is exclusively UTF-8. The system comprises of a master list of key value pairs. The values are groups of letters (words) only. The keys are 4 UTF-8 characters (letter, letter, number, number); in that order. The keys are further compressed by removing any duplicates which exist between the character and its nearest (single neighbor). Monetary numbers for use in e-commerce settings are spelled out explicitly. For example one thousand and twenty six dollars and fourteen cents. All of the relevant words associated with storing numbers and currency etc. are stored in the master list of words i.e. hundred, thousand, million ... seventy, eighty, ninety etc.
 
