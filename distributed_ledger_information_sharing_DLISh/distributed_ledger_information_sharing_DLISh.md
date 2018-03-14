@@ -59,7 +59,7 @@ Once encoded, the DLISh string can be encrypted and stored or shared between use
 Decentralized systems are inherently bad at storing and sharing data. This is due, in part, to the fact that all parties store a redundant copy of all data. DLISh seeks to solve this problem. DLISh is a storage and communication system for decentralized ledger applications i.e. blockchains.
 
 ## Storage format
-All data is exclusively UTF-8. The system comprises of a master list of key value pairs. The values are groups of letters (words) only. The keys are numbers (sequentially allocated as values are added) only. All numbers for use in e-commerce setting are spelled out explicitly. For example one thousand and twenty six dollars and fourteen cents. All of the relevant words associated with storing numbers and currency etc. are stored in the master list of words i.e. hundred, thousand, million ... seventy, eighty, ninety etc.
+All data is exclusively UTF-8. The system comprises of a master list of key value pairs. The values are groups of letters (words) only. The keys are 4 UTF-8 characters (letter, letter, number, number); in that order. The keys are further compressed by removing any duplicates which exist between the character and its nearest (single neighbor). Monetary numbers for use in e-commerce settings are spelled out explicitly. For example one thousand and twenty six dollars and fourteen cents. All of the relevant words associated with storing numbers and currency etc. are stored in the master list of words i.e. hundred, thousand, million ... seventy, eighty, ninety etc.
 
 Just as in traditional situations, an application should have data validation for every data entry field. Further, it is the job of the application to correctly read, write and provide display formatting. 
 
@@ -75,7 +75,32 @@ Put simply, a master file containing over 1/2 million words **takes up 30 thousa
 If the encoded and encrypted address used at the start of this document is stored **5 million** times on the blockchain it will take up less than 1GB (156bytes x 5, 000 000 = 0.78GB)
 
 ## How DLISh works
-DLISh takes the entire corpus of data (including metadata) from an organisation and adds/appends the data to a master list of individual words. Each word is mapped to a 4 character code (letter letter number number) i.e. aa01, aA01, Aa01, AA01 through to zz99, zZ99, Zz99, ZZ99. An additional round of compression occurs such that ZZ99 becomes Z9 or yD22 becomes yD2. A letter character, following a number character signals the start of a new encoded word.
+DLISh takes the entire corpus of data (including metadata) from an organisation and adds/appends the data to a master list of unique/distinct individual words. Each word is mapped to a 4 character code (letter letter number number) i.e. aa01, aA01, Aa01, AA01 through to zz99, zZ99, Zz99, ZZ99. An additional round of compression occurs such that ZZ99 becomes Z9 or yD22 becomes yD2. A letter character, following a number character signals the start of a new encoded word.
+
+If possible, all two letter words could be assigned to these keys with nearest neighbour compression (at the outset) so that in every instance a key would be either the same size as the word, or as in most cases considerably smaller. For example
+
+a1 <- in
+
+c1 <- by
+
+d2 <- is 
+
+ab23 <- australian
+
+ab24 <- marketplaces
+
+fj12 <- purchased
+
+cv12 <- frequently
+
+The partial product description phrase, "... **is** frequently purchased **in** australian marketplaces **by** ..."
+
+Would be compressed to 
+
+d2cv12fj12a1ab23ab24c1
+
+Even with this very high frequency of 2 letter words. The above example phrase can be reduced from 53 characters (including whitespace) to 22 encoded characters. In this semmingly worst case scenario, that's over a 58% percent reduction.
+
 
 ## The algorithms
 
@@ -109,7 +134,7 @@ a2a12b24b92a3a13b23a43a23b52
 The above uncompressed text has 72 characters if you include the space character where appropriate. The fact that DLISh can encode the above into 28 UFT-8 characters is not the whole point. Of course sending a transaction with a 61% reduction is size is great. However the value of DLISh is also realized in that whenever a word like australia is recorded anywhere on the blockchain. It will only ever take up the space of 3 UTF-8 characters instead of 9. In a real world use case, it is very likely that an Australian e-commerce blockchain implementation would record the text "Australia" thousands if not millions of times as part of its ongoing business activities (product names, product descriptions, customer addresses and so forth). Consider the word "Australia" used for every delivery address for every online purchase in a company that ships 3 million purchases per year. 
 
 ## Formatting
-At this early stage the default formatting may capitalize all words and allow for a special character to trigger lower case. It is hoped that we could also have a default single space between words and allow for a special character to remove the space or replace the space with a hyphen. It is hoped that other formatting like $ signs will be implemented at each end of the data exchange (defined by what the application is trying to do). Just a point to remember DLISh only uses a-z and A-Z as we as 0-9 of the UTF-8 character set and therefore there are a range of special characters which could be implemented as part of the solution.
+At this early stage the default formatting may capitalize all words and allow for a special character to trigger lower case. There are opportunities in relation to formatting which have not been addressed yet. It is hoped that we could also have a default single space between words and allow for a special character to remove the space or replace the space with a hyphen etc. It is hoped that other formatting like $ signs will be implemented at each end of the data exchange (defined by what the application is trying to do). Just a point to remember DLISh only uses a-z and A-Z as we as 0-9 of the UTF-8 character set and therefore there are a range of special characters which could be implemented as part of the formatting solution.
 
 ### Atomic transactions
 Firstly, information passing is request driven. A good analogy for this would be how we use the Internet. A user requests content and the content is delivered. To take this a step further, in this system it is mandatory for the receiver/requester to firstly decode the information and then immediately provide acknowledgement that the information is sound. If this does not occur no part of the transaction is recorded permanently. Put simply, the transaction is either completely successful in real-time (changing the blockchain state) or it is completely discarded on both ends. Hence the terminology "atomic".
