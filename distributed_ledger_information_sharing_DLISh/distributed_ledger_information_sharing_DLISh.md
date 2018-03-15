@@ -41,7 +41,7 @@ Australia
 
 ```
 
-into (**56** characters). DLISh strives for ~2:1 compression
+into (**56** characters). **DLISh strives for ~2:1 compression**
 
 ```
 
