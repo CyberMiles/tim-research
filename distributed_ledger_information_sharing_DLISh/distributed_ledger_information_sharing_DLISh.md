@@ -19,9 +19,13 @@ Note:Original text is smaller than compressed versions
 
 ![Compression Example](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/compress_example.png)
 
-Whilst **decentralized storage protocols** exist, they require that a large reference key/URL be stored on the blockchain. Decentralized off-chain storage (which is married to the blockchain) is brilliant. These advances will succeed in storing large files such as digital media, documents and so forth.
+Whilst **decentralized storage protocols** exist, they require that a large reference key/URL (potentially larger than the DLISh encoding) is stored on the blockchain. 
 
-What about **small to medium data compression** in cases such as p2p e-commerce system which need to commission home deliveries via third-party delivery services and so forth? The details of a p2p e-commerce blockchain implementation need to be stored and shared using the blockchain. However, a customer address is too long to be stored in plain text on the blockchain. A zip of the data will be bigger than the original text. The blockchain reference key/URL used in a decentralized storage system will also be greater than the plain text.
+![Swarm URL](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/url.png)
+
+In addition storage on these systems is not free. Decentralized off-chain storage systems are brilliant and these advances will succeed in storing medium and larger amounts of data even digital media, pdf documents and so forth.
+
+But what about **small data compression** in cases such as p2p e-commerce system which need to commission home deliveries via third-party delivery services and so forth? The details of a p2p e-commerce blockchain implementation need to be recorded on the blockchain. However, a customer address is too long to be stored in plain text on the blockchain. A zip of the data will be bigger than the original text. The blockchain reference key/URL used in a decentralized storage system (which may charge for storage) may also be greater than what DLISh can compress.
 
 So how do we take the first step of compressing/encoding small to medium chunks of data?
 
@@ -43,7 +47,7 @@ Australia
 
 ```
 
-into just (**56** characters). **DLISh strives for ~2:1 compression**
+into (**56** characters). **always hopeful for an average of ~2:1 compression**
 
 ```
 
@@ -78,7 +82,14 @@ Wise Foods
 
 ```
 
-Whilst the above 274 characters can be compressed to just 160 (using 4 character key assignment). One of the main advantages of creating a master list from a companies corpora of information is that **full length words will never be stored in plain text more than once**. As you can see from the above example the word Walkers appears 6 times in that short list. Now imagine an online market place which ships 3 million products per year and uses the word "Australia" on each consignment note. Compression of this one word will result in a saving of 30 million characters (stored on the blockchain) per year i.e. (Australia.length() * 3million) - (au01.length() * 3million))
+Whilst the above 274 characters can be compressed to just 160 (using 4 character key assignment). One of the main advantages of creating a master list from a companies corpora of information is that **full length words will never be stored in plain text more than once**. As you can see from the above example the word Walkers appears 6 times in that short list. Now imagine an online market place which ships 3 million products per year and uses the word "Australia" on each consignment note. Compression of this one word will result in a saving of 30 million characters (stored on the blockchain) per year i.e. (Australia.length() * 3000000) - (au01.length() * 3000000))
+
+## Available keys
+
+It was hoped that further to using 4 character keys, additional compression (which could collapse duplicates i.e. aa22 -> a2) could take place. Unfortunately for that extra compression to exist the encoded data need to specify the start of a key. As it turns out when creating rules such as a key must start with 2 letters the potentially available keys (using 4 characters) is reduced to just 270 400 possibilities i.e. aa01 to ZZ99.
+
+If sticking to the rule that each key is 4 characters long (no additional compression), the amount of permutations exceeds 6 million (6 196 528). [A Python file](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/python/key_generation_testing.py) has been created so that you can try this our for yourself.
+
 
 ```
 
