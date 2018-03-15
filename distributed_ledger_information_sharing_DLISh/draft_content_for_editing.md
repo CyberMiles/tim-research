@@ -1,0 +1,21 @@
+
+
+## Storage architecture
+You can see from the above diagram that pyUmbral's encrypt function creates two things 1) a cipher of the text and 2) a capsule. The cipher of the text is very small if the text is very small - this part is stored on the blockchain (to be stored as a record of party "a" sharing their information with party "b" at block height "x" etc)
+The capsule on the other hand is disposable. The capsule is not stored on the blockchain. Instead it can ba accessed via https link to assist in the proxy re-encryption process. A new capsule can be created everytime a new particular set of information is being ready for sharing. The capsule can be destroyed as soon as the information has been successfully delivered to the recipient. Another request - another capsule!
+
+
+## Formatting
+At this early stage the default formatting may capitalize all words and allow for a special character to trigger lower case. There are opportunities in relation to formatting which have not been addressed yet. It is hoped that we could also have a default single space between words and allow for a special character to remove the space or replace the space with a hyphen etc. It is hoped that other formatting like $ signs will be implemented at each end of the data exchange (defined by what the application is trying to do). Just a point to remember DLISh only uses a-z and A-Z as we as 0-9 of the UTF-8 character set and therefore there are a range of special characters which could be implemented as part of the formatting solution.
+
+### Atomic transactions
+Firstly, information passing is request driven. A good analogy for this would be how we use the Internet. A user requests content and the content is delivered. To take this a step further, in this system it is mandatory for the receiver/requester to firstly decode the information and then immediately provide acknowledgement that the information is sound. If this does not occur no part of the transaction is recorded permanently. Put simply, the transaction is either completely successful in real-time (changing the blockchain state) or it is completely discarded on both ends. Hence the terminology "atomic".
+
+### A brief example - a helicopter view
+A delivery driver's mobile application requests the delivery address for an item (the prior steps in the supply chain which led to this point are also all request driven and more examples of this can be provided. However for simplicity sake, let's stick to just the delivery of an item for now). The delivery address is encoded and encrypted by the senders mobile application. The encrypted data is sent to the delivery driver's mobile application where it is unencrypted and decoded for immediate use. This successful transaction is recorded in the blockchain. 
+
+### Encryption
+Whilst the encoding and decoding is trivial (at the base layer of the application) the encryption is a bit more complicated. This is due to the fact that a user should never be asked to share their secret keys. The information being passed through the public blockchain must be encrypted after encoding (on the senders end) and decrypted before decoding can take place on the receiving end. 
+
+### Implementation
+Blockchain technologies (Cosmos Zones) [1] now offer consistently fast finality and as such proxy re-encryption could be performed in a peer to peer environment by sending the necessary (lightweight) data in blockchain transaction (Tx) wrapped messages (Msg). NuCyphers pyUmbral [2] facilitates proxy re-encryption whereby a user can share their encrypted data with a genuine recipient (user) without revealing their private key. As part of the decentralized encryption/decryption process, the pyUmbral system creates a capsule which can be modified by a third untrusted party (who never sees the data) in readiness for the genuine recipient to decrypt the data as intended. The pyUmbral component of this implementation has been tested in a closed environment and was successful. The execution of a transaction between 2 blockchains (using the Cosmos network) has not been tested as yet. The encoding/decoding as described above will need to be coded. The key value containers could be constructed using either Google's LevelDB [3] or Facebook's RocksDB [4].
