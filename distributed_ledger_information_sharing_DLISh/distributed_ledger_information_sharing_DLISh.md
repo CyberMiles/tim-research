@@ -86,9 +86,9 @@ Whilst the above 274 characters can be compressed to just 160 (using 4 character
 
 ## Available keys
 
-It was hoped that further to using 4 character keys, additional compression (which could collapse duplicates i.e. aa22 -> a2) could take place. Unfortunately for that extra compression to exist the encoded data need to specify the start of a key. As it turns out when creating rules such as a key must start with 2 letters the potentially available keys (using 4 characters) is reduced to just 270 400 possibilities i.e. aa01 to ZZ99.
+It was hoped that further to using 4 character keys, additional compression (which could collapse duplicates i.e. aa22 -> a2) could take place. Unfortunately for that extra compression to exist, the encoded data needs to specify the start of a key. As it turns out when creating rules, such as, "a key must always start with 2 non numerical characters" (i.e. aa01 to ZZ99 or similar) the potentially available keys (using 4 characters) reduces i.e. from millions to just 270 400 possibilities.
 
-If sticking to the rule that each key is 4 characters long (no additional compression), the amount of permutations exceeds 6 million (6 196 528). [A Python file](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/python/key_generation_testing.py) has been created so that you can try this our for yourself.
+If simply sticking to the rule that each key is 4 characters long (no additional compression and no start of key marker required), the amount of permutations exceeds 6 million (6 196 528). [A Python file](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/python/key_generation_testing.py) has been created so that you can try this our for yourself.
 
 
 ```
