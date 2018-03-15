@@ -82,7 +82,7 @@ Wise Foods
 
 ```
 
-Whilst the above 274 characters can be compressed to just 160 (using 4 character key assignment). One of the main advantages of creating a master list from a companies corpora of information is that **full length words will never be stored in plain text more than once**. As you can see from the above example the word Walkers appears 6 times in that short list. Now imagine an online market place which ships 3 million products per year and uses the word "Australia" on each consignment note. Compression of this one word will result in a saving of 30 million characters (stored on the blockchain) per year i.e. (Australia.length() * 3000000) - (au01.length() * 3000000))
+Whilst an 18 character product name like "Walkers Sensations" could be compressed to 8 characters "wa01se01" (~2:1 compression). One of the main advantages of creating a master list from a companies corpora of information is that **full length words will never be stored in plain text more than once**. As you can see from the above example the word Walkers appears 6 times in that short list. Now imagine an online market place which ships 3 million products per year and uses the word "Australia" on each consignment note. Compression of this one word will result in a saving of 30 million characters (stored on the blockchain) per year i.e. (Australia.length() * 3000000) - (au01.length() * 3000000))
 
 ## Available keys
 
