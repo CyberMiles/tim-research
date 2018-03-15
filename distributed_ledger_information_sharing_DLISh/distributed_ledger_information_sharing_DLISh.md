@@ -15,7 +15,7 @@ Blockchain systems send small to medium amounts of information inside transactio
 
 Whilst compression programs exist for documents, they are not at all useful in this space. For example using zip or tar to compress a customers name, address, post code and phone number would result in a bigger file than the original.
 
-[Compression Example](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/compress_example.png)
+![Compression Example](https://github.com/CyberMiles/tim-research/blob/master/distributed_ledger_information_sharing_DLISh/images/compress_example.png)
 
 Whilst decentralized storage protocols exist, they require that a large reference key/URL be stored on the blockchain. Decentralized off-chain storage (which is married to the blockchain) is brilliant. These advances will succeed in storing large files such as digital media, documents and so forth.
 
@@ -56,8 +56,6 @@ Once encoded/compressed, the DLISh string can then be encrypted and shared betwe
 
 [1] https://cosmos.network/
 [2] https://github.com/nucypher/pyUmbral
-[3] https://github.com/google/leveldb
-[4] https://github.com/facebook/rocksdb
 
 ```
 
