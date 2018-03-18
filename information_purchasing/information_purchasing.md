@@ -37,6 +37,8 @@ The following points are what I believe to be truths.
 
 # Assumptions
 
+The following are items which in general I believe to be true but am not 100% sure about. I can just go and test these in the commandline (and probably will soon). If anyone has a quick answer, please feel free to do a PR.
+
 1) The umbral.encrypt function returns the same ciphertext and capsule if performed by the same user using the same plaintext and public key?
 
 2) A user gets a unique capsule and a unique ciphertext if they re-run the encrypt function with unique/new data? Or does the user get a unique ciphertext but an exact duplicate of their capsule if they re-run the encrypt function again and again with unique/new data (the new data being the only variable)?
