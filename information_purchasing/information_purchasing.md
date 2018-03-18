@@ -1,16 +1,19 @@
 # Information purchasing
-This page is broken into 3 sections. 
+This page is broken into 3 sections:
+- first principles - pertaining to Ethereum and NuCyper's pyUmbral proxy re-encryption software
+- assumptions - pertaining to the same topic
+- questions - creating some "what-if" ideas
 
-Firstly a list of first principles pertaining to Ethereum and NuCyper's pyUmbral proxy re-encryption software. It is important to understand these known truths before we can build any smart contracts/dApps
+The aim of the game is to establish what **could/should**:
+- be processed on chain
+- be processed off chain
+- be stored on chain
+- be stored off chain
 
-Secondly, a list of assumptions pertaining to the same topic. These are statements which I believe to be true but am not 100% sure about. They need to be refined/reworded so that they can become known truths/first principles.
+For example, as computation in the EVM is done using a stack-based bytecode language (processing a seuence of predefined opcodes), is there any chance that a smart contract can perform tasks like the umbral.split_rekey? **or**
+should the umbral.reencrypt(kfrag, capsule) function be an instance of a smart contract (in which Bob invites lots of decentralized Ursula's to create cfrags until Bob has m of n and can decrypt Alice's message)? 
 
-Thirdly, a set of questions. These questions raise the "what-if" ideas which could lead to a solution to decentralized information purchasing using blockchain softare.
-
-# First principles
-The following points are what I believe to be truths.
-
-## Encapsulation
+# First principles about encapsulation
 
 1) A data owner performs their own private_key and public_key generation
     a) because the user can never reveal their private key to anyone
@@ -48,4 +51,6 @@ The following are items which in general I believe to be true but am not 100% su
 As computation in the EVM is done using a stack-based bytecode language (processing a seuence of predefined opcodes), is there any chance that a smart contract can perform tasks like the umbral.split_rekey?
 
 What is to be performed and stored on-chain and what is to be performed and stored off-chain? It is my initial guess that because the capsules are just there to be modified so that the information purchaser can decrypt the ciphertext; capsules are disposable and do not need to be stored on-chain.
+
+This is only the first draft, lots more to come, please feel free to contribute via issue or PR.
 
