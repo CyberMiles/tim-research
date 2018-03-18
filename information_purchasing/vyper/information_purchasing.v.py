@@ -18,10 +18,21 @@
 
 #TODO All code needs to be re-written/checked in relation to the above proposed work flow. 
 #Warning This code is in no way ready for use!
+
+#Information details
 value: public(wei_value) #Value of the item
+#hash: public() #Hash value for post purchase confirmation
+#description: public() #A description of the data for sale
+#capsule: private() #A pyUmbral capsule
+
+#Party details
 seller: public(address)
 buyer: public(address)
-unlocked: public(bool)
+
+#State of the purchase
+#unlocked: public(bool)
+#hashMatches: private(bool)
+
 #@constant
 #def unlocked() -> bool: #Is a refund possible for the seller?
 #    return (self.balance == self.value*2)
