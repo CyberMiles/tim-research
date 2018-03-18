@@ -47,3 +47,5 @@ The following are items which in general I believe to be true but am not 100% su
 
 As computation in the EVM is done using a stack-based bytecode language (processing a seuence of predefined opcodes), is there any chance that a smart contract can perform tasks like the umbral.split_rekey?
 
+What is to be performed and stored on-chain and what is to be performed and stored off-chain? It is my initial guess that because the capsules are just there to be modified so that the information purchaser can decrypt the ciphertext; capsules are disposable and do not need to be stored on-chain.
+
