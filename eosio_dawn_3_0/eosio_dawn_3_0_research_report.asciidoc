@@ -132,29 +132,35 @@ License: The MIT License (MIT)
 Added by: @tpmccallum
 ////
 [1] https://github.com/EOSIO/eos/wiki/Smart-Contract
+
 ////
 Source: https://en.wikipedia.org/wiki/Centralisation
 License: Wikipedia:CC BY-SA
 Added by: @tpmccallum
 ////
 [2] https://en.wikipedia.org/wiki/Centralisation
+
+////
 Source: https://www.etherchain.org/charts/topMiners
 License: TBA
 Added by: @tpmccallum
 ////
 [3] https://www.etherchain.org/charts/topMiners
+
 ////
 Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#actions--handlers
 License: The MIT License (MIT)
 Added by: @tpmccallum
 ////
 [4] https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#actions--handlers
+
 ////
 Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#parallel-evaluation-of-permissions
 License: The MIT License (MIT)
 Added by: @tpmccallum
 ////
 [5] https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#parallel-evaluation-of-permissions
+
 ////
 Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#deterministic-parallel-execution-of-applications
 License: The MIT License (MIT)
