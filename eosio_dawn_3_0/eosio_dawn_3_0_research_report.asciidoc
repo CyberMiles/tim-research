@@ -36,8 +36,9 @@ EOSIO is heavily reliant on the command line. There are a number of command line
 * cleos - is a command line interface to interact with the blockchain (and also manage wallets). It is located at build/programs/cleos/cleos
 
 === EOSIO Dawn 3.0 Installation
-The following commands can be used to install EOSIO Dawn 3.0 on Ubuntu 16.04LTS
+The following commands can be used to install EOSIO Dawn 3.0 on Ubuntu 16.04LTS, run the EOSIO unit tests as well as add the EOSIO executables to the operating system's path.
 
+Installation::
 [source,bash]
 ----
 cd ~
@@ -47,6 +48,7 @@ git submodule update — init — recursive
 ./eosio_build.sh
 ----
 
+Tests::
 To test the installation, start mongodb and then run the tests in the build directory as per the commands below. The results of the tests should appear as those in this document's Appendix A.
 
 [source,bash]
@@ -56,6 +58,15 @@ cd ~/eos/build
 make test
 ----
 
+Program availability::
+Run the following command in order to make the EOSIO executables available (installation of executables in /usr/local/bin) in standard $PATH. 
+
+[source,bash]
+----
+~/opt/mongodb/bin/mongod -f ~/opt/mongodb/mongod.conf &
+cd ~/eos/build
+make test
+----
 
 == References
 ////
