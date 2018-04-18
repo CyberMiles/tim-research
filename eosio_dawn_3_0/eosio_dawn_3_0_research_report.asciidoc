@@ -112,6 +112,9 @@ Poorly fulfilling one’s role as a block producer will result in economic loss 
 
 ==== Security
 
+== Scalability
+To support parallel execution, each account can also define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel [4].
+
 == References
 ////
 Source: https://github.com/EOSIO/eos/wiki/Smart-Contract
