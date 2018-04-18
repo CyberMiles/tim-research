@@ -37,6 +37,7 @@ EOSIO is heavily reliant on the command line. There are a number of command line
 
 === EOSIO Dawn 3.0 Installation
 The following commands can be used to install EOSIO Dawn 3.0 on Ubuntu 16.04LTS
+
 [source,bash]
 ----
 cd ~
@@ -45,6 +46,16 @@ cd ~/eos
 git submodule update — init — recursive
 ./eosio_build.sh
 ----
+
+To test the installation, start mongodb and then run the tests in the build directory as per the commands below. The results of the tests should appear as those in this document's Appendix A.
+
+[source,bash]
+----
+~/opt/mongodb/bin/mongod -f ~/opt/mongodb/mongod.conf &
+cd ~/eos/build
+make test
+----
+
 
 == References
 ////
@@ -56,5 +67,77 @@ Added by: @tpmccallum
 
 == Appendices
 
-=== Appendix A
+=== Appendix A - results of EOSIO "make test" command in the eos/build directory
+[source,bash]
+----
+Running tests...
+Test project /home/timothymccallum/eos_dawn_3/eos/build
+      Start  1: test_cypher_suites
+ 1/31 Test  #1: test_cypher_suites .....................   Passed    0.02 sec
+      Start  2: validate_simple.token_abi
+ 2/31 Test  #2: validate_simple.token_abi ..............   Passed    0.03 sec
+      Start  3: validate_eosio.token_abi
+ 3/31 Test  #3: validate_eosio.token_abi ...............   Passed    0.03 sec
+      Start  4: validate_eosio.msig_abi
+ 4/31 Test  #4: validate_eosio.msig_abi ................   Passed    0.03 sec
+      Start  5: validate_multi_index_test_abi
+ 5/31 Test  #5: validate_multi_index_test_abi ..........   Passed    0.03 sec
+      Start  6: validate_eosio.system_abi
+ 6/31 Test  #6: validate_eosio.system_abi ..............   Passed    0.03 sec
+      Start  7: validate_identity_abi
+ 7/31 Test  #7: validate_identity_abi ..................   Passed    0.03 sec
+      Start  8: validate_identity_test_abi
+ 8/31 Test  #8: validate_identity_test_abi .............   Passed    0.03 sec
+      Start  9: validate_currency_abi
+ 9/31 Test  #9: validate_currency_abi ..................   Passed    0.03 sec
+      Start 10: validate_stltest_abi
+10/31 Test #10: validate_stltest_abi ...................   Passed    0.03 sec
+      Start 11: validate_exchange_abi
+11/31 Test #11: validate_exchange_abi ..................   Passed    0.03 sec
+      Start 12: validate_test.inline_abi
+12/31 Test #12: validate_test.inline_abi ...............   Passed    0.03 sec
+      Start 13: validate_asserter_abi
+13/31 Test #13: validate_asserter_abi ..................   Passed    0.03 sec
+      Start 14: validate_infinite_abi
+14/31 Test #14: validate_infinite_abi ..................   Passed    0.03 sec
+      Start 15: validate_proxy_abi
+15/31 Test #15: validate_proxy_abi .....................   Passed    0.03 sec
+      Start 16: validate_test_api_abi
+16/31 Test #16: validate_test_api_abi ..................   Passed    0.03 sec
+      Start 17: validate_test_api_mem_abi
+17/31 Test #17: validate_test_api_mem_abi ..............   Passed    0.02 sec
+      Start 18: validate_test_api_db_abi
+18/31 Test #18: validate_test_api_db_abi ...............   Passed    0.03 sec
+      Start 19: validate_test_api_multi_index_abi
+19/31 Test #19: validate_test_api_multi_index_abi ......   Passed    0.03 sec
+      Start 20: validate_eosio.bios_abi
+20/31 Test #20: validate_eosio.bios_abi ................   Passed    0.03 sec
+      Start 21: validate_noop_abi
+21/31 Test #21: validate_noop_abi ......................   Passed    0.03 sec
+      Start 22: validate_dice_abi
+22/31 Test #22: validate_dice_abi ......................   Passed    0.03 sec
+      Start 23: validate_tic_tac_toe_abi
+23/31 Test #23: validate_tic_tac_toe_abi ...............   Passed    0.03 sec
+      Start 24: chain_test_binaryen
+24/31 Test #24: chain_test_binaryen ....................   Passed   52.40 sec
+      Start 25: chain_test_wavm
+25/31 Test #25: chain_test_wavm ........................   Passed  102.04 sec
+      Start 26: nodeos_run_test
+26/31 Test #26: nodeos_run_test ........................   Passed   57.08 sec
+      Start 27: nodeos_run_remote_test
+27/31 Test #27: nodeos_run_remote_test .................   Passed   84.29 sec
+      Start 28: p2p_dawn515_test
+28/31 Test #28: p2p_dawn515_test .......................   Passed    1.04 sec
+      Start 29: nodeos_run_test-mongodb
+29/31 Test #29: nodeos_run_test-mongodb ................   Passed   89.14 sec
+      Start 30: distributed-transactions-test
+30/31 Test #30: distributed-transactions-test ..........   Passed   59.62 sec
+      Start 31: distributed-transactions-remote-test
+31/31 Test #31: distributed-transactions-remote-test ...   Passed   65.65 sec
+
+100% tests passed, 0 tests failed out of 31
+
+Total Test time (real) = 511.91 sec
+----
+
 
