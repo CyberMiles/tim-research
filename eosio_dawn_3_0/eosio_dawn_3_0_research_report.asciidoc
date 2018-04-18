@@ -1,7 +1,7 @@
 [EOSIO Dawn 3.0]
 
 == Executive summary
-This is a deep dive into EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided. 
+This is a deep dive into EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided, and as such, the verbose content can be found in the appendicies.
 
 == Overview
 
@@ -23,4 +23,8 @@ License: The MIT License (MIT)
 Added by: @tpmccallum
 ////
 [1] https://github.com/EOSIO/eos/wiki/Smart-Contract
+
+== Appendices
+
+=== Appendix A
 
