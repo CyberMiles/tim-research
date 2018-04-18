@@ -8,6 +8,9 @@ This is a deep dive into EOSIO Dawn 3.0. The information in this document is der
 === Codebase
 EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future.
 
+=== Accounts
+Each account can send structured Actions to other accounts and may define scripts to handle Actions when they are received. The EOS.IO software gives each account its own private database which can only be accessed by its own action handlers. Action handling scripts can also send Actions to other accounts. The combination of Actions and automated action handlers is how EOS.IO defines smart contracts [4].
+
 === Smart Contracts
 EOS smart contracts communicate with each other via transactions. Each transaction can have one or more actions. An EOS smart contract (contractA) can read the state of another EOS contract (contractB) as long as both contractA and contractB are defined within the read scope of the transaction.
 
@@ -26,10 +29,8 @@ Deferred::
 * Able to communicate the result of the completed communication
 * Can be considered scheduled in nature, for future transactions
 
-=== Accounts
-
-=== Blockchain interaction
-EOSIO is heavily reliant on the command line. There are a number of command line programs (executables) which allow users to interact with the blockchain, as well as associated wallets, accounts and so forth.
+=== User interaction
+EOSIO has a string focus on the command line at this stage. There are a number of command line programs (executables) which allow users to interact with the blockchain, as well as associated wallets, accounts and so forth.
 * nodeos - is a server-side blockchain node component. It is located at build/programs/nodeos/nodeos
 * keosd - is a  component that manages EOSIO wallets. It is located at build/programs/keosd/keosd
 * cleos - is a command line interface that manages wallets, accounts and also invokes actions on the blockchain. It is located at build/programs/cleos/cleos
@@ -78,6 +79,8 @@ cd ~/eos/build/programs/nodeos
 ==== Configuration
 On Ubuntu, the configuration file (config.ini) and the genesis file (genesis.json) are both found in the .local/share/eosio/nodeos/config folder. In a production settings, nodeos will need a properly configured config.ini file in order to do meaningful work. However if one is not present, such as in this test case, the system will create one by default. The default file which EOSIO creats can be seen in this document's Appendix B.
 
+== Delegated Proof of Stake (DPoS)
+
 == Governance and economics
 
 === Centralization 
@@ -88,14 +91,22 @@ image:images/mining_pools.jpeg[]
 Block producers are an integral part of the EOSIO blockchain implementation and infrastructure. Block producers are also known, in other blockchain circles, as super nodes or validating nodes or master nodes etc. The following section will cover the role of EOSIO block producers in-depth. For example, how block producers become qualified for their position, how token holders vote for block producers, as well as the rewards and consequences for being a good (or bad) block producer on the EOS network. Attack vectors which may threaten block producers will also be covered.
 
 ==== Qualification
+Anyone who holds tokens on an EOS network can participate in the production of blocks.
 
 ==== Voting for block producers
+Block producers are elected into their role through a continuous approval voting system which involves, among other things, convincing other token holders to vote for them.
 
 ==== Block producer roles and responsibilities
+Block producers are randomly ordered to produce the upcoming EOS blocks; there is a fixed schedule which outlines which block producers are responsible for producing specific blocks during a given period of time. Only one block producer at a single point in time can produce the block to which they were assigned. If a block producer goes off line during this time, the block to which they were assigned does not get created. 
 
 ==== Rewards and incentives
 
 ==== Consequences and punishment
+There are certain actions (bad behaviour) which will result in undesirable consequences and potential punishment for a block producer. These include, but are not limited to:
+* signing two or more blocks with the same timestamp
+* signing two or more blocks with the same blockheight
+* being off-line (unavailable) during the scheduled time of block production
+Poorly fulfilling one’s role as a block producer will result in economic loss from a) missing the block rewards for the current block and b) future losses due to the fact that they may no longer be able to convince others that they are reliable enough to hold their position as block producer.
 
 ==== Disqualification
 
@@ -115,6 +126,12 @@ Added by: @tpmccallum
 ////
 [2] https://en.wikipedia.org/wiki/Centralisation
 [3] https://www.etherchain.org/charts/topMiners
+////
+Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#actions--handlers
+License: The MIT License (MIT)
+Added by: @tpmccallum
+////
+[4] https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#actions--handlers
 
 == Appendices
 
