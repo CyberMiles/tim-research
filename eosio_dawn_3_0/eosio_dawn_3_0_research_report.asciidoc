@@ -113,7 +113,11 @@ Poorly fulfilling one’s role as a block producer will result in economic loss 
 ==== Security
 
 == Scalability
-To support parallel execution, each account can also define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel [4].
+To support parallel execution, each account can also define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel [4]. 
+
+=== Permission evaluation/verification performance
+The permission evaluation process is "read-only" and changes to permissions made by transactions do not take effect until the end of a block. This means that all keys and permission evaluation for all transactions can be executed in parallel. Furthermore, this means that a rapid validation of permission is possible without starting costly application logic that would have to be rolled back. Lastly, it means that transaction permissions can be evaluated as pending transactions are received and do not need to be re-evaluated as they are applied. All things considered, permission verification represents a significant percentage of the computation required to validate transactions. Making this a read-only and trivially parallelizable process enables a dramatic increase in performance. [5]. 
+
 
 == References
 ////
@@ -135,6 +139,12 @@ License: The MIT License (MIT)
 Added by: @tpmccallum
 ////
 [4] https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#actions--handlers
+////
+Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#parallel-evaluation-of-permissions
+License: The MIT License (MIT)
+Added by: @tpmccallum
+////
+[5] https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#parallel-evaluation-of-permissions
 
 == Appendices
 
