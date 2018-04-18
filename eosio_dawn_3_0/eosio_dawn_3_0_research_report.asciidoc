@@ -9,6 +9,9 @@ This is a deep dive into EOSIO Dawn 3.0. The information in this document is der
 EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future [1]
 
 === Smart Contracts
+EOS smart contracts communicate with each other via transactions. Each transaction can have one or more actions. An EOS smart contract (contractA) can read the state of another EOS contract (contractB) as long as both contractA and contractB are defined within the read scope of the transaction.
+
+==== The timing of communication between smart contracts
 EOS smart contracts have 2 communication modes; inline and deferred, these can both be defined within a given smart contract
 
 Inline:: 
