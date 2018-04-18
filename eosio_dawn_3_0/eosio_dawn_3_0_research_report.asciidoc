@@ -29,8 +29,22 @@ Deferred::
 
 === Accounts
 
+=== Blockchain interaction
+EOSIO is heavily reliant on the command line. There are a number of command line programs (executables) which allow users to interact with the blockchain, as well as associated wallets, accounts and so forth.
+* nodeos - is a server-side blockchain node component. It is located at build/programs/nodeos/nodeos
+* keosd - is a  component that manages EOSIO wallets. It is located at build/programs/keosd/keosd
+* cleos - is a command line interface to interact with the blockchain (and also manage wallets). It is located at build/programs/cleos/cleos
 
-
+=== EOSIO Dawn 3.0 Installation
+The following commands can be used to install EOSIO Dawn 3.0 on Ubuntu 16.04LTS
+[source,bash]
+----
+cd ~
+git clone https ://github.com/EOSIO/eos.git
+cd ~/eos
+git submodule update — init — recursive
+./eosio_build.sh
+----
 
 == References
 ////
