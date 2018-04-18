@@ -82,6 +82,7 @@ On Ubuntu, the configuration file (config.ini) and the genesis file (genesis.jso
 
 === Centralization 
 Centralization is the process by which the activities of an organization, particularly those regarding planning and decision-making, become concentrated within a particular location or group [2]. Some argue that the Delegated Proof of Stake (DPoS) consensus mechanism, which EOS uses, is centralized when compared to other consensus mechasisms such as Ethereum's current Proof of Work (PoW). However, others argue against this view with reference to the most recent data from PoW mining pools. The diagram below illustrates the percentage of Ethereum's distributed PoW hashing power. More specifically, the percentage of hashing power which is centralized between two of the world's most prominant mining pools [3].
+image:images/mining_pools.jpeg[]
 
 
 === Block producers
