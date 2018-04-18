@@ -138,6 +138,10 @@ License: Wikipedia:CC BY-SA
 Added by: @tpmccallum
 ////
 [2] https://en.wikipedia.org/wiki/Centralisation
+Source: https://www.etherchain.org/charts/topMiners
+License: TBA
+Added by: @tpmccallum
+////
 [3] https://www.etherchain.org/charts/topMiners
 ////
 Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#actions--handlers
