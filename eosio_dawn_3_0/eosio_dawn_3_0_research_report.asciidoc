@@ -9,7 +9,20 @@ This is a deep dive into EOSIO Dawn 3.0. The information in this document is der
 EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future [1]
 
 === Smart Contracts
-Smart contracts have 2 activity modes
+EOS smart contracts have 2 communication modes; inline and deferred, these can both be defined within a given smart contract
+
+Inline:: 
+Guaranteed to execute in the current transaction, or unwind
+Scope and authority is explicitly aligned with the original contract
+No notification of completion
+Nothing is scheduled for future, beyond the current transaction
+
+Deferred::
+Execution set for a time in the future, at a producer’s discretion, but can timeout
+Able to reach out to different scopes as well as carry the authority of the contract that sends them
+Able to communicate the result of the completed communication
+Can be considered scheduled in nature, for future transactions
+
 
 === Accounts
 
