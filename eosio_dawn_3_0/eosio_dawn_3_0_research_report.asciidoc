@@ -18,10 +18,10 @@ Inline::
 * Nothing is scheduled for future, beyond the current transaction
 
 Deferred::
-Execution set for a time in the future, at a producer’s discretion, but can timeout
-Able to reach out to different scopes as well as carry the authority of the contract that sends them
-Able to communicate the result of the completed communication
-Can be considered scheduled in nature, for future transactions
+* Execution set for a time in the future, at a producer’s discretion, but can timeout
+* Able to reach out to different scopes as well as carry the authority of the contract that sends them
+* Able to communicate the result of the completed communication
+* Can be considered scheduled in nature, for future transactions
 
 
 === Accounts
