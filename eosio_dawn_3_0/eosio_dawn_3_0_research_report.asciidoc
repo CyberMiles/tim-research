@@ -78,6 +78,25 @@ cd ~/eos/build/programs/nodeos
 ==== Configuration
 On Ubuntu, the configuration file (config.ini) and the genesis file (genesis.json) are both found in the .local/share/eosio/nodeos/config folder. In a production settings, nodeos will need a properly configured config.ini file in order to do meaningful work. However if one is not present, such as in this test case, the system will create one by default. The default file which EOSIO creats can be seen in this document's Appendix B.
 
+== Governance and economics
+
+=== Block producers
+Block producers are an integral part of the EOSIO blockchain implementation and infrastructure. Block producers are also known, in other blockchain circles, as super nodes or validating nodes or master nodes etc. The following section will cover the role of EOSIO block producers in-depth. For example, how block producers become qualified for their position, how token holders vote for block producers, as well as the rewards and consequences for being a good (or bad) block producer on the EOS network. Attack vectors which may threaten block producers will also be covered.
+
+==== Qualification
+
+==== Voting for block producers
+
+==== Block producer roles and responsibilities
+
+==== Rewards and incentives
+
+==== Consequences and punishment
+
+==== Disqualification
+
+==== Security
+
 == References
 ////
 Source: https://github.com/EOSIO/eos/wiki/Smart-Contract
