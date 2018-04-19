@@ -23,7 +23,7 @@ The combination of actions (sent as transactions) and automated action handlers 
 Actions can be sent individually, or in combined form if they are intended to be executed as a whole. EOS smart contracts communicate with each other via these transactions. 
 
 === Accounts
-Each account can send structured actions to other accounts and may define scripts to handle actions when they are received. The EOSIO software gives each account its own private database which can only be accessed by its own action handlers.
+Performing actions on the blockchain requires the use of accounts. Each account can send structured actions to other accounts and may define scripts to handle actions when they are received. The EOSIO software gives each account its own private database which can only be accessed by its own action handlers.
 
 === State and scope
 An EOS smart contract (contractA) can read the state of another EOS contract (contractB) as long as both contractA and contractB are defined within the read scope of the transaction.
@@ -169,7 +169,7 @@ cleos wallet import oxoxoxoxoooPRIVATEKEYoooxoxoxoo...
 ----
 
 ==== Testing that keys were imported successfully
-The following command will list the 2 key pairs; evidence that the import worked.
+The following command will list the 2 key pairs, which we just imported into the wallet; evidence that the import worked.
 
 [source,bash]
 ----
