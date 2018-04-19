@@ -34,8 +34,8 @@ EOSIO has a strong focus on the command line at this stage. There are a number o
 
 Programs::
 * nodeos - is a server-side blockchain node component. It is located at build/programs/nodeos/nodeos
-* keosd - is a  component that manages EOSIO wallets. It is located at build/programs/keosd/keosd
-* cleos - is a command line interface that manages wallets, accounts and also invokes actions on the blockchain. It is located at build/programs/cleos/cleos
+* keosd - is a component used to *manage* EOSIO wallets and their content. It is located at build/programs/keosd/keosd
+* cleos - is a command line interface used to *access* wallets and accounts. cleos also invokes actions on the blockchain. It is located at build/programs/cleos/cleos
 
 For a comprehensive and up to date list of commands, visit this https://github.com/EOSIO/eos/wiki/Command%20Reference[EOS Command Reference link].
 
@@ -95,7 +95,10 @@ image:images/mining_pools.jpeg[]
 Block producers are an integral part of the EOSIO blockchain implementation and infrastructure. Block producers are also known, in other blockchain circles, as super nodes or validating nodes or master nodes etc. The following section will cover the role of EOSIO block producers in-depth. For example, how block producers become qualified for their position, how token holders vote for block producers, as well as the rewards and consequences for being a good (or bad) block producer on the EOS network. Attack vectors which may threaten block producers will also be covered.
 
 ==== Qualification
-Anyone who holds tokens on an EOS network can participate in the production of blocks.
+Monetary::
+* Anyone who holds tokens on an EOS network can participate in the production of blocks.
+Technically::
+* Obviously with the 500ms block times and the fact that block producers will time stamp blocks, it goes without saying that block producers will need to keep extremely accurate system time i.e. employ NTP with continous sync. However, it is unknown at this stage how EOS will enforce the time keeping of block producers.  
 
 ==== Voting for block producers
 Block producers are elected into their role through a continuous approval voting system which involves, among other things, convincing other token holders to vote for them.
