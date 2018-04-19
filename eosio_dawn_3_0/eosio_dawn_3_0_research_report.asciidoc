@@ -55,7 +55,7 @@ Installation::
 cd ~
 git clone https://github.com/EOSIO/eos.git
 cd ~/eos
-git submodule update — init — recursive
+git submodule update --init --recursive
 ./eosio_build.sh
 ----
 
