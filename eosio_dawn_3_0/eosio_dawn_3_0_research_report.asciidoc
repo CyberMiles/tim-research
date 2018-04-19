@@ -148,6 +148,34 @@ Wallets have to be open (not unlocked) for any operations to take place. For exa
 cleos wallet open -n anotherWallet
 ----
 
+*The wallet file itself is encrypted*, so the wallet will protect these keys when it's locked. *Remember to lock a wallet when operations on the wallet have been completed*.
+
+=== Creating EOSIO key pairs
+The following command will create an arbitrary keypair. Special attention must be paid to the fact that the public keys are prefixed with the characters EOS and that private keys must not be shared, whatsoever. 
+
+The general use case for creating EOSIO key pairs and importing them into a wallet is to run the following command twice (recording both key pairs for safekeeping). The outputs from the following command (run a total of 2 times) will be required for the next step, importing keys into a wallet.
+
+[source,bash]
+----
+cleos create key
+----
+
+=== Importing keys into a wallet
+The following command needs to be run twice, once for each of the private keys which were created above. Note, the wallet which is having the 2 private keys imported into it, will need to be both open and unlocked before the following command is executed. 
+
+[source,bash]
+----
+cleos wallet import oxoxoxoxoooPRIVATEKEYoooxoxoxoo...
+----
+
+==== Testing that keys were imported successfully
+The following command will list the 2 key pairs; evidence that the import worked.
+
+[source,bash]
+----
+cleos wallet keys
+----
+
 == Delegated Proof of Stake (DPoS)
 
 == Governance and economics
