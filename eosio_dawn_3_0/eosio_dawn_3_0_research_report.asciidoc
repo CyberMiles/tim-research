@@ -11,11 +11,22 @@ EOS expect that C++ will be the best language for developing high-performance an
 === Wallets
 An EOS wallet can be thought of as a repository of public-private key pairs. There is no inherent relationship between accounts and wallets. Accounts do not know about wallets, and vice versa.
 
-=== Accounts
-Each account can send structured Actions to other accounts and may define scripts to handle Actions when they are received. The EOS.IO software gives each account its own private database which can only be accessed by its own action handlers. Action handling scripts can also send Actions to other accounts. The combination of Actions and automated action handlers is how EOS.IO defines smart contracts [4].
+=== Actions
+An action represents a single operation.
+
+=== Transactions
+A transaction holds one or more actions for execution; stored in the actions array. Each instance of an action in the actions array has the following key value pairs, account, name, authorization and data.
+
+The combination of actions (sent as transactions) and automated action handlers is how EOSIO defines smart contracts [4].
 
 === Smart Contracts
-EOS smart contracts communicate with each other via transactions. Each transaction can have one or more actions. An EOS smart contract (contractA) can read the state of another EOS contract (contractB) as long as both contractA and contractB are defined within the read scope of the transaction.
+Actions can be sent individually, or in combined form if they are intended to be executed as a whole. EOS smart contracts communicate with each other via these transactions. 
+
+=== Accounts
+Each account can send structured actions to other accounts and may define scripts to handle actions when they are received. The EOSIO software gives each account its own private database which can only be accessed by its own action handlers.
+
+=== State and scope
+An EOS smart contract (contractA) can read the state of another EOS contract (contractB) as long as both contractA and contractB are defined within the read scope of the transaction.
 
 ==== The timing of communication between smart contracts
 EOS smart contracts have 2 communication modes; inline and deferred, these can both be defined within a given smart contract
