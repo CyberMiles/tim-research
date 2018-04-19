@@ -1,7 +1,7 @@
 [EOSIO Dawn 3.0]
 
 == Executive summary
-This is a deep dive into EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided, and as such, the verbose content can be found in the appendicies.
+This is a deep dive into EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided, and as such, the verbose content can be found in the appendicies. TODO ADD SCOPE/TPS/SCALING 
 
 == Overview
 
@@ -15,7 +15,7 @@ An EOS wallet can be thought of as a repository of public-private key pairs. The
 An action represents a single operation.
 
 === Transactions
-A transaction holds one or more actions for execution; stored in the actions array. Each instance of an action in the actions array has the following key value pairs, account, name, authorization and data.
+A transaction holds one or more actions for execution; stored in the actions array. Each instance of an action in the actions array has the following key value pairs, account, name, authorization and data. Executing a transaction results in a transaction hash. Receiving the hash does not mean that the transaction was confirmed, rather just that its syntax was without error (the transaction was valid). Confirmation of successful execution can be verified by inspecting the transaction history and obtaining the block number in which the transaction was included. 
 
 The combination of actions (sent as transactions) and automated action handlers is how EOSIO defines smart contracts [4].
 
@@ -100,6 +100,53 @@ cd ~/eos/build/programs/nodeos
 
 ==== Configuration
 On Ubuntu, the configuration file (config.ini) and the genesis file (genesis.json) are both found in the .local/share/eosio/nodeos/config folder. In a production settings, nodeos will need a properly configured config.ini file in order to do meaningful work. However if one is not present, such as in this test case, the system will create one by default. The default file which EOSIO creats can be seen in this document's Appendix B.
+
+=== Creating a wallet
+The following command will create a wallet called "default.wallet" in the ~/eosio-wallet directory.
+
+[source,bash]
+----
+cleos wallet create
+----
+
+To overide the location where the wallet will be created use the --data-dir argument when issuing the command as shown below.
+
+[source,bash]
+----
+cleos wallet create --data-dir /home/username/my_wallet_dir
+----
+
+Creating more than one (default) wallet will require additional wallets to be named exclusively. This can be done by using the -n argument when issuing the command as shown below.
+
+[source,bash]
+----
+cleos wallet create -n anotherWallet
+----
+
+The wallets on a system can be listed using the following command.
+
+[source,bash]
+----
+cleos wallet list
+----
+
+Wallets created using the above commands are unlocked, for your convenience, by default. An unlocked wallet shows an asterix when listed as shown below.
+
+TODO run command and paste results
+
+A wallet can be locked by name using the -n argument as shown in the following command. Coversly a wallet can be unlocked by using the word unlock. 
+
+[source,bash]
+----
+cleos wallet lock -n anotherWallet
+----
+
+Wallets have to be open (not unlocked) for any operations to take place. For example wallets can not even be listed if they are not open. A wallet can be opened, by name, as per the following command.
+
+[source,bash]
+----
+cleos wallet open -n anotherWallet
+----
 
 == Delegated Proof of Stake (DPoS)
 
