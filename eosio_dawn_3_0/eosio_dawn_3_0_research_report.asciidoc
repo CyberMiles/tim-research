@@ -70,6 +70,15 @@ git submodule update --init --recursive
 ./eosio_build.sh
 ----
 
+Program availability::
+Run the following command in order to make the EOSIO executables available (installation of executables in /usr/local/bin) in standard $PATH. 
+
+[source,bash]
+----
+cd ~/eos/build
+sudo make install
+----
+
 Tests::
 To test the installation, start mongodb and then run the tests in the build directory as per the commands below. The results of the tests should appear as those in this document's Appendix A.
 
@@ -78,15 +87,6 @@ To test the installation, start mongodb and then run the tests in the build dire
 ~/opt/mongodb/bin/mongod -f ~/opt/mongodb/mongod.conf &
 cd ~/eos/build
 make test
-----
-
-Program availability::
-Run the following command in order to make the EOSIO executables available (installation of executables in /usr/local/bin) in standard $PATH. 
-
-[source,bash]
-----
-cd ~/eos/build
-sudo make install
 ----
 
 === Running a single node testnet
