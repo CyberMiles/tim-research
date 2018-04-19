@@ -8,6 +8,9 @@ This is a deep dive into EOSIO Dawn 3.0. The information in this document is der
 === Codebase
 EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future.
 
+=== Wallets
+An EOS wallet can be thought of as a repository of public-private key pairs. There is no inherent relationship between accounts and wallets. Accounts do not know about wallets, and vice versa.
+
 === Accounts
 Each account can send structured Actions to other accounts and may define scripts to handle Actions when they are received. The EOS.IO software gives each account its own private database which can only be accessed by its own action handlers. Action handling scripts can also send Actions to other accounts. The combination of Actions and automated action handlers is how EOS.IO defines smart contracts [4].
 
@@ -36,6 +39,10 @@ Programs::
 * nodeos - is a server-side blockchain node component. It is located at build/programs/nodeos/nodeos
 * keosd - is a component used to *manage* EOSIO wallets and their content. It is located at build/programs/keosd/keosd
 * cleos - is a command line interface used to *access* wallets and accounts. cleos also invokes actions on the blockchain. It is located at build/programs/cleos/cleos
+
+There is no inherent relationship between nodeos and keosd, this is logical because there is no inherent relationship between accounts and wallets. cleos effectively serves as an intermediary between keosd key retrieval operations and nodeos account (and other) blockchain actions that require signatures generated using those keys.
+
+image:images/Accounts-and-Wallets-Overview.png[]
 
 For a comprehensive and up to date list of commands, visit this https://github.com/EOSIO/eos/wiki/Command%20Reference[EOS Command Reference link].
 
