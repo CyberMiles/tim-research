@@ -30,7 +30,9 @@ Deferred::
 * Can be considered scheduled in nature, for future transactions
 
 === User interaction
-EOSIO has a strong focus on the command line at this stage. There are a number of command line programs (executables) which allow users to interact with the blockchain, as well as associated wallets, accounts and so forth. 
+EOSIO has a strong focus on the command line at this stage. There are a number of command line programs (executables) which allow users to interact with the blockchain, as well as associated wallets, accounts and so forth.
+
+Programs::
 * nodeos - is a server-side blockchain node component. It is located at build/programs/nodeos/nodeos
 * keosd - is a  component that manages EOSIO wallets. It is located at build/programs/keosd/keosd
 * cleos - is a command line interface that manages wallets, accounts and also invokes actions on the blockchain. It is located at build/programs/cleos/cleos
