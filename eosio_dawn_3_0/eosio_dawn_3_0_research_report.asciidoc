@@ -6,7 +6,7 @@ This is a deep dive into EOSIO Dawn 3.0. The information in this document is der
 == Overview
 
 === Codebase
-EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future.
+EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future. There is an link:https://tbfleming.github.io/cib/eos.html[online EOS Integrated Development Environment (IDE)] which allows smart contracts to be written and deployed using only your web browser (Firefox is recommended).
 
 === Wallets
 An EOS wallet can be thought of as a repository of public-private key pairs. There is no inherent relationship between accounts and wallets. Accounts do not know about wallets, and vice versa.
