@@ -1,7 +1,7 @@
 [EOSIO Dawn 3.0]
 
 == Executive summary
-This is a deep dive into EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided, and as such, the verbose content can be found in the appendicies. TODO ADD SCOPE/TPS/SCALING 
+This document provides first impressions of EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided, and as such, the verbose content can be found in the appendicies.
 
 == Overview
 
@@ -191,7 +191,8 @@ Block producers are an integral part of the EOSIO blockchain implementation and 
 Monetary::
 * Anyone who holds tokens on an EOS network can participate in the production of blocks.
 Technically::
-* Obviously with the 500ms block times and the fact that block producers will time stamp blocks, it goes without saying that block producers will need to keep extremely accurate system time i.e. employ NTP with continous sync. However, it is unknown at this stage how EOS will enforce the time keeping of block producers.  
+* Obviously with the 500ms block times and the fact that block producers will time stamp blocks, it goes without saying that block producers will need to keep extremely accurate system time i.e. employ NTP with continous sync. However, it is unknown at this stage how EOS will enforce the time keeping of block producers.
+* Public and social qualifications
 
 ==== Voting for block producers
 Block producers are elected into their role through a continuous approval voting system which involves, among other things, convincing other token holders to vote for them.
