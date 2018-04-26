@@ -10,3 +10,5 @@ A collection of research and development performed and written up by @tpmccallum
 - [Distributed Ledger Information Sharing - DLISh](https://github.com/CyberMiles/tim-research/tree/master/distributed_ledger_information_sharing_DLISh) 
 
 - [Vyper smart contracts](https://github.com/CyberMiles/tim-research/tree/master/ethereum_vyper)
+
+- [Diving into EOS Dawn 3.0](https://github.com/CyberMiles/tim-research/blob/master/eosio_dawn_3_0/eosio_dawn_3_0_research_report.asciidoc)
