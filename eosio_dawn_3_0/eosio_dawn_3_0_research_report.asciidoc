@@ -9,7 +9,7 @@ This document provides first impressions of EOSIO Dawn 3.0. The information in t
 EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future. There is an link:https://tbfleming.github.io/cib/eos.html[online EOS Integrated Development Environment (IDE)] which allows smart contracts to be written and deployed using only your web browser (Firefox is recommended).
 
 === Wallets
-An EOS wallet can be thought of as a repository of public-private key pairs. There is no inherent relationship between accounts and wallets. Accounts do not know about wallets, and vice versa.
+An EOS wallet can be thought of as a repository of public-private key pairs. There is no inherent relationship between accounts and wallets. Accounts do not know about wallets, and vice versa. It is important that you run your wallet daemon (keosd) locally. We will cover this in detail shortly.
 
 === Actions
 An action represents a single operation.
@@ -89,8 +89,10 @@ cd ~/eos/build
 make test
 ----
 
-=== Running a single node testnet
-The following commands will install and run a single node EOSIO testnet which will immediately commence producing a block every 500ms.
+The following section offers two alternatives to running EOSIO. Firstly you can start running your own single node on your local computer. Alternatively, you can start participating on a real tesnet. The first alternative of running your own single node locally is much quicker and safer (for rapid experimentation). The second alternative, which allows you to participate on a real testnet is a little more complex and has potential hazards. Don't be put off participating in a real testnet if that is what you really want. This document will help you understand the complexities and hazards and enable you to successfully participate and write smart contracts on a real testnet.
+
+=== 1 - Running your own single node locally
+The following commands will install and run your own single node EOSIO blockchain which will immediately commence producing a block every 500ms.
 
 [source,bash]
 ----
@@ -101,7 +103,7 @@ cd ~/eos/build/programs/nodeos
 ==== Configuration
 On Ubuntu, the configuration file (config.ini) and the genesis file (genesis.json) are both found in the .local/share/eosio/nodeos/config folder. In a production settings, nodeos will need a properly configured config.ini file in order to do meaningful work. However if one is not present, such as in this test case, the system will create one by default. The default file which EOSIO creats can be seen in this document's Appendix B.
 
-=== Creating a wallet
+==== Creating a wallet
 The following command will create a wallet called "default.wallet" in the ~/eosio-wallet directory.
 
 [source,bash]
@@ -130,9 +132,7 @@ The wallets on a system can be listed using the following command.
 cleos wallet list
 ----
 
-Wallets created using the above commands are unlocked, for your convenience, by default. An unlocked wallet shows an asterix when listed as shown below.
-
-TODO run command and paste results
+Wallets created using the above commands are unlocked, for your convenience, by default. An unlocked wallet shows an asterix when listed.
 
 A wallet can be locked by name using the -n argument as shown in the following command. Coversly a wallet can be unlocked by using the word unlock. 
 
@@ -150,7 +150,7 @@ cleos wallet open -n anotherWallet
 
 *The wallet file itself is encrypted*, so the wallet will protect these keys when it's locked. *Remember to lock a wallet when operations on the wallet have been completed*.
 
-=== Creating EOSIO key pairs
+==== Creating EOSIO key pairs
 The following command will create an arbitrary keypair. Special attention must be paid to the fact that the public keys are prefixed with the characters EOS and that private keys must not be shared, whatsoever. 
 
 The general use case for creating EOSIO key pairs and importing them into a wallet is to run the following command twice (recording both key pairs for safekeeping). The outputs from the following command (run a total of 2 times) will be required for the next step, importing keys into a wallet.
@@ -160,7 +160,7 @@ The general use case for creating EOSIO key pairs and importing them into a wall
 cleos create key
 ----
 
-=== Importing keys into a wallet
+==== Importing keys into a wallet
 The following command needs to be run twice, once for each of the private keys which were created above. Note, the wallet which is having the 2 private keys imported into it, will need to be both open and unlocked before the following command is executed. 
 
 [source,bash]
@@ -175,6 +175,10 @@ The following command will list the 2 key pairs, which we just imported into the
 ----
 cleos wallet keys
 ----
+
+=== 2 - Running on a real testnet
+One of the most important differences in running on a real testnet, as apposed to running a single private EOSIO blockchain, is how the wallet is created and configured.
+
 
 == Delegated Proof of Stake (DPoS)
 
@@ -201,6 +205,7 @@ Block producers are elected into their role through a continuous approval voting
 Block producers are randomly ordered to produce the upcoming EOS blocks; there is a fixed schedule which outlines which block producers are responsible for producing specific blocks during a given period of time. Only one block producer at a single point in time can produce the block to which they were assigned. If a block producer goes off line during this time, the block to which they were assigned does not get created. 
 
 ==== Rewards and incentives
+100% of block rewards are divided up between 21 block producers. Therefore each block producer receives 4.76190476 % of the total rewards each (4.76190476 * 21 = 100).
 
 ==== Consequences and punishment
 There are certain actions (bad behaviour) which will result in undesirable consequences and potential punishment for a block producer. These include, but are not limited to:
