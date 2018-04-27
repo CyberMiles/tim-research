@@ -177,7 +177,7 @@ cleos wallet keys
 ----
 
 === 2 - Running on a real testnet
-One of the most important differences in running on a real testnet, as apposed to running a single private EOSIO blockchain, is how the wallet is created and configured.
+One of the most important steps, in relation to running on a real testnet, is correctly securing your wallet. The following steps will help you run your own wallet using keosd. This is very different to the steps in the previous section (which instead used the cleos command in a local private testnet environment).
 
 
 == Delegated Proof of Stake (DPoS)
