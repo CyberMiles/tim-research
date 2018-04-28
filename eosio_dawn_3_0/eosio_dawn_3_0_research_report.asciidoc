@@ -3,13 +3,29 @@
 == Executive summary
 This document provides first impressions of EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided, and as such, the verbose content can be found in the appendicies.
 
+EOS claims to be the most powerful infrastructure for decentralized applications. It has many proposed strenghts and the development, discussion and community activity within EOS is looking extremely promising and genuine.
+
+EOS is due to launch in mid 2018. At present EOS Dawn 3 (a precursor to the main launch) is demonstrating that a lot of the proposed strengths are still under active development. It is unclear, probably unlikely, that all of the proposed strengths will be realized in time for the mid 2018 launch. Examples of this are as follows:
+
+* Whilst very high transaction per second throughput is likely to be achieve in the long term, at present testing demonstrates that approximately 1, 000 transactions per second is realistic and achievable. It is believed that this may scale up to as many as 30, 000 transactions per second, but this can only be achieved as other functionality such as transaction scope and so forth are implemented and tested
+* Whilst interblockchain communication is likely to be achieved in the long term, at present interoperability between EOS chains looks promising, but interoperability between other blockchains does not seem to be practicable. This is due, in part, to the fact that transacting with other blockchains like Ethereum may result in high gas prices. At this stage the costs associated with interoperability between non EOS chains may negate the benefits of the interaction
+* The EOS network manages resources in a decentralized fashion. At present, it is unlikely that EOS will provide a decentralized storage mechanism. This may be realized later in the year and in future releases
+
+
 == Overview
+
+=== EOS 
+Unlike other blockchain software releases, the creators of EOS, BlockOne are not launching any blockchains. BlockOne are releasing the open source software which anyone can use to launch their own blockchain implementation.
 
 === Codebase
 EOS expect that C++ will be the best language for developing high-performance and secure smart contracts and therefore EOS plan to use C++ for the foreseeable future. There is an link:https://tbfleming.github.io/cib/eos.html[online EOS Integrated Development Environment (IDE)] which allows smart contracts to be written and deployed using only your web browser (Firefox is recommended).
 
 === Wallets
-An EOS wallet can be thought of as a repository of public-private key pairs. There is no inherent relationship between accounts and wallets. Accounts do not know about wallets, and vice versa. It is important that you run your wallet daemon (keosd) locally. We will cover this in detail shortly.
+An EOS wallet can be thought of as a repository of public-private key pairs. There is no inherent relationship between accounts and wallets. Accounts do not know about wallets, and vice versa. 
+
+**Warning:** It is important that you run your own keosd wallet daemon locally for security purposes. 
+
+Whilst you can create, and interact with, a wallet using cleos, this is not recommended unless you are simply testing and experimenting on a local private network. 
 
 === Actions
 An action represents a single operation.
@@ -188,15 +204,11 @@ One of the most important steps, in relation to running on a real testnet, is co
 Centralization is the process by which the activities of an organization, particularly those regarding planning and decision-making, become concentrated within a particular location or group [2]. Some argue that the Delegated Proof of Stake (DPoS) consensus mechanism, which EOS uses, is centralized when compared to other consensus mechasisms such as Ethereum's current Proof of Work (PoW). However, others argue against this view with reference to the most recent data from PoW mining pools. The diagram below illustrates the percentage of Ethereum's distributed PoW hashing power. More specifically, how the vast majority of Ethereum's hashing power is spread across only a handful of the most powerful and centralized mining pools in the world [3].
 image:images/mining_pools.jpeg[]
 
-=== Block producers
+=== EOS Block Producer Candidates
 Block producers are an integral part of the EOSIO blockchain implementation and infrastructure. Block producers are also known, in other blockchain circles, as super nodes or validating nodes or master nodes etc. The following section will cover the role of EOSIO block producers in-depth. For example, how block producers become qualified for their position, how token holders vote for block producers, as well as the rewards and consequences for being a good (or bad) block producer on the EOS network. Attack vectors which may threaten block producers will also be covered.
 
-==== Qualification
-Monetary::
-* Anyone who holds tokens on an EOS network can participate in the production of blocks.
-Technically::
-* Obviously with the 500ms block times and the fact that block producers will time stamp blocks, it goes without saying that block producers will need to keep extremely accurate system time i.e. employ NTP with continous sync. However, it is unknown at this stage how EOS will enforce the time keeping of block producers.
-* Public and social qualifications
+==== Radical transparency
+Anyone who holds tokens on an EOS network can participate in the production of blocks. Those who wish to become a block producer are required to respond to 8 check mark criteria. Moreover, they are required to publicly post 6 of the 8 check mark criteria on the Steem blockchain. This ensures that a permanent record of each candidate's response and commitment is stored on an immutable public blockchain. Candidates will also need to email admin@eosgo.io and include a link to the Steem blockchain post in order to be acknowledged and receive the check mark criteria. Tuesday May 15 2018 (at 23:59 UTC) marks the closing time for block producer applications as outlined above.
 
 ==== Voting for block producers
 Block producers are elected into their role through a continuous approval voting system which involves, among other things, convincing other token holders to vote for them.
