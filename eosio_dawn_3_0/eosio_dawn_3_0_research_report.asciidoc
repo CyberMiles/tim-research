@@ -245,7 +245,7 @@ Those who want to become block producers will need to perform the following.
 +
 **Tuesday May 15 2018 (at 23:59 UTC) marks the closing time for block producer applications as outlined above.**
 
-==== Block producer check mark criteria
+=== Block producer check mark criteria
 This section lists, in full detail, the check mark criteria which is required in order for a block producer to achieve candidature.
 
 . Public website URL and at least one social media account (all social media links offered by candidate will be shared in report)
@@ -277,6 +277,17 @@ BPs overwhelmingly agreed on the importance of community benefit projects.
 . Listing of Telegram and node names for community testnet participation
 +
 If you still need to join, start at https://t.me/CommunityTestnet
+
+. Block Producer Candidate Roadmap on values, community project timeline, finances, transparency, or any other topic the candidate deems important. Please show the direction and future of your candidacy **in a Steem post for the community**
++
+Any roadmap labeled as such by the block producer candidate will earn a check mark - community gauges the effort.
+
+. Position on Dividends (The sharing of Block Producer inflation rewards with unaffiliated voters, AKA "vote buying.")
++
+Please describe the block producer candidate's stance on sharing inflation rewards and/or paying dividends to EOS token holders.
+
+.. Will the organization offer payment to EOS token voters for any reason, including BP elections AND worker proposals?
+.. Does the organization have a written policy of no-payment for votes? If so, please provide a link.
 
 == Scalability
 The June 2018 release of EOS.IO software will run single threaded, yet it contains the data structures necessary for future multithreaded, parallel execution [6].
