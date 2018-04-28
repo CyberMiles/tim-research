@@ -199,7 +199,7 @@ One of the most important steps, in relation to running on a real testnet, is co
 == Delegated Proof of Stake (DPoS)
 
 == Governance and economics
-EOS blocks are produced by block producers. In order to become a block producer a candidate is required to publicly respond to a list of check mark criteria. Full details of the check mark criteria are listed in the following section. This section provides an overview of the governance and economics of EOS DPoS. 
+EOS blocks are produced by block producers. In order to become a block producer a candidate is required to publicly respond to a list of check mark criteria as well as fill out a form, post to steem and email EOSGo. These requirements are covered in this section.
 
 === Centralization 
 Centralization is the process by which the activities of an organization, particularly those regarding planning and decision-making, become concentrated within a particular location or group [2]. Some argue that the Delegated Proof of Stake (DPoS) consensus mechanism, which EOS uses, is centralized when compared to other consensus mechasisms such as Ethereum's current Proof of Work (PoW). However, others argue against this view with reference to the most recent data from PoW mining pools. The diagram below illustrates the percentage of Ethereum's distributed PoW hashing power. More specifically, how the vast majority of Ethereum's hashing power is spread across only a handful of the most powerful and centralized mining pools in the world [3].
@@ -231,8 +231,12 @@ Poorly fulfilling one’s role as a block producer will result in economic loss 
 
 ==== Security
 
-==== Block producer application process
-Those who want to become block producers will need to fill out the following https://docs.google.com/forms/d/e/1FAIpQLSddSjEbgx_Ti5YuYMb_3WWWTWFqmyHW5Q7DMJ_RR_OL2EMsQQ/viewform[Block Producer Candidate Form]
+=== Block producer application process
+Those who want to become block producers will need to:
+. Fill out the following https://docs.google.com/forms/d/e/1FAIpQLSddSjEbgx_Ti5YuYMb_3WWWTWFqmyHW5Q7DMJ_RR_OL2EMsQQ/viewform[Block Producer Candidate Form]
+. Get a https://blocktrades.us/create-steem-account[Steem account]
+. Complete the following Block producer check mark criteria (including posting to Steem)
+. Email 
 
 ==== Block producer check mark criteria
 This section lists, in full detail, the check mark criteria which is required in order for a block producer to achieve candidature.
