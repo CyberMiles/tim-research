@@ -284,7 +284,7 @@ Any roadmap labeled as such by the block producer candidate will earn a check ma
 
 . Position on Dividends (The sharing of Block Producer inflation rewards with unaffiliated voters, AKA "vote buying.")
 +
-Please describe the block producer candidate's stance on sharing inflation rewards and/or paying dividends to EOS token holders.
+Please describe the block producer candidate's stance on sharing inflation rewards and/or paying dividends to EOS token holders. All information pertaining to this point must be written **in a Steem post for the community**
 
 .. Will the organization offer payment to EOS token voters for any reason, including BP elections AND worker proposals?
 .. Does the organization have a written policy of no-payment for votes? If so, please provide a link.
