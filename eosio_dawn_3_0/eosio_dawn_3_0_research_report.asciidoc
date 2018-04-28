@@ -237,11 +237,11 @@ Those who want to become block producers will need to fill out the following htt
 ==== Block producer check mark criteria
 This section lists, in full detail, the check mark criteria which is required in order for a block producer to achieve candidature.
 
-. 1 Public website URL and at least one social media account (all social media links offered by candidate will be shared in report)
+. Public website URL and at least one social media account (all social media links offered by candidate will be shared in report)
 
 As a public representative of a powerful common resource, a community presence is expected.
 
-. 2 Links to the following ID information, **all posted to the Steem blockchain** (either in one post or multiple)
+. Links to the following ID information, **all posted to the Steem blockchain** (either in one post or multiple)
 ..  Official block producer candidate name.
 ..  Location of company headquarters.
 ..  Expected location of servers. 
@@ -251,16 +251,16 @@ As a public representative of a powerful common resource, a community presence i
 
 Clear identity of company and employees is important, according to the majority of BP candidates
 
-. 3 Estimate of technical specifications and total expenditure for resources by June 3, 2018 - **posted to Steem blockchain**
+. Estimate of technical specifications and total expenditure for resources by June 3, 2018 - **posted to Steem blockchain**
 Check mark given for any estimate, modesty encouraged by permanent Steem record. Quality and accuracy of effort judged by the community in public document.
 
-. 4 Estimated scaling plan for hardware after June 3, 2018 - **posted to Steem blockchain**
+. Estimated scaling plan for hardware after June 3, 2018 - **posted to Steem blockchain**
 Rough outlines receive a check mark, open review gauges the effort.
 
-. 5 Community benefit project outline, only for projects expected to be public by June 3, 2018 - **posted to Steem blockchain**
+. Community benefit project outline, only for projects expected to be public by June 3, 2018 - **posted to Steem blockchain**
 BPs overwhelmingly agreed on the importance of community benefit projects.
 
-. 6 Listing of Telegram and node names for community testnet participation
+. Listing of Telegram and node names for community testnet participation
 If you still need to join, start at https://t.me/CommunityTestnet
 
 == Scalability
