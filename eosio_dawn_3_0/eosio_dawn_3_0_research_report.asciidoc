@@ -209,7 +209,7 @@ image:images/mining_pools.jpeg[]
 Block producers are an integral part of the EOSIO blockchain implementation and infrastructure. Block producers are also known, in other blockchain circles, as super nodes or validating nodes or master nodes etc. The following section will cover the role of EOSIO block producers in-depth. For example, how block producers become qualified for their position, how token holders vote for block producers, as well as the rewards and consequences for being a good (or bad) block producer on the EOS network. Attack vectors which may threaten block producers will also be covered.
 
 ==== Radical transparency
-Anyone who holds tokens on an EOS network can participate in the production of blocks. Those who wish to become a block producer are required to respond to 8 check mark criteria. Moreover, they are required to publicly post 6 of the 8 check mark criteria on the Steem blockchain. This ensures that a permanent record of each candidate's response and commitment is stored on an immutable public blockchain. Candidates will also need to email admin@eosgo.io and include a link to the Steem blockchain post in order to be acknowledged and receive the check mark criteria. Tuesday May 15 2018 (at 23:59 UTC) marks the closing time for block producer applications as outlined above.
+Anyone who holds tokens on an EOS network can participate in the production of blocks. Those who wish to become a block producer are required to respond to 8 check mark criteria. Moreover, they are required to publicly post 6 of the 8 check mark criteria on the Steem blockchain. This ensures that a permanent record of each candidate's response and commitment is stored on an immutable public blockchain.
 
 ==== Voting for block producers
 Block producers are elected into their role through a continuous approval voting system which involves, among other things, convincing other token holders to vote for them.
@@ -232,11 +232,18 @@ Poorly fulfilling one’s role as a block producer will result in economic loss 
 ==== Security
 
 === Block producer application process
-Those who want to become block producers will need to:
+Those who want to become block producers will need to perform the following.
+
 . Fill out the following https://docs.google.com/forms/d/e/1FAIpQLSddSjEbgx_Ti5YuYMb_3WWWTWFqmyHW5Q7DMJ_RR_OL2EMsQQ/viewform[Block Producer Candidate Form]
+
 . Get a https://blocktrades.us/create-steem-account[Steem account]
+
 . Complete the following Block producer check mark criteria (including posting to Steem)
-. Email 
+
+. Candidates will also need to email admin@eosgo.io and include a link to the Steem blockchain posts in order to be acknowledged and receive the check mark criteria. 
+
++
+**Tuesday May 15 2018 (at 23:59 UTC) marks the closing time for block producer applications as outlined above.**
 
 ==== Block producer check mark criteria
 This section lists, in full detail, the check mark criteria which is required in order for a block producer to achieve candidature.
