@@ -199,6 +199,7 @@ One of the most important steps, in relation to running on a real testnet, is co
 == Delegated Proof of Stake (DPoS)
 
 == Governance and economics
+EOS blocks are produced by block producers. In order to become a block producer a candidate is required to publicly respond to a list of check mark criteria. Full details of the check mark criteria are listed in the following section. This section provides an overview of the governance and economics of EOS DPoS. 
 
 === Centralization 
 Centralization is the process by which the activities of an organization, particularly those regarding planning and decision-making, become concentrated within a particular location or group [2]. Some argue that the Delegated Proof of Stake (DPoS) consensus mechanism, which EOS uses, is centralized when compared to other consensus mechasisms such as Ethereum's current Proof of Work (PoW). However, others argue against this view with reference to the most recent data from PoW mining pools. The diagram below illustrates the percentage of Ethereum's distributed PoW hashing power. More specifically, how the vast majority of Ethereum's hashing power is spread across only a handful of the most powerful and centralized mining pools in the world [3].
@@ -229,6 +230,38 @@ Poorly fulfilling one’s role as a block producer will result in economic loss 
 ==== Disqualification
 
 ==== Security
+
+==== Block producer application process
+Those who want to become block producers will need to fill out the following https://docs.google.com/forms/d/e/1FAIpQLSddSjEbgx_Ti5YuYMb_3WWWTWFqmyHW5Q7DMJ_RR_OL2EMsQQ/viewform[Block Producer Candidate Form]
+
+==== Block producer check mark criteria
+This section lists, in full detail, the check mark criteria which is required in order for a block producer to achieve candidature.
+
+. 1 Public website URL and at least one social media account (all social media links offered by candidate will be shared in report)
+
+As a public representative of a powerful common resource, a community presence is expected.
+
+. 2 Links to the following ID information, **all posted to the Steem blockchain** (either in one post or multiple)
+..  Official block producer candidate name.
+..  Location of company headquarters.
+..  Expected location of servers. 
+..  Type of servers (cloud, bare metal, etc).
+..  Current employee list and pictures of at least 67% of staff.
+..  Relevant background qualifications for at least 67% of staff.
+
+Clear identity of company and employees is important, according to the majority of BP candidates
+
+. 3 Estimate of technical specifications and total expenditure for resources by June 3, 2018 - **posted to Steem blockchain**
+Check mark given for any estimate, modesty encouraged by permanent Steem record. Quality and accuracy of effort judged by the community in public document.
+
+. 4 Estimated scaling plan for hardware after June 3, 2018 - **posted to Steem blockchain**
+Rough outlines receive a check mark, open review gauges the effort.
+
+. 5 Community benefit project outline, only for projects expected to be public by June 3, 2018 - **posted to Steem blockchain**
+BPs overwhelmingly agreed on the importance of community benefit projects.
+
+. 6 Listing of Telegram and node names for community testnet participation
+If you still need to join, start at https://t.me/CommunityTestnet
 
 == Scalability
 The June 2018 release of EOS.IO software will run single threaded, yet it contains the data structures necessary for future multithreaded, parallel execution [6].
