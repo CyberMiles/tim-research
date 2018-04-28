@@ -232,13 +232,13 @@ Poorly fulfilling one’s role as a block producer will result in economic loss 
 ==== Security
 
 === Block producer application process
-Those who want to become block producers will need to perform the following.
+Those who want to become block producers will need to perform the following. Taking special note that items 2, 3, 4, 5, 7, and 8 in the Block producer check mark criteria section below are to be publicly written up **on the Steem blockchain**. 
 
 . Fill out the following https://docs.google.com/forms/d/e/1FAIpQLSddSjEbgx_Ti5YuYMb_3WWWTWFqmyHW5Q7DMJ_RR_OL2EMsQQ/viewform[Block Producer Candidate Form]
 
 . Get a https://blocktrades.us/create-steem-account[Steem account]
 
-. Complete the following Block producer check mark criteria (including posting to Steem)
+. Complete the following Block producer check mark criteria (including posting items 2, 3, 4, 5, 7 and 8 to Steem)
 
 . Candidates will also need to email admin@eosgo.io and include a link to the Steem blockchain posts in order to be acknowledged and receive the check mark criteria. 
 
