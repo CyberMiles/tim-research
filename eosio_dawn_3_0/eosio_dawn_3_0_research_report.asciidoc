@@ -238,7 +238,7 @@ Those who want to become block producers will need to fill out the following htt
 This section lists, in full detail, the check mark criteria which is required in order for a block producer to achieve candidature.
 
 . Public website URL and at least one social media account (all social media links offered by candidate will be shared in report)
-
++
 As a public representative of a powerful common resource, a community presence is expected.
 
 . Links to the following ID information, **all posted to the Steem blockchain** (either in one post or multiple)
@@ -248,19 +248,23 @@ As a public representative of a powerful common resource, a community presence i
 ..  Type of servers (cloud, bare metal, etc).
 ..  Current employee list and pictures of at least 67% of staff.
 ..  Relevant background qualifications for at least 67% of staff.
-
++
 Clear identity of company and employees is important, according to the majority of BP candidates
 
 . Estimate of technical specifications and total expenditure for resources by June 3, 2018 - **posted to Steem blockchain**
++
 Check mark given for any estimate, modesty encouraged by permanent Steem record. Quality and accuracy of effort judged by the community in public document.
 
 . Estimated scaling plan for hardware after June 3, 2018 - **posted to Steem blockchain**
++
 Rough outlines receive a check mark, open review gauges the effort.
 
 . Community benefit project outline, only for projects expected to be public by June 3, 2018 - **posted to Steem blockchain**
++
 BPs overwhelmingly agreed on the importance of community benefit projects.
 
 . Listing of Telegram and node names for community testnet participation
++
 If you still need to join, start at https://t.me/CommunityTestnet
 
 == Scalability
