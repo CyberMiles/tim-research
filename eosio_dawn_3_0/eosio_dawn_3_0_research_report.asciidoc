@@ -85,6 +85,9 @@ The combination of actions (sent as transactions) and automated action handlers 
 === Smart Contracts
 Actions can be sent individually, or in combined form if they are intended to be executed as a whole. EOS smart contracts communicate with each other via these transactions. 
 
+=== Block producers and transactions
+While a single block producer can reject a transaction (concluding that the transaction or account has consumed a disproportionate amount of resources), generally speaking if as little as one other block producer considers a transaction as valid then the transaction would be processed.
+
 === Accounts
 Performing actions on the blockchain requires the use of accounts. Each account can send structured actions to other accounts and may define scripts to handle actions when they are received. The EOSIO software gives each account its own private database which can only be accessed by its own action handlers.
 
