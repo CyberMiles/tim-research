@@ -8,10 +8,24 @@ EOS claims to be the most powerful infrastructure for decentralized applications
 
 EOS is due to launch in mid 2018. At present EOS Dawn 3 (a precursor to the main launch) is demonstrating that a lot of the proposed strengths are still under active development. It is unclear, probably unlikely, that all of the proposed strengths will be realized in time for the mid 2018 launch. Examples of this are as follows:
 
-* Whilst very high transaction per second throughput is likely to be achieve in the long term, at present testing demonstrates that approximately 1, 000 transactions per second is realistic and achievable. It is believed that this may scale up to as many as 30, 000 transactions per second. The highest transactions per second will ultimately be achieved as other functionality such as transaction scope and so forth are implemented. Transaction scope facilitates parallel execution. At present EOS does not perform parallel execution.
+Parallel execution of applications (high transactions per second)::
+
+* Whilst very high transaction per second throughput is likely to be achieve in the long term, at present testing demonstrates that approximately 1, 000 transactions per second is realistic and achievable. It is believed that this may scale up to as many as 30, 000 transactions per second. The highest transactions per second will ultimately be achieved as other functionality such as transaction scope and so forth are implemented. Transaction scope facilitates parallel execution. At present EOS does not perform parallel execution. The June 2018 release of EOS.IO software will run single threaded. It is also important to note that the software does contain the data structures which would allow for multithreaded and paralle execution. Therefore it is likely that this will take place in the future.
+
+Interblockchain communication::
+
 * Whilst interblockchain communication is likely to be achieved in the long term, at present interoperability between EOS chains looks promising, but interoperability between other blockchains does not seem to be practicable. This is due, in part, to the fact that transacting with other blockchains like Ethereum may result in high gas prices. At this stage the costs associated with interoperability between **non** EOS chains may negate the benefits of the interaction.
-* The EOS network manages resources in a decentralized fashion. At present, it is unlikely that EOS will provide a decentralized storage mechanism for the first main release. This may be realized later in the year and in future releases
+
+Decentralized storage::
+
+* The EOS network manages resources in a decentralized fashion. At present, it is unlikely that EOS will provide a decentralized storage mechanism for the first main release. This may be realized later in the year and in future releases. At present token holders can however stake tokens for memory and bandwidth.
+
+Block producers::
+
 * The process of becoming a block producer is an involved and very public affair. Users who wish to be block producer candidates are required to respond in the following fashion. Create a Steem account, respond to 8 check mark criteria (6 publicly on the Steem blockchain), fill out an online form and also email EOS before the closing date of Tuesday May 15 2018 (at 23:59 UTC).
+
+Governance::
+
 * It is unclear whether issues will be encountered in relation to large exchanges being able to manipulate the EOS block producer voting process. For example, if voting consists of a stakeholder sending a transaction to a contract (casting a vote) then cryptocurrency exchanges who are custodians for stakeholders (end users) would have the ability to "vote". With no intent implied, this point relates to the fact that exchanges hold very large amounts of tokens as a whole. Exchanges have the ability to perform any transaction (as they hold the private keys). The overall point being that exchanges have been known to be targeted by bad actors. Resulting in malicious hacks in the past.
 
 == Overview
@@ -28,8 +42,14 @@ Only Ethereum EOS ERC20 tokens which are registered (using EOS’s Ethereum ERC2
 === EOS blockchain implementations 
 From that point the EOS software will be ready for anyone and everyone to implement. All EOS blockchain implementations will have the same amount of EOS tokens. This amount will be the amount that was migrated across from Ethereum to EOS after the aforementioned freeze. The relationship between EOS addresses and tokens will be baked into the EOS genesis state. Every time a new EOS blockchain implementation is spun-up, a whole duplicate market place mirroring the same genesis state will exist.
 
+=== EOS BIOS Boot Node
+The first step in instantiating an EOS blockchain implementation is to randomly initialize a BIOS Boot Node. The BIOS Boot Node is responsible for fetching the genesis state provided by the software (remember the genesis state holds the information about which addresses own which tokens). From this point the single node (BIOS Boot Node) creates the first block and also enlists 21 Appointed Block Producers (ABPs) and enstates the appropriate permissions to vote and so forth. 
+
 === EOS community convergence
 The EOS community have to converge in order for the one and only EOS mainnet to take flight and never look back. After the official launch of the EOS software EOS block producers will prove their cooperative ability by producing 500 ms blocks and showing off the stability of their implementation of the EOS software.
+
+=== Validation
+No value can be transferred between account and so forth, until validation occurs. Validation is reliant on two things. Firstly 15% or more of EOS token holders connects to a particular network and make a valid transaction. Secondly the selection of a constitution which replaces the default consitution.
 
 === Replay protection 
 In the meantime (while there are multiple EOS blockchain implementations running simultaneously) transactions on each of the different EOS blockchain implementations will be unique. There can be no replay attacks across forks. EOS is going to use Transaction as Proof of Stake (TaPoS) as their replay protection. With TaPoS every transaction has to include part of a recent valid block header. Because block headers are unique the network is able to refuse transactions that don’t include a referenced block. TaPoS also signals the network of a particular user and their stake on a specific fork.
