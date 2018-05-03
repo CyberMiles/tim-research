@@ -14,6 +14,8 @@ Parallel execution of applications (high transactions per second)::
 
 It is also important to note that context free actions (actions which do not depend on blockchain state whatsoever) are able to be executed in parallel. An example of this would be signature verification.
 
+With support for context free actions, scalability techniques such as sharding, raiden, plazma and state channels can become parallelizable in practice. It is this development along with transaction scope that could enable potentially unlimited scalability and hence efficient interblock chain communication.
+
 Interblockchain communication::
 
 * Whilst interblockchain communication is likely to be achieved in the long term, at present interoperability between EOS chains looks promising, but interoperability between other blockchains does not seem to be practicable. This is due, in part, to the fact that transacting with other blockchains like Ethereum may result in high gas prices. At this stage the costs associated with interoperability between **non** EOS chains may negate the benefits of the interaction.
