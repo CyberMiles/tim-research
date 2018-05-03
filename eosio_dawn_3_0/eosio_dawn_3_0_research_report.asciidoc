@@ -20,19 +20,25 @@ EOS is due to launch in mid 2018. At present EOS Dawn 3 (a precursor to the main
 Unlike other blockchain software releases, the creators of EOS, Block.one are not launching a public blockchain. Instead, Block.one are releasing the open source software which any third-party can use to launch their own blockchain implementation. Block.one will not be a block producer on any of the public blockchain implementations. Instead, users who want to become block producers are welcome to complete the block producer candidature requirements.
 
 === Only one EOS
-EOS are allowing anyone to create an EOS blockchain implementation, using their software. But only one of the EOS blockchain implementations will be known as EOS. The theory is that the best software developers will gravitate towards the best EOS blockchain implementation and then ultimately that chain will “win” and be known as EOS.
+EOS are allowing anyone to create an EOS blockchain implementation, using their software. But only one of the EOS blockchain implementations will be known as EOS. The theory is that the best software developers will gravitate towards the best EOS blockchain implementation and then ultimately that chain will “win” and be known as EOS. Put simply, the EOS community is required to converge.
 
 === EOS Tokens
-Only Ethereum EOS ERC20 tokens which are registered (using EOS’s Ethereum ERC20 token function called “register”) to an EOS address will be valid EOS tokens moving forward. All other tokens will be irrelevant and non existent on the EOS network. EOS is migrating the aforementioned registered EOS ERC20 tokens from the Ethereum blockchain to the EOS software after an EOS Ethereum  freeze which will crystallise the relationships between registered EOS tokens and EOS addresses.
+Only Ethereum EOS ERC20 tokens which are registered (using EOS’s Ethereum ERC20 token function called “register”) to an EOS address will be valid EOS tokens moving forward. All other tokens will be irrelevant and non existent on the EOS network. EOS is migrating the aforementioned registered EOS ERC20 tokens from the Ethereum blockchain to the EOS software after an EOS Ethereum  freeze which will crystallise the relationships between registered EOS tokens and EOS addresses. All EOS tokens begin their existence on the EOS networ fully staked. This means that the tokens are locked up as a deposit of sorts which provides an equal amount of both CPU and bandwidth resources on the EOS network.
 
 === EOS blockchain implementations 
 From that point the EOS software will be ready for anyone and everyone to implement. All EOS blockchain implementations will have the same amount of EOS tokens. This amount will be the amount that was migrated across from Ethereum to EOS after the aforementioned freeze. The relationship between EOS addresses and tokens will be baked into the EOS genesis state. Every time a new EOS blockchain implementation is spun-up, a whole duplicate market place mirroring the same genesis state will exist.
 
+=== EOS community convergence
+The EOS community have to converge in order for the one and only EOS mainnet to take flight and never look back. After the official launch of the EOS software EOS block producers will prove their cooperative ability by producing 500 ms blocks and showing off the stability of their implementation of the EOS software.
+
 === Replay protection 
-Transactions on each of the different EOS blockchain implementations will be unique. There can be no replay attacks across forks. EOS is going to use Transaction as Proof of Stake (TaPoS) as their replay protection. With TaPoS every transaction has to include part of a recent valid block header. Because block headers are unique the network is able to refuse transactions that don’t include a referenced block. TaPoS also signals the network of a particular user and their stake on a specific fork.
+In the meantime (while there are multiple EOS blockchain implementations running simultaneously) transactions on each of the different EOS blockchain implementations will be unique. There can be no replay attacks across forks. EOS is going to use Transaction as Proof of Stake (TaPoS) as their replay protection. With TaPoS every transaction has to include part of a recent valid block header. Because block headers are unique the network is able to refuse transactions that don’t include a referenced block. TaPoS also signals the network of a particular user and their stake on a specific fork.
 
 === Liquidity 
 Exchanges allow users to trade EOS. Exchanges can not honour EOS tokens from every EOS blockchain implementation. For example it is impossible for an exchange to convert EOS from a hundred different EOS blockchain implementations to cash; they would go broke. For liquidity to be sound, there can only be one EOS; the winning EOS blockchain implementation. 
+
+=== The success and future of the EOS mainnet
+As mentioned above, the EOS community are required to converge. They do this by running their preferred EOS software and then voting for their preferred top 21 block producers. The users are able to unstake their tokens on that network if it is the first to achieve 15% of the entire EOS community's support a.k.a. that EOS blockchain implementation becomes the mainnet!
 
 === Testnets
 http://jungle.cryptolions.io:9898/monitor/[Jungle Testnet]
