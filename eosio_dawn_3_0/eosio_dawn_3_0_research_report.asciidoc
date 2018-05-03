@@ -12,6 +12,8 @@ Parallel execution of applications (high transactions per second)::
 
 * Whilst very high transaction per second throughput is likely to be achieve in the long term, at present testing demonstrates that approximately 1, 000 transactions per second is realistic and achievable. It is believed that this may scale up to as many as 30, 000 transactions per second. The highest transactions per second will ultimately be achieved as other functionality such as transaction scope and so forth are implemented. Transaction scope facilitates parallel execution. At present EOS does not perform parallel execution. The June 2018 release of EOS.IO software will run single threaded. It is also important to note that the software does contain the data structures which would allow for multithreaded and paralle execution. Therefore it is likely that this will take place in the future.
 
+It is also important to note that context free actions (actions which do not depend on blockchain state whatsoever) are able to be executed in parallel. An example of this would be signature verification.
+
 Interblockchain communication::
 
 * Whilst interblockchain communication is likely to be achieved in the long term, at present interoperability between EOS chains looks promising, but interoperability between other blockchains does not seem to be practicable. This is due, in part, to the fact that transacting with other blockchains like Ethereum may result in high gas prices. At this stage the costs associated with interoperability between **non** EOS chains may negate the benefits of the interaction.
