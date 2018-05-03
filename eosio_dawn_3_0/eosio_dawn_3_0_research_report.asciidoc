@@ -75,7 +75,7 @@ An EOS wallet can be thought of as a repository of public-private key pairs. The
 Whilst you can create, and interact with, a wallet using cleos, this is not recommended unless you are simply testing and experimenting on a local private network. 
 
 === Actions
-An action represents a single operation.
+An action represents a single operation. All transactions are billed a computational bandwidth cost. These costs are broken down to the cost associated with each Web Assembly instruction (action) which is executed.
 
 === Transactions
 A transaction holds one or more actions for execution; stored in the actions array. Each instance of an action in the actions array has the following key value pairs, account, name, authorization and data. Executing a transaction results in a transaction hash. Receiving the hash does not mean that the transaction was confirmed, rather just that its syntax was without error (the transaction was valid). Confirmation of successful execution can be verified by inspecting the transaction history and obtaining the block number in which the transaction was included. 
