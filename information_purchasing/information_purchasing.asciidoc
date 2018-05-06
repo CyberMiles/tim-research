@@ -62,6 +62,8 @@ image::images/pharmacy.png[]
 == Intangible digital assets that do NOT require consensus
 An e-book can be duplicated digitally and sold online. The duplicating of an e-book is trivial and ca be performed automatically by software. The digital age has removed the costs associated with copying and shipping content. For example an e-book can be attached to an email and sent anywhere in the world for free; duplicating and shipping the product in seconds. As a result many authors in the digital age choose to openly license their digital assets (books). This allows the information which they are trying to share to be distributed as widely and as quickly as possible. Authors can quickly make a name for themselves and also return stipends as well as international speaking engagements and more. In this system a user can on-send the digital content and using open licensing protocols, such as creative commons, even modify and sell the content. This system is by and large enforced by attribution; whereby a user who copies or redistributes the original content ensures that the original work is appropriately credited (but not in any way that suggests the original creator endorses the duplicate content). There is no control over the supply of digital assets in a system which does not enforce consensus. The digital assets can be distributed as widely as possible and as long as the origins of the work are attributed, nobody is even remotely interested in who has access to the content or who was responsible for coping the content.
 
+image::images/oer.png[]
+
 == Tangible digital assets that do NOT require consensus
 
 = Implementation
