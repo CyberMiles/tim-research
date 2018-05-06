@@ -47,6 +47,8 @@ The Bitcoin system holds 21M measures of a digital asset known as a "bitcoin".
 Other than what was provisioned by the design of the Bitcoin system, a user must not be able to create or spend a self made bitcoin.
 The security and integrity of the system is enforced by mathematics; it is practically infeasible to create or spend bitcoin which a user does not legitimately hold the rights to.
 
+image::images/bitcoin.png[]
+
 === A word on NON digital assets
 Traditional books were printed, bound, packaged and shipped by publishers. These tasks were all very costly and the process of publishing played a part in the "copyright" licensing mechanism. A publisher, who held the rights to copy content, could invest in printing equipment and turn a profit whilst managing waste etc. In this system, a user was not supposed to be able to copy content outside of what the publishing system intended.
 This system was enforced by the law; a user caught copying content was fined or imprisoned.
