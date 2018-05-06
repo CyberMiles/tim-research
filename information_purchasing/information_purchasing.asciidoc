@@ -32,7 +32,13 @@ Blockchain technologies open a door to new thinking. Thinking which will result 
 Blockchain technologies can be used anywhere by anyone for anything, not just cryptocurrency. This gives rise to the idea of a global internet of economies which could, amongst many other things, transparently track working capital, provide risk free loans against physical assets as well as transform current ridgid and innefficient global supply chains (Sweetbridge, 2017). The ultimate role for blockchain technology is to facilitate self-excecuting smart contracts between decentralized autonymous entities (Umeh, 2016).
 
 == Consensus mechanisms
-Digital assets do not all require consensus. Not all digital assets have tangible value (not all digital assets are easily assigned an immediate value in monerary terms.
+Tim TODO - explain PoW, PoS, finality and system wide consensus.
+
+Summary points
+
+Digital assets do not all require consensus. 
+
+Not all digital assets have tangible value.
 
 == Information systems
 Tim TODO
