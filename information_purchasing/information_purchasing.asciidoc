@@ -77,7 +77,8 @@ image::images/oer.png[]
 == Smart contracts
 
 
-References
+= References
+
 Atzei, N., Bartoletti, M. and Cimoli, T., 2017, April. A Survey of Attacks on Ethereum Smart Contracts (SoK). In International Conference on Principles of Security and Trust (pp. 164-186). Springer, Berlin, Heidelberg.
 
 Bheemaiah, K., 2015. Why business schools need to teach about the blockchain.
