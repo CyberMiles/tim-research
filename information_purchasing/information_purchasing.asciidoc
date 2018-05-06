@@ -73,9 +73,16 @@ An e-book can be duplicated digitally and sold online. The duplicating of an e-b
 image::images/oer.png[]
 
 == *Tangible* digital assets that do *NOT* require consensus
+Any digital asset for sale which is not negatively affected by a lack in overall supply control qualifies for this category.
+Tim TODO continue
 
 = Implementation
-Tim TODO
+
+== Discoverability
+Rather than being concerned with tracking the further sharing of information (piracy) the implementation should focus on the smooth exchange of information between users. Perhaps even more importantly is discoverability. For example if a user can quickly and easily find and obtain information on the platform, they will have little to no reason to look elsewhere. An example of this would be a federated search mechanism capable of searching multiple disparate content sources with one query. An even better example of this would be providing push notification (providing new opportunities to purchase the latests information) based on previously entered search terms.
+
+== Data integrity and data authenticity
+The integrity and authenticity of the data can be proven through the use of checksums ... Tim TODO
 
 == Symmetric cryptography
 Tim TODO
