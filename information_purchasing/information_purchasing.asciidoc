@@ -1,3 +1,5 @@
+= Information purchasing: Research and development into the providing a practical mechanism to securly purchase sensitive and valuable information using blockchain technology.
+
 During this article we are going to address the following::
 
 * Overview
