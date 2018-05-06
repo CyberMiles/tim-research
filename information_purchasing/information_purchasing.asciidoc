@@ -75,7 +75,11 @@ An e-book can be duplicated digitally and sold online. The duplicating of an e-b
 image::images/oer.png[]
 
 == *Tangible* digital assets that do *NOT* require consensus
-Any digital asset for sale which is not negatively affected by a lack in overall supply control qualifies for this category.
+Any digital asset for sale which is not negatively affected by a lack in overall supply control qualifies for this category. 
+This covers a very broad range of digital products which allow the seller to continually duplicate and sell content, for a profit, at little to no cost.
+
+image::images/question.png[]
+
 Tim TODO continue
 
 = Implementation
