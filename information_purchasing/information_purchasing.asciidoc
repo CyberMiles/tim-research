@@ -19,6 +19,7 @@ During this article we are going to address the following::
 = Overview
 
 == Distributed systems
+Tim TODO
 
 == Decentralized systems
 
@@ -34,6 +35,7 @@ Blockchain technologies can be used anywhere by anyone for anything, not just cr
 Digital assets do not all require consensus. Not all digital assets have tangible value (not all digital assets are easily assigned an immediate value in monerary terms.
 
 == Information systems
+Tim TODO
 
 = Analysis
 
@@ -67,15 +69,19 @@ image::images/oer.png[]
 == *Tangible* digital assets that do *NOT* require consensus
 
 = Implementation
+Tim TODO
 
 == Symmetric cryptography
+Tim TODO
 
 == Asymmetric cryptography
+Tim TODO
 
 == Decentralized file sharing
+Tim TODO
 
 == Smart contracts
-
+Tim TODO
 
 = References
 
