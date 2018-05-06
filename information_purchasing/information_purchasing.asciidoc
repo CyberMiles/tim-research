@@ -39,6 +39,8 @@ Digital assets do not all require consensus. Not all digital assets have tangibl
 
 By the end of this article we will have filled in the blanks to the following diagram. The overall outcome of this article is to propose a mechanism to securely share digital information in conjunction with a blockchain implementation.
 
+image::images/blank_diagram.png[]
+
 == Tangible digital assets that DO require consensus
 Bitcoin requires network wide consensus on its digital asset.
 The Bitcoin system holds 21M measures of a digital asset known as a "bitcoin".
