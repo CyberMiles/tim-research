@@ -1,6 +1,6 @@
 Digital assets do not all require consensus.
 
-Digital assets of value that DO require consensus
+== Digital assets of value that DO require consensus
 Bitcoin requires network wide consensus on its digital asset.
 The Bitcoin system holds 21M measures of a digital asset known as a "bitcoin".
 Other than what was provisioned by the design of the Bitcoin system, a user must not be able to create or spend a self made bitcoin.
