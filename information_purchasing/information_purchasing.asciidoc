@@ -1,23 +1,26 @@
-Digital assets do not all require consensus.
+During this article we are going to address the following::
 
-== Digital assets of value that DO require consensus
-Bitcoin requires network wide consensus on its digital asset.
-The Bitcoin system holds 21M measures of a digital asset known as a "bitcoin".
-Other than what was provisioned by the design of the Bitcoin system, a user must not be able to create or spend a self made bitcoin.
-The security and integrity of the system is enforced by mathematics; it is practically infeasible to create or spend bitcoin which a user does not legitimately hold the rights to.
+* Overview
+** Distributed systems
+** Decentralized systems
+** Consensus mechanisms
+** Information systems
+* Analysis
+** Tangible digital assets that DO require consensus
+** Intangible digital assets that DO require consensus
+** Intangible digital assets that do NOT require consensus
+** Tangible digital assets that do NOT require consensus
+* Implementation
+** Symmetric cryptography
+** Asymmetric cryptography
+** Decentralized file sharing
+** Smart contracts
 
-Non digital assets
-Traditional books were printed, bound, packaged and shipped by publishers. These tasks were all very costly and the process of publishing played a part in the "copyright" licensing mechanism. A publisher, who held the rights to copy content, could invest in printing equipment and turn a profit whilst managing waste etc. In this system, a user was not supposed to be able to copy content outside of what the publishing system intended.
-This system was enforced by the law; a user caught copying content was fined or imprisoned.
+= Overview
 
-Consensus implies controlled supply
-Consensus implies controlled supply within a distributed and/or decentralized system.
-An example of consensus in a distributed system is a mechanism that prevents a single person from purchasing amphetamine class drugs (found in over the counter pain killers) by simply visiting many different pharmacies in a single day. This mechanism could be a centralized computer database which accepts id and drug purchases from pharmacies which are distributed across the county. This system could also be a blockchain implementation. The blockchain implementation would be decentralized. For example instead of having a central database (as in the distributed pharmacy model) each of the pharmacies would have collaborative consensus about how much a single person is allowed to purchase, and when this limit has been reached. In the decentralized model each pharmacy would run the same software and would agree on what constitutes a purchase and what constitutes a purchase limit. Whether distributed (a central database with many pharmacies) or decentralized (no central database, just peer to peer software running at each pharmacy) the ultimate goal of consensus amongst pharmacies is to control supply.
+== Distributed systems
 
-Digital assets that do NOT require consensus
-An e-book can be duplicated digitally and sold online. The duplicating of an e-book is trivial and ca be performed automatically by software. The digital age has removed the costs associated with copying and shipping content. For example an e-book can be attached to an email and sent anywhere in the world for free; duplicating and shipping the product in seconds. As a result many authors in the digital age choose to openly license their digital assets (books). This allows the information which they are trying to share to be distributed as widely and as quickly as possible. Authors can quickly make a name for themselves and also return stipends as well as international speaking engagements and more. In this system a user can on-send the digital content and using open licensing protocols, such as creative commons, even modify and sell the content. This system is by and large enforced by attribution; whereby a user who copies or redistributes the original content ensures that the original work is appropriately credited (but not in any way that suggests the original creator endorses the duplicate content). There is no control over the supply of digital assets in a system which does not enforce consensus. The digital assets can be distributed as widely as possible and as long as the origins of the work are attributed, nobody is even remotely interested in who has access to the content or who was responsible for coping the content.
-
-Digital assets of value that do NOT require consensus
+== Decentralized systems
 
 The attractiveness of blockchain applications within the context of processing and recording transactions are summed up by certain attributes that enhance value. The attributes include decentralisation and provenance. The decentralised nature of blockchain systems allow participants to exchange value from anywhere without the need for intermediaries and from a provenance standpoint, blockchain systems provide irrefutable auditable evidence that a transaction took place at a particular point in time (Umeh, 2016). These attributes offered by blockchain technologies are unprecedented and therefore when coupled with a fitting business model will ultimately result in both increased reliability and cost savings (Michelman, 2017).
 
@@ -26,6 +29,45 @@ The promise of blockchains are essentially more about what they can do in combin
 Blockchain technologies open a door to new thinking. Thinking which will result in possibilities which we are not even aware of presently. To assist in this thinking, it helps to refer to blockchain technology as an experimental protocol rather than a finished product. For example in 1974, Vint Cerf and Robert Kahn designed a revolutionary internet network protocol (TCP-IP), this core technology was largely unused for approximately 20 years but eventually went on to facilitate many of today's systems including the creation of the World Wide Web (WWW) and electronic mail (Email) (Bheemaiah, 2005). Today’s blockchain technologies are following a similar path of evolution by providing a core protocol; an unprecedented value exchange mechanism (Bheemaiah, 2005, p.7).
 
 Blockchain technologies can be used anywhere by anyone for anything, not just cryptocurrency. This gives rise to the idea of a global internet of economies which could, amongst many other things, transparently track working capital, provide risk free loans against physical assets as well as transform current ridgid and innefficient global supply chains (Sweetbridge, 2017). The ultimate role for blockchain technology is to facilitate self-excecuting smart contracts between decentralized autonymous entities (Umeh, 2016).
+
+== Consensus mechanisms
+Digital assets do not all require consensus. Not all digital assets have tangible value (not all digital assets are easily assigned an immediate value in monerary terms.
+
+== Information systems
+
+= Analysis
+
+By the end of this article we will have filled in the blanks to the following diagram. The overall outcome of this article is to propose a mechanism to securely share digital information in conjunction with a blockchain implementation.
+
+== Tangible digital assets that DO require consensus
+Bitcoin requires network wide consensus on its digital asset.
+The Bitcoin system holds 21M measures of a digital asset known as a "bitcoin".
+Other than what was provisioned by the design of the Bitcoin system, a user must not be able to create or spend a self made bitcoin.
+The security and integrity of the system is enforced by mathematics; it is practically infeasible to create or spend bitcoin which a user does not legitimately hold the rights to.
+
+== A word on NON digital assets
+Traditional books were printed, bound, packaged and shipped by publishers. These tasks were all very costly and the process of publishing played a part in the "copyright" licensing mechanism. A publisher, who held the rights to copy content, could invest in printing equipment and turn a profit whilst managing waste etc. In this system, a user was not supposed to be able to copy content outside of what the publishing system intended.
+This system was enforced by the law; a user caught copying content was fined or imprisoned.
+
+== Intangible digital assets that DO require consensus
+Consensus implies controlled supply within a distributed and/or decentralized system.
+An example of consensus in a distributed system is a mechanism that prevents a single person from purchasing amphetamine class drugs (found in over the counter pain killers) by simply visiting many different pharmacies in a single day. This mechanism could be a centralized computer database which accepts id and drug purchases from pharmacies which are distributed across the county. This system could also be a blockchain implementation. The blockchain implementation would be decentralized. For example instead of having a central database (as in the distributed pharmacy model) each of the pharmacies would have collaborative consensus about how much a single person is allowed to purchase, and when this limit has been reached. In the decentralized model each pharmacy would run the same software and would agree on what constitutes a purchase and what constitutes a purchase limit. Whether distributed (a central database with many pharmacies) or decentralized (no central database, just peer to peer software running at each pharmacy) the ultimate goal of consensus amongst pharmacies is to control supply.
+
+== Intangible digital assets that do NOT require consensus
+An e-book can be duplicated digitally and sold online. The duplicating of an e-book is trivial and ca be performed automatically by software. The digital age has removed the costs associated with copying and shipping content. For example an e-book can be attached to an email and sent anywhere in the world for free; duplicating and shipping the product in seconds. As a result many authors in the digital age choose to openly license their digital assets (books). This allows the information which they are trying to share to be distributed as widely and as quickly as possible. Authors can quickly make a name for themselves and also return stipends as well as international speaking engagements and more. In this system a user can on-send the digital content and using open licensing protocols, such as creative commons, even modify and sell the content. This system is by and large enforced by attribution; whereby a user who copies or redistributes the original content ensures that the original work is appropriately credited (but not in any way that suggests the original creator endorses the duplicate content). There is no control over the supply of digital assets in a system which does not enforce consensus. The digital assets can be distributed as widely as possible and as long as the origins of the work are attributed, nobody is even remotely interested in who has access to the content or who was responsible for coping the content.
+
+== Tangible digital assets that do NOT require consensus
+
+= Implementation
+
+== Symmetric cryptography
+
+== Asymmetric cryptography
+
+== Decentralized file sharing
+
+== Smart contracts
+
 
 References
 Atzei, N., Bartoletti, M. and Cimoli, T., 2017, April. A Survey of Attacks on Ethereum Smart Contracts (SoK). In International Conference on Principles of Security and Trust (pp. 164-186). Springer, Berlin, Heidelberg.
