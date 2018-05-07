@@ -102,6 +102,50 @@ Tim TODO
 == Smart contracts
 Tim TODO
 
+== Go R&D
+Setting up environment paths
+
+```
+export GOPATH=~/.gvm/pkgsets/go1.9.2/global
+export GOBIN=$GOPATH/go/bin
+export PATH=$GOBIN:$PATH
+```
+
+Creating test directory
+
+```
+cd $GOPATH
+cd src
+mkdir tpmccallum
+cd tpmccallum
+```
+
+Creating a go file and saving it as tpmccallum.go
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Printf("hello, world\n")
+}
+```
+
+Compile the file
+
+```
+cd $GOPATH/src/tpmccallum
+go build
+```
+
+Executing the file
+
+```
+cd $GOPATH/src/tpmccallum
+./tpmccallum
+```
+
 = References
 
 Atzei, N., Bartoletti, M. and Cimoli, T., 2017, April. A Survey of Attacks on Ethereum Smart Contracts (SoK). In International Conference on Principles of Security and Trust (pp. 164-186). Springer, Berlin, Heidelberg.
