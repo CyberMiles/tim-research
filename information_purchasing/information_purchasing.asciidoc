@@ -205,12 +205,12 @@ func GenerateRandomString(s int) (string, error) {
 
 func main() {
     //RandCodeA variable as outlined in the DRAFT workflow above
-	  RandCodeA, err := GenerateRandomString(32)
-		if err != nil {
-		    fmt.Printf("%v", "Unable to generate random string")
-		}
-		fmt.Printf("%v\n", "The random code which we have generated is:")
-		fmt.Printf("%q\n", RandCodeA)
+    RandCodeA, err := GenerateRandomString(32)
+    if err != nil {
+        fmt.Printf("%v", "Unable to generate random string")
+    }
+    fmt.Printf("%v\n", "The random code which we have generated is:")
+    fmt.Printf("%q\n", RandCodeA)
     fmt.Printf("%v\n", "The md5 checksum of the random string is:")
     //RandCodeAMd5 variable as outlined in the DRAFT workflow above
     fmt.Printf("%x\n", md5.Sum([]byte(RandCodeA)))
