@@ -189,30 +189,29 @@ import (
 )
 
 func GenerateRandomBytes(n int) ([]byte, error) {
-	b := make([]byte, n)
-	_, err := rand.Read(b)
-	if err != nil {
-		return nil, err
-	}
+    b := make([]byte, n)
+    _, err := rand.Read(b)
+    if err != nil {
+        return nil, err
+    }
 
-	return b, nil
+    return b, nil
 }
 
 func GenerateRandomString(s int) (string, error) {
-	b, err := GenerateRandomBytes(s)
-	return base64.URLEncoding.EncodeToString(b), err
+    b, err := GenerateRandomBytes(s)
+    return base64.URLEncoding.EncodeToString(b), err
 }
 
 func main() {
-    //RandCodeA variable as outlined in the DRAFT workflow above
     RandCodeA, err := GenerateRandomString(32)
     if err != nil {
         fmt.Printf("%v", "Unable to generate random string")
     }
     fmt.Printf("%v\n", "The random code which we have generated is:")
     fmt.Printf("%q\n", RandCodeA)
+    //data := []byte("These pretzels are making me thirsty.")
     fmt.Printf("%v\n", "The md5 checksum of the random string is:")
-    //RandCodeAMd5 variable as outlined in the DRAFT workflow above
     fmt.Printf("%x\n", md5.Sum([]byte(RandCodeA)))
 }
 ```
