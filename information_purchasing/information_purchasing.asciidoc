@@ -173,6 +173,7 @@ cd src
 mkdir tpmccallum
 cd tpmccallum
 ```
+=== Creating the md5 checksum (one-way hash) of a string of characters
 
 Creating a go file and saving it as tpmccallum.go
 This section is testing out the crypto libraries available in Go.
