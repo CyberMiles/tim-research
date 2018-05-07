@@ -121,14 +121,23 @@ cd tpmccallum
 ```
 
 Creating a go file and saving it as tpmccallum.go
+This section is testing out the crypto libraries available in Go.
 
 ```
 package main
-
-import "fmt"
+  
+import (
+        "crypto/md5"
+        "fmt"
+)
 
 func main() {
-    fmt.Printf("hello, world\n")
+        data := []byte("These pretzels are making me thirsty.")
+        aString := "The md5 hash of the above string is "
+        fmt.Printf("%v", "Creating a new string: ")
+        fmt.Printf("%q", data)
+        fmt.Printf("\n%v", aString)
+        fmt.Printf("%x\n", md5.Sum(data))
 }
 ```
 
@@ -144,6 +153,14 @@ Executing the file
 ```
 cd $GOPATH/src/tpmccallum
 ./tpmccallum
+```
+
+Output from the file
+
+```
+$ ./tpmccallum 
+Creating a new string: "These pretzels are making me thirsty."
+The md5 hash of the above string is b0804ec967f48520697662a204f5fe72
 ```
 
 = References
