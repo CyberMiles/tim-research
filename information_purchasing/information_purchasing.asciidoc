@@ -34,6 +34,7 @@ Blockchain technologies open a door to new thinking. Thinking which will result 
 Blockchain technologies can be used anywhere by anyone for anything, not just cryptocurrency. This gives rise to the idea of a global internet of economies which could, amongst many other things, transparently track working capital, provide risk free loans against physical assets as well as transform current ridgid and innefficient global supply chains (Sweetbridge, 2017). The ultimate role for blockchain technology is to facilitate self-excecuting smart contracts between decentralized autonymous entities (Umeh, 2016).
 
 == Consensus mechanisms
+
 Tim TODO - explain PoW, PoS, finality and system wide consensus.
 
 Summary points
@@ -43,6 +44,7 @@ Digital assets do not all require consensus.
 Not all digital assets have tangible value.
 
 == Information systems
+
 Tim TODO
 
 = Analysis
@@ -52,6 +54,7 @@ By the end of this article we will have filled in the blanks to the following di
 image::images/blank_diagram.png[]
 
 == *Tangible* digital assets that *DO* require consensus
+
 Bitcoin requires network wide consensus on its digital asset.
 The Bitcoin system holds 21M measures of a digital asset known as a "bitcoin".
 Other than what was provisioned by the design of the Bitcoin system, a user must not be able to create or spend a self made bitcoin.
@@ -60,21 +63,25 @@ The security and integrity of the system is enforced by mathematics; it is pract
 image::images/bitcoin.png[]
 
 == *Intangible* digital assets that *DO* require consensus
+
 Consensus implies controlled supply within a distributed and/or decentralized system.
 An example of consensus in a distributed system is a mechanism that prevents a single person from purchasing amphetamine class drugs (found in over the counter pain killers) by simply visiting many different pharmacies in a single day. This mechanism could be a centralized computer database which accepts id and drug purchases from pharmacies which are distributed across the county. This system could also be a blockchain implementation. The blockchain implementation would be decentralized. For example instead of having a central database (as in the distributed pharmacy model) each of the pharmacies would have collaborative consensus about how much a single person is allowed to purchase, and when this limit has been reached. In the decentralized model each pharmacy would run the same software and would agree on what constitutes a purchase and what constitutes a purchase limit. Whether distributed (a central database with many pharmacies) or decentralized (no central database, just peer to peer software running at each pharmacy) the ultimate goal of consensus amongst pharmacies is to control supply.
 
 image::images/pharmacy.png[]
 
 === A word on NON digital assets
+
 Traditional books were printed, bound, packaged and shipped by publishers. These tasks were all very costly and the process of publishing played a part in the "copyright" licensing mechanism. A publisher, who held the rights to copy content, could invest in printing equipment and turn a profit whilst managing waste etc. In this system, a user was not supposed to be able to copy content outside of what the publishing system intended.
 This system was enforced by the law; a user caught copying content was fined or imprisoned.
 
 == *Intangible* digital assets that do *NOT* require consensus
+
 An e-book can be duplicated digitally and sold online. The duplicating of an e-book is trivial and ca be performed automatically by software. The digital age has removed the costs associated with copying and shipping content. For example an e-book can be attached to an email and sent anywhere in the world for free; duplicating and shipping the product in seconds. As a result many authors in the digital age choose to openly license their digital assets (books). This allows the information which they are trying to share to be distributed as widely and as quickly as possible. Authors can quickly make a name for themselves and also return stipends as well as international speaking engagements and more. In this system a user can on-send the digital content and using open licensing protocols, such as creative commons, even modify and sell the content. This system is by and large enforced by attribution; whereby a user who copies or redistributes the original content ensures that the original work is appropriately credited (but not in any way that suggests the original creator endorses the duplicate content). There is no control over the supply of digital assets in a system which does not enforce consensus. The digital assets can be distributed as widely as possible and as long as the origins of the work are attributed, nobody is even remotely interested in who has access to the content or who was responsible for coping the content.
 
 image::images/oer.png[]
 
 == *Tangible* digital assets that do *NOT* require consensus
+
 Any digital asset for sale which is not negatively affected by a lack in overall supply control qualifies for this category. 
 This covers a very broad range of digital products which allow the seller to continually duplicate and sell content, for a profit, at little to no cost.
 
@@ -85,44 +92,71 @@ Tim TODO continue
 = Implementation
 
 == Workflow
+
 === DRAFT workflow (the workings will live in the Go R&D section below)
+
 ==== Alice part 1
+
 Create a random code (generate a key using a standard crypto librarary) -> RandCodeA
+
 Create an md5 checksumm of RandCodeA -> RandCodeAMd5
+
 Create public private key pair -> PubKeyA and PrivKeyA
+
 Encrypt RandCodeAMd5 using PrivKeyA -> EncryptedA
+
 Call init function of smart contract which puts RandCodeAMd5, EncryptedA and PubKeyA into contract storage
+
 ==== Bob part 1
+
 Create a random code (generate a key using a standard crypto librarary) -> RandCodeB
+
 Create an md5 checksumm of RandCodeB -> RandCodeBMd5
+
 Create public private key pair -> PubKeyB and PrivKeyB
+
 Encrypt RandCodeBMd5 using PrivKeyB -> EncryptedB
+
 Call init function of smart contract which puts RandCodeBMd5, EncryptedB and PubKeyB into contract storage
+
 === System part 1
+
 Once RandCodeAMd5, RandCodeBMd5, EncryptedA, EncryptedB, PubKeyA and PubKeyB are stored in the contracts storage, run the verify init function
+
 Call the verifyInit function which:
+
 - decrypts EncryptedA (using PubKeyA) -> DecryptedRandCodeAMd5
+
 - decrypts EncryptedB (using PubKeyB) -> DecryptedRandCodeBMd5
+
 - asserts that DecryptedRandCodeAMd5 matches RandCodeAMd5 exactly
+
 - asserts that DecryptedRandCodeBMd5 matches RandCodeBMd5 exactly
+
 It can now be confirmed that each of the parties have the corresponding private keys which can be used to sign future content specific keys
 
 == Data integrity and data authenticity
+
 The integrity and authenticity of the data can be proven through the use of checksums ... Tim TODO
 
 == Symmetric cryptography
+
 Tim TODO
 
 == Asymmetric cryptography
+
 Tim TODO
 
 == Decentralized file sharing
+
 Tim TODO
 
 == Smart contracts
+
 Tim TODO
 
 == Go R&D (relates to Draft workflow section above)
+
 Setting up environment paths
 
 ```
