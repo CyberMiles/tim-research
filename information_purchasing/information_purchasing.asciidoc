@@ -210,7 +210,6 @@ func main() {
     }
     fmt.Printf("%v\n", "The random code which we have generated is:")
     fmt.Printf("%q\n", RandCodeA)
-    //data := []byte("These pretzels are making me thirsty.")
     fmt.Printf("%v\n", "The md5 checksum of the random string is:")
     fmt.Printf("%x\n", md5.Sum([]byte(RandCodeA)))
 }
