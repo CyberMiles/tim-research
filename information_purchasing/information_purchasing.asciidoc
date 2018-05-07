@@ -183,16 +183,37 @@ package main
   
 import (
         "crypto/md5"
+        "crypto/rand"
+        "encoding/base64"
         "fmt"
 )
 
+func GenerateRandomBytes(n int) ([]byte, error) {
+	b := make([]byte, n)
+	_, err := rand.Read(b)
+	if err != nil {
+		return nil, err
+	}
+
+	return b, nil
+}
+
+func GenerateRandomString(s int) (string, error) {
+	b, err := GenerateRandomBytes(s)
+	return base64.URLEncoding.EncodeToString(b), err
+}
+
 func main() {
-        data := []byte("These pretzels are making me thirsty.")
-        aString := "The md5 hash of the above string is "
-        fmt.Printf("%v", "Creating a new string: ")
-        fmt.Printf("%q", data)
-        fmt.Printf("\n%v", aString)
-        fmt.Printf("%x\n", md5.Sum(data))
+    //RandCodeA variable as outlined in the DRAFT workflow above
+	  RandCodeA, err := GenerateRandomString(32)
+		if err != nil {
+		    fmt.Printf("%v", "Unable to generate random string")
+		}
+		fmt.Printf("%v\n", "The random code which we have generated is:")
+		fmt.Printf("%q\n", RandCodeA)
+    fmt.Printf("%v\n", "The md5 checksum of the random string is:")
+    //RandCodeAMd5 variable as outlined in the DRAFT workflow above
+    fmt.Printf("%x\n", md5.Sum([]byte(RandCodeA)))
 }
 ```
 
@@ -214,8 +235,10 @@ Output from the file
 
 ```
 $ ./tpmccallum 
-Creating a new string: "These pretzels are making me thirsty."
-The md5 hash of the above string is b0804ec967f48520697662a204f5fe72
+The random code which we have generated is:
+"ec0WyS92pwWkyeA5Zri6_z0rboWFGqsPXx9oDmEasWo="
+The md5 checksum of the random string is:
+68d0cf20fca3b8bb21ffe0bf8ad912fd
 ```
 
 = Misc
