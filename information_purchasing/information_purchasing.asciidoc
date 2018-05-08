@@ -17,6 +17,7 @@ During this article we are going to address the following::
 ** Asymmetric cryptography
 ** Decentralized file sharing
 ** Smart contracts
+** A Golang (Go) example
 
 = Overview
 
