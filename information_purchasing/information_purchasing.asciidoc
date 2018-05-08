@@ -175,19 +175,20 @@ cd src
 mkdir tpmccallum
 cd tpmccallum
 ```
-=== Creating the md5 checksum (one-way hash) of a string of characters
 
 Creating a go file and saving it as tpmccallum.go
 This section is testing out the crypto libraries available in Go.
+The following file creates a random string, creates a hash of the random string, creates private and public key pairs TODO encrypt hash using private key, decrypt hash using public key
 
 ```
 package main
-  
+
 import (
-        "crypto/md5"
-        "crypto/rand"
-        "encoding/base64"
-        "fmt"
+    "crypto/md5"
+    "encoding/base64"
+    "crypto/rand"
+    "crypto/rsa"
+    "fmt"
 )
 
 func GenerateRandomBytes(n int) ([]byte, error) {
@@ -206,14 +207,26 @@ func GenerateRandomString(s int) (string, error) {
 }
 
 func main() {
+    fmt.Printf("%v\n", "Alice part 1")
     RandCodeA, err := GenerateRandomString(32)
     if err != nil {
         fmt.Printf("%v", "Unable to generate random string")
     }
-    fmt.Printf("%v\n", "The random code which we have generated is:")
+    fmt.Printf("%v\n", "Alice is generating a random code called RandCodeA: ")
     fmt.Printf("%q\n", RandCodeA)
-    fmt.Printf("%v\n", "The md5 checksum of the random string is:")
+    fmt.Printf("%v\n", "The md5 checksum of RandCodeA is: ")
+    //TODO save the checksum of a blank string to ensure that we are never working with blank strings due to failure of code
     fmt.Printf("%x\n", md5.Sum([]byte(RandCodeA)))
+    fmt.Printf("%v\n", "Alice is generating a public and private key pair: ")
+    reader := rand.Reader
+    bitSize := 2048
+    PrivKeyA, err := rsa.GenerateKey(reader, bitSize)
+    PubKeyA := PrivKeyA.PublicKey
+    fmt.Printf("%v\n", "Alice's private key is: ")
+    fmt.Printf("%v\n", PrivKeyA)
+    fmt.Printf("%v\n", "Alice's public key is: ")
+    fmt.Printf("%v\n", PubKeyA)
+
 }
 ```
 
