@@ -150,7 +150,61 @@ Tim TODO
 
 == Decentralized file sharing
 
-Tim TODO
+=== IPFS
+Interplanetary File System (IPFS), seeks to replace the Hypertext Transfer Protocol (HTTP). IPFS is an MIT licensed, open source project on GitHub. IPFS is content based (cryptographic hashes of content are stored and then files are found via distributed hash tables). This is different to HTTP which is location based (centralised servers store content at a single IP address with specific file path and file name).
+
+The following script will install both IPFS and CyberMiles tesntnet on Ubuntu 18.04 LTS
+
+```
+#!/bin/bash
+# Please note this is an experimantal installation; for research and development
+# This installation must only be carried out on a clean/fresh Ubuntu 18.04 LTS system (and is for research and development purposes only)
+
+#Let's get started
+#System preparation Ubuntu 18.04 LTS
+cd ~
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y autoremove
+
+#Installing Git
+cd ~
+sudo apt-get -y install git
+
+#Installing Golang and the CyberMiles Travis TestNet
+cd ~
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+source $HOME/.gvm/scripts/gvm
+sudo apt-get -y install binutils
+sudo apt-get -y install bison
+sudo apt-get -y install gcc
+sudo apt-get -y install make
+gvm install go1.9.2 -B
+gvm use go1.9.2 --default
+echo 'export GOPATH=~/.gvm/pkgsets/go1.9.2/global' >> ~/.bashrc
+echo 'export GOBIN=$GOPATH/go/bin' >> ~/.bashrc
+echo 'export PATH=$GOBIN:$PATH' >> ~/.bashrc
+source ~/.bashrc
+go get github.com/CyberMiles/travis
+cd $GOPATH/src/github.com/CyberMiles/travis
+git checkout master
+make all
+
+#Installing IPFS
+cd ~
+wget https://dist.ipfs.io/go-ipfs/v0.4.14/go-ipfs_v0.4.14_linux-amd64.tar.gz
+tar -zxvf go-ipfs_v0.4.14_linux-amd64.tar.gz
+cd go-ipfs
+echo 'export PATH=~/go-ipfs:$PATH' >> ~/.bashrc
+source ~/.bashrc
+sudo ./install.sh
+OUTPUT="$(ipfs init)"
+echo $OUTPUT
+SHORT_OUTPUT="$(echo -e "${OUTPUT}" | grep cat)"
+eval "$(echo -e "${SHORT_OUTPUT}" | sed -e 's/^[[:space:]]*//')"
+echo -e "\nPlease note, the details of this installation (including your private and peer keys etc.) are located in your ~/.ipfs/config file.\n"
+
+```
 
 == Smart contracts
 
