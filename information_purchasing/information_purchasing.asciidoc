@@ -216,6 +216,7 @@ ipfs add -r test_ipfs.txt
 # The hash can now be located online using your web browser 
 #< https://ipfs.io/ipfs/QmNZU5xtoEaHKiaJaDCWkTy3QB6pH6QdKHxZYCxLWmwk9R >
 ```
+image::images/ipfs1.png[]
 
 == Smart contracts
 
