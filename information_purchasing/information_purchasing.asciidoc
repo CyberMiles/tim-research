@@ -140,14 +140,6 @@ It can now be confirmed that each of the parties have the corresponding private 
 
 The integrity and authenticity of the data can be proven through the use of checksums ... Tim TODO
 
-== Symmetric cryptography
-
-Tim TODO
-
-== Asymmetric cryptography
-
-Tim TODO
-
 == Decentralized file sharing
 
 === IPFS
@@ -205,10 +197,37 @@ eval "$(echo -e "${SHORT_OUTPUT}" | sed -e 's/^[[:space:]]*//')"
 echo -e "\nPlease note, the details of this installation (including your private and peer keys etc.) are located in your ~/.ipfs/config file.\n"
 
 ```
+Uploading a file to IPFS is easy. The following commands will create and upload a file which can then be retrieved on the IPFS network using your browser.
+
+```
+# Start the IPFS Daemon
+ipfs daemon &
+# Change to home
+cd ~
+# Create a new directory
+mkdir test_ipfs
+cd ~/test_ipfs
+# Create a new file
+echo "This is a new file" >> test_ipfs.txt
+# Upload the file to IPFS
+ipfs add -r test_ipfs.txt
+# This will return a hash to the content
+# OUTPUT: Added QmNZU5xtoEaHKiaJaDCWkTy3QB6pH6QdKHxZYCxLWmwk9R test_ipfs.txt
+# The hash can now be located online using your web browser 
+#< https://ipfs.io/ipfs/QmNZU5xtoEaHKiaJaDCWkTy3QB6pH6QdKHxZYCxLWmwk9R >
+```
 
 == Smart contracts
 
-Tim TODO
+Of course the above method of creating and sharing files online is without any security and access control. This is where the Decentralized Application (Smart Contract) framework comes in. The DAPP (single instances of smart contracts) would firstly be responsible for initiating contact between two parties. The initiating would include each of the parties signing the other parties random strings with the other parties public keys (to prove that each party holds a functioning private/public key pair for subsequent steps). The DAPP would then keep track of the IPFS hashes and take care of the pricing as well as the encrypting/decrypting of files (through the exchanging of keys via the DAPP). Essentially the Blockchain would keep the record of all transactions/interactions and the encrypted content would be stored using IPFS on distributed nodes. 
+
+== Asymmetric cryptography
+Asmmetric cryptography uses 2 keys one is kept private and one is released into the public. Data encrypted with the receiver's public key can only be decrypted with the receiver's private key (which of course they never share).
+
+Whilst public private key pairs are useful for proving ownership of a private key (authentication), asymmetric cryptography is seldom used to encrypt and decrypt large amounts of data (big in size). Asymmetric cryptography is still useful to us here because we can firstly prove both parties authenticity and then proceed to encrypt a private symmetric key with the other parties public key (so that only they can reveal the private symmetric key, which will inturn be used to decrpyt the large data payload). 
+
+== Symmetric cryptography
+Symmetric cryptography requires a private key to both encrypt and decrypt the data. Getting encrypted data from point A to point B is easy (because it is encrypted and safe). But how do we safely get the private symmetric key to the other party? We use asmmetric cryptography whereby the other party sends us their public asymmetric key, we sign the symmetric private key with the other parties asymmetric public key so only they will ever reveal the private symmetric key (which decrypts the data payload).
 
 == Go R&D (relates to Draft workflow section above)
 
