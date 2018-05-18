@@ -264,7 +264,26 @@ More to come ...
 == Delegated Proof of Stake (DPoS)
 
 == Governance and economics
+One philosophy outlined during the *Thomas Cox and Moti discuss Arbitration* online event outlines that "it is not the code that is the law, it is the law that is the law". It was also discussed that a governed blockchain, like EOS, with an arbitration forum would provide an environment in which people could build businesses that thrive, while enjoying safety and security.
+
 EOS blocks are produced by block producers. In order to become a block producer a candidate is required to publicly respond to a list of check mark criteria as well as fill out a form, post to steem and email EOSGo. These requirements are covered in this section.
+
+*Thomas Cox and Moti discuss Arbitration* https://youtu.be/y4cZ5Z-lpfs?t=1878
+
+=== Arbitration
+As mentioned by Moti of EOS in an online interview, the issues which were not apparent during the creation of the EOS code can be handled by arbitration. Arbitration is put in place as a framework to protect the users of the EOS network. Moti also mentions that there are many unexplored issues which arise from the new context of blockchain. In addition to this the EOS blockchain is operating globally and therefore a single rule-set (one jurisdiction) is required in order to resolve any disputes. Some types of issues can be handled by the DAPP itself (for example refunding money to both parties if one party does not continue with the purchase workflow). Importantly, these sorts of in-DAPP arbitration can be pre-written into the DAPP ahead of time.
+
+It is possible that different factors would play a part in which arbitrators would partake in which dispute resolution processes. For example, a specialized resolution may require a particular arbitrator who specializes in a particular DAPP or language.
+
+Execution of an arbitration forum would include the block producer confirming that the arbitration ruling is valid. From this point the block producer would apply that ruling as part of their role as a block producer.
+
+=== The EOS Constitution
+As mentioned previously, in order for a chain to become valid a second constitution (to replace the default constitution which holds the basic preliminary arbitration rule-set) must be implemented on the chain. Of course having an arbitration framework in the consitution will provide room for the rules for running arbitration to take place. Some off-chain work will need to take place in order for the arbitration to properly succeed. For example, arbitrators who partake in the EOS system will need to be trained. EOS is a community driven project and therefore the rule-set for arbitration rules will need to be voted on as time goes by.
+
+=== Arbitration vs Improvement Proposals
+Other blockchain implementations such as Ethereum and Bitcoin use Improvement Proposals (EIP and BIP respectively) to address ongoing changes which arise. EOS governance (arbitration, rule-sets and the constitution) sets out to serve the community and to act in the most transparent way. For example, arbitrators have to be independant and have no conflict of interest in relation to a particular case. Just as developers who can action Improvement Proposals, EOS arbitrators require an aptitude to make decisions which can stand up to scrutiny of the community and parties who have a stake in the decisions.
+
+Just as core developers commit code and merge pull requests in blockchain software. EOS arbitrators are required to rule "by name". This identifies the arbitor and outlines the reasons for the specific decision which they have made.
 
 === Centralization 
 Centralization is the process by which the activities of an organization, particularly those regarding planning and decision-making, become concentrated within a particular location or group [2]. Some argue that the Delegated Proof of Stake (DPoS) consensus mechanism, which EOS uses, is centralized when compared to other consensus mechasisms such as Ethereum's current Proof of Work (PoW). However, others argue against this view with reference to the most recent data from PoW mining pools. The diagram below illustrates the percentage of Ethereum's distributed PoW hashing power. More specifically, how the vast majority of Ethereum's hashing power is spread across only a handful of the most powerful and centralized mining pools in the world [3].
