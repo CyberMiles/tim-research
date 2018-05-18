@@ -1,12 +1,11 @@
-[EOSIO Dawn 3.0]
-Disclaimer: this document is provided "as is". The information is derived from a variety of places and can be subject to my own understanding which may not be fully formed due to the fact that software libraries, technologies, executable programs and projects are evolving. 
+[EOSIO Dawn 3.0 and Dawn 4.0]
+
+Disclaimer: this document is provided "as is". The information is derived from a variety of places and can be subject to my own understanding which may not be fully formed due to the fact that software libraries, technologies, executable programs as well as projects and their documentation are constantly evolving. This document originally provided first impressions of EOSIO Dawn 3.0. It has been upgaded slightly as we witness the release of EOSIO DAWN 4.0 and the inevitable open source code release (only) of EOSIO 1.0, by BlockOne. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software as well as transcripts of indepth interviews from organisations such as EOS Go and others. In many cases real code examples are provided, and as such, the verbose content (outputs from my installation, configuration and scripts etc) can be found in the appendicies.
 
 == Executive summary
-This document provides first impressions of EOSIO Dawn 3.0. The information in this document is derived from the EOSIO MIT Licensed GitHub documentation and code. The ideas and conclusions in this document are based on the actual results of first hand implementation and testing of the EOSIO software. Real examples are provided, and as such, the verbose content can be found in the appendicies.
-
 EOS claims to be the most powerful infrastructure for decentralized applications. It has many proposed strenghts and the development, discussion and community activity within EOS is looking extremely promising and genuine.
 
-EOS is due to launch in mid 2018. At present EOS Dawn 3 (a precursor to the main launch) is demonstrating that a lot of the proposed strengths are still under active development. It is unclear, probably unlikely, that all of the proposed strengths will be realized in time for the mid 2018 launch. Examples of this are as follows:
+The EOSIO open source code base is due to be released by BlockOne, on or around the 1st or 2nd of June 2018. At present EOS Dawn 3.0 and EOS Dawn 4.0 (precursors to the main launch) are demonstrating that a lot of the proposed strengths are still under active development. It is unclear, probably unlikely, that all of the proposed strengths will be realized in time for the June 2018 launch. Examples of this are as follows:
 
 Parallel execution of applications (high transactions per second)::
 
@@ -32,6 +31,10 @@ Governance::
 
 * It is unclear whether issues will be encountered in relation to large exchanges being able to manipulate the EOS block producer voting process. For example, if voting consists of a stakeholder sending a transaction to a contract (casting a vote) then cryptocurrency exchanges who are custodians for stakeholders (end users) would have the ability to "vote". With no intent implied, this point relates to the fact that exchanges hold very large amounts of tokens as a whole. Exchanges have the ability to perform any transaction (as they hold the private keys). The overall point being that exchanges have been known to be targeted by bad actors. Resulting in malicious hacks in the past.
 
+*UPDATE*
+As announced by EOSGo, it is rumoured that, Bitfinex will allow those who hold tokens on their exchange to participate in voting for block producers candidates. In addition Bitfinex will support the popular EOS related airdrops.
+
+
 == Overview
 
 === EOS 
@@ -53,7 +56,12 @@ The first step in instantiating an EOS blockchain implementation is to randomly 
 The EOS community have to converge in order for the one and only EOS mainnet to take flight and never look back. After the official launch of the EOS software EOS block producers will prove their cooperative ability by producing 500 ms blocks and showing off the stability of their implementation of the EOS software.
 
 === Validation
-No value can be transferred between account and so forth, until validation occurs. Validation is reliant on two things. Firstly 15% or more of EOS token holders connects to a particular network and make a valid transaction. Secondly the selection of a constitution which replaces the default consitution.
+No value can be transferred between account and so forth, until validation occurs. Validation is reliant on two things. Firstly 15% (150, 000, 000) of EOS token holders have to vote together (make a valid transaction) on a particular EOS chain, in order for that chain to become valid. Secondly a second constitution which replaces the default consitution must be created and selected on a particular EOS chain. 
+
+=== EOS Registration
+One of the block producers *EOS Authority* has reported that only around 30% of EOS tokens have actually been registered (using the Ethereum ERC20 "register" function). With around 14 days to go before the EOSIO 1.0 release, the percentage of registered EOS tokens has only risen by 20% in the last month. According to EOS Go only 13% of EOS tokens were registered on or around April 1st. As previously mentioned a minimum of 15% of tokens have to vote together on a single chain in order for that chain to become valid. As mentioned above, it is rumoured that Bitfinex will allow those who hold tokens on their exchange to participate in voting for block producers candidates. In addition it is also rumoured that Bitfinex will support the popular EOS related airdrops.
+
+EOS Authority < https://eosauthority.com/genesis >
 
 === Replay protection 
 In the meantime (while there are multiple EOS blockchain implementations running simultaneously) transactions on each of the different EOS blockchain implementations will be unique. There can be no replay attacks across forks. EOS is going to use Transaction as Proof of Stake (TaPoS) as their replay protection. With TaPoS every transaction has to include part of a recent valid block header. Because block headers are unique the network is able to refuse transactions that don’t include a referenced block. TaPoS also signals the network of a particular user and their stake on a specific fork.
@@ -263,7 +271,10 @@ Centralization is the process by which the activities of an organization, partic
 image:images/mining_pools.jpeg[]
 
 === EOS Block Producer Candidates
+According to *bp.eosgo.io* there are currently 156 block producer candidates, worldwide. 
 Block producers are an integral part of the EOSIO blockchain implementation and infrastructure. Block producers are also known, in other blockchain circles, as super nodes or validating nodes or master nodes etc. The following section will cover the role of EOSIO block producers in-depth. For example, how block producers become qualified for their position, how token holders vote for block producers, as well as the rewards and consequences for being a good (or bad) block producer on the EOS network. Attack vectors which may threaten block producers will also be covered.
+
+*https://bp.eosgo.io/explore/?search_keywords=&job_category%5B%5D=block-producer&tab=search-form&type=place*
 
 ==== Radical transparency
 Anyone who holds tokens on an EOS network can participate in the production of blocks. Those who wish to become a block producer are required to respond to 8 check mark criteria. Moreover, they are required to publicly post 6 of the 8 check mark criteria on the Steem blockchain. This ensures that a permanent record of each candidate's response and commitment is stored on an immutable public blockchain.
