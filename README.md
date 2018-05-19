@@ -11,6 +11,8 @@ A collection of research and development performed and written up by @tpmccallum
 
 - [Vyper smart contracts](https://github.com/CyberMiles/tim-research/tree/master/ethereum_vyper)
 
-- [Diving into EOS Dawn 3.0 and Dawn 4.0](https://github.com/CyberMiles/tim-research/blob/master/eosio_dawn_3_0_and_dawn_4_0/eosio_dawn_3_0_and_dawn_4_0_research_report.asciidoc)
+- [Diving into EOS Dawn 3.0 and Dawn 4.0](https://github.com/CyberMiles/tim-research/blob/master/eosio/eosio_dawn_3_0_and_dawn_4_0_research_report.asciidoc)
+
+- [A Tour of EOS](https://github.com/CyberMiles/tim-research/blob/master/eosio/a_tour_of_eos.asciidoc)
 
 - [Information Purchasing](https://github.com/CyberMiles/tim-research/blob/master/information_purchasing/information_purchasing.asciidoc)
