@@ -49,7 +49,7 @@ Only 34.3% of EOS tokens have actually been registered (as at 19th May 2018). Th
 An EOS token holder may experience delays when calling EOS's Ethereum ERC20 "register" function on the Ethereum network. https://etherscan.io/txsPending?a=0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf[Etherscan] shows between 500 and 700 pending EOS transactions at any given time. The congestion, for the register transaction, on the Ethereum network may be due, in part, to the fact that the register function is of little use to Ethereum's PoW mining community. The register function sends 0 ETH yet provides a naturally fair and conservitive amount of gas rewards, by default, to the miners. These pending transactions, experienced with other ERC20 tokens as well, may increase as more and more users attempt to register at the last minute. 
 
 === EOS and cryptocurrency exchanges
-
+https://youtu.be/2A0dLVBlfcU?t=25[EOSGo] recently reported that the cryptocurrency exchange Bitfinex will support EOS airdrops and voting. https://github.com/bitfinexcom/bip/blob/master/proposals/001.md[A draft proposal] of the Bitfinex open-source voting tool and https://www.reddit.com/r/eos/comments/8ifztx/bitfinex_ama_eos_may_10th/dyrmvnn/[an online statement] (by the moderator of r/bitfinex and r/ethfinex) reveals that the aim of the voting tool is to ensure integrity and verifiability with regards to the origin of funds used for the EOS Block Producer vote - "Bitfinex users will be free to vote for block producers as they wish, in a verifiably transparent manner."
 
 DPoS
 
