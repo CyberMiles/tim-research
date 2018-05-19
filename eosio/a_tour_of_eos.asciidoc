@@ -59,6 +59,20 @@ Voting for block producer candidates is an important and complex task. As we wil
 === EOS Block Producer Candidates
 Block producers are not required to stake tokens. Moreover, block producers can not be directly rewarded in relation to staking tokens only. Block producers are rewarded for producing blocks. Block producers are voted into their positions based on a rigorous and comprehensive set of criteria, which they respond to publicly. It is important to note that the EOS software and economic models are constantly changing. For example, as https://youtu.be/ruE5QkMRy9E?t=3557[Thomas Cox revealed] the block producer pay model changed 6 times during a 3-4 week period.
 
+////
+Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md
+License: The MIT License (MIT)
+Added by: @tpmccallum
+////
+=== EOS Block Production
+The EOS software blocks are produced exactly every 0.5 seconds
+The EOS.IO software blocks are produced in rounds of 126 (6 blocks each, times 21 producers)
+At the start of each round, 21 unique block producers are chosen by preference of votes cast by token holders
+A block producer schedule (order) is agreed upon by 15 or more producers
+From this point onwards exactly one block producer is authorized to produce a block at any given point in time
+If that particular block producer is unable to produce their block then there is a 0.5 or more second gap in the blockchain
+For this reason it is important that a block producer's system is free from Distributed Denial of Service (DDoS) attacks.
+
 === DPoS
 Perhaps the most significant difference between the PoW and DPoS consensus mechanisms is that of competition vs cooperation. In the PoW consensus ecosystem miners compete for rewards, racing to mine blocks in the blockchain
 
@@ -71,8 +85,10 @@ Perhaps the most significant difference between the PoW and DPoS consensus mecha
 
 === Transaction fees
 
-=== Resources
+=== EOS network resources
 The EOS network resources available to an EOS user are directly reflected by the amount of EOS tokens that the user owns. For example, a user with 5% of the global EOS token supply will have 5% of the EOS network resources available.
 
+=== Smart contract development and testing
+https://github.com/tokenika/eosfactory[EOS Factory] is to EOS what Truffle is to Ethereum
 
 Block producer candidate voting portal
