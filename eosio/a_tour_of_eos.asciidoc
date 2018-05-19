@@ -60,12 +60,19 @@ Voting for block producer candidates is an important and complex task. As we wil
 
 
 === DPoS
+Perhaps the most significant difference between the PoW and DPoS consensus mechanisms is that of competition vs cooperation. In the PoW consensus ecosystem miners compete for rewards, racing to mine blocks in the blockchain
 
 === Governance
 
 === The Constitution
 
+
 === Arbitration
+
+=== Transaction fees
+
+=== Resources
+The EOS network resources available to an EOS user are directly reflected by the amount of EOS tokens that the user owns. For example, a user with 5% of the global EOS token supply will have 5% of the EOS network resources available.
 
 
 Block producer candidate voting portal
