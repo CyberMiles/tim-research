@@ -35,9 +35,29 @@ You may be wondering quite a bit by now. For example, if anyone can deploy the E
 You may be asking deeper questions such as the following. What if nobody in the community implements EOS at all? What happens if a user does not register their EOS tokens before the snapshot? What if 2 or more competing software developers each deploy an outstanding EOS blockchain implementation? Can there actually be more than one EOS blockchain implementation? If so, how will the cryptocurrency exchanges maintain liquidity in the event that there are multiple EOS blockchains which all carry the snapshot of EOS tokens onboard. 
 
 == Some answers to these questions
-Firstly, as mentioned above EOS is quite unique from most of the other blockchain implementations, which are currently in production. For example, unlike Bitcoin and Ethereum which use the Proof of Work (PoW) consensus algorithm, EOS uses its own Delegated Proof of Stake (DPoS) consensus algorithm. We will cover this in detail soon.
+Firstly, as mentioned above EOS is quite unique from most of the other blockchain implementations, which are currently in production. For example, unlike Bitcoin and Ethereum which use the Proof of Work (PoW) consensus algorithm, EOS uses its own Delegated Proof of Stake (DPoS) consensus algorithm. We will cover this in detail soon, but for now let's answer a few more broad questions to set the stage.
 
-=== One EOS blockchain
-Only one of the EOS blockchain implementations, deployed by the global community, will become EOS. 
+=== There will be only one EOS blockchain
+Only one of the EOS blockchain implementations, deployed by the global community, will become EOS. The theory behind the community driven nature of EOS is that the world's most talented software developers will organically gravitate towards the best EOS blockchain implementation. That is, developers will want to be a part of the blockchain implementation with the most chance of success and will therefore converge.
+
+=== How does an EOS blockchain implementation qualify to be "the one"
+Launching an EOS blockchain implementation is only half the battle. In order for a single EOS blockchain implementation to even be a valid contender, 15% of all EOS token holders (within the global community) have to cast their vote together on that single chain. In addition to this, the implementor of the EOS blockchain software must create a constitution which will replace the default constitution. If neither of the above points are achieved the blockchain implementation will not be valid. We will discuss the constitution and governence in detail soon.
+
+=== Some statistics on EOS token registration
+Only 34.3% of EOS tokens have actually been registered (as at 19th May 2018). This statistic, gathered less than two weeks before the EOS software launch, could be an indication that token holders from around the globe may struggle to reach the 15% voting threshold on a single EOS blockchain implementation. This would especially be the case if there were many EOS blockchain implementations to choose from, and say perhaps users were loyal to EOS implementations in or around their geographical location etc. The rate of EOS token registration does not seem high, given that around 13% of EOS tokens were registered an or around 1st April 2018. That is only a registration rate of around 20% per month, with less than two weeks remaining.
+
+An EOS token holder may experience delays when calling EOS's Ethereum ERC20 "register" function on the Ethereum network. https://etherscan.io/txsPending?a=0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf[Etherscan] shows between 500 and 700 pending EOS transactions at any given time. The congestion, for the register transaction, on the Ethereum network may be due, in part, to the fact that the register function is of little use to Ethereum's PoW mining community. The register function sends 0 ETH yet provides a naturally fair and conservitive amount of gas rewards, by default, to the miners. These pending transactions, experienced with other ERC20 tokens as well, may increase as more and more users attempt to register at the last minute. 
+
+=== EOS and cryptocurrency exchanges
+
+
+DPoS
+
+Governance
+
+The Constitution
+
+Arbitration
+
 
 Block producer candidate voting portal
