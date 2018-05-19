@@ -64,7 +64,7 @@ Source: https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.m
 License: The MIT License (MIT)
 Added by: @tpmccallum
 ////
-=== EOS Block Production
+=== EOS block production
 The EOS software blocks are produced exactly every 0.5 seconds
 The EOS.IO software blocks are produced in rounds of 126 (6 blocks each, times 21 producers)
 At the start of each round, 21 unique block producers are chosen by preference of votes cast by token holders
@@ -72,6 +72,10 @@ A block producer schedule (order) is agreed upon by 15 or more producers
 From this point onwards exactly one block producer is authorized to produce a block at any given point in time
 If that particular block producer is unable to produce their block then there is a 0.5 or more second gap in the blockchain
 For this reason it is important that a block producer's system is free from Distributed Denial of Service (DDoS) attacks.
+
+=== Failing at EOS block production
+If a producer misses a block and has not produced any block within the last 24 hours they are removed from consideration until they notify the blockchain of their intention to start producing blocks again.
+No block producer should be producing blocks on two forks at the same time. A block producer caught doing this will likely be voted out.
 
 === DPoS
 Perhaps the most significant difference between the PoW and DPoS consensus mechanisms is that of competition vs cooperation. In the PoW consensus ecosystem miners compete for rewards, racing to mine blocks in the blockchain
@@ -88,7 +92,23 @@ Perhaps the most significant difference between the PoW and DPoS consensus mecha
 === EOS network resources
 The EOS network resources available to an EOS user are directly reflected by the amount of EOS tokens that the user owns. For example, a user with 5% of the global EOS token supply will have 5% of the EOS network resources available.
 
+=== Performance
+To support parallel execution, each account can define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel.
+
 === Smart contract development and testing
 https://github.com/tokenika/eosfactory[EOS Factory] is to EOS what Truffle is to Ethereum
 
 Block producer candidate voting portal
+
+TODO
+This version of the EOS white paper shows that EOS does actually use sequential numbering to ensure actions/transactions were executed in order and that there was no actions/transactions missing
+https://github.com/EOSIO/Documentation/commit/c36ffeb47863b925b7f24d02cdd959a15f2301df
+There seems to be a data access section in the data which shows this. I will need to look into this further as well as how EOS specifically handles replay and double spend (it seems that this sequence is for interblockchain communication which is improved if finality can be achieved/proved more quickly).
+
+[source,javascript]
+----
+data_access:[
+               {"type":"write","scope":"inite","sequence":1},
+               {"type":"write","scope":"inita","sequence":0}
+  ]
+  ----
