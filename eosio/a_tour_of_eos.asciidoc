@@ -24,12 +24,20 @@ The allocation of the total 1 000, 000, 000 (one billion) EOS token supply, is a
 As mentioned previously, block.one, the creators of EOS are not implementing their EOS blockchain software. Instead they are releasing the software which anyone can implement. The software launch, originally scheduled for June 2nd 2018, will open the flood gates for users from around the globe to download, configure and deploy the production ready blockchain software. 
 
 == The EOS tokens
-At the time of launch, the 1 billion EOS tokens residing on the Ethereum network will be frozen. This snapshot will completely prevent users from transferring tokens on the Ethereum network. After the snapshot, the entire record of EOS's Ethereum ERC20 token ownership will be migrated to an EOS compatible snapshot. This EOS snapshot will be part of the genesis state for any and all future EOS blockchain implementations. What this means is that every EOS blockchain implementation, deployed after the EOS software launch date will carry the full 1 billion tokens.
+At the time of launch, the 1 billion EOS tokens residing on the Ethereum network will be frozen. The execution of this snapshot will completely prevent users from transferring tokens on the Ethereum network. After the snapshot, the entire record of EOS's Ethereum ERC20 token ownership will be migrated to an EOS compatible snapshot. This EOS snapshot will be part of the genesis state for any and all future EOS blockchain implementations. What this means is that every EOS blockchain implementation, deployed after the EOS software launch date will carry the full 1 billion tokens.
 
-== So how many EOS blockchains will exist?
-You may be wondering quite a bit by now. For example, if anyone can deploy the EOS software won't there be more than one chain? Who is going to mine all of the blockchains? How can a cryptocurrency exchange cope with trading EOS tokens given that the company block.one, who created the ICO, is not implementing a blockchain? 
+== Registering EOS tokens
+By default, the Ethereum blockchain has no way of figuring out which EOS users (those who have EOS private keys) own EOS tokens. At the simplest level, the Ethereum blockchain only knows which of its Ethereum users purchased EOS tokens during the ICO. This information is not transferrable or useful to the EOS blockchain in its native state. EOS tokens, which were purchased on the Ethereum network as part of the EOS ICO, will only exist after the snapshot if they are registered to an EOS private key. This registration process must be performed by the person who purchased EOS tokens in the ICO and this registration must be performed before the snapshot/freeze. The registration process is performed by running the "register" function which resides inside EOS's Ethereum ERC20 token contract.
 
-You may be asking deeper questions such as the following. What if nobody in the community implements EOS at all? What if 2 or more competing software developers each deploy an outstanding EOS blockchain implementation? Can there actually be more than one EOS blockchain implementation? If so, how will the cryptocurrency exchanges maintain liquidity in the event that there are multiple EOS blockchains which all carry a billion EOS tokens onboard. 
+== Any questions so far?
+You may be wondering quite a bit by now. For example, if anyone can deploy the EOS software won't there be more than one chain? Who is going to mine all of these blockchains? How can a cryptocurrency exchange cope with trading EOS tokens given that the company block.one, who created the ICO, is not implementing a blockchain?
 
+You may be asking deeper questions such as the following. What if nobody in the community implements EOS at all? What happens if a user does not register their EOS tokens before the snapshot? What if 2 or more competing software developers each deploy an outstanding EOS blockchain implementation? Can there actually be more than one EOS blockchain implementation? If so, how will the cryptocurrency exchanges maintain liquidity in the event that there are multiple EOS blockchains which all carry the snapshot of EOS tokens onboard. 
+
+== Some answers to these questions
+Firstly, as mentioned above EOS is quite unique from most of the other blockchain implementations, which are currently in production. For example, unlike Bitcoin and Ethereum which use the Proof of Work (PoW) consensus algorithm, EOS uses its own Delegated Proof of Stake (DPoS) consensus algorithm. We will cover this in detail soon.
+
+=== One EOS blockchain
+Only one of the EOS blockchain implementations, deployed by the global community, will become EOS. 
 
 Block producer candidate voting portal
