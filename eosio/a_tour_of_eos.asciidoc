@@ -27,9 +27,9 @@ As mentioned previously, block.one, the creators of EOS are not implementing the
 At the time of launch, the 1 billion EOS tokens residing on the Ethereum network will be frozen. This snapshot will completely prevent users from transferring tokens on the Ethereum network. After the snapshot, the entire record of EOS's Ethereum ERC20 token ownership will be migrated to an EOS compatible snapshot. This EOS snapshot will be part of the genesis state for any and all future EOS blockchain implementations. What this means is that every EOS blockchain implementation, deployed after the EOS software launch date will carry the full 1 billion tokens.
 
 == So how many EOS blockchains will exist?
-You may be wondering quite a bit by now. For example, if anyone can deploy the EOS software won't there be more than one chain? Who is going to mine all of the blockchains? How can a cryptocurrency exchange cope with trading EOS tokens given that the company block.one, who created the ICO is not implementing a blockchain? 
+You may be wondering quite a bit by now. For example, if anyone can deploy the EOS software won't there be more than one chain? Who is going to mine all of the blockchains? How can a cryptocurrency exchange cope with trading EOS tokens given that the company block.one, who created the ICO, is not implementing a blockchain? 
 
-You may be asking deeper questions such as the following. What if nobody in the community implements EOS at all? What if 2 or more competing software developers each deploy an outstanding EOS blockchain implementation? Can there actually be more than one EOS blockchain implementation? How will the cryptocurrency exchanges maintain liquidity in the event that there are multiple EOS blockchains which all carry a billion EOS tokens onboard. 
+You may be asking deeper questions such as the following. What if nobody in the community implements EOS at all? What if 2 or more competing software developers each deploy an outstanding EOS blockchain implementation? Can there actually be more than one EOS blockchain implementation? If so, how will the cryptocurrency exchanges maintain liquidity in the event that there are multiple EOS blockchains which all carry a billion EOS tokens onboard. 
 
 
 Block producer candidate voting portal
