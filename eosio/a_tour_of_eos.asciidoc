@@ -126,7 +126,22 @@ All transactions have an expiration time after which they may no longer be inclu
 The EOS network resources available to an EOS user are directly reflected by the amount of EOS tokens that the user owns. For example, a user with 5% of the global EOS token supply will have 5% of the EOS network resources available.
 
 === Performance
-To support parallel execution, each account can define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel.
+To support parallel execution, each account can define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel. The following nested diagram shows which components of the EOS layers can be run in parallel.
+
+[source,javascript]
+----
+    Blocks:: The EOS.IO software produces blocks in the EOS blockchain
+
+        Cycles:: Each block is divided into cycles (sequential)
+
+            Shard:: Each cycle is divided into shards (parallel)
+
+                Transaction:: Each shard contains a list of transactions (sequential)
+
+                    Action:: Each transaction holds one or more actions for delivery (sequential)
+
+                        Receiver and/or notified accounts:: Each action has a receiver and notified accounts (parallel)
+----
 
 === Smart contract development and testing
 https://github.com/tokenika/eosfactory[EOS Factory] is to EOS what Truffle is to Ethereum
