@@ -80,8 +80,13 @@ No block producer should be producing blocks on two forks at the same time. A bl
 === DPoS
 Perhaps the most significant difference between the PoW and DPoS consensus mechanisms is that of competition vs cooperation. In the PoW consensus ecosystem miners compete for rewards, racing to mine blocks in the blockchain
 
-ever-increasing nonce protects against a replay attack 
-sequential ordering protects against a double spend attack
+=== EOS network security
+
+==== Double spending
+Ethereum's sequential ordering protects against a double spend attack
+
+==== Replay attack
+Ethereum's ever-increasing nonce protects against a replay attack 
 
 == EOS transactions
 
@@ -96,7 +101,7 @@ Ethereum contains more than just a transaction Merkle tree root in its block hea
  
 Unlike Bitcoin's UTXO system, Ethereum stores much richer information such as account balances, which are likely to continually change over time. For this and other reasons Ethereumm uses a Modified Patricia Merkle Tree (as apposed to a binary Merkle Tree). More information can be found in https://medium.com/cybermiles/diving-into-ethereums-world-state-c893102030ed[this article] which discusses Bitcoin's UTXO system vs Ethereum's global state.
 
-Let us consider the ever changing account balance.  A light client might like to query the account balance to ensure that the user has enough money to perform a transaction. This is where it gets interesting. The following section explains the double spend attack, replay protection
+Let us consider the ever changing account balance.  A light client might like to query the account balance to ensure that the user has enough money to perform a transaction. 
 
 === Transaction expiry
 ////
@@ -119,14 +124,6 @@ All transactions have an expiration time after which they may no longer be inclu
 
 === EOS network resources
 The EOS network resources available to an EOS user are directly reflected by the amount of EOS tokens that the user owns. For example, a user with 5% of the global EOS token supply will have 5% of the EOS network resources available.
-
-=== EOS network security
-
-==== Double spending
-
-==== Replay attack
-
-
 
 === Performance
 To support parallel execution, each account can define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel.
