@@ -80,6 +80,32 @@ No block producer should be producing blocks on two forks at the same time. A bl
 === DPoS
 Perhaps the most significant difference between the PoW and DPoS consensus mechanisms is that of competition vs cooperation. In the PoW consensus ecosystem miners compete for rewards, racing to mine blocks in the blockchain
 
+=== Proof of completeness (finality)
+Merkle proofs provide a mechanism to prove that data exists. 
+
+==== Bitcoin example
+The earliest production instance of Merkle proofs was in Bitcoin's Simplified Payment Verification (SPV). The SPV mechanism is able to prove the existance of a particular transaction in the Bitcoin blockchain. For example, if the particular transaction is in one of the Merkle trees and that Merkle tree's root is in a block header for the main chain, then the transaction exists. This Merkle proof implementation allows light clients to confirm the existence of a transaction. This works well in the Bitcoin system of Unspent Transaction Outputs (UTXOs) but is limited when it comes to wanting to know the global state of a blockchain.
+
+==== Ethereum example
+Ethereum contains more than just a transaction Merkle tree root in its block headers. Ethereum contains a tree for Transactions, a tree for Transaction Reciepts and a tree for the blockchain State. Further, Ethereum does not use binary Merkle trees. The binary Merkle tree is an excellent choice a) when the query requires a binary response i.e. does the data exist? and b) when the data in the tree is never changed e.g. transactions in Bitcoin are never reversed.
+ 
+Unlike Bitcoin's UTXO system, Ethereum stores much richer information such as account balances, which are likely to continually change over time. For this and other reasons Ethereumm uses a Modified Patricia Merkle Tree (as apposed to a binary Merkle Tree). More information can be found in https://medium.com/cybermiles/diving-into-ethereums-world-state-c893102030ed[this article] which discusses Bitcoin's UTXO system vs Ethereum's global state.
+
+Let us consider the ever changing account balance.  A light client might like to query the account balance to ensure that the user has enough money to perform a transaction. This is where it gets interesting. The following section explains the double spend attack, replay protection and 
+
+ever-increasing nonce protects against a replay attack 
+sequential ordering protects against a double spend attack
+
+=== Transaction expiry
+////
+Source: https://github.com/EOSIO/eos/blob/cd9798270e564377c1314f67c7d45200824a82ad/libraries/chain/include/eosio/chain/transaction.hpp#L97
+License: The MIT License (MIT)
+Added by: @tpmccallum
+////
+
+All transactions have an expiration time after which they may no longer be included in the blockchain. Once a block with a block_header::timestamp greater than expiration is deemed irreversible, then a user can safely trust the transaction will never be included.
+
+
 === Governance
 
 === The Constitution
@@ -91,6 +117,14 @@ Perhaps the most significant difference between the PoW and DPoS consensus mecha
 
 === EOS network resources
 The EOS network resources available to an EOS user are directly reflected by the amount of EOS tokens that the user owns. For example, a user with 5% of the global EOS token supply will have 5% of the EOS network resources available.
+
+=== EOS network security
+
+==== Double spending
+
+==== Replay attack
+
+
 
 === Performance
 To support parallel execution, each account can define any number of scopes within their database. The block producers will schedule transaction in such a way that there is no conflict over memory access to scopes and therefore they can be executed in parallel.
