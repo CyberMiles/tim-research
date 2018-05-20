@@ -80,7 +80,12 @@ No block producer should be producing blocks on two forks at the same time. A bl
 === DPoS
 Perhaps the most significant difference between the PoW and DPoS consensus mechanisms is that of competition vs cooperation. In the PoW consensus ecosystem miners compete for rewards, racing to mine blocks in the blockchain
 
-=== Proof of completeness (finality)
+ever-increasing nonce protects against a replay attack 
+sequential ordering protects against a double spend attack
+
+== EOS transactions
+
+=== Proof of completeness (finality and the use of light clients and simplified payment verification)
 Merkle proofs provide a mechanism to prove that data exists. 
 
 ==== Bitcoin example
@@ -91,10 +96,7 @@ Ethereum contains more than just a transaction Merkle tree root in its block hea
  
 Unlike Bitcoin's UTXO system, Ethereum stores much richer information such as account balances, which are likely to continually change over time. For this and other reasons Ethereumm uses a Modified Patricia Merkle Tree (as apposed to a binary Merkle Tree). More information can be found in https://medium.com/cybermiles/diving-into-ethereums-world-state-c893102030ed[this article] which discusses Bitcoin's UTXO system vs Ethereum's global state.
 
-Let us consider the ever changing account balance.  A light client might like to query the account balance to ensure that the user has enough money to perform a transaction. This is where it gets interesting. The following section explains the double spend attack, replay protection and 
-
-ever-increasing nonce protects against a replay attack 
-sequential ordering protects against a double spend attack
+Let us consider the ever changing account balance.  A light client might like to query the account balance to ensure that the user has enough money to perform a transaction. This is where it gets interesting. The following section explains the double spend attack, replay protection
 
 === Transaction expiry
 ////
