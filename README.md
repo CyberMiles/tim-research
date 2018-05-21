@@ -16,3 +16,5 @@ A collection of research and development performed and written up by @tpmccallum
 - [A Tour of EOS](https://github.com/CyberMiles/tim-research/blob/master/eosio/a_tour_of_eos.asciidoc)
 
 - [Information Purchasing](https://github.com/CyberMiles/tim-research/blob/master/information_purchasing/information_purchasing.asciidoc)
+
+- [Unambiguous Delegated Proof of Stake (DPoS) voting](https://github.com/CyberMiles/tim-research/tree/master/unambiguous_DPoS_voting/unambiguous_DPoS_voting.asciidoc)
