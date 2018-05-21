@@ -55,6 +55,8 @@ In this simple example we can see how simple scoring with linear/sequential numb
 
 We could provide a weighting to each of the criteria. For example technical ability could be worth 30%, community engagement could be worth 20%, qualifications could be worth 20% and future planning (scaling) could be worth 30%. A total of 100%. 
 
+image:images/table_3.png[]
+
 When employing weighting, we see that candidate A has a total percentage of 60% and candidate B has a total percentage of 68%. As we can see, given this scenario which weighs technical ability and future planning (scaling) at a higher percentage (30% each) than community engagement and qualifications (20% each) we have a clear winner.
 
 image:images/a_b_3.png[]
