@@ -38,6 +38,12 @@ If we look closely at the criteria we will see that candidate A and B are simila
 
 === Proposed solutions
 
+==== Weighting
+We could provide a weighting to each of the criteria. For example technical ability could be worth 30%, community engagement could be worth 20%, qualifications could be worth 20% and future planning (scaling) could be worth 30%. A total of 100%. 
+
+image:images/table_2.png[]
+
+
 
 
 
