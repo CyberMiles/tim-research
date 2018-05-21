@@ -81,10 +81,11 @@ Using the geometric mean provides us with somewhat of a risk averse evaluation. 
 
 Without any weighting being put in place this method organically gave candidate B the higher score, leaving candidate A (with the risky outlier of 1 - "poor" for future planning (scaling) in second place.
 
+== Participation
 
+"One of the main criticisms of coin voting mechanisms so far is that, no matter where they are tried, they tend to have very low voter participation." - Vitalik Buterin [1]
 
-
-
-
+= References
+[1] https://vitalik.ca/general/2017/12/17/voting.html
 
 
