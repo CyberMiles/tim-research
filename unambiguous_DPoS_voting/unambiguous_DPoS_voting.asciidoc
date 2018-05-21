@@ -61,6 +61,9 @@ Secondly, there is no clear way to determine who is responsible for creating the
 
 ==== Geometric Mean
 
+Another approach is to employ the geometric mean. We saw above that using the arithmetic mean resulted in an even tie (even though the responses to the criteria were quite different). We calculate the arithmetic mean by adding all of the values up and then dividing that total by the number of criteria. For example (3 + 5 + 4 + 1) / 4 = 3.25.
+
+The geometric mean is a little different. We calculate the geometric mean like this. 4√ 3 * 5 * 4 * 1 = 
 
 
 
