@@ -1,1 +1,18 @@
-.
+= Unambiguous Delegated Proof of Stake (DPoS) voting
+
+== Background
+The Delegated Proof of Stake (DPoS) consensus system requires that those who produce blocks, in the blockchain, assume their position by way of a fair vote. The blockchain community, who hold tokens, are by and large the ones tasked with casting these votes.
+
+There are many terminologies for those who produce blocks. For example in EOS, those who produce blocks are called Block Producers (BPs). To become a Block Producer in EOS, one must first become a Block Producer Candidate (BPC). BPCs are required to publicly respond to a variety of criteria, and in doing so may fill the community with confidence; ultimately securing enough votes to become one of the many block producers.
+
+In CyberMiles those who produce blocks are called Validators. As with EOS block producers, CyberMiles Validators are tasked with running crucial CyberMiles blockchain network infrastructure. Again similarly, all CyberMiles Validator Candidates are required to rally the community and in doing so, may succeed in becoming one of the many CyberMiles Validators.
+
+The EOS network has 21 Block Producers
+The CyberMiles network has 19 Validators
+
+== Voting
+It can be argued that voting in this arena is synonymous with prioritisation. For example, in order to successfully vote, a blockchain community member must evaluate all of the candidates while considering their qualitative responses to the vast criteria. It can be argued that due to the sheer pace, noise and complexity in this space can, voting may become subjective and ambiguous.
+
+So how does one calmly and confidently evaluate block producer candidates. How does one equaluate the qualitative responses to criteria and produce a quantitative outcome which can inform their vote.
+
+=== Basic example
