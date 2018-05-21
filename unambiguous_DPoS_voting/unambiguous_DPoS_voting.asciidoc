@@ -63,7 +63,9 @@ Secondly, there is no clear way to determine who is responsible for creating the
 
 Another approach is to employ the geometric mean. We saw above that using the arithmetic mean resulted in an even tie (even though the responses to the criteria were quite different). We calculate the arithmetic mean by adding all of the values up and then dividing that total by the number of criteria. For example (3 + 5 + 4 + 1) / 4 = 3.25.
 
-The geometric mean is a little different. We calculate the geometric mean like this. 4√ 3 * 5 * 4 * 1 = 
+The geometric mean is a little different. We calculate the geometric mean like this. 4√ 3 * 5 * 4 * 1 = 2.78.
+
+If we apply this to both sets of data we see that candidate A has a geometric mean of 2.78 and candidate B has a geometric mean of 3.08. Using the geometric mean provides us with somewhat of a risk averse evaluation. This is because it provides an evennes which is, in a way, related to the fundamentals of ratios. Take the following example. If we are working with the numbers 9 and 4 we would have an arithmetic mean of 6.5 and a geometric mean of 6. Here is where it gets interesting. If we list our numbers with the geometric mean in the center we get 4, 6, 9. The first two numbers (as a fraction) 4/6 can be reduced to 2/3. Interestingly, the last two numbers (as a fraction) 6/9 can also be reduced to 2/3. In the event that the variables which contribute to the scoring of the evaluation are diverse the geometric provides a way to equalize skewed data for decision making.
 
 
 
