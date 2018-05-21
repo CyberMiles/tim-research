@@ -14,9 +14,9 @@ The CyberMiles network has 19 Validators
 
 == Voting
 
-It can be argued that voting in this arena is synonymous with prioritisation. For example, in order to successfully vote, a blockchain community member must evaluate all of the candidates while considering their qualitative responses to the vast criteria. It can be argued that due to the sheer pace, noise and complexity in this space can, voting may become subjective and ambiguous.
+It can be argued that voting in this arena is synonymous with prioritisation. For example, in order to successfully vote, a blockchain community member must evaluate all of the candidates while considering their qualitative responses to the vast criteria. It can also be argued that due to the sheer pace, noise and complexity in this space, voting can become onerous and potentially subjective as well as ambiguous.
 
-So how does one calmly and confidently evaluate block producer candidates. How does one equaluate the qualitative responses to criteria and produce a quantitative outcome which can inform their vote.
+So how does one calmly and confidently evaluate block producer candidates in order to vote? How does one equaluate the qualitative responses to criteria and produce a quantitative outcome which can inform their vote.
 
 === Basic example
 
