@@ -1,6 +1,7 @@
 = Unambiguous Delegated Proof of Stake (DPoS) voting
 
 == Background
+
 The Delegated Proof of Stake (DPoS) consensus system requires that those who produce blocks, in the blockchain, assume their position by way of a fair vote. The blockchain community, who hold tokens, are by and large the ones tasked with casting these votes.
 
 There are many terminologies for those who produce blocks. For example in EOS, those who produce blocks are called Block Producers (BPs). To become a Block Producer in EOS, one must first become a Block Producer Candidate (BPC). BPCs are required to publicly respond to a variety of criteria, and in doing so may fill the community with confidence; ultimately securing enough votes to become one of the many block producers.
@@ -12,11 +13,13 @@ The EOS network has 21 Block Producers
 The CyberMiles network has 19 Validators
 
 == Voting
+
 It can be argued that voting in this arena is synonymous with prioritisation. For example, in order to successfully vote, a blockchain community member must evaluate all of the candidates while considering their qualitative responses to the vast criteria. It can be argued that due to the sheer pace, noise and complexity in this space can, voting may become subjective and ambiguous.
 
 So how does one calmly and confidently evaluate block producer candidates. How does one equaluate the qualitative responses to criteria and produce a quantitative outcome which can inform their vote.
 
 === Basic example
+
 This is a simple example of how *not* to evaluate crietia and candidates.
 
 The following table shows the outcome of simple scoring. In this table there are 4 criteria; technical ability, community engagement, qualifications and future planning (scaling). These are just very simple examples to make a point. There are much more comprehensive examples (such as https://github.com/CyberMiles/tim-research/blob/master/eosio/eosio_dawn_3_0_and_dawn_4_0_research_report.asciidoc#block-producer-check-mark-criteria[the actual current EOS criteria]).
@@ -39,9 +42,21 @@ If we look closely at the criteria we will see that candidate A and B are simila
 === Proposed solutions
 
 ==== Weighting
+
 We could provide a weighting to each of the criteria. For example technical ability could be worth 30%, community engagement could be worth 20%, qualifications could be worth 20% and future planning (scaling) could be worth 30%. A total of 100%. 
 
 image:images/table_2.png[]
+
+When employing weighting, we see that candidate A has a total percentage of 60% and candidate B has a total percentage of 68%. As we can see, given this scenario which weighs technical ability and future planning (scaling) at a higher percentage (30% each) than community engagement and qualifications (20% each) we have a clear winner.
+
+Unfortunately, there are two problems with this approach.
+
+Firstly, if new criteria is added as time goes by (as was the case with the recent EOS candidature criteria) all of the weighting has to be recalculated. Prior evaluations have to be recalculated.
+
+Secondly, there is no clear way to determine who is responsible for creating the weighting percentages. What if each community member has a slightly different view on what is important and what should carry the most/least weight? If one source, such as the blockchain software developers made a static decision on the weighting, this may be considered a form of centralization; that's decisions being made that may be in favour of colleagues or third-party companies etc.
+
+==== Geometric Mean
+
 
 
 
