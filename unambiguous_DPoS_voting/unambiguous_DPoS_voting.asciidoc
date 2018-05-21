@@ -8,6 +8,7 @@ There are many terminologies for those who produce blocks. For example in EOS, t
 In CyberMiles those who produce blocks are called Validators. As with EOS block producers, CyberMiles Validators are tasked with running crucial CyberMiles blockchain network infrastructure. Again similarly, all CyberMiles Validator Candidates are required to rally the community and in doing so, may succeed in becoming one of the many CyberMiles Validators.
 
 The EOS network has 21 Block Producers
+
 The CyberMiles network has 19 Validators
 
 == Voting
