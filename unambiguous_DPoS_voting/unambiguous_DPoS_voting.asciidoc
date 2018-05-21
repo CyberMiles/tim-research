@@ -23,4 +23,24 @@ The following table shows the outcome of simple scoring. In this table there are
 
 In this table there are also 2 candidates; candidate A and candidate B.
 
+image:images/table_1.png[]
+
+Legend::
+1:: Poor
+2:: Below average
+3:: Average
+4:: Above average
+5:: Excellent
+
+If we use the legend above, the sum (total) of the individual scores for each of the candidates will be 13. If we calculate the average score of each candidate we will end up with 3.25. In both of these cases it seems that these candidates are equally in the running for the users vote.
+
+If we look closely at the criteria we will see that candidate A and B are similar, except for community engagement and future planning (scaling). In order to make a decision, using this system, the user needs to revert back to qualitative and subjective decision making. Is it fair to say that it would be a bad decision to elect a candidate with "poor" future planning (scaling) provisions? Conversely, is it fair to say that it is a bad decision to elect a candidate with "below average" community engagement? In this simple example we can see how simple scoring with linear/sequential numbering is not ideal. It seems we need a better quantitative system.
+
+=== Proposed solutions
+
+
+
+
+
+
 
