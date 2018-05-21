@@ -35,7 +35,11 @@ Legend::
 4:: Above average
 5:: Excellent
 
-If we use the legend above, the sum (total) of the individual scores for each of the candidates will be 13. If we calculate the average score of each candidate we will end up with 3.25. In both of these cases it seems that these candidates are equally in the running for the user's vote.
+If we use the legend above, the sum (total) of the individual scores for each of the candidates will be 13. 
+
+image:images/a_b_1.png[]
+
+If we calculate the average score of each candidate we will end up with 3.25. In both of these cases it seems that these candidates are equally in the running for the user's vote.
 
 If we look closely at the criteria we will see that candidate A and B are similar, except for community engagement and future planning (scaling). Whilst trying to quantify the criteria in this example, we actually just ended up with an even tie. It seems that there is a problem with this method of evaluation and in order to make a decision, using this system, the user needs to now revert back to qualitative and subjective decision making. 
 
