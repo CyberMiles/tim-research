@@ -19,4 +19,8 @@ So how does one calmly and confidently evaluate block producer candidates. How d
 === Basic example
 This is a simple example of how *not* to evaluate crietia and candidates.
 
+The following table shows the outcome of simple scoring. In this table there are 4 criteria; technical ability, community engagement, qualifications and future planning (scaling). These are just very simple examples to make a point. There are much more comprehensive examples (such as https://github.com/CyberMiles/tim-research/blob/master/eosio/eosio_dawn_3_0_and_dawn_4_0_research_report.asciidoc#block-producer-check-mark-criteria[the actual current EOS criteria]).
+
+In this table there are also 2 candidates; candidate A and candidate B.
+
 
