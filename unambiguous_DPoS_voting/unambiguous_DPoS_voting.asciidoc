@@ -17,3 +17,6 @@ It can be argued that voting in this arena is synonymous with prioritisation. Fo
 So how does one calmly and confidently evaluate block producer candidates. How does one equaluate the qualitative responses to criteria and produce a quantitative outcome which can inform their vote.
 
 === Basic example
+This is a simple example of how *not* to evaluate crietia and candidates.
+
+
