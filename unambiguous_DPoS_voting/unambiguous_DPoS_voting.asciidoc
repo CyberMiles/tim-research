@@ -87,7 +87,9 @@ Without any weighting being put in place this method organically gave candidate 
 
 There are many examples of low participation in decentralized networks. 
 
-http://v1.carbonvote.com/[The DAO Carbonvote] only had a voter participation rate of 4.5% [1].
+Whilst arriving at an outcome, http://v1.carbonvote.com/[the DAO Carbonvote] in relation to the hard forking of the Ethereum network, only had a voter participation rate of 4.5% [1].
+
+image:images/dao.png[]
 
 With less than 10 days before the EOSIO release, https://eosauthority.com/genesis[EOS Authority shows] that the EOS genesis snapshot appears to have only 41% of EOS tokens registered (as at 22 May 2018).
 
