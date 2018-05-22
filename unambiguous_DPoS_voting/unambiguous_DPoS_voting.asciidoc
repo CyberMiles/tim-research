@@ -95,6 +95,8 @@ With less than 10 days before the EOSIO release, https://eosauthority.com/genesi
 
 image:images/eos_authority.png[]
 
+This is certainly affirming that user participation is a hurdle which we need to overcome. One suggestion would be to create a voting interface/portal which would make the voting process as efficient and user friendly as possible.
+
 == Implementation
 Any challenges with the voting process can be lessened with the help of a voting portal. It is possible that the low EOS token registration participation is due to technical compitency and capacity. If this is the case, then it's fair to say that not all EOS token holders will be voting in the command line of an EOS blockchain implementation any time soon. For this, and possibly other reasons a number of community projects are centered around creating an EOS voting portal. The aim of the portals is to allow users to easily access, sort, evaluate and vote on the vast candidature criteria. Evaluating the criteria from over 140 block producer candidates can take time. Any assistance which addresses the onerous nature of voting is a step in the right direction.
 
