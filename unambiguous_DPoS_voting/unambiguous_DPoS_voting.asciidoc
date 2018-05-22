@@ -98,6 +98,7 @@ image:images/eos_authority.png[]
 This is certainly affirming that user participation is a hurdle which we need to overcome. One suggestion would be to create a voting interface/portal which would make the voting process as efficient and user friendly as possible.
 
 == Implementation
+
 Any challenges with the voting process can be lessened with the help of a voting portal. It is possible that the low EOS token registration participation is due to technical compitency and capacity. If this is the case, then it's fair to say that not all EOS token holders will be voting in the command line of an EOS blockchain implementation any time soon. For this, and possibly other reasons a number of community projects are centered around creating an EOS voting portal. The aim of the portals is to allow users to easily access, sort, evaluate and vote on the vast candidature criteria. Evaluating the criteria from over 140 block producer candidates can take time. Any assistance which addresses the onerous nature of voting is a step in the right direction.
 
 https://youtu.be/2A0dLVBlfcU?t=25[EOSGo] recently reported that the cryptocurrency exchange Bitfinex will support EOS voting. https://github.com/bitfinexcom/bip/blob/master/proposals/001.md[A draft proposal] of the Bitfinex open-source voting tool and https://www.reddit.com/r/eos/comments/8ifztx/bitfinex_ama_eos_may_10th/dyrmvnn/[an online statement] (by the moderator of r/bitfinex and r/ethfinex) reveals that the aim of the voting tool is to ensure integrity and verifiability with regards to the origin of funds used for the EOS Block Producer vote - "Bitfinex users will be free to vote for block producers as they wish, in a verifiably transparent manner." A recent response to the above YouTube video has revealed that perhaps the Bitfinex voting portal is still in the making.
@@ -106,7 +107,16 @@ image:images/voting_portal_1.png[]
 
 Another independant EOS community is developing an EOS voting portal. The group of developers are https://steemit.com/eos/@summerskin/attn-eos-community-we-need-your-help-20180517t215712980z-post[asking the EOS community for help]. The https://etherscan.io/address/0x42600f0C474653eD1d09A97e16835dfA738E2A68[Etherem donation address] and the https://www.gofundme.com/EOSvotingportal[Go Fund Me page] are accepting monetary contributions which will go towards the community EOS voting portal, designed to streamline the BP evaluation and voting process.
 
+= Conclusion
+
+In his latest blog post [2] Vitalik also shares some interesting ideas, which he recently read, about the use of modern game-theoretic principles to make mathematically optimized versions of existing social institutions. One particular summary which he makes from Eric Posner and Glen Weyl’s new book, https://www.amazon.ca/dp/B0773X7RKB/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1[Radical Markets], is in relation to quadratic voting. A quadratic voting system would work like this; a single vote would cost, say, 1 token, and from there, each subsequent vote would cost more. For example the user's second vote would cost 2 tokens and so on. These and other interesting ideas absolutely lend themselves to blockchain architecture; more so the blockchains with global state which can cleverly calculate the maths between vote counts and account addresses etc. However, even with new innovative ideas, the biggest obstacle of "voter participation" still remains.
+
+I am interested in learning about any open source Delegated Proof of Stake (DPoS) voting software projects. This kind of software screams reusability. In my mind the software would be very flexible in terms of customisation (branding). The different modalities of calculation and the ordering of each candidate's single criterion and so forth could be customized for each implementation. Of course all features would be possible at the push of a button or the swipe of a slider. 
+
+Rather than competing and duplicating effort, software developers can create what could turn out to be an extremely versatile piece of blockchain voting software.
+
 = References
 [1] https://vitalik.ca/general/2017/12/17/voting.html
+[2] https://vitalik.ca/general/2018/04/20/radical_markets.html
 
 
