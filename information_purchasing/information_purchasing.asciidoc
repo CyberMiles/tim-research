@@ -16,6 +16,8 @@ During this article we are going to address the following::
 ** Symmetric cryptography
 ** Asymmetric cryptography
 ** Decentralized file sharing
+*** IPFS
+*** SWARM
 ** Smart contracts
 ** A Golang (Go) example
 
