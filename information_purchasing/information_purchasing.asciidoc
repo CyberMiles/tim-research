@@ -220,6 +220,13 @@ ipfs add -r test_ipfs.txt
 ```
 image::images/ipfs1.png[]
 
+=== SWARM
+Swarm is part of the Ethereum network. Swarm allows for upload and disappear which means that any node can just upload content to the swarm and then is allowed to go offline. 
+Swarm is collision free. For example two different blobs of data will never map to the same identifier. This is due to the fact that the Swarm address (bzzr://1234abcd...xyz) is actually a cryptographic hash of the data. This being the case, we can say that Swarm is deterministic (meaning that the same content will always receive the same identifier, and if the content is changed in any way an entirely new address will be generated for the new content).
+
+Swarm content access is centred around the notion of a manifest. A manifest file describes a document collection, e.g. a filesystem directory, an index of a database or even a virtual server.
+
+
 == Smart contracts
 
 Of course the above method of creating and sharing files online is without any security and access control. This is where the Decentralized Application (Smart Contract) framework comes in. The DAPP (single instances of smart contracts) would firstly be responsible for initiating contact between two parties. The initiating would include each of the parties signing the other parties random strings with the other parties public keys (to prove that each party holds a functioning private/public key pair for subsequent steps). The DAPP would then keep track of the IPFS hashes and take care of the pricing as well as the encrypting/decrypting of files (through the exchanging of keys via the DAPP). Essentially the Blockchain would keep the record of all transactions/interactions and the encrypted content would be stored using IPFS on distributed nodes. 
