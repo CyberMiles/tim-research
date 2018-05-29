@@ -226,6 +226,11 @@ Swarm is collision free. For example two different blobs of data will never map 
 
 Swarm content access is centred around the notion of a manifest. A manifest file describes a document collection, e.g. a filesystem directory, an index of a database or even a virtual server.
 
+==== What is a Swarm Hash
+Swarm Hash (a.k.a. bzzhash) is a Merkle tree hash designed for the purpose of efficient storage and retrieval in content-addressed storage. As we just mentioned the location of the data is actually a URI which consists of a cryptographic hash of the data being stored.
+
+==== Creating the Swarm Hash using C++
+
 
 == Smart contracts
 
