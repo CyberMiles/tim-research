@@ -84,7 +84,7 @@ int main()
 	for(int i = 0; i < 100; i++){
 		vec.push_back(i);
 	}
-	
+
 	for(int i = 0; i < vec.size(); i++){
 		std::cout << "Vector position " << i << " holds a value of " << vec.at(i) << std::endl;
 	}
@@ -96,8 +96,17 @@ int main()
 
 The above code currently returns the following
 
-Vector position 0 holds a value of 1
-Vector position 1 holds a value of 2
-Vector position 2 holds a value of 3
+Vector position 0 holds a value of 0
+Vector position 1 holds a value of 1
+Vector position 2 holds a value of 2
+Vector position 3 holds a value of 3
+Vector position 4 holds a value of 4
+...
+Vector position 95 holds a value of 95
+Vector position 96 holds a value of 96
+Vector position 97 holds a value of 97
+Vector position 98 holds a value of 98
+Vector position 99 holds a value of 99
+
 
 */
