@@ -1,4 +1,4 @@
-//want it to be generic
+//First draft of CyberMiles custom data type
 
 #include <iostream>
 
