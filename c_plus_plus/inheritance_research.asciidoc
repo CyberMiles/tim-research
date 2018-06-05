@@ -1,8 +1,6 @@
-A base class, which can be inherited by a derived class, should have a virtual destructor. The std::vector class does not have a virtual destructor. Therefore, if a derived class is publicly inheriting the std::vector class, there is a high chance of a resource leak. Please consider the following example.
-
-Reason for this example: To show that it is possible for the destructor of a Derived class not to execute.
-
-This is because the Base class does not have a virtual destructor. This is a potential resource leak.
+A base class, which can be inherited by a derived class, should have a virtual destructor. 
+Reason for this example: To show that it is possible for the destructor of a Derived class not to execute, due to the Base class not having a virtual destructor. 
+Potential issue?: This is a potential resource leak.
 
 [source, c++]
 ----
