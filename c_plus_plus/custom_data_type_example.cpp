@@ -81,9 +81,10 @@ void CyberMilesVector::allocate_new_memory(){
 int main()
 {
 	CyberMilesVector vec;
-	vec.push_back(1);
-	vec.push_back(2);
-	vec.push_back(3);
+	for(int i = 0; i < 100; i++){
+		vec.push_back(i);
+	}
+	
 	for(int i = 0; i < vec.size(); i++){
 		std::cout << "Vector position " << i << " holds a value of " << vec.at(i) << std::endl;
 	}
