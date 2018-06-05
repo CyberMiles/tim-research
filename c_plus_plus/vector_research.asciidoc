@@ -1,1 +1,90 @@
-.
+Accessing elements in a std::vector, using the vector[int] syntax can result in undefined behavior. I have written an executable C++ example below. You will see, at the end of the code example below, that there is a solution for this problem. Specifically, using the vector.at(int) syntax instead of the vector[int] syntax.
+
+[source, c++]
+----
+#include <vector>
+#include <iostream>
+
+int main(){
+    //Create a C++ vector
+    std::cout << "Creating a new vector v" << std::endl;
+    std::vector<int> v;
+    //Add the int 1 to the first position (position 0)
+    std::cout << "Adding 1 to position 0" << std::endl;
+    v.push_back(1);
+    //Add the int 2 to the second position (position 1)
+    std::cout << "Adding 2 to position 1" << std::endl;
+    v.push_back(2);
+    //Add the int 3 to the third position (position 2)
+    std::cout << "Adding 3 to position 2" << std::endl;
+    v.push_back(3);
+    //Loop through the vector to see the 3 int values in their correct positions
+    std::cout << std::endl << "Let's iterate through the vector" << std::endl;
+    for (int i = 0; i < v.size(); i++)
+    {
+    	std::cout <<  "Number " << i << ":" << v[i] << std::endl;
+    }
+    //Remove the int at the very end of the vector
+    std::cout << std::endl << "Let's remove the integer 3 which is sitting in position 2 of the vector ..." << std::endl;
+    std::cout << "v.pop_back();" << std::endl;
+    v.pop_back();
+    std::cout << "Done!" << std::endl;
+    //Loop through the vector to see that the value (which we removed) is not being displayed
+    std::cout << std::endl << "Let's again iterate through the vector, notice that there is one less integer being listed this time" << std::endl;
+    for (int i = 0; i < v.size(); i++)
+    {
+    	std::cout <<  "Number " << i << ":" << v[i] << std::endl;
+    }
+    //Interestingly, if we use the v[int] syntax to access the vector, we can see that the int 3 is still in position 2 of the vector. 
+    //Even though we removed it using v.pop_back() above.
+    std::cout << std::endl << "Interestingly, the missing element still exists when using the v[int] syntax to query the vector" << std::endl;
+    std::cout << "v[2]" << std::endl;
+    std::cout << std::endl << v[2] << std::endl;
+    //A safer way to access the vector is by using the v.at(int) syntax. This method has built in range checking.
+    std::cout << std::endl << "A safer way to access the vector is by using the v.at(int) syntax";
+    std::cout << std::endl << "For example, the element does not exists using v.at(1) ...";
+    std::cout << "This following command should fail to retrieve the int 3 in position 2 and is evidenced by the following error message ..." << std::endl;
+    std::cout << "v.at(2) ... Here goes ..." << std::endl << std::endl;
+    std::cout << v.at(2) << std::endl;
+    return 0;
+}
+
+/*
+
+
+The above code produces the following output
+
+Creating a new vector v
+Adding 1 to position 0
+Adding 2 to position 1
+Adding 3 to position 2
+
+Let's iterate through the vector
+Number 0:1
+Number 1:2
+Number 2:3
+
+Let's remove the integer 3 which is sitting in position 2 of the vector ...
+v.pop_back();
+Done!
+
+Let's again iterate through the vector, notice that there is one less integer being listed this time
+Number 0:1
+Number 1:2
+
+Interestingly, the missing element still exists when using the v[int] syntax to query the vector
+v[2]
+
+3
+
+A safer way to access the vector is by using the v.at(int) syntax
+For example, the element does not exists using v.at(1) ...This following command should fail to retrieve the int 3 in position 2 and is evidenced by the following error message ...
+v.at(2) ... Here goes ...
+
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check: __n (which is 2) >= this->size() (which is 2)
+Aborted (core dumped)
+
+
+*/
+----
