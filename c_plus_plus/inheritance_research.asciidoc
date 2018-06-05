@@ -1,1 +1,56 @@
-.
+A base class, which can be inherited by a derived class, should have a virtual destructor. The std::vector class does not have a virtual destructor. Therefore, if a derived class is publicly inheriting the std::vector class, there is a high chance of a resource leak. Please consider the following example.
+
+Reason for this example: To show that it is possible for the destructor of a Derived class not to execute.
+
+This is because the Base class does not have a virtual destructor. This is a potential resource leak.
+
+[source, c++]
+----
+
+#include <vector>
+#include <iostream>
+
+class Base {
+public:
+	Base() { 
+		std::cout << "Constructor of the Base class executed." << std::endl; 
+	}
+	~Base() { 
+		std::cout << "Destructor of Base class executed." << std::endl; 
+	}
+};
+
+class Derived : public Base {
+    //code goes here
+public:
+	Derived() { 
+		std::cout << "Constructor of the Derived class executed." << std::endl; 
+	}
+    ~Derived() { 
+		std::cout << "Destructor of Derived class executed." << std::endl; 
+	}
+};
+
+main() {
+	std::cout << "Starting" << std::endl;
+	Base* myClass = new Derived;
+	std::cout << "Deleting instance called myClass" << std::endl;
+	delete myClass;    // resource leak
+	std::cout << "Finished" << std::endl;
+	return 0;
+}
+
+/*
+
+The above code produces the following output, showing that the destructor of the Derived Class is never executed. This is a potential resource leak.
+
+Starting
+Constructor of the Base class executed.
+Constructor of the Derived class executed.
+Deleting instance called myClass
+Destructor of Base class executed.
+Finished
+
+*/
+
+----
