@@ -1,4 +1,5 @@
 //First draft of CyberMiles custom data type
+//Next iteration is to move into generic templates
 
 #include <iostream>
 
