@@ -18,3 +18,5 @@ A collection of research and development performed and written up by @tpmccallum
 - [Information Purchasing](https://github.com/CyberMiles/tim-research/blob/master/information_purchasing/information_purchasing.asciidoc)
 
 - [Unambiguous Delegated Proof of Stake (DPoS) voting](https://github.com/CyberMiles/tim-research/tree/master/unambiguous_DPoS_voting/unambiguous_DPoS_voting.asciidoc)
+
+- [C++ Researching undefined behavior, resource leaks, performance and more](https://github.com/CyberMiles/tim-research/tree/master/c_plus_plus)
