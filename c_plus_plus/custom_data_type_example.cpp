@@ -21,6 +21,7 @@ class CyberMilesVector{
 		//functions
 		void push_back(int);
 		int size();
+		int getMemorySize();
 		int operator[](int);
 		int at(int i);
 };
@@ -46,7 +47,7 @@ CyberMilesVector::~CyberMilesVector(){
 }
 
 void CyberMilesVector::push_back(int i){
-	if(vectorSize+1 > memorySize)
+	if(vectorSize + 1 > memorySize)
 		allocate_new_memory();
 	//TODO edit this next line again
 	pointerToStart[vectorSize] = i;
@@ -61,6 +62,9 @@ int CyberMilesVector::size(){
 	return vectorSize;
 }
 
+int CyberMilesVector::getMemorySize(){
+	return memorySize;
+}
 //TODO fix this function so that it is implemented as part of the solution
 int CyberMilesVector::at(int cvi){
 	if(cvi < vectorSize){
@@ -83,6 +87,7 @@ int main()
 	CyberMilesVector vec;
 	for(int i = 0; i < 100; i++){
 		vec.push_back(i);
+		std::cout << "Allocated memory size at element " << i << " is " << vec.getMemorySize() << std::endl;
 	}
 
 	for(int i = 0; i < vec.size(); i++){
@@ -96,6 +101,15 @@ int main()
 
 The above code currently returns the following
 
+Allocated memory size at element 0 is 20
+Allocated memory size at element 1 is 20
+...
+Allocated memory size at element 19 is 20
+Allocated memory size at element 20 is 40
+...
+Allocated memory size at element 98 is 160
+Allocated memory size at element 99 is 160
+...
 Vector position 0 holds a value of 0
 Vector position 1 holds a value of 1
 Vector position 2 holds a value of 2
@@ -107,6 +121,5 @@ Vector position 96 holds a value of 96
 Vector position 97 holds a value of 97
 Vector position 98 holds a value of 98
 Vector position 99 holds a value of 99
-
 
 */
