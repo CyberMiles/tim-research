@@ -19,4 +19,4 @@ A collection of research and development performed and written up by @tpmccallum
 
 - [Unambiguous Delegated Proof of Stake (DPoS) voting](https://github.com/CyberMiles/tim-research/tree/master/unambiguous_DPoS_voting/unambiguous_DPoS_voting.asciidoc)
 
-- [C++ Researching undefined behavior, resource leaks, performance and more](https://github.com/CyberMiles/tim-research/tree/master/c_plus_plus)
+- [C++ - Researching undefined behavior, resource leaks, performance and more](https://github.com/CyberMiles/tim-research/tree/master/c_plus_plus)
