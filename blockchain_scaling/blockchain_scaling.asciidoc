@@ -13,16 +13,38 @@ If you think about this topology you will realise that it provides exponential s
 
 === In-built incentives
 
-Whilst costly, interactions with the main chain are only necessary when evidence of a dispute is provided. This evidence comes in the form of a proof. But who creates these proofs? How does anyone find out whether an invalid transaction is being performed? Put simply there are economic bounty's which are offered to any users who can detect non-valid transactions. In addition to this you yourself, as a user, can watch your own coins and provide an irrefutable proof of wrong doing (in the event that something goes awry).
+Whilst costly, interactions with the main chain are only necessary when evidence of a dispute is provided. This evidence comes in the form of a proof. But who creates these proofs? How does anyone find out whether an invalid transaction is being performed? Put simply there are economic bounties which are offered to any users who can detect non-valid transactions. In addition to this you yourself, as a user, can watch your own coins and provide an irrefutable proof of wrong doing (in the event that something goes awry).
 
-This on-chain/off-chain incentive (reward and punishment) model is analogous to how https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf[TrueBit] works. TrueBit allows untrusted parties (called solvers) on the Ethereum blockchain to solve computational tasks and in turn collect rewards. Of course on the flip side, anyone at all can challenge the outcome of a solver's computational task. Incentives and consequences keep the solvers honest. These sorts of models run under the assumption that all parties involved wish to maximize thier own profit. As a general rule, with accountability and penalties in place, most transactions will simply be performed in a valid manner.
+This on-chain/off-chain incentive (reward and punishment) model is analogous to how https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf[TrueBit] works. TrueBit allows untrusted parties (called solvers) on the Ethereum blockchain to solve computational tasks and in turn collect rewards. Of course on the flip side, anyone at all can challenge the outcome of a solver's computational task. Incentives and consequences keep the solvers honest. These sorts of models run under the assumption that all parties involved wish to maximize their own profit. As a general rule, with accountability and penalties in place, most transactions will simply be performed in a valid manner.
 
-== Bloom Filters
+=== How does Plasma work in a nutshell?
+
+Plasma is not a product!
+
+Plasma is a design which is providing opportunities for anyone to implement their own customized logic of how they want to operate a temporary central off-chain operation which ultimately has the ability to perform a state transition on the Ethereum main chain.
+
+Let's step through a simple example of how this would work.
+
+Bob creates and then deposits ETH into a Plasma Smart Contract. The temporary Plasma chain is created as a result. The Plasma chain is run by a group of validators. Users who partake in the transfer of value on the Plasma chain do not need to trust the validators at all. There are many incentivized eyes watching, as we mentioned above there are economic rewards for doing the right thing and for providing proof of bad actors doing the wrong thing. Because all parties involved stake some value to participate, the rewards/bounties are actually funded by those who staked funds and then got caught doing the wrong thing. In the event that a user is not happy with what is transpiring on the Plasma chain, they can exit and take back all of the ETH, which they deposited originally.
+
+=== How does Plasma work, in a bit more detail?
+
+==== MVP
+
+One of the most promising designs was the Minimum Viable Plasma (MVP). In this design users would keep track of every coin which was off-chain. This design used the unspent transaction output (UTXO) method to transfer value off-chain, meaning that each UTXO had to be tracked/monitored. There were a couple of issues with this design. Firstly, there was a bad mass exit vulnerability and secondly the transactions were still limited to around 1, 000 TPS.
+
+==== Plasma Cash
+
+The most recent, and perhaps the most promising design at the moment is Plasma Cash. In this design, users only have to keep track of the coins which they are interested in. To make this task very easy, all Plasma Cash coins are assigned unique IDs as they are moved from the main chain to the Plasma chain. Users/clients can simply watch the main chain logs; on the look out for any mention of their coin ID being part of a transaction in a main chain block. Plasma Cash simplified the client side operation and essentially removed the two issues which we mentioned above (mass exit vulnerability & TPS limit). This new and improved client side validation can be performed using very low power/cheap resources such as a simple laptop computer. How is this possible, you ask? With Bloom filters and Merkle Tries. 
+
+=== Bloom Filters
+
 Bloom filters provide certainty in relation to proof of non-inclusion. 
 
-== Merkle Tries
-Merkle tries provide certainty in relation to proof of inclusion.
+=== Merkle Tries
 
-== Sparse Merkle Trie - a more efficient and simpler alternative Ethereum's Merkle Patricia Trie
+Merkle tries provide certainty in relation to proof of inclusion. Merkle Tries have been in use on most blockchain implementations including Bitcoin. Ethereum extended the original idea and ultimately created the Merkle Patricia Trie. Interestingly, it seems that there is yet another improvement in the Merkle Trie space which looks set to replace Ethereum's current data structure and provide superior efficiency and simplicity.
+
+=== Sparse Merkle Trie - a more efficient and simpler alternative Ethereum's Merkle Patricia Trie
 
 A new data structure, known as the https://eprint.iacr.org/2016/683.pdf[Efficient Sparse Merkle Trie will assist in blockchain scaling. Also languages which are simpler and safer than Solidity will be good candidates for writing and testing this new data type and in addition exclusion and inclusion proofs, which support scaling solutions. For example Vyper's pythonic syntax already provides a head start to developers who are interested in writing smart contracts which will one day be enveloped by Ethereum's alternative data infrastructure. Ethereum currently uses the complex Merkle Patricia Trie, however Vitalik has recently demonstrated https://github.com/ethereum/research/tree/master/trie_research/bintrie2[via code] that the Sparse Merkle Trie has the potential to surpass Ethereum's current data infrastructure in efficiency and simplicity as well as storage and bandwidth.
