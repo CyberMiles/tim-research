@@ -13,7 +13,7 @@ If you think about this topology you will realise that it provides exponential s
 
 === In-built incentives
 
-Whilst costly, interactions with the main chain are only necessary when evidence of a dispute is provided. This evidence comes in the form of a proof. But who creates these proofs? How does anyone find out whether an invalid transaction is being performed? Put simply there are economic bounties which are offered to any users who can detect non-valid transactions. In addition to this you yourself, as a user, can watch your own coins and provide an irrefutable proof of wrong doing (in the event that something goes awry).
+Whilst costly, interactions with the main chain are only necessary when evidence of a dispute is provided. This evidence comes in the form of a proof. But who creates these proofs? How does anyone find out whether an invalid transaction is being performed? Put simply there are economic bounties which are offered to any users who can detect non-valid transactions. In addition to this you yourself, as a user, can watch your own tokens and provide an irrefutable proof of wrong doing (in the event that something goes awry).
 
 This on-chain/off-chain incentive (reward and punishment) model is analogous to how https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf[TrueBit] works. TrueBit allows untrusted parties (called solvers) on the Ethereum blockchain to solve computational tasks and in turn collect rewards. Of course on the flip side, anyone at all can challenge the outcome of a solver's computational task. Incentives and consequences keep the solvers honest. These sorts of models run under the assumption that all parties involved wish to maximize their own profit. As a general rule, with accountability and penalties in place, most transactions will simply be performed in a valid manner.
 
@@ -31,15 +31,30 @@ Bob creates and then deposits ETH into a Plasma Smart Contract. The temporary Pl
 
 ==== MVP
 
-One of the most promising designs was the Minimum Viable Plasma (MVP). In this design users would keep track of every coin which was off-chain. This design used the unspent transaction output (UTXO) method to transfer value off-chain, meaning that each UTXO had to be tracked/monitored. There were a couple of issues with this design. Firstly, there was a bad mass exit vulnerability and secondly the transactions were still limited to around 1, 000 TPS.
+One of the most promising designs was the Minimum Viable Plasma (MVP). In this design users would keep track of every token which was off-chain. This design used the unspent transaction output (UTXO) method to transfer value off-chain, meaning that each UTXO had to be tracked/monitored. There were a couple of issues with this design. Firstly, there was a bad mass exit vulnerability and secondly the transactions were still limited to around 1, 000 TPS.
 
 ==== Plasma Cash
 
-The most recent, and perhaps the most promising design at the moment is Plasma Cash. In this design, users only have to keep track of the coins which they are interested in. To make this task very easy, all Plasma Cash coins are assigned unique IDs as they are moved from the main chain to the Plasma chain. Users/clients can simply watch the main chain logs; on the look out for any mention of their coin ID being part of a transaction in a main chain block. Plasma Cash simplified the client side operation and essentially removed the two issues which we mentioned above (mass exit vulnerability & TPS limit). This new and improved client side validation can be performed using very low power/cheap resources such as a simple laptop computer. How is this possible, you ask? With Bloom filters and Merkle Tries. 
+The most recent, and perhaps the most promising design at the moment is Plasma Cash. Plasma Cash simplified the client side operation and essentially removed the two issues which we mentioned above (mass exit vulnerability & TPS limit). In the Plasma Cash design, users only have to keep track of the tokens which they are interested in. So how does a user know which particular tokens belong to them? Easy, all Plasma Cash tokens are assigned unique IDs (think of these as unique serial numbers) as they are moved from the main chain to the Plasma chain. 
+
+A Plasma Cash transaction takes on the following form.
+
+[source, javascript]
+----
+[[prev_hash, prev_block, (target_block?), token_id, new_owner], signature]
+----
+
+Users/clients can simply watch the main chain logs; looking out for any mention of their particular token ID (being part of a transaction in a block) on the main chain. If there is no mention of their particular token ID then they can rest assured that nobody is transferring their value. This new and improved client side validation can be performed using very low power/cheap resources such as a simple laptop computer. How is this possible, you ask? With Bloom filters and Merkle Tries. 
 
 === Bloom Filters
 
 Bloom filters provide certainty in relation to proof of non-inclusion. 
+
+=== How does Plazma work, in relation to the main chain?
+
+Each block in the Plasma chain publishes its own Merkle root to the main chain. What this means is that essentially hundreds or thousands of transactions can occur on the Plasma chain, yet only a minuscule amount of information (relative to the complete transaction history) is actually stored on the main chain. Think of the Merkle root as a proof of inclusion.
+
+"This root can either be a merklized list, or a merkle patricia tree. In the merklized list, each index of the leaf nodes corresponds to the token ID." [1]
 
 === Merkle Tries
 
@@ -48,3 +63,15 @@ Merkle tries provide certainty in relation to proof of inclusion. Merkle Tries h
 === Sparse Merkle Trie - a more efficient and simpler alternative Ethereum's Merkle Patricia Trie
 
 A new data structure, known as the https://eprint.iacr.org/2016/683.pdf[Efficient Sparse Merkle Trie] will assist in blockchain scaling. Also languages which are simpler and safer than Solidity will be good candidates for writing and testing this new data type and in addition exclusion and inclusion proofs, which support scaling solutions. For example Vyper's pythonic syntax already provides a head start to developers who are interested in writing smart contracts which will one day be enveloped by Ethereum's alternative data infrastructure. Ethereum currently uses the complex Merkle Patricia Trie, however Vitalik has recently demonstrated https://github.com/ethereum/research/tree/master/trie_research/bintrie2[via code] that the Sparse Merkle Trie has the potential to surpass Ethereum's current data infrastructure in efficiency and simplicity as well as storage and bandwidth.
+
+==== How would a Sparse Merkle Trie be better in terms of storing token IDs?
+
+Hashes
+Think about bank notes and coins, except because these are digital tokens imagine that we can create new tokens, on our Plasma chain, via a merge. Merging tokens together is easy, merged tokens are simply represented by a 32 bit ID (aka a hash). Interestingly the new 32 bit ID (hash) is simply a hash of the original 32 bit IDs belonging to each of the two unique tokens which are being merged together. 
+
+Slots
+Imagine that all tokens have to live in slots. When tokens on a Plasma chain are created they go off and live in a specific unique slot. The important thing to remember here is that every time there is activity, there are new slots. For example, if token "a" from slot "A" is merged with token "b" from slot "B" then resulting merged token will go off and live in a brand new slot "C"; both tokens move out of slots A and B as part of the merge process.
+
+
+= References
+[1] https://karl.tech/plasma-cash-simple-spec/
