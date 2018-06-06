@@ -1,15 +1,21 @@
 [Blockchain Scaling]
 [[Plasma]]
 
-Lightning and Plasma are in the realm of State Channels whereby off-chain messages/transactions between exclusive parties (literally taking a load off the main chain) have an overall effect on the main chain.
+Lightning and Plasma are in the realm of "State Channels" whereby off-chain messages/transactions between exclusive parties (literally taking a load off the main chain) have an overall effect on the main chain.
 
 == Plasma: Blockchains within blockchains
 
 Plasma is a design pattern which allows you to create your own scalable blockchains (for example allowing blockchains to exist within blockchains) whilst still enjoying the advantages of the security (via the consensus mechanism) which is provided by the main chain. Put simply Ethereum's Plasma implementation allows Ethereum to lend the proven security of its main chain to separate 3rd-party chains.
 
-If you think about this topology you will realise that it provides exponential scaling for blockchains. The best real world example which comes to mind is population growth. For example great grandparent, grandparents, parents can have many children. Only the validity of the child blockchains are stored on the parent chain, negating the need to store all of the gritty details of every transaction on the main chain.
+=== Scalability
 
-Whilst costly, interactions with the main chain are only necessary when evidence of a dispute is provided. This evidence comes in the form of a proof. But who creates these proofs? How does anyone find out whether an invalid transaction is being performed. This on-chain/off-chain model is analogous to how https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf[TrueBit] works. TrueBit allows untrusted parties (called solvers) on the Ethereum blockchain to solve computational tasks and in turn collect rewards. Of course on the flip side, anyone at all can challenge the outcome of a solver's computational task. Incentives and consequences keep the solvers honest. These sorts of models run under the assumption that all parties involved wish to maximize thier own profit. As a general rule, with accountability and penalties in place, most transactions will simply be performed in a valid manner. This reduces the need to store every tiny transaction and transfer of value, on the main chain, all of the time. 
+If you think about this topology you will realise that it provides exponential scaling for blockchains. The best real world example which comes to mind is population growth. For example great grandparent, grandparents, parents can each have many children. From a blockchain transaction validation perspective, only the validity of the child blockchains are stored on the parent chain, negating the need to store all of the gritty details of every transaction ever made. 
+
+=== In-built incentives
+
+Whilst costly, interactions with the main chain are only necessary when evidence of a dispute is provided. This evidence comes in the form of a proof. But who creates these proofs? How does anyone find out whether an invalid transaction is being performed? Put simply there are economic bounty's which are offered to any users who can detect non-valid transactions. In addition to this you yourself, as a user, can watch your own coins and provide an irrefutable proof of wrong doing (in the event that something goes awry).
+
+This on-chain/off-chain incentive (reward and punishment) model is analogous to how https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf[TrueBit] works. TrueBit allows untrusted parties (called solvers) on the Ethereum blockchain to solve computational tasks and in turn collect rewards. Of course on the flip side, anyone at all can challenge the outcome of a solver's computational task. Incentives and consequences keep the solvers honest. These sorts of models run under the assumption that all parties involved wish to maximize thier own profit. As a general rule, with accountability and penalties in place, most transactions will simply be performed in a valid manner.
 
 == Bloom Filters
 Bloom filters provide certainty in relation to proof of non-inclusion. 
