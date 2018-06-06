@@ -17,6 +17,7 @@ class CyberMilesVector{
 		//Copy constructor
 		CyberMilesVector(const CyberMilesVector&);
 		//Destructor
+		//TODO make this pure virtual so that the class which inherits it can execute its own destructor
 		~CyberMilesVector();
 		//functions
 		void push_back(int);
@@ -24,6 +25,9 @@ class CyberMilesVector{
 		int getMemorySize();
 		int operator[](int);
 		int at(int i);
+		//TODO create deep copy constructor
+		//TODO create de-duplication method
+		//TODO create return unique values only method
 };
 
 CyberMilesVector::CyberMilesVector(){
