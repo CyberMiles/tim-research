@@ -41,6 +41,8 @@ The Plasma chain is run by a group of validators. Users who partake in the trans
 
 === How does Plasma work, in a bit more detail?
 
+Perhaps one of the most interesting points about Plasma is it does not keep a record of state changes (like the Ethereum main chain). In the case of a dispute (Bob or Alice lying about how much money they gave each other during their time together on the Plasma chain) the Plasma implementation performs the following exceptionally intelligent and simple move. It checks all transactions on the Plasma chain **starting with the "oldest first"**. This "oldest first" transaction ordering check is a key component of the exit request; as soon as the evidence of transaction history is aligned with someone who provided a truthful challenge request, that person is rewarded, the thief is punished and the Plasma chain is closed.
+
 ==== MVP
 
 One of the most promising designs was the Minimum Viable Plasma (MVP). In this design users would keep track of every token which was off-chain. This design used the unspent transaction output (UTXO) method to transfer value off-chain, meaning that each UTXO had to be tracked/monitored. There were a couple of issues with this design. Firstly, there was a bad mass exit vulnerability and secondly the transactions were still limited to around 1, 000 TPS.
