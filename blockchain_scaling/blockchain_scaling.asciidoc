@@ -3,6 +3,8 @@
 
 Lightning and Plasma are in the realm of "State Channels" whereby off-chain messages/transactions between exclusive parties (literally taking a load off the main chain) have an overall effect on the main chain.
 
+Plasma has two main components a)verification and b)computation. We will cover these components in more depth in the Plasma Cash section below. Firstly, a bit of background.
+
 == Plasma: Blockchains within blockchains
 
 Plasma is a design pattern which allows you to create your own scalable blockchains (for example allowing blockchains to exist within blockchains) whilst still enjoying the advantages of the security (via the consensus mechanism) which is provided by the main chain. Put simply Ethereum's Plasma implementation allows Ethereum to lend the proven security of its main chain to separate 3rd-party chains.
