@@ -102,13 +102,13 @@ The original spec for Plasma Cash mentioned the following improvements (over MVP
 "1. Every single deposit corresponds to a unique coin ID; tokens are indivisible and cannot be merged."
 "2. Instead of storing transactions in a binary Merkle tree in order of txindex, we require them to be stored in either a sparse simple Merkle tree or a patricia tree, with the index being the ID of the coin that is spent."
 
-Hashes
+Hashes::
 Think about bank notes and coins, except because these are digital tokens imagine that we can create new tokens, on our Plasma chain, via a merge. Merging tokens together is easy, merged tokens are simply represented by a 32 bit ID (aka a hash). Interestingly the new 32 bit ID (hash) is simply a hash of the original 32 bit IDs belonging to each of the two unique tokens which are being merged together. 
 
-Slots
+Slots::
 Imagine that all tokens have to live in slots. When tokens on a Plasma chain are created they go off and live in a specific unique slot. The important thing to remember here is that every time there is activity, there are new slots. For example, if token "a" from slot "A" is merged with token "b" from slot "B" then resulting merged token will go off and live in a brand new slot "C"; both tokens move out of slots A and B as part of the merge process.
 
-Efficiency
+Efficiency::
 We mentioned earlier that in Plasma Cash a user can be safe on the network by only watching tokens which they care about; tokens which are of value to the user. This means that a user can literally ignore the entire network aside from their own tokens. But surely the users would have to scan through millions of token IDs on the main chain in order to filter out the token IDs which they care about right? Yes, however the Sparse Merkle Trie approach cleverly organises the 32 bit IDs in a way that a user only need be on the look out for token IDs which start with the number 3 or the number 4 etc. The structure of the data type allows the user to ignore the entire set of IDs except for a tiny set (say, starting with 3) which they can then traverse. Every 32 bit ID is a new slot in the Trie.
 
 = References
