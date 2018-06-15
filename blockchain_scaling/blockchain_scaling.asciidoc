@@ -15,7 +15,7 @@ Plasma also has a participant set, and in addition, a validator set. Unlike a St
 
 == Plasma: Blockchains within blockchains
 
-Plasma is a design pattern which allows you to create your own scalable blockchains (for example allowing blockchains to exist within blockchains) whilst still enjoying the advantages of the security (via the consensus mechanism) which is provided by the main chain. Put simply Ethereum's Plasma implementation allows Ethereum to lend the proven security of its main chain to separate 3rd-party chains.
+Plasma is a design pattern which allows you to create your own scalable blockchains (for example allowing blockchains to exist within blockchains) whilst still enjoying the advantages of the security (via the consensus mechanism) which is provided by the main chain. Put simply Ethereum's Plasma implementation allows Ethereum to lend the proven security of its main chain to child chains. Those who are exchanging value on the child chain can exit to the parent chain if they feel that anything other than normal honest behaviour is happening on the child chain.  
 
 === Scalability
 
