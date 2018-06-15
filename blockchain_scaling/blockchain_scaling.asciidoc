@@ -3,7 +3,14 @@
 
 Lightning and Plasma are in the realm of "State Channels" whereby off-chain messages/transactions between exclusive parties (literally taking a load off the main chain) have an overall effect on the main chain.
 
-Plasma has two main components a)verification and b)computation. We will cover these components in more depth in the Plasma Cash section below. Firstly, a bit of background.
+Plasma has two main components::
+a) verification and 
+b) computation
+We will cover these components in more depth below. Firstly, a bit of background.
+
+== Background - State Channels vs Plasma
+State Channels and Plasma both exist to improve the scalability of blockchains, by taking transactions off-chain. The key differences between State Channels and Plasma are as follows. A single State Channel is made up of a set of participants. Those in this "participant set" exchange value amongst each other via ongoing (step-by-step/real-time) unanimous consent. Nothing is published to the main chain until participants are ready to exit and State Channel (at the end).
+Plasma also has a participant set, and in addition, a validator set. Unlike a State Channel, Plasma actually publishes its block headers to the main chain. The Plasma block headers provide a mechanism for the main chain to prove or disprove dishonest behaviour; in the event that someone issues a challenge. Under normal (honest) operating conditions the main chain does not play a role (other than receiving Plasma block headers). 
 
 == Plasma: Blockchains within blockchains
 
