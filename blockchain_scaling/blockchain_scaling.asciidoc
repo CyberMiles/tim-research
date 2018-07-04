@@ -143,7 +143,10 @@ Third - the ability to support timebased locks
 Fourth - that the implementation does not increase the attack surface
 
 == Goal
-To allow the exchange of value to occur between two or more participants without the need for a trusted third participant.
+To allow the exchange of value to occur between two or more participants without the need for a trusted third participant
+
+== Rationale
+A participant must deliver on their obligation/promise to deliver value, otherwise that same participant is not able to receive the value which was obligated/promised to them.
 
 == Future improvements
 At present lightning requires that everyone is cooperating at all times, everyone is enforcing their ownership during each stage of the time lock process. At present doing nothing (not being available) puts a participant at a dissadvantage.
