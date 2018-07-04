@@ -132,19 +132,22 @@ Whilst in theory base layer solutions such as Ethereum's Sharding are said to be
 = Designing second layer blockchain scaling solution 
 
 == Criteria
-There are criteria which a second layer solution must meet in order to be a valid solution to blockchain scalability.
-Firstly - transaction malleability.
-Secondly - the ability to support multisig smart contracts
-Thirdly - the ability to support timebased locks
+There are criteria which a second layer lightning solution must meet in order to be a valid solution to blockchain scalability
+
+First - transaction malleability
+
+Second - the ability to support multisig smart contracts
+
+Third - the ability to support timebased locks
+
+Fourth - that the implementation does not increase the attack surface
 
 == Goal
-To allow the exchange of value to occur between two or more parties without the need for a trusted third party.
+To allow the exchange of value to occur between two or more participants without the need for a trusted third participant.
 
-Pros of Plasma::
-* Scaling by providing blockchains within blockchains
+== Future improvements
+At present lightning requires that everyone is cooperating at all times, everyone is enforcing their ownership during each stage of the time lock process. At present doing nothing (not being available) puts a participant at a dissadvantage.
 
-Cons of Plasma::
-* Having to publish Plasma root headers to the main chain (low value - pending transactions?)
 
 = References
 [1] https://karl.tech/plasma-cash-simple-spec/
