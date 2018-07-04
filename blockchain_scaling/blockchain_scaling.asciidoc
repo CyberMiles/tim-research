@@ -121,7 +121,16 @@ Efficiency::
 We mentioned earlier that in Plasma Cash a user can be safe on the network by only watching tokens which they care about; tokens which are of value to the user. This means that a user can literally ignore the entire network aside from their own tokens. But surely the users would have to scan through millions of token IDs on the main chain in order to filter out the token IDs which they care about right? Yes, however the Sparse Merkle Trie approach cleverly organises the 32 bit IDs in a way that a user only need be on the look out for token IDs which start with the number 3 or the number 4 etc. The structure of the data type allows the user to ignore the entire set of IDs except for a tiny set (say, starting with 3) which they can then traverse. Every 32 bit ID is a new slot in the Trie.
 
 = Lightning
-Lightning is an open protocol, one which can best be described as a set of specifications or design patterns for improving the scalability of blockchains. These Basic of Lightning Technologies (BOLTS)[2]
+Lightning is an open protocol, one which can best be described as a set of specifications or design patterns for improving the scalability of blockchains. The Basics of Lightning Technologies (BOLTS) are defined inside separate specification documents[2]. These documents include specifications around transactions, routing and payment encoding, to name a few.
+
+== Lightning Apps
+The BOLTS are designed to guide developers with their own concrete software implementations of Lightning Applications (lapps). There are many lapps available today [3].
+
+= Conclusion
+Both, base layer protocol and second layer protocol, solutions to blockchain scaling are in their infancy (in the experimental research and development phase). 
+
+== Complimentary
+Whilst in theory base layer solutions such as Ethereum's Sharding are said to be complementary to second layer solutions such as Ethereum's Minimum Viable Plasma implementation. In theory it can also be said that there are potential issues between the interoprability of base and second layer solutions. Consider the following scenario. A user has 80% of their coins inside Lightning or Plasma. The main chain undergoes a hard fork. What coins will the user receive on the forked network? Similarly, in the case of a hard spoon (Cosmos) or a freeze (EOS) what coins will an off-chain (Plasma or Lightning) user be airdropped? This is an interesting question because ownership in a side chain or state channel is not reflected on the main chain at a given point in time.
 
 
 Pros of Plasma::
@@ -133,3 +142,4 @@ Cons of Plasma::
 = References
 [1] https://karl.tech/plasma-cash-simple-spec/
 [2] https://github.com/lightningnetwork/lightning-rfc
+[3] https://dev.lightning.community/lapps/
