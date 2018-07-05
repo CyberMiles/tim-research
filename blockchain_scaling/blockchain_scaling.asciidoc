@@ -123,6 +123,15 @@ We mentioned earlier that in Plasma Cash a user can be safe on the network by on
 = Lightning
 Lightning is an open protocol, one which can best be described as a set of specifications or design patterns for improving the scalability of blockchains. The Basics of Lightning Technologies (BOLTS) are defined inside separate specification documents[2]. These documents include specifications around transactions, routing and payment encoding, to name a few.
 
+== Tx Fee
+costPerTx = (2*onChainFee)/nTxs
+For example if the onchain cost per transaction was at $3.00, the cost for one, two, six and twelve transactions on the lightning network would be as follows
+$6.00 = (2*3)/1
+$3.00 = (2*3)/2
+$1.00 = (2*3)/6
+$0.50 = (2*3)/12
+Lightning is cheaper than the main chain transactions IF it is used more than twice
+
 == Lightning Apps
 The BOLTS are designed to guide developers with their own concrete software implementations of Lightning Applications (lapps). There are many lapps available today [3].
 
@@ -134,7 +143,7 @@ Whilst in theory base layer solutions such as Ethereum's Sharding are said to be
 == Criteria
 There are criteria which a second layer lightning solution must meet in order to be a valid solution to blockchain scalability
 
-First - transaction malleability
+First - the ability to verify the desired minimum age of a specific spendable output being spent as part of a transaction. Functionality which causes this transaction not to be selected for inclusion in a block unless the transaction's specific spendable output exceeds the desired CHECKSEQUENCEVERIFY minimum age. The age of the output is not in "absolute" blockheight or blocktime, but rather in "relative" blockheight or blocktime. This means that CHECKSEQUENCEVERIFY provides something functionally similar to retroactive invalidation, in a dynamic/relative setting. Lightning network essentially provides a delayed or phased pathway for exchanging value. The recipient of funds shares a secret backwards up the pathway. As each of the participants up the path receive the secret they are able to transfer the funds downstream on the pathway (towards the recipient). Each hop up the path occurs in a deliberate time window. 
 
 Second - the ability to support multisig smart contracts
 
@@ -143,7 +152,7 @@ Third - the ability to support timebased locks
 Fourth - that the implementation does not increase the attack surface
 
 == Goal
-To allow the exchange of value to occur between two or more participants without the need for a trusted third participant
+Essentially the exact same as Bitcoin; to allow the exchange of value to occur between two or more participants without the need for a trusted third participant. Remembering though, that the transactions in the lightning state channel are actually Bitcoin transactions; the final lightning state channel state (settlement or exit) being executed on the blockchain.
 
 == Rationale
 A participant must deliver on their obligation/promise to deliver value, otherwise that same participant is not able to receive the value which was obligated/promised to them.
