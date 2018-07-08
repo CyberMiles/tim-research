@@ -57,17 +57,17 @@ Rewards::
 
 The reward incentivises all users to send a challenge transaction, in the event that they see any malicious activity.
 Alice's client will notice bad behaviour by default (because it is watching its token balance; similarly to how we remember how much money is in our wallet when shopping - we notice when something does not seem right).
-Alice, or anyone/everyone incentivized to monitor malicious activity, can provide a challenge transaction BEFORE the challenge period is over. This may be up to, say, 1 week. Remember that Plasma is only a design spec, so the length of this challenge period depends entirely on your implementation.
+Alice, or anyone/everyone incentivized to monitor malicious activity, can provide a challenge transaction BEFORE the challenge period is over. This may take up to 2 weeks. Remember that Plasma is only a design spec, so the length of this challenge period depends entirely on your implementation.
 
 The main chain knows the truth::
 
-The main Ethereum blockchain knows the truth, but will not actively investigate every tiny detail unless provided with a challenge transaction. If Bob (who initiated the exit) is lying about how many tokens he has on the Plasma chain, Alice's challenge transaction (during the challenge period) will quickly be verified by the main chain. This will result in Bob's exit request being cancelled and Bob's exit request security deposit being rewarded to Alice (for providing a correct and truthful challenge request).
+The main Ethereum blockchain knows the truth, but will not actively investigate every tiny detail unless provided with a challenge transaction. If Bob (who initiated the exit) is lying about how many tokens he has on the Plasma chain, Alice's challenge transaction (during the challenge period) will quickly be verified by the main chain. This will result in Bob's exit request being cancelled, whereby Bob's exit request's security deposit will be rewarded to Alice (for providing a correct and truthful challenge request).
 
 === How does Plasma work, in a bit more detail?
 
 How does the main chain know the truth::
 
-Perhaps one of the most interesting points about Plasma is it does not keep a record of state changes (like the Ethereum main chain). In the case of a dispute (Bob or Alice lying about how much money they gave each other during their time together on the Plasma chain) the Plasma implementation performs the following exceptionally intelligent and simple move. It checks all transactions on the Plasma chain starting with the "oldest first". This "oldest first" transaction ordering check is a key component of the exit request; the process starts from the start and as soon as the evidence of transaction history is aligned with someone who provided a truthful challenge request, that person is rewarded, the thief is punished and the Plasma chain is closed. Essentially all money is returned to its rightful owner by the Plasma smart contract.
+Perhaps one of the most interesting points about Plasma is that it does not keep a record of state changes (like the Ethereum main chain does). In the case of a dispute (Bob or Alice lying about how much money they gave each other during their time together on the Plasma chain) the Plasma implementation performs the following exceptionally intelligent and simple move. It checks all transactions on the Plasma chain starting with the "oldest first". This "oldest first" transaction ordering check is a key component of the exit request; the process starts from the start and as soon as the evidence of transaction history is aligned with someone who provided a truthful challenge request, that person is rewarded, the thief is punished and the Plasma chain is closed. Essentially all money is returned to its rightful owner by the Plasma smart contract.
 
 ==== MVP
 
@@ -75,7 +75,7 @@ One of the most promising designs was the Minimum Viable Plasma (MVP). In this d
 
 ==== Plasma Cash
 
-The most recent, and perhaps the most promising design at the moment is the Blockchain @ Berkley team's version of Plasma MVP called Plasma Cash. https://github.com/FourthState/plasma-research/blob/master/PlasmaCash/PlasmaCash.md#review[Plasma Cash] "introduces non-fungible assets onto the plasma chain to allow for the sharded client-side validation". Plasma Cash has simplified the client side operation and essentially removed the two issues which we mentioned above (mass exit vulnerability & TPS limit). Plasma Cash utilizes the https://github.com/cosmos/cosmos-sdk[Cosmos SDK], a platform for building multi-asset Proof-of-Stake (PoS) blockchains.
+Another design pattern by the Blockchain @ Berkley team was their own version of Plasma MVP called Plasma Cash. https://github.com/FourthState/plasma-research/blob/master/PlasmaCash/PlasmaCash.md#review[Plasma Cash] "introduces non-fungible assets onto the plasma chain to allow for the sharded client-side validation". Plasma Cash has simplified the client side operation and essentially removed the two issues which we mentioned above (mass exit vulnerability & TPS limit). Plasma Cash utilizes the https://github.com/cosmos/cosmos-sdk[Cosmos SDK], a platform for building multi-asset Proof-of-Stake (PoS) blockchains.
 
 The Blockchain @ Berkley GitHub has a separate repository for both a https://github.com/FourthState/plasma-mvp-rootchain[Plasma rootchain] and a https://github.com/FourthState/plasma-mvp-sidechain[Plasma sidechain]. The root chain documentation can be found at https://github.com/FourthState/plasma-mvp-rootchain/blob/master/docs/rootchainFunctions.md[this link]. Another implementation of Plasma Cash is the one by https://github.com/omisego/plasma-cash[OmiseGO].
 
@@ -98,7 +98,7 @@ Bloom filters provide certainty in relation to proof of non-inclusion.
 
 Each block in the Plasma chain publishes its own Merkle root to the main chain. What this means is that essentially hundreds or thousands of transactions can occur on the Plasma chain, yet only a minuscule amount of information (relative to the complete transaction history) is actually stored on the main chain. Think of the Merkle root as a proof of inclusion.
 
-"This root can either be a merklized list, or a merkle patricia tree. In the merklized list, each index of the leaf nodes corresponds to the token ID." [1]
+"This root can either be a merklized list, or a merkle patricia tree. In the merklized list, each index of the leaf nodes corresponds to the token ID." [2]
 
 === Merkle Tries
 
@@ -129,7 +129,7 @@ State Channels and Plasma both exist to improve the scalability of blockchains, 
 Plasma also has a participant set, and in addition, a validator set. Unlike a State Channel, Plasma actually publishes its block headers to the main chain. The Plasma block headers provide a mechanism for the main chain to prove or disprove dishonest behaviour; in the event that someone issues a challenge. Under normal (honest) operating conditions the main chain does not play a role (other than receiving Plasma block headers). In short, Plasma design patterns allow for external participants to partake in interactive games (rewarding those who successfully challeng dishonest behaviour), whereas state channels are designed to be a real-time exchange of consent between only the participants who are exchanging value.
 
 = Lightning
-Lightning is an open protocol, one which can best be described as a set of specifications or design patterns for improving the scalability of blockchains. The Basics of Lightning Technologies (BOLTS) are defined inside separate specification documents[2]. These documents include specifications around transactions, routing and payment encoding, to name a few.
+Lightning is an open protocol, one which can best be described as a set of specifications or design patterns for improving the scalability of blockchains. The Basics of Lightning Technologies (BOLTS) are defined inside separate specification documents[3]. These documents include specifications around transactions, routing and payment encoding, to name a few.
 
 == Tx Fee
 
@@ -148,7 +148,7 @@ $0.50 = (2*3)/12
 Lightning is cheaper than the main chain transactions IF it is used more than twice
 
 == Lightning Apps
-The BOLTS are designed to guide developers with their own concrete software implementations of Lightning Applications (lapps). There are many lapps available today [3].
+The BOLTS are designed to guide developers with their own concrete software implementations of Lightning Applications (lapps). There are many lapps available today [4].
 
 == Complimentary
 Whilst in theory base layer solutions such as Ethereum's Sharding are said to be complementary to second layer solutions such as Ethereum's Minimum Viable Plasma implementation. In theory it can also be said that there are potential issues between the interoprability of base and second layer solutions. Consider the following scenario. A user has 80% of their coins inside Lightning or Plasma. The main chain undergoes a hard fork. What coins will the user receive on the forked network? Similarly, in the case of a hard spoon (Cosmos) or a freeze (EOS) what coins will an off-chain (Plasma or Lightning) user be airdropped? This is an interesting question because ownership in a side chain or state channel is not reflected on the main chain at a given point in time.
@@ -178,10 +178,12 @@ At present lightning requires that everyone is cooperating at all times, everyon
 
 = References
 
-[1] https://karl.tech/plasma-cash-simple-spec/
+[1] https://github.com/ethereum/wiki/wiki/Sharding-FAQs
 
-[2] https://github.com/lightningnetwork/lightning-rfc
+[2] https://karl.tech/plasma-cash-simple-spec/
 
-[3] https://dev.lightning.community/lapps/
+[3] https://github.com/lightningnetwork/lightning-rfc
 
-[4] https://github.com/ethereum/wiki/wiki/Sharding-FAQs
+[4] https://dev.lightning.community/lapps/
+
+
