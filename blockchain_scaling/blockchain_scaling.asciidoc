@@ -153,29 +153,6 @@ The BOLTS are designed to guide developers with their own concrete software impl
 == Complimentary
 Whilst in theory base layer solutions such as Ethereum's Sharding are said to be complementary to second layer solutions such as Ethereum's Minimum Viable Plasma implementation. In theory it can also be said that there are potential issues between the interoprability of base and second layer solutions. Consider the following scenario. A user has 80% of their coins inside Lightning or Plasma. The main chain undergoes a hard fork. What coins will the user receive on the forked network? Similarly, in the case of a hard spoon (Cosmos) or a freeze (EOS) what coins will an off-chain (Plasma or Lightning) user be airdropped? This is an interesting question because ownership in a side chain or state channel is not reflected on the main chain at a given point in time.
 
-= Designing second layer blockchain scaling solution 
-
-== Criteria
-There are criteria which a second layer lightning solution must meet in order to be a valid solution to blockchain scalability
-
-First - the ability to verify the desired minimum age of a specific spendable output being spent as part of a transaction. Functionality which causes this transaction not to be selected for inclusion in a block unless the transaction's specific spendable output exceeds the desired CHECKSEQUENCEVERIFY minimum age. The age of the output is not in "absolute" blockheight or blocktime, but rather in "relative" blockheight or blocktime. This means that CHECKSEQUENCEVERIFY provides something functionally similar to retroactive invalidation, in a dynamic/relative setting. Lightning network essentially provides a delayed or phased pathway for exchanging value. The recipient of funds shares a secret backwards up the pathway. As each of the participants up the path receive the secret they are able to pull the funds from the participant on the pathway behind them (towards the recipient). Each hop up the path occurs in a deliberate time window. 
-
-Second - the ability to support multisig smart contracts
-
-Third - the ability to support timebased locks
-
-Fourth - that the implementation does not increase the attack surface
-
-== Goal
-Essentially the exact same as Bitcoin; to allow the exchange of value to occur between two or more participants without the need for a trusted third participant. Remembering though, that the transactions in the lightning state channel are actually Bitcoin transactions; the final lightning state channel state (settlement or exit) being executed on the blockchain.
-
-== Rationale
-A participant must deliver on their obligation/promise to deliver value, otherwise that same participant is not able to receive the value which was obligated/promised to them.
-
-== Future improvements
-At present lightning requires that everyone is cooperating at all times, everyone is enforcing their ownership during each stage of the time lock process. At present doing nothing (not being available) puts a participant at a dissadvantage.
-
-
 = References
 
 [1] https://github.com/ethereum/wiki/wiki/Sharding-FAQs
