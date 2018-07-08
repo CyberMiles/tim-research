@@ -129,6 +129,7 @@ State Channels and Plasma both exist to improve the scalability of blockchains, 
 Plasma also has a participant set, and in addition, a validator set. Unlike a State Channel, Plasma actually publishes its block headers to the main chain. The Plasma block headers provide a mechanism for the main chain to prove or disprove dishonest behaviour; in the event that someone issues a challenge. Under normal (honest) operating conditions the main chain does not play a role (other than receiving Plasma block headers). In short, Plasma design patterns allow for external participants to partake in interactive games (rewarding those who successfully challeng dishonest behaviour), whereas state channels are designed to be a real-time exchange of consent between only the participants who are exchanging value.
 
 = Lightning
+
 Lightning is an open protocol, one which can best be described as a set of specifications or design patterns for improving the scalability of blockchains. The Basics of Lightning Technologies (BOLTS) are defined inside separate specification documents[3]. These documents include specifications around transactions, routing and payment encoding, to name a few.
 
 == Tx Fee
@@ -148,9 +149,15 @@ $0.50 = (2*3)/12
 Lightning is cheaper than the main chain transactions IF it is used more than twice
 
 == Lightning Apps
+
 The BOLTS are designed to guide developers with their own concrete software implementations of Lightning Applications (lapps). There are many lapps available today [4].
 
+== Transferring ETH and ERC20 tokens using Lightning
+
+Projects like Connext [5] are building Solidity contracts to facilitate the transfer of ETH and ERC20 between account addresses.
+
 == Complimentary
+
 Whilst in theory base layer solutions such as Ethereum's Sharding are said to be complementary to second layer solutions such as Ethereum's Minimum Viable Plasma implementation. In theory it can also be said that there are potential issues between the interoprability of base and second layer solutions. Consider the following scenario. A user has 80% of their coins inside Lightning or Plasma. The main chain undergoes a hard fork. What coins will the user receive on the forked network? Similarly, in the case of a hard spoon (Cosmos) or a freeze (EOS) what coins will an off-chain (Plasma or Lightning) user be airdropped? This is an interesting question because ownership in a side chain or state channel is not reflected on the main chain at a given point in time.
 
 = References
@@ -162,5 +169,7 @@ Whilst in theory base layer solutions such as Ethereum's Sharding are said to be
 [3] https://github.com/lightningnetwork/lightning-rfc
 
 [4] https://dev.lightning.community/lapps/
+
+[5] https://github.com/ConnextProject/ethcalate-bidirectional-erc20-single
 
 
