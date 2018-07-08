@@ -1,8 +1,27 @@
 [Blockchain Scaling]
+= Blockchain scaling 
+
+"Currently, in all blockchain protocols each node stores all states and processes all transactions. This provides a large amount of security, but greatly limits scalability: a blockchain cannot process more transactions than a single node can"[4].
+
+= The scalability trilemma
+
+The scalability trilemma claims that blockchain systems can only at most have two of the following three properties a) Decentralization b) Scalability and c) Security.
+
+= Blockchain scaling in the base layer protocol
+
+There are a few trivial ways to increase blockchain scalability in the base layer protocol. Unfortunately, whilst each of these "easy" solutions could improve scalability, they also introduce significant risks or negative effects on other parts of the blockchain infrastructure as described in the aforementioned scalability trilemma.
+
+== Sharding
+
+Sharding is an approach to solving blockchain scalability at the base layer protocol. Sharding aims to constantly split the state and history of the entire blockchain into K = O(n / c) partitions called "shards". In this formula K represents a shard, O represents complexity, n represents the size of the ecosystem (proportional to state size, transaction load and so forth) and c represents the computational resources (computation, bandwidth and storage). The sharding design is complex and faces many challenges. A base layer solution as complex as this could also have an impact on the systems consensus mechanism and as such, all participants could be required to participate in a coordinated software update as a result of the hard fork. For this and many other reasons, a base layer protocol solution to blockchain scalability will take a considerable amount of time to become production ready. But what about creating a solution using an off-chain (second layer approach)?
+
+= Blockchain scaling in the second layer
 
 = Plasma
 
-Lightning and Plasma are in the realm of "State Channels" whereby off-chain messages/transactions between exclusive parties (literally taking a load off the main chain) have an overall effect on the main chain.
+Plasma is a second layer blockchain scaling solutions.  
+
+TODOwhereby off-chain transactions between exclusive parties (literally taking a load off the main chain) have an overall effect on the main chain.
 
 Plasma has two main components::
 * a) verification and 
@@ -175,3 +194,5 @@ At present lightning requires that everyone is cooperating at all times, everyon
 [2] https://github.com/lightningnetwork/lightning-rfc
 
 [3] https://dev.lightning.community/lapps/
+
+[4] https://github.com/ethereum/wiki/wiki/Sharding-FAQs
