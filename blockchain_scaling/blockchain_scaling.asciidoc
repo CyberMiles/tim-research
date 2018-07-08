@@ -19,23 +19,7 @@ Sharding is an approach to solving blockchain scalability at the base layer prot
 
 = Plasma
 
-Plasma is a second layer blockchain scaling solutions.  
-
-TODOwhereby off-chain transactions between exclusive parties (literally taking a load off the main chain) have an overall effect on the main chain.
-
-Plasma has two main components::
-* a) verification and 
-* b) computation
-
-We will cover these components in more depth below. Firstly, a bit of background.
-
-== Background - State Channels vs Plasma
-State Channels and Plasma both exist to improve the scalability of blockchains, by taking transactions off-chain. The key differences between State Channels and Plasma are as follows. A single State Channel is made up of a set of participants. Those in this "participant set" exchange value amongst each other via ongoing (step-by-step/real-time) unanimous consent. Nothing is published to the main chain until participants are ready to exit and State Channel (at the end).
-Plasma also has a participant set, and in addition, a validator set. Unlike a State Channel, Plasma actually publishes its block headers to the main chain. The Plasma block headers provide a mechanism for the main chain to prove or disprove dishonest behaviour; in the event that someone issues a challenge. Under normal (honest) operating conditions the main chain does not play a role (other than receiving Plasma block headers). In short, Plasma design patterns allow for external participants to partake in interactive games (rewarding those who successfully challeng dishonest behaviour), whereas state channels are designed to be a real-time exchange of consent between only the participants who are exchanging value.
-
-== Plasma: Blockchains within blockchains
-
-Plasma is a design pattern which allows you to create your own scalable blockchains (for example allowing blockchains to exist within blockchains) whilst still enjoying the advantages of the security (via the consensus mechanism) which is provided by the main chain. Put simply Ethereum's Plasma implementation allows Ethereum to lend the proven security of its main chain to child chains. Those who are exchanging value on the child chain can exit to the parent chain if they feel that anything other than normal honest behaviour is happening on the child chain.  
+Plasma is a second layer blockchain scaling solutions whereby off-chain transactions between exclusive parties can occur. Plasma is a design pattern which allows you to create your own scalable blockchains (for example allowing blockchains to exist within blockchains) whilst still enjoying the advantages of the security (via the consensus mechanism) which is provided by the main chain. Put simply Ethereum's Plasma implementation allows Ethereum to lend the proven security of its main chain to Plasma child chains. Those who are exchanging value on the Plasma child chain can exit to the parent chain if they feel that anything other than normal honest behaviour is happening on the child chain.  
 
 === Scalability
 
@@ -138,6 +122,11 @@ Imagine that all tokens have to live in slots. When tokens on a Plasma chain are
 
 Efficiency::
 We mentioned earlier that in Plasma Cash a user can be safe on the network by only watching tokens which they care about; tokens which are of value to the user. This means that a user can literally ignore the entire network aside from their own tokens. But surely the users would have to scan through millions of token IDs on the main chain in order to filter out the token IDs which they care about right? Yes, however the Sparse Merkle Trie approach cleverly organises the 32 bit IDs in a way that a user only need be on the look out for token IDs which start with the number 3 or the number 4 etc. The structure of the data type allows the user to ignore the entire set of IDs except for a tiny set (say, starting with 3) which they can then traverse. Every 32 bit ID is a new slot in the Trie.
+
+= Plasma vs State Channels
+
+State Channels and Plasma both exist to improve the scalability of blockchains, by taking transactions off-chain. The key differences between State Channels and Plasma are as follows. A single State Channel is made up of a set of participants. Those in this "participant set" exchange value amongst each other via ongoing (step-by-step/real-time) unanimous consent. Nothing is published to the main chain until participants are ready to exit and State Channel (at the end).
+Plasma also has a participant set, and in addition, a validator set. Unlike a State Channel, Plasma actually publishes its block headers to the main chain. The Plasma block headers provide a mechanism for the main chain to prove or disprove dishonest behaviour; in the event that someone issues a challenge. Under normal (honest) operating conditions the main chain does not play a role (other than receiving Plasma block headers). In short, Plasma design patterns allow for external participants to partake in interactive games (rewarding those who successfully challeng dishonest behaviour), whereas state channels are designed to be a real-time exchange of consent between only the participants who are exchanging value.
 
 = Lightning
 Lightning is an open protocol, one which can best be described as a set of specifications or design patterns for improving the scalability of blockchains. The Basics of Lightning Technologies (BOLTS) are defined inside separate specification documents[2]. These documents include specifications around transactions, routing and payment encoding, to name a few.
