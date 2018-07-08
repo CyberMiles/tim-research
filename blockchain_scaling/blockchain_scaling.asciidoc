@@ -176,6 +176,17 @@ A participant’s privilege to fetch nonces is relative to the total amount of p
 
 The design of Lightning provides trust-less blockchain functionality off-chain. Its use of CHECKSEQUENCEVERIFY to measure relative minimum age revolutionises off-chain consensus and finality. 
 
+== Comparing the state of blockchain's base layer with the state of the second layer implementation
+
+A hard-spoon takes the account state from a main chain (like Ethereum) and creates a genesis state for a new chain. This process of freezing/snapshotting/spooning allows a new blockchain to inherit the main chain’s account balances, “as at” a particular point in time. Real world examples of this would be EOS and Cosmos.
+
+With the advent of state channels and side chains, how could we ensure that the state of a given second layer implementation (as at a particular point in time) is reflected in the snapshot/hard-spoon?
+
+For example, in the event that we are able to transfer ERC20 tokens inside state channels [1], how could we ensure the accuracy of token Airdrops; when tokens are tied up in state channels and not accurately visible in the main chain’s state?
+
+Does the hard-spoon process need to evolve or can the second layer solutions provide their state as required?
+
+If neither of these are achievable, will well known hard-spoons which offer significant value have an effect on activity within second layer solutions? Might we see mass exits to the main chain during snapshots/hard-spoons?
 
 
 = References
