@@ -160,6 +160,24 @@ Projects like Connext [5] are building Solidity contracts to facilitate the tran
 
 Whilst in theory base layer solutions such as Ethereum's Sharding are said to be complementary to second layer solutions such as Ethereum's Minimum Viable Plasma implementation. In theory it can also be said that there are potential issues between the interoprability of base and second layer solutions. Consider the following scenario. A user has 80% of their coins inside Lightning or Plasma. The main chain undergoes a hard fork. What coins will the user receive on the forked network? Similarly, in the case of a hard spoon (Cosmos) or a freeze (EOS) what coins will an off-chain (Plasma or Lightning) user be airdropped? This is an interesting question because ownership in a side chain or state channel is not reflected on the main chain at a given point in time.
 
+= Next steps
+
+== Tim to add his diagrams which illustrate the nuances of Plasma and Lightning.
+
+== Future design
+
+There is a reoccurring theme around the availability problem (block withholding problem) in Plasma. In addition, while there are a lot of clever designs and great ideas about exit games, it appears that the size and complexity of these smart contracts is growing to a potentially untenable level. 
+
+Also the conversation about context (Solidity’s DELEGATECALL vs Vyper’s CALL) in a game’s smart contract is also very interesting. It seems that the context element required to engage in interactive games on the main chain has been removed by safer smart contract languages which aim to provide protection and security.
+
+The future design can include a network activity nonce. The network activity nonce must be fetched before any and all activity. By fetching an activity nonce, the participant is signaling and declaring their intent to perform that particular action/transaction/validation. In the event that the participant does not perform that certain network activity (due to deliberate or accidental circumstances) the design has the ability to annul that specific queued network activity and nonce.
+
+A participant’s privilege to fetch nonces is relative to the total amount of participants, in a way which is fair. Of course fetching and withholding will sharply reduce a participant’s fetching privileges (relative to other participants). Alternatively, fetching and correctly executing could increase a participant’s privileges.
+
+The design of Lightning provides trust-less blockchain functionality off-chain. Its use of CHECKSEQUENCEVERIFY to measure relative minimum age revolutionises off-chain consensus and finality. 
+
+
+
 = References
 
 [1] https://github.com/ethereum/wiki/wiki/Sharding-FAQs
