@@ -244,7 +244,18 @@ Below is an list of Ethereum related second-layer side-chain designs which are c
 
 Please note: The list is in alphabetical order (based on the GitHub account which houses the code)
 
+= Design work required on Plasma
 
+== Users can only transfer funds to other users on the same Plasma chain. 
+In contrast, Lightning potentially offers routing which means that anyone can pay anyone, regardless of what channel they are in.
+
+== Exiting a Plasma side chain takes up to 2 weeks
+
+== Transferring value to someone who exists inside a Plasma chain actually creates a scalability problem. 
+For example joining the Plasma chain and then transferring the funds and then exiting back to the main chain is more complex and time consuming than just transferring the value on the main chain in the first place. 
+
+== Very limited use cases - need to have the correct change 
+In the case of Plasma Cash, not being able to split value means that if a user with a single 10 token UTXO wants to send 7 tokens to another user. The recipient of the 7 tokens must provide 3 tokens change. If the recipient does not have 3 tokens they can not do business. Both the sender and the recipient have to have the exact money which is not practicable in a real setting as this would cause each user to deliberately store a kitty of change just in case they need to provide change (this means that users are creating more transactions, in anticipation, than would ordinarily have to if they were just operating on the main chain where value can be split to any denomination)
 
 
 = References
