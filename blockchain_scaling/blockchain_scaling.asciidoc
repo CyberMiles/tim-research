@@ -88,11 +88,33 @@ A Plasma Cash transaction takes on the following form.
 [[prev_hash, prev_block, (target_block?), token_id, new_owner], signature]
 ----
 
-Users/clients can simply watch the main chain logs; looking out for any mention of their particular token ID (being part of a transaction in a block) on the main chain. If there is no mention of their particular token ID then they can rest assured that nobody is transferring their value. This new and improved client side validation can be performed using very low power/cheap resources such as a simple laptop computer. How is this possible, you ask? With Bloom filters and Merkle Tries. 
+In Plasma Cash, transactions which are spending a coin need to be included in a specific location (in relation to the coin's id). This is so that the users do not have to download all of the Plasma chain. Instead they just have to watch that specific location in the merkle trie which relates to a coin which they alone care about. This is powerful in terms of scalability but this also creates what could be considered a draw back. Plasma Cash requires that each coin (with its unique id) is kept whole. Coins can not be split. For this reason Plasma Cash works like money in the real world where you can not snap a $1 coin in half and send it to 2 different people as payment for 2 separate 50 cent items. The power of this system comes into play when you (the coin owner) wants to check that your coin has no issues. If you know that you accepted the coin at block number 100 and you can see that your coins index in the merkle trie only has empty data, this provides a proof called "proof of non existance". 
+
+===== Performance and efficiency in relation to storage
+The Plasma MVP design has the overhead of n * t whereby n is the Plasma blocksize and t is a tick (in terms of elapsed time; think of t as counter for each new block i.e. number of elapsed blocks). Plasma Cash present efficiency of approximately c * t * log(n / c), where c is how many coins (with unique ids) you have (and want to watch).
+
+```
+Consider the following 
+coins held, c = 20
+number of blocks, t = 200
+plasma block size, n = 1000 bytes
+```
+
+```
+*Plasma MVP*
+n * t
+1000 * 200 = 200KB
+```
+
+```
+*Plasma Cash*
+c * t * log(n / c)
+20 * 200 * log(1000 / 20) = 6.795KB
+``` 
 
 === Bloom Filters
 
-Bloom filters provide certainty in relation to proof of non-inclusion. 
+We mentioned proof of non existence before, the software mechanism which provides this efficiently is known as a bloom filter. Bloom filters can provide certainty in relation to proof of non-inclusion. In contrast, Merkle tries provide certainty in relation to proof of inclusion. We will talk about Merkle tries shortly.
 
 === How does Plazma work, in relation to the main chain?
 
