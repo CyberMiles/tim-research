@@ -18,17 +18,25 @@ Docker is available as both a Community Edition (CE) and an Enterprise Edition (
 ### CyberMiles node via Docker
 CyberMiles provides a tutorial of how to run a [CyberMiles node using Docker](https://www.litylang.org/getting_started/#start-a-cybermiles-node). 
 
-# Individual tools
+# Blockchain specific tools
 As previously mentioned, there are various components of blockchain infrastructure. Let us look at some of these separately. In all good software design, separate components are logically separated and made available in a modular fashion. This allows developers to work on the separate components without side-effects or overlapping efforts. In addition this allows for developers to trial, develop and test new tools independantly in each of the areas.
 
-## Front-end
+## Front-end - Ethereum
 Your DApps front-end user interface(UI) and its usability are a key component of its success. There are products like [Drizzle](https://truffleframework.com/drizzle) which provide a host of front-end libraries which can make writing DApp UIs a lot easier and more reliable.
 
-## Smart contract
+## Smart contracts - Ethereum
 Perhaps the most popular development environment for blockchains using the Ethereum Virtual Machine (EVM) is [Truffle](https://truffleframework.com/truffle).
 
-## Blockchain backend
+## Back-end - Ethereum
 A personal blockchain allows you to execute commands, perform tests and inspect state at no cost. [Ganache](https://truffleframework.com/ganache) provides a framework for performing these tasks, and even controlling behaviour of a personal Ethereum style blockchain.
+
+# Universal tools
+
+## Front-end
+
+## Smart contracts
+
+## Back-end
 
 
 # Bringing it all together
