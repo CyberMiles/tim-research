@@ -8,10 +8,11 @@ When we refer to nodes in a given decentralized blockchain network, we are refer
 
 Obviously when writing a DApp it would be ideal to have the most realistic representation of the various components of blockchain infrastructure. For example, it would be ideal if your locally developed DApp did not have to be modified to run on a public tesnet or on the mainnet. Fortunately, most components of blockchain infrastructure such as block production, transaction validation and so forth can be simulated on local blockchain instances. There are a few different ways to achieve this, so let us take a look at the various options.
 
-# Container tools
+# System-wide container tools
+System-wide containers encapsulate an entire software environment so that it can be run on a host computer. 
 
 ## Docker
-[Docker](https://www.docker.com/) containers encapsulate an entire software environment so that it can be run on a host computer. For example docker allows you to run an entire pre-assembled blockchain implementation on your local computer with very little fuss. Pre-assembled Docker containers are ephemeral; they can be started and stopped over and over with out the need to repeatedly perform traditional installation, compilation and configuration tasks. When using Docker containers, the entire application, as well as all of its dependencies and configuration are all stored in its isolated container.
+For example [Docker](https://www.docker.com/) allows you to run an entire pre-assembled blockchain implementation on your local computer with very little fuss. Pre-assembled Docker containers are ephemeral; they can be started and stopped over and over without the need to repeatedly perform traditional installation, compilation and configuration tasks. When using Docker containers, the entire application, as well as all of its dependencies and configuration are all stored in its isolated container.
 
 Docker is available as both a Community Edition (CE) and an Enterprise Edition (EE). Docker CE can be installed on [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [MacOS](https://docs.docker.com/docker-for-mac/install/) and [Windows](https://docs.docker.com/docker-for-windows/install/).
 
@@ -19,7 +20,9 @@ Docker is available as both a Community Edition (CE) and an Enterprise Edition (
 CyberMiles provides a tutorial of how to run a [CyberMiles node using Docker](https://www.litylang.org/getting_started/#start-a-cybermiles-node). 
 
 # Blockchain specific tools
-As previously mentioned, there are various components of blockchain infrastructure. Let us look at some of these separately. In all good software design, separate components are logically separated and made available in a modular fashion. This allows developers to work on the separate components without side-effects or overlapping efforts. In addition this allows for developers to trial, develop and test new tools independantly in each of the areas.
+As previously mentioned, there are various components of blockchain infrastructure. There are tools which cater for your DApps front-end, back-end and smart contract development.
+
+In all good software design, separate components are logically separated and made available in a modular fashion. This allows developers to work on the separate components without side-effects or overlapping efforts. In addition, modularity allows for developers to trial, develop and test new tools independantly for the various components of blockchain infrastructure. Here are some Ethereum-specific tools.
 
 ## Front-end - Ethereum
 Your DApps front-end user interface(UI) and its usability are a key component of its success. There are products like [Drizzle](https://truffleframework.com/drizzle) which provide a host of front-end libraries which can make writing DApp UIs a lot easier and more reliable.
@@ -30,9 +33,19 @@ Perhaps the most popular development environment for blockchains using the Ether
 ## Back-end - Ethereum
 A personal blockchain allows you to execute commands, perform tests and inspect state at no cost. [Ganache](https://truffleframework.com/ganache) provides a framework for performing these tasks, and even controlling behaviour of a personal Ethereum style blockchain.
 
+## Front-end - EOS
+[EOSJS](https://github.com/EOSIO/eosjs)
+
+## Back-end - EOS
+[Demux](https://github.com/EOSIO/demux-js) is a queriable datastore which allows blockchain state to be queried by front-end clients without having to interact with the chain.
+
 # Universal tools
+Mobile and web applications 
 
 ## Front-end
+
+### React Native
+React Native supports WebSockets.
 
 ## Smart contracts
 
