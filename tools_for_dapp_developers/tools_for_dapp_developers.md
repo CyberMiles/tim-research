@@ -1,4 +1,4 @@
-# Tools for DApp Developers
+# Tools for DApp Developers - IN PROGRESS ...
 
 Running a full node of any blockchain implementation requires a considerable amount of work. Aside from downloading, compiling, configuring and so forth, there are also network, routing and security tasks to be performed when running a full node.
 
