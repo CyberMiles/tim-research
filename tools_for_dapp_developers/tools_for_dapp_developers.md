@@ -31,7 +31,10 @@ Your DApps front-end user interface(UI) and its usability are a key component of
 [EOSJS](https://github.com/EOSIO/eosjs)
 
 ### React Native (Universal)
-React Native supports WebSockets.
+React Native allows you to put together the fundamental UI building blocks of iOS and Android using Javascript and React. Importantly, React Native supports WebSockets.
+
+### Xamarin (Universal)
+
 
 ## Back-end
 
