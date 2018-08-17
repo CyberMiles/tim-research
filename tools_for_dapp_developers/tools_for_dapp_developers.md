@@ -9,7 +9,7 @@ When we refer to nodes in a given decentralized blockchain network, we are refer
 Obviously when writing a DApp it would be ideal to have the most realistic representation of the various components of blockchain infrastructure. For example, it would be ideal if your locally developed DApp did not have to be modified to run on a public tesnet or on the mainnet. Fortunately, most components of blockchain infrastructure such as block production, transaction validation and so forth can be simulated on local blockchain instances. There are a few different ways to achieve this, so let us take a look at the various options.
 
 # System-wide container tools
-System-wide containers encapsulate an entire software environment so that it can be run on a host computer. 
+System-wide containers encapsulate an entire software environment so that it can be run on a host computer. This next section introduces Docker, a system-wide container tool. You will notice that the following sections discuss (from an application level) both blockchain specific tools and also universal tools. The point being, any combination of individual tools (at the application level) can be combined into a single Docker container for use. 
 
 ## Docker
 For example [Docker](https://www.docker.com/) allows you to run an entire pre-assembled blockchain implementation on your local computer with very little fuss. Pre-assembled Docker containers are ephemeral; they can be started and stopped over and over without the need to repeatedly perform traditional installation, compilation and configuration tasks. When using Docker containers, the entire application, as well as all of its dependencies and configuration are all stored in its isolated container.
