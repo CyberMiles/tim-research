@@ -1,21 +1,31 @@
-# User Interfaces
-One key component of a decentralized application is its user interface. User interfaces can take the form of a native application, a web application or a low level command line implementation.
+# Tools for DApp Developers
 
-## Native Applcations
+## User Interfaces
+One key component of a decentralized application, is its user interface. User interfaces can take the form of native applications, web applications or low level command line implementations.
 
-Whilst native applications provide access to native device features like local storage, camera and so forth, they also require users to obtain the application via their phone's app store. Of course this also means that developers are required to submit the application as well as all future updates to the app store for each phone provider. For a developer it would be possible to only support a few platforms at the start, and then work up to supporting more. For example, developers could support only iOS, Android, Windows (perhaps using Xamarin tools) at the outset and then move to support macOS (desktop by creating dmg installers) as well as Linux (desktop by creating deb packages etc.). Finally developers could perhaps branch out to native Linux mobile applications (by building for mobile operating systems such as Tizen etc) if/when required. It is unclear what sort of impact the Linux Foundation's Tizen project will have; it is currently being run on a range of Samsung and other mobile brands, which looks promising.
+### Native Applcations (mobile and desktop)
 
-One advantage of the native decentralized application is that the security for accessing keys/authentication is safer; authentication can be done using biometric APIs and private keys are accessed privately as apposed to being pasted/accessed in a web browser. There are a variety of tools for creating native applications and whilst some (like Mircosoft's Xamarin) generate apps for Android, iOS and Windows they exclude all other operating systems and platforms, including the web. In short, native applications provide good functionality and security, but writing for each platform is  more expensive and complicated.
+Whilst native applications provide access to native device features like local storage, camera, accelerometer and so forth, they also require users to obtain the application via their phone's app store. Of course this also means that developers are required to submit the application as well as all future updates to the app store for each phone provider. For a developer it would be possible to only support a few platforms at the outset, and then work up to supporting more. For example, developers could support only iOS, Android, Windows (perhaps using Xamarin tools) at the outset and then move to support macOS (desktop by creating dmg installers) as well as Linux (desktop by creating deb packages etc). Finally, developers could perhaps branch out to native Linux mobile applications (by building for mobile operating systems such as Tizen etc) if/when required. It is unclear what sort of impact the Linux Foundation's Tizen project will have; it is currently being run on a range of Samsung and other mobile brands, which looks promising.
 
-## Web Applcations
+One advantage of the native decentralized application is that the security for accessing keys/authentication is safer; authentication can be done using biometric APIs and private keys are accessed privately as apposed to being pasted/accessed in a web browser. There are a variety of tools for creating native applications and whilst some (like Mircosoft's Xamarin) generate apps for Android, iOS and Windows they exclude all other operating systems and platforms, including the web. In short, native applications provide good functionality and security, but writing for each platform is more expensive and complicated.
 
-## Command line
+TODO how native applications interact with the blockchain
+Give Mist example (desktop, mobile?)
+How much storage required full vs fast etc.
+
+### Web Applcations (in-browser, cross-platform)
+Web applications, unlike specific native applications, are able to be run on any device via a web browser. Web applications are accessed remotely via a URL. Web applications, in general, are not designed to access device hardware. For example a web application has very limited access to device storage. In some cases web applications can be allowed read-only access to a file system for the purpose of uploading pictures or files etc. This is quite different to native applications which are essentially an application installed directly on the device; able to harness device hardware (camera, accellerometer, GPS read-write storage).
+
+Web applications are not able to access a blockchain directly. They can however access a blockchain via other services.
+Bridges like [MetaMask](https://metamask.io/) allow Ethereum decentralized applications to be run inside a users web browser. This means that a user can interact with an Ethereum dApp without the need to install and run the entire base layer protocol. Of course by not running a full node, users are trusting the third-party MetaMask servers as part of their interaction with the blockchain.
+
+The architecture of EOS is different to Ethereum, in that it logically separates the blockchain node software program (nodeos) from the key/wallet software program (keosd). An additional command line program (cleos) is used to perform interactions between the user, the key/wallet software and the blockchain node software.
+
+EOS has a read-only application programming interface (API) called [eosjs-api](https://github.com/EOSIO/eosjs-api) for its EOS blockchain. In relation to cross-platform in-browser web application excecution, EOS also has a general purpose javascript library called [eosjs](https://github.com/EOSIO/eosjs). eosjs can create accounts, deploy smart contracts, call smart contrancts and even sign and broadcast transactions to the EOS blockchain.
+
+### Command line (running a full node)
 
 REFERENCE Ethereum mist and compiling full nodes etc
-
-
-
-# Tools for DApp Developers - IN PROGRESS ...
 
 Running a full node of any blockchain implementation requires a considerable amount of work. Aside from downloading, compiling, configuring and so forth, there are also network, routing and security tasks to be performed when running a full node.
 
@@ -56,7 +66,7 @@ Interestingly, whilst Xamarin allows you to display HTML inside the app, Xamarin
 [EOSJS](https://github.com/EOSIO/eosjs)
 
 ### React Native (Universal)
-React Native allows you to put together the fundamental UI building blocks of iOS and Android using Javascript and React. Importantly, React Native supports WebSockets.
+React Native allows you to put together the fundamental UI building blocks of iOS and Android using Javascript and React. Importantly, React Native supports WebSockets. Also, perhaps equally as important from an open source development perspective, React Native applications can be developed using any IDE on any platform. There is no need for xcode or other specific IDEs.
 
 ## Back-end
 
