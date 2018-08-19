@@ -1,12 +1,11 @@
 # User Interfaces
+One key component of a decentralized application is its user interface. User interfaces can take the form of a native application, a web application or a low level command line implementation.
 
 ## Native Applcations
 
-Whilst native applications provide access to native device features like local storage, camera and so forth, they also require users to obtain the application via their phone's app store. Of course this also means that developers are required to submit the application as well as all future updates to the app store for each phone provider. It would be possible to only support a few platforms at the start, and then work up to supporting more. For example, developers could support only iOS, Android, Windows (perhaps using Xamarin tools) at the outset and then move to support macOS (desktop by creating dmg installers) as well as Linux (desktop by creating deb packages etc.) and finally perhaps branch out to native Linux mobile applications (by building for mobile operating systems such as Tizen etc) if/when required. It is unclear what sort of impact the Linux Foundation's Tizen project will have; currently being run on a range of Samsung and other mobile brands, which looks promising.
+Whilst native applications provide access to native device features like local storage, camera and so forth, they also require users to obtain the application via their phone's app store. Of course this also means that developers are required to submit the application as well as all future updates to the app store for each phone provider. For a developer it would be possible to only support a few platforms at the start, and then work up to supporting more. For example, developers could support only iOS, Android, Windows (perhaps using Xamarin tools) at the outset and then move to support macOS (desktop by creating dmg installers) as well as Linux (desktop by creating deb packages etc.). Finally developers could perhaps branch out to native Linux mobile applications (by building for mobile operating systems such as Tizen etc) if/when required. It is unclear what sort of impact the Linux Foundation's Tizen project will have; it is currently being run on a range of Samsung and other mobile brands, which looks promising.
 
-One advantage of the native application is that the security for accessing keys is safer; authentication can be done using biometric APIs and private keys are accessed privately as apposed to being pasted/accessed in a web browser. There are a variety of tools for creating native applications and whilst some (like Mircosoft's Xamarin) generate apps for Android, iOS and Windows they exclude all other operating systems and platforms, including the web. Native applications provide good functionality and security, but writing for each platform is  more expensive and complicated.
-
-
+One advantage of the native decentralized application is that the security for accessing keys/authentication is safer; authentication can be done using biometric APIs and private keys are accessed privately as apposed to being pasted/accessed in a web browser. There are a variety of tools for creating native applications and whilst some (like Mircosoft's Xamarin) generate apps for Android, iOS and Windows they exclude all other operating systems and platforms, including the web. In short, native applications provide good functionality and security, but writing for each platform is  more expensive and complicated.
 
 ## Web Applcations
 
@@ -46,7 +45,9 @@ As previously mentioned, there are various components of blockchain infrastructu
 Your DApps front-end user interface(UI) and its usability are a key component of its success. There are products like [Drizzle](https://truffleframework.com/drizzle) which provide a host of front-end libraries which can make writing DApp UIs a lot easier and more reliable.
 
 ### Xamarin (Universal)
-Xamarin allows you to write applications for Windows, iOS and Android
+Xamarin allows you to write applications for Windows, iOS and Android. Xamarin separates UI code from business code. The UI can be defined in one location using XAML. The Xamarin IDE takes care of the UI for iOS 6.1+, Android 4.0.3+, Windows Phone (and store) 8.1 as well as Windows 10 operating system.
+
+[Xamarin is entirely open source](https://github.com/xamarin) under MIT License.
 
 Interestingly, whilst Xamarin allows you to display HTML inside the app, Xamarin does not allow you to write a web application which can simply run in any web browser. Xamarin only writes applications for Windows, iOS and Android; ruling out all other users i.e. Linux and other operating systems.
 
