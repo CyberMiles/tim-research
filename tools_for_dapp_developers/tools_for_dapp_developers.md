@@ -27,6 +27,13 @@ Bridges like [MetaMask](https://metamask.io/) allow Ethereum decentralized appli
 
 [MyEther Wallet](https://www.myetherwallet.com/) is another interface which allows users to interact with the Ethereum blockchain. While MyEther Wallet states that no data leaves your computer/your browser, the site's disclaimer also declares that when using the service, there is always the possibility that funds could be lost if something unexpected happens.
 
+TODO discuss how Infura is the Ethereum blockchain provider for MetaMask - discuss how infura works 
+
+### TODO web3
+[web3](https://web3js.readthedocs.io/en/1.0/)
+
+TODO discuss how web3 works for local and remote blockchain interaction
+
 ### Command line (running a full node)
 
 When we refer to nodes in a given decentralized blockchain network, we are referring to individual computers, which all run the same blockchain software. This software is commonly referred to as the “base layer protocol”. Running a full node means not only downloading, compiling and running the base layer protocol software. A full node also needs to download and continually store the entire blockchain history. The Bitcoin blockchain is almost 180GB and the Ethereum blockchain is around 100GB. Blockchain base layer protocols provide a command line which can perform every task associated with that particular blockchain implementation. Everything from creating accounts, creating wallets, creating transactions, broadcasting transactions as well as backup and restore features and more are provided. 
