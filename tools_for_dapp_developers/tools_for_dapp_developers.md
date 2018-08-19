@@ -1,9 +1,11 @@
 # Tools for dApp Developers
 
 ## User Interfaces
-One key component of a decentralized application, is its user interface. An interfaces can take the form of a native application, a web application or command line program. These days most desktop, mobile and web applications offer responsive user-friendly interfaces with very good usability. But what about decentralized blockchain applications (dApps)?
+One key component of a decentralized application, is its user interface. An interfaces can take the form of a native application, a web application or command line program. These days most desktop, mobile and web applications offer responsive user-friendly interfaces with very good usability. 
 
-dApps provide usability and functionality above just sending transactions in the command line. Let's explore the possibilities of dApps. Firstly, let's compare and contrast the potential types of dApp platforms.
+But what about decentralized blockchain applications (dApps)?
+
+dApps have the potential to provide functionality and usability which far outstrips the traditional blockchain command line. The dApp ecosystem still has many limitations and trade-offs. This document compares and contrasts the different dApp platforms and dives into pressing issues of security, scalability and so forth. 
 
 ### Native Applcations (mobile and desktop)
 
