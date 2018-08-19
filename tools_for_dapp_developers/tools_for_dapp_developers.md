@@ -1,7 +1,7 @@
-# Tools for dApp Developers
+# Decentralized blockchain applications (dApps) - Draft in progress ...
 
-## User Interfaces
-One key component of a decentralized application, is its user interface. An interfaces can take the form of a native application, a web application or command line program. These days most desktop, mobile and web applications offer responsive user-friendly interfaces with very good usability. 
+## Background - Interfaces
+One key component of a decentralized application, is its interface. An interfaces can take the form of a native application, a web application or command line program. These days most desktop, mobile and web applications offer responsive user-friendly interfaces with very good usability. 
 
 But what about decentralized blockchain applications (dApps)?
 
@@ -27,13 +27,19 @@ Bridges like [MetaMask](https://metamask.io/) allow Ethereum decentralized appli
 
 [MyEther Wallet](https://www.myetherwallet.com/) is another interface which allows users to interact with the Ethereum blockchain. While MyEther Wallet states that no data leaves your computer/your browser, the site's disclaimer also declares that when using the service, there is always the possibility that funds could be lost if something unexpected happens.
 
-The architecture of EOS is different to Ethereum, in that it logically separates the blockchain node software program (nodeos) from the key/wallet software program (keosd). An additional command line program (cleos) is used to perform interactions between the user, the key/wallet software and the blockchain node software. EOS also provides ways to interact with the blockchain through the use of Javascript in an HTML (web application) setting.
-
-EOS has a read-only application programming interface (API) called [eosjs-api](https://github.com/EOSIO/eosjs-api) for its EOS blockchain. In relation to cross-platform in-browser web application excecution, EOS also has a general purpose javascript library called [eosjs](https://github.com/EOSIO/eosjs) which can create accounts, deploy smart contracts, call smart contracts and even sign and broadcast transactions to the EOS blockchain.
-
 ### Command line (running a full node)
 
-When we refer to nodes in a given decentralized blockchain network, we are referring to individual computers, which all run the same blockchain software. This software is commonly referred to as the “base layer protocol”. Running a full node means not only downloading, compiling and running the base layer protocol software. A full node also needs to download and continually store the entire blockchain history. The Bitcoin blockchain is almost 180GB and the Ethereum blockchain is around 100GB. It is plain to see that if simply creating DApp prototypes or rapidly developing DApps for testing, running a full node is not ideal. Further, development and testing should never be carried out on a main blockchain network, this is costly and dangerous. Instead testing should firstly be performed on local blockchain instances and then eventually tested on public test instances and so forth.
+When we refer to nodes in a given decentralized blockchain network, we are referring to individual computers, which all run the same blockchain software. This software is commonly referred to as the “base layer protocol”. Running a full node means not only downloading, compiling and running the base layer protocol software. A full node also needs to download and continually store the entire blockchain history. The Bitcoin blockchain is almost 180GB and the Ethereum blockchain is around 100GB. Blockchain base layer protocols provide a command line which can perform every task associated with that particular blockchain implementation. Everything from creating accounts, creating wallets, creating transactions, broadcasting transactions as well as backup and restore features and more are provided. 
+
+## Background - Trust
+
+In a blockchain system, no single user is more (or less) trusted than any other single user. Blockchain user interfaces face an interesting challenge. The challenge stems from the fact that the devices which we will most likely use to run our dApps, are in-fact not equipped to store the entire blockchain. The question is, how do we ensure that dApps, without direct access to the blockchain, are not reliant on "trusted" third-party products and services?
+
+# Tools for building decentralized blockchain applications (dApps)
+
+This section is about protoyping and building dApps and as such let's put the entire argument for running a full blockchain node aside. 
+
+If simply creating DApp prototypes or rapidly developing DApps for testing, running a full node is not ideal. Development and testing should never be carried out on a main blockchain network as this is would be costly and dangerous. Instead testing should firstly be performed on local blockchain instances and then eventually tested on public test instances and so forth.
 
 Obviously when writing a DApp it would be ideal to have the most realistic representation of the various components of blockchain infrastructure. For example, it would be ideal if your locally developed DApp did not have to be modified to run on a public tesnet or on the mainnet. Fortunately, most components of blockchain infrastructure such as block production, transaction validation and so forth can be simulated on local blockchain instances. There are a few different ways to achieve this, so let us take a look at the various options.
 
@@ -93,5 +99,17 @@ EOS smart contracts are written in C++, using tools from the [EOS Software Devel
 
 # Bringing it all together
 We mentioned at the start of this document that Docker is able to encapsulate an entire software environment. The good news about this and other container tools is that you can select a variety of individual tools to suite your individual needs and then isolate them all into a container. This will allow you to have your own personalized blockchain DApp development and testing environment.
+
+# Spare content and references for later use
+
+## 1
+The architecture of EOS is different to Ethereum, in that it logically separates the blockchain node software program (nodeos) from the key/wallet software program (keosd). An additional command line program (cleos) is used to perform interactions between the user, the key/wallet software and the blockchain node software. EOS also provides ways to interact with the blockchain through the use of Javascript in an HTML (web application) setting.
+
+EOS has a read-only application programming interface (API) called [eosjs-api](https://github.com/EOSIO/eosjs-api) for its EOS blockchain. In relation to cross-platform in-browser web application excecution, EOS also has a general purpose javascript library called [eosjs](https://github.com/EOSIO/eosjs) which can create accounts, deploy smart contracts, call smart contracts and even sign and broadcast transactions to the EOS blockchain.
+
+## 2
+
+## 3
+
 
 
