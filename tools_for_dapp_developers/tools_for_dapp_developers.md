@@ -27,14 +27,17 @@ As previously mentioned, there are various components of blockchain infrastructu
 ### Drizzle (Ethereum based)
 Your DApps front-end user interface(UI) and its usability are a key component of its success. There are products like [Drizzle](https://truffleframework.com/drizzle) which provide a host of front-end libraries which can make writing DApp UIs a lot easier and more reliable.
 
+### Xamarin (Universal)
+Xamarin allows you to write applications for Windows, iOS and Android
+
+Interestingly, whilst Xamarin allows you to display HTML inside the app, Xamarin does not allow you to write a web application which can simply run in any web browser. Xamarin only writes applications for Windows, iOS and Android; ruling out all other users i.e. Linux and other operating systems.
+
 ### EOSJS (EOS based)
+
 [EOSJS](https://github.com/EOSIO/eosjs)
 
 ### React Native (Universal)
 React Native allows you to put together the fundamental UI building blocks of iOS and Android using Javascript and React. Importantly, React Native supports WebSockets.
-
-### Xamarin (Universal)
-
 
 ## Back-end
 
@@ -49,6 +52,13 @@ A personal blockchain allows you to execute commands, perform tests and inspect 
 ### Truffle (Ethereum based)
 Perhaps the most popular development environment for blockchains using the Ethereum Virtual Machine (EVM) is [Truffle](https://truffleframework.com/truffle).
 
+### EOS SDK (EOS based)
+EOS smart contracts are written in C++, using tools from the [EOS Software Development Kit (SDK)](https://developers.eos.io/). EOS smart contracts are compiled into [WebAssembly](https://webassembly.org/) which allows them to be deployed on the web. For example, EOS smart contracts can be deployed and accessed using Chrome, Firefox, Internet Explorer, Safari and so forth. Remembering that in EOS, all smart contracts must be written using C++.
+
+### Lity (CyberMiles based)
+
 
 # Bringing it all together
 We mentioned at the start of this document that Docker is able to encapsulate an entire software environment. The good news about this and other container tools is that you can select a variety of individual tools to suite your individual needs and then isolate them all into a container. This will allow you to have your own personalized blockchain DApp development and testing environment.
+
+
