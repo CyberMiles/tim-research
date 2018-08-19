@@ -9,11 +9,10 @@ Whilst native applications provide access to native device features like local s
 
 One advantage of the native decentralized application is that the security for accessing keys/authentication is safer; authentication can be done using biometric APIs and private keys are accessed privately as apposed to being pasted/accessed in a web browser. There are a variety of tools for creating native applications and whilst some (like Mircosoft's Xamarin) generate apps for Android, iOS and Windows they exclude all other operating systems and platforms, including the web. In short, native applications provide good functionality and security, but writing for each platform is more expensive and complicated.
 
-TODO how native applications interact with the blockchain
-Give Mist example (desktop, mobile?)
-How much storage required full vs fast etc.
+It is important to remember that blockchain software (running a full node) requires considerable storage space. The Bitcoin blockchain is almost 180GB and the Ethereum blockchain is around 100GB. Most mobile phones provide between 32GB and 256GB in total storage. Mobile phones can not/will not run as full blockchain nodes.
 
 ### Web Applcations (in-browser, cross-platform)
+
 Web applications, unlike specific native applications, are able to be run on any device via a web browser. Web applications are accessed remotely via a URL. Web applications, in general, are not designed to access device hardware. For example a web application has very limited access to device storage. In some cases web applications can be allowed read-only access to a file system for the purpose of uploading pictures or files etc. This is quite different to native applications which are essentially an application installed directly on the device; able to harness device hardware (camera, accellerometer, GPS read-write storage).
 
 Web applications are not able to access a blockchain directly. They can however access a blockchain via other services.
