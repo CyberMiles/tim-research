@@ -1,3 +1,21 @@
+# User Interfaces
+
+## Native Applcations
+
+Whilst native applications provide access to native device features like local storage, camera and so forth, they also require users to obtain the application via their phone's app store. Of course this also means that developers are required to submit the application as well as all future updates to the app store for each phone provider. It would be possible to only support a few platforms at the start, and then work up to supporting more. For example, developers could support only iOS, Android, Windows (perhaps using Xamarin tools) at the outset and then move to support macOS (desktop by creating dmg installers) as well as Linux (desktop by creating deb packages etc.) and finally perhaps branch out to native Linux mobile applications (by building for mobile operating systems such as Tizen etc) if/when required. It is unclear what sort of impact the Linux Foundation's Tizen project will have; currently being run on a range of Samsung and other mobile brands, which looks promising.
+
+One advantage of the native application is that the security for accessing keys is safer; authentication can be done using biometric APIs and private keys are accessed privately as apposed to being pasted/accessed in a web browser. There are a variety of tools for creating native applications and whilst some (like Mircosoft's Xamarin) generate apps for Android, iOS and Windows they exclude all other operating systems and platforms, including the web. Native applications provide good functionality and security, but writing for each platform is  more expensive and complicated.
+
+
+
+## Web Applcations
+
+## Command line
+
+REFERENCE Ethereum mist and compiling full nodes etc
+
+
+
 # Tools for DApp Developers - IN PROGRESS ...
 
 Running a full node of any blockchain implementation requires a considerable amount of work. Aside from downloading, compiling, configuring and so forth, there are also network, routing and security tasks to be performed when running a full node.
