@@ -5,7 +5,7 @@ One key component of a decentralized application, is its interface. An interface
 
 But what about decentralized blockchain applications (dApps)?
 
-dApps have the potential to provide functionality and usability which far outstrips the traditional blockchain command line. The dApp ecosystem still has many limitations and trade-offs. This document compares and contrasts the different dApp platforms and dives into pressing issues of security, scalability and so forth. 
+dApps have the potential to provide functionality and usability which far outstrips the traditional blockchain command line. The dApp ecosystem still has many limitations and trade-offs. This document compares and contrasts the different dApp platforms, from a development perspective, and also dives into pressing issues of security, scalability and so forth.
 
 ### Native Applcations (mobile and desktop)
 
@@ -41,6 +41,9 @@ When we refer to nodes in a given decentralized blockchain network, we are refer
 ## Background - Trust
 
 In a blockchain system, no single user is more (or less) trusted than any other single user. Blockchain user interfaces face an interesting challenge. The challenge stems from the fact that the devices which we will most likely use to run our dApps, are in-fact not equipped to store the entire blockchain. The question is, how do we ensure that dApps, without direct access to the blockchain, are not reliant on "trusted" third-party products and services?
+
+## Background - Scalability
+TODO trust -> scaling -> example of trust system stella, hashgraph etc.
 
 # Tools for building decentralized blockchain applications (dApps)
 
