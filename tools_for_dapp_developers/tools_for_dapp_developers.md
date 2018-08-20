@@ -27,7 +27,9 @@ Bridges like [MetaMask](https://metamask.io/) allow Ethereum decentralized appli
 
 [MyEther Wallet](https://www.myetherwallet.com/) is another interface which allows users to interact with the Ethereum blockchain. While MyEther Wallet states that no data leaves your computer/your browser, the site's disclaimer also declares that when using the service, there is always the possibility that funds could be lost if something unexpected happens.
 
-TODO discuss how Infura is the Ethereum blockchain provider for MetaMask - discuss how infura works 
+Infura, is an Infrastructure-as-a-Service (Iaas) product which allows developers of dApps to interact with the Ethereum blockchain through a collection of third-party nodes in a load balanced environment. This is in contrast with developers of dApp having to run their own single full node. Interestingly, Infura is the IaaS which makes bridges like MetaMask possible. MetaMask and other blockchain projects utilize the Infura IaaS via Infura's APIs.
+
+Infura provides JSON-RPC, web socket and REST endpoints over TLS.
 
 ### TODO web3
 [web3](https://web3js.readthedocs.io/en/1.0/)
@@ -43,7 +45,10 @@ When we refer to nodes in a given decentralized blockchain network, we are refer
 In a blockchain system, no single user is more (or less) trusted than any other single user. Blockchain user interfaces face an interesting challenge. The challenge stems from the fact that the devices which we will most likely use to run our dApps, are in-fact not equipped to store the entire blockchain. The question is, how do we ensure that dApps, without direct access to the blockchain, are not reliant on "trusted" third-party products and services?
 
 ## Background - Scalability
-TODO trust -> scaling -> example of trust system stella, hashgraph etc.
+
+When developing a decentralized application it is very important to logically separate what needs to occur on the blockchain and what can occur off-chain. For example there is no doubt that transferring value for a purchase needs to happen on chain. However, if a customer is just browsing, viewing hundreds of items, and not making a purchase why not take this activity off-chain. One of the solutions to the cryptokitties problem was to take activity like browsing and upvoting off-chain.
+
+The creators of CryptoKitties offer a smart contract analysis tool which tracks user interaction with particular smart contracts. The project called [Rufflet](http://rufflet.cryptokitties.co/) uses a combination of MongoDB and React to take information from the Ethereum blockchain and make it available, in a read-only capacity, to dApp developers. The visual interface provides valuable information about which smart contract functions are being called when and by whom.
 
 # Tools for building decentralized blockchain applications (dApps)
 
