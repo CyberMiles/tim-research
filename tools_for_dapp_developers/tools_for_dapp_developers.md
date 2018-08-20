@@ -23,13 +23,7 @@ Web applications, unlike device specific native applications, are able to be run
 
 Similarly to native applications, web applications are not able to access blockchain data directly. For this to occur, the device on which the dApp was running would need to store the entire blockchain. Web application dApps can however access a blockchain via another service.
 
-Bridges like [MetaMask](https://metamask.io/) allow Ethereum decentralized applications to be run inside a web browser. This means that a user can operate their Ethereum dApp, which accesses the blockchain, without the need to store the blockchain. Of course by not running a full node, users are trusting the third-party MetaMask servers as part of their interaction with the blockchain.
 
-[MyEther Wallet](https://www.myetherwallet.com/) is another interface which allows users to interact with the Ethereum blockchain. While MyEther Wallet states that no data leaves your computer/your browser, the site's disclaimer also declares that when using the service, there is always the possibility that funds could be lost if something unexpected happens.
-
-Infura, is an Infrastructure-as-a-Service (Iaas) product which allows developers of dApps to interact with the Ethereum blockchain through a collection of third-party nodes in a load balanced environment. This is in contrast with developers of dApp having to run their own single full node. Interestingly, Infura is the IaaS which makes bridges like MetaMask possible. MetaMask and other blockchain projects utilize the Infura IaaS via Infura's APIs.
-
-Infura provides JSON-RPC, web socket and REST endpoints over TLS.
 
 ### TODO web3
 [web3](https://web3js.readthedocs.io/en/1.0/)
@@ -40,15 +34,21 @@ TODO discuss how web3 works for local and remote blockchain interaction
 
 When we refer to nodes in a given decentralized blockchain network, we are referring to individual computers, which all run the same blockchain software. This software is commonly referred to as the “base layer protocol”. Running a full node means not only downloading, compiling and running the base layer protocol software. A full node also needs to download and continually store the entire blockchain history. The Bitcoin blockchain is almost 180GB and the Ethereum blockchain is around 100GB. Blockchain base layer protocols provide a command line which can perform every task associated with that particular blockchain implementation. Everything from creating accounts, creating wallets, creating transactions, broadcasting transactions as well as backup and restore features and more are provided. 
 
-## Background - Trust
+# Tools (other than base layer protocol command line) for accessing the blockchain 
 
-In a blockchain system, no single user is more (or less) trusted than any other single user. Blockchain user interfaces face an interesting challenge. The challenge stems from the fact that the devices which we will most likely use to run our dApps, are in-fact not equipped to store the entire blockchain. The question is, how do we ensure that dApps, without direct access to the blockchain, are not reliant on "trusted" third-party products and services?
+## MetaMask
 
-## Background - Scalability
+Bridges like [MetaMask](https://metamask.io/) allow Ethereum decentralized applications to be run inside a web browser. This means that a user can operate their Ethereum dApp, which accesses the blockchain, without the need to store the blockchain. Of course by not running a full node, users are trusting the third-party MetaMask servers as part of their interaction with the blockchain.
 
-When developing a decentralized application it is very important to logically separate what needs to occur on the blockchain and what can occur off-chain. For example there is no doubt that transferring value for a purchase needs to happen on chain. However, if a customer is just browsing, viewing hundreds of items, and not making a purchase why not take this activity off-chain. One of the solutions to the cryptokitties problem was to take activity like browsing and upvoting off-chain.
+## MyEther Wallet
 
-The creators of CryptoKitties offer a smart contract analysis tool which tracks user interaction with particular smart contracts. The project called [Rufflet](http://rufflet.cryptokitties.co/) uses a combination of MongoDB and React to take information from the Ethereum blockchain and make it available, in a read-only capacity, to dApp developers. The visual interface provides valuable information about which smart contract functions are being called when and by whom.
+[MyEther Wallet](https://www.myetherwallet.com/) is another interface which allows users to interact with the Ethereum blockchain. While MyEther Wallet states that no data leaves your computer/your browser, the site's disclaimer also declares that when using the service, there is always the possibility that funds could be lost if something unexpected happens.
+
+## Infura
+
+Infura, is an Infrastructure-as-a-Service (Iaas) product which allows developers of dApps to interact with the Ethereum blockchain through a collection of third-party nodes in a load balanced environment. This is in contrast with developers of dApp having to run their own single full node. Interestingly, Infura is the IaaS which makes bridges like MetaMask possible. MetaMask and other blockchain projects utilize the Infura IaaS via Infura's APIs.
+
+Infura provides JSON-RPC, web socket and REST endpoints over TLS.
 
 # Tools for building decentralized blockchain applications (dApps)
 
@@ -115,16 +115,19 @@ EOS smart contracts are written in C++, using tools from the [EOS Software Devel
 # Bringing it all together
 We mentioned at the start of this document that Docker is able to encapsulate an entire software environment. The good news about this and other container tools is that you can select a variety of individual tools to suite your individual needs and then isolate them all into a container. This will allow you to have your own personalized blockchain DApp development and testing environment.
 
-# Spare content and references for later use
+## Trust
 
-## 1
+In a blockchain system, no single user is more (or less) trusted than any other single user. Blockchain user interfaces face an interesting challenge. The challenge stems from the fact that the devices which we will most likely use to run our dApps, are in-fact not equipped to store the entire blockchain. The question is, how do we ensure that dApps, without direct access to the blockchain, are not reliant on "trusted" third-party products and services?
+
+## Scalability
+
+When developing a decentralized application it is very important to logically separate what needs to occur on the blockchain and what can occur off-chain. For example there is no doubt that transferring value for a purchase needs to happen on chain. However, if a customer is just browsing, viewing hundreds of items, and not making a purchase why not take this activity off-chain. One of the solutions to the cryptokitties problem was to take activity like browsing and upvoting off-chain.
+
+The creators of CryptoKitties offer a smart contract analysis tool which tracks user interaction with particular smart contracts. The project called [Rufflet](http://rufflet.cryptokitties.co/) uses a combination of MongoDB and React to take information from the Ethereum blockchain and make it available, in a read-only capacity, to dApp developers. The visual interface provides valuable information about which smart contract functions are being called when and by whom.
+
+## Logical separation of wallet/keys, smart contract development and the blockchain node
+
+### EOS
 The architecture of EOS is different to Ethereum, in that it logically separates the blockchain node software program (nodeos) from the key/wallet software program (keosd). An additional command line program (cleos) is used to perform interactions between the user, the key/wallet software and the blockchain node software. EOS also provides ways to interact with the blockchain through the use of Javascript in an HTML (web application) setting.
 
 EOS has a read-only application programming interface (API) called [eosjs-api](https://github.com/EOSIO/eosjs-api) for its EOS blockchain. In relation to cross-platform in-browser web application excecution, EOS also has a general purpose javascript library called [eosjs](https://github.com/EOSIO/eosjs) which can create accounts, deploy smart contracts, call smart contracts and even sign and broadcast transactions to the EOS blockchain.
-
-## 2
-
-## 3
-
-
-
