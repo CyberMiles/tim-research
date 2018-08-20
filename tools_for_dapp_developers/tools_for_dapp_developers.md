@@ -7,7 +7,7 @@ But what about decentralized blockchain applications (dApps)?
 
 dApps have the potential to provide functionality and usability which far outstrips the traditional blockchain command line. The dApp ecosystem still has many limitations and trade-offs. This document compares and contrasts the different dApp platforms, from a development perspective, and also dives into pressing issues of security, scalability and so forth.
 
-### Native Applcations (mobile and desktop)
+### Native Applications (mobile and desktop)
 
 Native applications provide access to native device features like local storage, camera, accelerometer and so forth. Native applications require users to obtain the application in question, via their phone's app store. Developers are required to submit the native application, as well as all future updates, to this specific app store. The app store can be goverened by the phone manufacturer, as is the case with Apple. 
 
