@@ -25,12 +25,11 @@ It is important to remember that the core blockchain software (when running a fu
 
 Web applications, unlike device specific native applications, are able to be run on any device via the user's web browser. Web applications are accessed remotely by simply visiting a URL. In general from a security standpoint, web applications are not designed to access device hardware. For example a web application has very limited access to device storage. In some cases web applications can be allowed read-only access to a file system, for the purpose of uploading pictures or files etc. This is quite different to native applications which are essentially an application installed directly on the device's local disk; able to harness device hardware (camera, accellerometer, GPS as well as read-write certain areas of storage etc).
 
-Similarly to native applications, web applications which run on smaller (handheld) devices are not able to access blockchain data directly. For this to occur, the device on which the dApp was running would need to store the entire blockchain. In cases where it is impossible to store the entire blockchain, the web application dApps can instead access the blockchain via a third-party service such as MetaMask (built on Infura). 
+Similarly to native applications, web applications which run on smaller (handheld) devices are not able to access blockchain data directly. For this to occur, the device on which the dApp was running would need to store the entire blockchain. 
 
-### TODO web3
-[web3](https://web3js.readthedocs.io/en/1.0/)
+In cases where it is possible to store the entire blockchain on disk, [web3](https://web3js.readthedocs.io/en/1.0/), or more specifically, the [web3.js](https://github.com/ethereum/web3.js) library can be used to access the blockchain via Javascript, providing the localblockchain implementation is exposing an RPC layer.
 
-TODO discuss how web3 works for local and remote blockchain interaction
+In cases where it is NOT possible to store the entire blockchain, the web application dApps can instead access the blockchain via third-party services. We cover these in the next section.
 
 # Tools (other than base layer protocol command line) for accessing the blockchain 
 
@@ -92,11 +91,19 @@ Interestingly, whilst Xamarin allows you to display HTML inside the app, Xamarin
 
 ### EOSJS (EOS based)
 
-[EOSJS](https://github.com/EOSIO/eosjs)
+The architecture of EOS is different to Ethereum, in that it logically separates the blockchain node software program (nodeos) from the key/wallet software program (keosd). An additional command line program (cleos) is used to perform interactions between the user, the key/wallet software and the blockchain node software. EOS also provides ways to interact with the blockchain through the use of Javascript in an HTML (web application) setting.
+
+EOS has a read-only application programming interface (API) called [eosjs-api](https://github.com/EOSIO/eosjs-api) for its EOS blockchain. In relation to cross-platform in-browser web application excecution, EOS also has a general purpose javascript library called [eosjs](https://github.com/EOSIO/eosjs) which can create accounts, deploy smart contracts, call smart contracts and even sign and broadcast transactions to the EOS blockchain.
+
+If the device running the dApp is able to store the blockchain locally, then these sorts of Javascript libraries like EOSJS (for EOS) and web3.js (for Ethereum based blockchains) can be used in conjunction with HTML. Even better, they can be used inside React Native applications.
 
 ### React Native (Universal)
 
-React Native allows you to put together the fundamental UI building blocks of iOS and Android using Javascript and React. Importantly, React Native supports WebSockets. Also, perhaps equally as important from an open source development perspective, React Native applications can be developed using any IDE on any platform. There is no need for xcode or other specific IDEs.
+React Native allows you to put together the fundamental UI building blocks of iOS and Android using Javascript and React. React Native is like React, but it uses native components instead of web components as building blocks.
+
+Importantly, React Native supports WebSockets. Also, perhaps equally as important from an open source development perspective, React Native applications can be developed using any IDE on any platform. There is no need for xcode or other specific IDEs.
+
+
 
 ## Back-end
 
@@ -139,10 +146,5 @@ When developing a decentralized application it is very important to logically se
 
 The creators of CryptoKitties offer a smart contract analysis tool which tracks user interaction with particular smart contracts. The project called [Rufflet](http://rufflet.cryptokitties.co/) uses a combination of MongoDB and React to take information from the Ethereum blockchain and make it available, in a read-only capacity, to dApp developers. The visual interface provides valuable information about which smart contract functions are being called when and by whom.
 
-## Logical separation of wallet/keys, smart contract development and the blockchain node
-
-### EOS
-
-The architecture of EOS is different to Ethereum, in that it logically separates the blockchain node software program (nodeos) from the key/wallet software program (keosd). An additional command line program (cleos) is used to perform interactions between the user, the key/wallet software and the blockchain node software. EOS also provides ways to interact with the blockchain through the use of Javascript in an HTML (web application) setting.
-
-EOS has a read-only application programming interface (API) called [eosjs-api](https://github.com/EOSIO/eosjs-api) for its EOS blockchain. In relation to cross-platform in-browser web application excecution, EOS also has a general purpose javascript library called [eosjs](https://github.com/EOSIO/eosjs) which can create accounts, deploy smart contracts, call smart contracts and even sign and broadcast transactions to the EOS blockchain.
+# TODO
+Investigate Scatter < https://github.com/GetScatter > and find out how this relates to exchanges/wallets/accounts/dApps etc.
