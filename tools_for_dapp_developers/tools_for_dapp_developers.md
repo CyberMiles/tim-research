@@ -132,7 +132,9 @@ EOS smart contracts are written in C++, using tools from the [EOS Software Devel
 
 We mentioned at the start of this document that Docker is able to encapsulate an entire software environment. The good news about this and other container tools is that you can select a variety of individual tools to suite your individual needs and then isolate them all into a container. This will allow you to have your own personalized blockchain DApp development and testing environment.
 
-## 
+## On-chain vs off-chain
+TODO discuss PoS vs PoW in the context of finality
+Explain how products like Demux can provide off-chain (read-only) browsing as well as watchers and triggers which can then execute on-chain transactions.
 
 exposes an RPC layer
 
