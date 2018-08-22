@@ -144,9 +144,12 @@ The creators of CryptoKitties offer a smart contract analysis tool which tracks 
 
 ## On-chain vs off-chain
 
-TODO discuss PoS vs PoW in the context of finality
-TODO explain that whilst Merkle Proofs provide a quick way to prove whether a transaction was included (or not), they do not provide up-to-date state when used in a PoW situation. 
-TODO explain that PoS has much faster finality and can provide a "last irreversible block" much faster than PoW systems.
+# TODO 
+discuss PoS vs PoW in the context of finality
+# TODO 
+explain that whilst Merkle Proofs provide a quick way to prove whether a transaction was included (or not), they do not provide up-to-date state when used in a PoW situation. 
+# TODO 
+explain that PoS has much faster finality and can provide a "last irreversible block" much faster than PoW systems.
 Explain how products like Demux can be configured to only scan from the last irreversible block and then provide off-chain (read-only) browsing as well as watchers and triggers which can then execute on-chain transactions (based on near real-time activity).
 
 # TODO
