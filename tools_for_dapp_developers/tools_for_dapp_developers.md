@@ -132,12 +132,6 @@ EOS smart contracts are written in C++, using tools from the [EOS Software Devel
 
 We mentioned at the start of this document that Docker is able to encapsulate an entire software environment. The good news about this and other container tools is that you can select a variety of individual tools to suite your individual needs and then isolate them all into a container. This will allow you to have your own personalized blockchain DApp development and testing environment.
 
-## On-chain vs off-chain
-TODO discuss PoS vs PoW in the context of finality
-Explain how products like Demux can provide off-chain (read-only) browsing as well as watchers and triggers which can then execute on-chain transactions.
-
-exposes an RPC layer
-
 ## Trust
 
 In a blockchain system, no single user is more (or less) trusted than any other single user. Blockchain user interfaces face an interesting challenge. The challenge stems from the fact that the devices which we will most likely use to run our dApps, are in-fact not equipped to store the entire blockchain. The question is, how do we ensure that dApps, without direct access to the blockchain, are not reliant on "trusted" third-party products and services?
@@ -147,6 +141,13 @@ In a blockchain system, no single user is more (or less) trusted than any other 
 When developing a decentralized application it is very important to logically separate what needs to occur on the blockchain and what can occur off-chain. For example there is no doubt that transferring value for a purchase needs to happen on chain. However, if a customer is just browsing, viewing hundreds of items, and not making a purchase why not take this activity off-chain. One of the solutions to the cryptokitties problem was to take activity like browsing and upvoting off-chain.
 
 The creators of CryptoKitties offer a smart contract analysis tool which tracks user interaction with particular smart contracts. The project called [Rufflet](http://rufflet.cryptokitties.co/) uses a combination of MongoDB and React to take information from the Ethereum blockchain and make it available, in a read-only capacity, to dApp developers. The visual interface provides valuable information about which smart contract functions are being called when and by whom.
+
+## On-chain vs off-chain
+
+TODO discuss PoS vs PoW in the context of finality
+TODO explain that whilst Merkle Proofs provide a quick way to prove whether a transaction was included (or not), they do not provide up-to-date state when used in a PoW situation. 
+TODO explain that PoS has much faster finality and can provide a "last irreversible block" much faster than PoW systems.
+Explain how products like Demux can be configured to only scan from the last irreversible block and then provide off-chain (read-only) browsing as well as watchers and triggers which can then execute on-chain transactions (based on near real-time activity).
 
 # TODO
 Investigate Scatter < https://github.com/GetScatter > and find out how this relates to exchanges/wallets/accounts/dApps etc.
