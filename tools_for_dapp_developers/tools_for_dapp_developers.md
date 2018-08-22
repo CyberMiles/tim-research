@@ -121,6 +121,9 @@ A personal blockchain allows you to execute commands, perform tests and inspect 
 
 Perhaps the most popular development environment for blockchains using the Ethereum Virtual Machine (EVM) is [Truffle](https://truffleframework.com/truffle).
 
+### Populus (Ethereum based)
+[Populus](https://populus.readthedocs.io/en/latest/quickstart.html) is an Ethereum based development environment which provides a test blockchain. Developers can create and deploy smart contracts. Populus can also be set up in a virtual environment (using Python virtualenv). Running a virtual environment allows you to use specific versions of Populus dependencies without being concerned about clashes with broader global system dependencies.
+
 ### EOS SDK (EOS based)
 
 EOS smart contracts are written in C++, using tools from the [EOS Software Development Kit (SDK)](https://developers.eos.io/). EOS smart contracts are compiled into [WebAssembly](https://webassembly.org/) which allows them to be deployed on the web. For example, EOS smart contracts can be deployed and accessed using Chrome, Firefox, Internet Explorer, Safari and so forth. Remembering that in EOS, all smart contracts must be written using C++.
