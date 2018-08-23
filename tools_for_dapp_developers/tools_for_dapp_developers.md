@@ -155,5 +155,10 @@ explain that whilst Merkle Proofs provide a quick way to prove whether a transac
 explain that PoS has much faster finality and can provide a "last irreversible block" much faster than PoW systems.
 Explain how products like Demux can be configured to only scan from the last irreversible block and then provide off-chain (read-only) browsing as well as watchers and triggers which can then execute on-chain transactions (based on near real-time activity).
 
-# TODO
-Investigate Scatter < https://github.com/GetScatter > and find out how this relates to exchanges/wallets/accounts/dApps etc.
+# Scatter - in progress
+[Scatter](https://github.com/GetScatter) is similar to MetaMask in that it allows you sign transactions securely locally on your machine. Scatter goes a couple of steps further by adding the following functionality over and above MetaMask.
+Scatter:
+- provides improved privacy by not just giving away information from your machine as you visit various applications
+- includes a reputation system which allows a user to give a +1 or a -1 to an application
+- 
+
