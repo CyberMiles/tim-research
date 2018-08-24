@@ -180,5 +180,5 @@ Remembering that a user can not send another user reputation and an application 
 The Scatter system drops a set amount of tokens to single EOS account addresses. If the system detects that disparate amounts of EOS, Scatter or RIDL tokens are being converged to one account after the airdrop, it will know that this was an attempt to game the system. The result is that the system will lower the reputation score for this and associated accounts. For example, before the airdrop, a user might be enticed to create lots of small accounts to receive an increased amount of tokens via the airdrops.
 
 ## Token cap
-A token cap of 100 tokens per account is fixed. This is to provide users with enough tokens to use on a daily basis, without allowing users to HODL tokens.
+It was initially planned that a token cap of 100 tokens per account was to be fixed. This was to provide users with enough tokens to use on a daily basis, without allowing users to HODL tokens. As it turns out there was no way to prevent sybil attacks where people just create many eos accounts, to receive many sets of 100 tokens.
 
