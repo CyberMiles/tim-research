@@ -159,6 +159,26 @@ Explain how products like Demux can be configured to only scan from the last irr
 [Scatter](https://github.com/GetScatter) is similar to MetaMask in that it allows you sign transactions securely locally on your machine. Scatter goes a couple of steps further by adding the following functionality over and above MetaMask.
 Scatter:
 - provides improved privacy by not just giving away information from your machine as you visit various applications
-- includes a reputation system which allows a user to give a +1 or a -1 to an application
-- 
+- includes a reputation system called RIDL which allows a user to give a +1 or a -1 to a blockchain application
+- includes desktop version, browser plug-in version and also mobile version
+- TODO more bullet points
+
+## RIDL - Scatter's Reputation and Identity Layer 
+RIDL is a reputation and identity layer for Scatter. RIDL provides a unique identity name which a user can apply community reputation to. Users and Applications can give each other reputation (+1 or -1). In RIDL a user can not give another user a +1 or -1 of reputation. Similarly, an application can not give another application reputation.
+
+## RIDL - State
+RIDL tokens exist in two different states. The states are reputing and trading. When in the reputing state, RIDL tokens are able to be transferred in order to provide reputation. When in the trading state, RIDL tokens are able to be traded. The minimum allowable time spent in each state is 24 hours. For example if tokens enter a trading state, they can not be used for providing reputation until a full 24 hours has passed; at which stage the tokens have to be converted back to the reputing state, so that reputing can commence.
+
+## Using RIDL
+Reputation is not based on the amount of tokens which a user has OR the amount of tokens a user has spent. Reputation is reflected in two ways:
+- firstly reputation is a reflection of how many tokens have been spent on a particular user
+- secondly, over and above the first point, reputation is ultimately governed by the amount of tokens flowing through that same particular user or application. Just recieving tokens is not enough. Users and applications must interact with oneanother to create the continous flow which will ultimately result in reputation (allbeit good or bad i.e. +1 or -1).
+
+Remembering that a user can not send another user reputation and an application can send an application reputation. Reputation can however be sent between applications and users in both directions. An example of an application which gives RIDL may be a web site which requires a monthly payment. As the user pays their monthly subscription the application gives the user a +1 for paying their money on time. In reverse, the user can give the application a single +1 (this is capped) when the application works as intended. The +1's or -1's can occur periodically every 24 hours (not multiples at once).
+
+## Distribution of tokens, and prevention of scamming
+The Scatter system drops a set amount of tokens to single EOS account addresses. If the system detects that disparate amounts of EOS, Scatter or RIDL tokens are being converged to one account after the airdrop, it will know that this was an attempt to game the system. The result is that the system will lower the reputation score for this and associated accounts. For example, before the airdrop, a user might be enticed to create lots of small accounts to receive an increased amount of tokens via the airdrops.
+
+## Token cap
+A token cap of 100 tokens per account is fixed. This is to provide users with enough tokens to use on a daily basis, without allowing users to HODL tokens.
 
