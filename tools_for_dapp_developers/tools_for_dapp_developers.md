@@ -145,6 +145,8 @@ When developing a decentralized application it is very important to logically se
 
 The creators of CryptoKitties offer a smart contract analysis tool which tracks user interaction with particular smart contracts. The project called [Rufflet](http://rufflet.cryptokitties.co/) uses a combination of MongoDB and React to take information from the Ethereum blockchain and make it available, in a read-only capacity, to dApp developers. The visual interface provides valuable information about which smart contract functions are being called when and by whom.
 
+# Misc - draft points which may apply to some areas of the document above once it has matured
+
 ## On-chain vs off-chain
 
 # TODO 
@@ -181,4 +183,8 @@ The Scatter system drops a set amount of tokens to single EOS account addresses.
 
 ## Token cap
 It was initially planned that a token cap of 100 tokens per account was to be fixed. This was to provide users with enough tokens to use on a daily basis, without allowing users to HODL tokens. As it turns out there was no way to prevent sybil attacks where people just create many eos accounts, to receive many sets of 100 tokens.
+
+## Using Scatter for permission management
+https://steemit.com/eos/@genereos/eos-how-to-quickly-and-safely-change-your-public-private-keys
+
 
