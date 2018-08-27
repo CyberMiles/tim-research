@@ -187,4 +187,17 @@ It was initially planned that a token cap of 100 tokens per account was to be fi
 ## Using Scatter for permission management
 https://steemit.com/eos/@genereos/eos-how-to-quickly-and-safely-change-your-public-private-keys
 
+# TODO
+Text from my Telegram
+What part of the Scatter ecosystem (if any) is a full node? i.e are there dedicated 3rd party servers that Scatter talks to remotely or can it talk to the EOS BPs?
+
+scatter operates a load balancer of a few vetted mainnet nodes that it uses for its internal functions. individual apps can specify which endpoint/api node scatter should use when signing transactions for that app; more specifically, when pushing transactions to the network
+
+all scatter really cares about is what is the current tapos from the network, and the chain id for example tapos+chainid+expiry+private key = signed transaction
+
+last irreversible block would be more of "state" feature for browsing (read-only) i.e. whether a given action is irreversible or not
+
+
+
+
 
