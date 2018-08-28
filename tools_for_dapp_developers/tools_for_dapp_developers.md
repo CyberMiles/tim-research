@@ -197,6 +197,8 @@ all scatter really cares about is what is the current tapos from the network, an
 
 last irreversible block would be more of "state" feature for browsing (read-only) i.e. whether a given action is irreversible or not
 
+In EOS you can set the reference block num or block id used for TAPOS (Transaction as Proof-of-Stake) as part of a transaction.
+
 
 
 
