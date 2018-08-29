@@ -199,6 +199,56 @@ last irreversible block would be more of "state" feature for browsing (read-only
 
 In EOS you can set the reference block num or block id used for TAPOS (Transaction as Proof-of-Stake) as part of a transaction.
 
+## How to suggest a node to a user of Scatter
+Networks are used to connect to blockchain nodes and reference blockchain accounts. This can be statically set in the dApp code i.e. in the following example which I wrote up whereby the Scatter instance is initialized in the HTML->head->script
+
+
+```
+<script>
+		document.addEventListener("scatterLoaded", scatterExtension => { const scatter = window.scatter; })
+		const Blockchains = {
+		EOS: {
+			blockchain: "eos",
+			host: "localhost",
+			port: 1234,
+			protocol: "https",
+			chainId: "abcdefg"
+			},
+		Ethereum: {
+			blockchain: "eth",
+			host: "localhost",
+			port: 1234,
+			protocol: "https",
+			chainId: "1"
+			}
+		};
+		
+		function chooseEOSBlockchain(){
+			const blockchain = Blockchains.EOS.blockchain;
+			console.log(blockchain);
+		}
+
+		function chooseEthereumBlockchain() {
+			const blockchain = Blockchains.Ethereum.blockchain;
+			console.log(blockchain);
+		}
+
+	</script>
+  ```
+  From there, the user can simply select which network they wish to interact with. I have written some code for the HTML->body and have used buttons to demonstrate this.
+  
+  ```
+  <body>
+	<h1>Heading one</h1>
+	<p id="demo">Hello World!</p>
+	<button type="button" id="ethButton" onclick='chooseEthereumBlockchain()'>Choose Ethereum</button>
+	<button type="button" id="eosButton" onclick='chooseEOSBlockchain()'>Choose EOS</button>
+</body>
+```
+
+If the dApp wants to allow the user to select their own network, the dApp can use one of the Scatter APIs to suggest a network to the user. The user can verify that the network is legit and when promted with the question, the user can agree by clicking on the suggested network.
+
+
 
 
 
