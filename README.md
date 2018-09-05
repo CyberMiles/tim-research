@@ -24,3 +24,5 @@ A collection of research and development performed and written up by @tpmccallum
 - [Blockchain scaling - state channels - Plasma MVP - Plasma Cash](https://github.com/CyberMiles/tim-research/blob/master/blockchain_scaling/blockchain_scaling.asciidoc)
 
 - [Tools for DApp developers](https://github.com/CyberMiles/tim-research/tree/master/tools_for_dapp_developers/tools_for_dapp_developers.md)
+
+- [Scatter Integration](https://github.com/CyberMiles/tim-research/blob/master/scatter_integration/scatter_integration.md)
