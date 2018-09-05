@@ -10,6 +10,7 @@ Scatter:
 The following instructions were performed in order to test CyberMiles with Scatter
 
 ## Step 1 - Get the CyberMiles Testnet up and runnning
+Run the following commands in order to get a Docker instance of the CyberMiles Testnet running as quickly as possible
 ```
 docker pull ywonline/travis
 cd
@@ -18,7 +19,7 @@ git clone https://github.com/CyberMiles/testnet.git
 cd testnet/travis
 git pull
 ```
-Change the moniker value from local to something new, also make sure the chain id is 19 for tesnet
+Open the config.toml file and change the moniker value from "local" to something new, also make sure the chain id is 19 (this value is found at the very bottom of the config.toml file). 19 is the chain id of the CyberMiles Testnet.
 ```
 vi init/config/config.toml
 ```
@@ -30,6 +31,9 @@ Connect to Testnet command line tool
 ```
 docker run --rm -it ywonline/travis attach http://172.17.0.2:8545
 ```
+
+## Step 2 - Sync with the CyberMiles Testnet and fund some accounts
+
 Check to see of the testnet is still syncing, you wont get any account (will not see any testnet tokens from the faucet until your node is synced)
 ```
 cmt.syncing
@@ -37,12 +41,12 @@ cmt.syncing
 //The following command will create a new account
 ```
 personal.newAccount()
-0x2bbf88c00e1133e3cacf88d4b5f2d9577018f1e7
+0x6d758d5d69af474c6d18b67f252ee39772960967
 ```
 //Run this again so that we have two accounts to play with 
 ```
 personal.newAccount()
-0xce570a2df884fae09f3c7e6ad2453b7d4eac2348
+0xc315cc572e9c9be6630d899fd3b6122b36eab253
 ```
 
 Once you have synced the Tesnet (running cmt.syncing returns false for catching_up), visit the Travis Testnet faucet to grab some free Testnet tokens.
@@ -77,7 +81,7 @@ It will return something like this for each grab which you performed
   nonce: 303,
   r: "0x9d9165b9b60f31b646d6e83a573c9a7655792628322db499b2eabc1a51bcbee0",
   s: "0x23e2b697bc7eecdee937f6921344db40c87acfc0e2ec4ab0d80fdfc990eabf2d",
-  to: "0x2bbf88c00e1133e3cacf88d4b5f2d9577018f1e7",
+  to: "0x6d758d5d69af474c6d18b67f252ee39772960967",
   transactionIndex: 0,
   v: "0x49",
   value: 1e+21
@@ -85,24 +89,24 @@ It will return something like this for each grab which you performed
 ```
 It is now time to check the balances of the two accounts which we created above. First we will unlock each account.
 ```
-personal.unlockAccount("0x2bbf88c00e1133e3cacf88d4b5f2d9577018f1e7","PutPasswordHere")
+personal.unlockAccount("0x6d758d5d69af474c6d18b67f252ee39772960967","PutPasswordHere")
 true
-personal.unlockAccount("0xce570a2df884fae09f3c7e6ad2453b7d4eac2348","PutPasswordHere")
+personal.unlockAccount("0xc315cc572e9c9be6630d899fd3b6122b36eab253","PutPasswordHere")
 true
 ```
 Then we will check each balance
 ```
-web3.fromWei(cmt.getBalance("0xce570a2df884fae09f3c7e6ad2453b7d4eac2348"), 'cmt');
+web3.fromWei(cmt.getBalance("0xc315cc572e9c9be6630d899fd3b6122b36eab253"), 'cmt');
 1000
 ```
 Notice how we are converting the denomination of token to a whole cmt unit (as apposed to using the smaller default denomination of wei.
 ```
-web3.fromWei(cmt.getBalance("0x2bbf88c00e1133e3cacf88d4b5f2d9577018f1e7"), 'cmt');
+web3.fromWei(cmt.getBalance("0x6d758d5d69af474c6d18b67f252ee39772960967"), 'cmt');
 1000
 ```
 Now that we have two accounts on the CyberMiles Testnet, let us perform a test transfer from one account to the other.
 ```
-cmt.sendTransaction({from:"0xce570a2df884fae09f3c7e6ad2453b7d4eac2348", to:"0x2bbf88c00e1133e3cacf88d4b5f2d9577018f1e7",value:999})
+cmt.sendTransaction({from:"0x6d758d5d69af474c6d18b67f252ee39772960967", to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253", value:amount, gasPrice:0})
 ```
 The above will return a transaction has like this "0x3bd0839327d0477fbe9d9a52190db8a73dc9d85d1d86bdc31ab382f83962466f". 
 Again, we can go and check this transaction on the blockchain using the following command syntax.
@@ -114,22 +118,28 @@ For example, the following command returned the result below it.
 cmt.getTransaction("0x3bd0839327d0477fbe9d9a52190db8a73dc9d85d1d86bdc31ab382f83962466f")
 
 {
-  blockHash: "0x65d8f0bf33db2934dd62565d0b0c1bd00bf23c9844bbc64bd3fa3909c4b09d85",
-  blockNumber: 105753,
-  from: "0xce570a2df884fae09f3c7e6ad2453b7d4eac2348",
+  blockHash: "0x7871c3e853de78504facdb19a891be921951161866df9db75fca56d8f1740b63",
+  blockNumber: 106385,
+  from: "0x6d758d5d69af474c6d18b67f252ee39772960967",
   gas: 90000,
-  gasPrice: 2000000000,
-  hash: "0x3bd0839327d0477fbe9d9a52190db8a73dc9d85d1d86bdc31ab382f83962466f",
+  gasPrice: 0,
+  hash: "0x9881e8205f6114ae2a2a3ca038e655fd5883fd1a57729a6f7b58a07c3a0ade1d",
   input: "0x",
   nonce: 0,
-  r: "0x3dc9f21eb3f6fd25990f731cd0f0461c3e00ba889df17f7f453f19fdc1fd7fff",
-  s: "0x7978710ebb59daea43d32c5584155f0f2368471b2b9fe3fc65a4ae00757c8364",
-  to: "0x2bbf88c00e1133e3cacf88d4b5f2d9577018f1e7",
-  transactionIndex: 0,
-  v: "0x4a",
-  value: 999
+  r: "0xa229e67a76dc204267a47782907d7e84f8de3990153dd1fb93c4184e6448908c",
+  s: "0x547d185a780ef7f788bbdb9a908d0009f718baf831b5fc1a0878f5f070f49fda",
+  to: "0xc315cc572e9c9be6630d899fd3b6122b36eab253",
+  transactionIndex: 2,
+  v: "0x49",
+  value: 100000000000000000000
 }
 ```
+If we check both account balances again, we will see that the 100 tokens have been transfered successfully.
+web3.fromWei(cmt.getBalance("0xc315cc572e9c9be6630d899fd3b6122b36eab253"), 'cmt');
+900
+web3.fromWei(cmt.getBalance("0x6d758d5d69af474c6d18b67f252ee39772960967"), 'cmt');
+1100
+
 
 
 
