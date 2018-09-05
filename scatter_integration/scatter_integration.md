@@ -1,5 +1,12 @@
 # Testing/developing Scatter and CyberMiles integration
 
+## What is Scatter
+[Scatter](https://github.com/GetScatter) is similar to MetaMask in that it allows you sign transactions securely locally on your machine. Scatter goes a couple of steps further by adding the following functionality over and above MetaMask.
+Scatter:
+- provides improved privacy by not just giving away information from your machine as you visit various applications
+- includes a reputation system called RIDL which allows a user to give a +1 or a -1 to a blockchain application
+- includes desktop version, browser plug-in version and also mobile version
+
 The following instructions were performed in order to test CyberMiles with Scatter
 
 ## Step 1 - Get the CyberMiles Testnet up and runnning
