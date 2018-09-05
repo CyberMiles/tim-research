@@ -161,7 +161,7 @@ This is the key pair which Scatter created for me (via the Chrome extension).
 Private Key: 783a96d942c52dccaeac88dab556863d5f4c48ced6794270752a722d1cf5a87a 
 Public Key: 0x357130c0ae600be06cd8d6f22d3ac8383078f78c
 ```
-At present, this is a non existant key pair on any network as you can see from the link below
+At present, this is a non existant Ethereum key pair as you can see from the Etherscan link below
 ```
 https://etherscan.io/address/0x357130c0ae600be06cd8d6f22d3ac8383078f78c
 ```
