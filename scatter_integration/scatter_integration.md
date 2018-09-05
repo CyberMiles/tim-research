@@ -142,6 +142,18 @@ web3.fromWei(cmt.getBalance("0x6d758d5d69af474c6d18b67f252ee39772960967"), 'cmt'
 
 # Scatter
 
+## Keys
+This is where it gets interesting. In Ethereum, as part of the standard functionality, you are unable to export private keys. This is for safety reasons. There are other ways to retrieve private keys from the keystore file (offline) but these tools are beyond the scope of this document.
+
+## Keys - Scatter can generate private key pair for you
+Whilst Scatter allows you to put in your own private keys (for EOS and Ethereum). Scatter can also generate an Ethereum key pair for you. From this point onwards you are responsible for the private/public key pair (which you can download by clicking "copy" button in the Scatter software).
+
+This is the key pair which Scatter created for me (via the Chrome extension). 
+Private Key: 783a96d942c52dccaeac88dab556863d5f4c48ced6794270752a722d1cf5a87a 
+Public Key: 0x357130c0ae600be06cd8d6f22d3ac8383078f78c
+At present, this is a non existant key pair on any network as you can see from the link below
+https://etherscan.io/address/0x357130c0ae600be06cd8d6f22d3ac8383078f78c
+
 # Misc Info
 
 ## Accessing CyberMiles Testnet config, data and keystore, which are stored on local disk
