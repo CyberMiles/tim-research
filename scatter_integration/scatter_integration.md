@@ -153,7 +153,7 @@ web3.fromWei(cmt.getBalance("0x6d758d5d69af474c6d18b67f252ee39772960967"), 'cmt'
 ## Keys
 This is where it gets interesting. In Ethereum, as part of the standard functionality, you are unable to export private keys. This is for safety reasons. There are other ways to retrieve private keys from the keystore file (offline) but these tools are beyond the scope of this document.
 
-## Keys - Scatter can generate private key pair for you
+### Keys - Scatter can generate private key pair for you
 Whilst Scatter allows you to put in your own private keys (for EOS and Ethereum). Scatter can also generate an Ethereum key pair for you. From this point onwards you are responsible for the private/public key pair (which you can download by clicking "copy" button in the Scatter software).
 
 This is the key pair which Scatter created for me (via the Chrome extension). 
@@ -165,7 +165,7 @@ At present, this is a non existant key pair on any network as you can see from t
 ```
 https://etherscan.io/address/0x357130c0ae600be06cd8d6f22d3ac8383078f78c
 ```
-## The state of the CyberMiles Tesnet
+### The state of the CyberMiles Tesnet
 At present the CyberMiles Testnet which I am working on via the Docker container has the following account state. The address of 0xc315cc572e9c9be6630d899fd3b6122b36eab253 has 1100 cmt tokens and the address of 0x6d758d5d69af474c6d18b67f252ee39772960967 has 900 cmt tokens.
 
 ### Key compatibility
@@ -212,6 +212,14 @@ If we check the account balance of the from account, we will see that the 100 cm
 web3.fromWei(cmt.getBalance("0xc315cc572e9c9be6630d899fd3b6122b36eab253"), 'cmt')
 1000
 ```
+Believe it or not, we can even check the Scatter generated account on this testnet. We do not need the private keys to get the account balance of a public key on this blockchain. The following command, correctly returns the result of 100 cmt.
+```
+web3.fromWei(cmt.getBalance("0x357130c0ae600be06cd8d6f22d3ac8383078f78c"), 'cmt')
+100
+```
+This confirms that the address space of Ethereum and CyberMiles are compatible with these addresses.
+
+## Application
 
 
 # Misc Info
