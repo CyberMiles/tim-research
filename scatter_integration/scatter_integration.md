@@ -97,7 +97,7 @@ true
 Then we will check each balance
 ```
 web3.fromWei(cmt.getBalance("0xc315cc572e9c9be6630d899fd3b6122b36eab253"), 'cmt');
-1000
+100
 ```
 Notice how we are converting the denomination of token to a whole cmt unit (as apposed to using the smaller default denomination of wei.
 ```
