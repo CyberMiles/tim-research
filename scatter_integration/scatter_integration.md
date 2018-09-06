@@ -222,10 +222,14 @@ This confirms that the address space of Ethereum and CyberMiles are compatible w
 ## Application
 The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability. I will be using nodejs (an open source server environment) for this web application. 
 
-### Node.js Installation
-I installed node.js from the following web site. I chose the latest version of node.js as it supports the import command (which Scatter uses).
+### Server container
+I installed a server container using the following command
 ```
-https://nodejs.org/en/
+npm i -g http-server
+```
+I then created an HTML file (as shown below) and ran the following command (from within the directory where the HTML file is kept) in order to serve the HTML page on http://127.0.0.1:8080/theHTMLFile.html
+```
+http-server .
 ```
 
 The following file is a starting point to get Scatter connecting in the browser.
