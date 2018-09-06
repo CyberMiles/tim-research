@@ -165,7 +165,7 @@ At present, this is a non existant Ethereum key pair as you can see from the Eth
 ```
 https://etherscan.io/address/0x357130c0ae600be06cd8d6f22d3ac8383078f78c
 ```
-### The state of the CyberMiles Tesnet
+### The state of the CyberMiles Testnet
 At present the CyberMiles Testnet which I am working on via the Docker container has the following account state. The address of 0xc315cc572e9c9be6630d899fd3b6122b36eab253 has 1100 cmt tokens and the address of 0x6d758d5d69af474c6d18b67f252ee39772960967 has 900 cmt tokens.
 
 ### Key compatibility
