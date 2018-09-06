@@ -220,56 +220,37 @@ web3.fromWei(cmt.getBalance("0x357130c0ae600be06cd8d6f22d3ac8383078f78c"), 'cmt'
 This confirms that the address space of Ethereum and CyberMiles are compatible with these addresses.
 
 ## Application
-The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability.
+The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability. I will be using nodejs (an open source server environment) for this web application. 
+
+### Node.js Installation
+I installed node.js from the following web site. I chose the latest version of node.js as it supports the import command (which Scatter uses).
 ```
-<!DOCTYPE html>
-<html>
-	<head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="js/scatter.min.js"></script>
-		<script>
-			document.addEventListener('scatterLoaded', () => {
-			this.scatter = window.scatter;
-			window.scatter = null;
-			});
-		</script>
-		<script>
-			const Blockchains = {
-					Ethereum: {
-					blockchain: "eth",
-					host: "localhost",
-					port: 1234,
-					protocol: "https",
-					chainId: "1"
-				},
-					CyberMiles: {
-					blockchain: "cmt",
-					host: "172.17.0.2",
-					port: 8545,
-					protocol: "http",
-					chainId: "19"
-				}
-			};
-			network = Blockchains.CyberMiles;
-			console.log(network);
-			//The above code returns the following line
-			//{blockchain: "cmt", host: "172.17.0.2", port: 8545, protocol: "http", chainId: "19"}
+https://nodejs.org/en/
+```
 
-			const web3 = this.scatter.eth( network, Web3 );
-			//The above code returns Web3 is not defined
+The following file is a starting point to get Scatter connenting in the browser.
 
-			web3.eth.sendTransaction({
-				from: '0x357130c0ae600be06cd8d6f22d3ac8383078f78c',
-				to: '0xc315cc572e9c9be6630d899fd3b6122b36eab253',
-				value: '1'
-			});
+```
+var http = require('http');
+var dt = require('./myfirstmodule');
+import ScatterJS from './scatter-js-2.5.1/dist/scatter.esm';
 
-		</script>
-	</head>
-	<body>
-		<h1>Check the console output</h1>
-	</body>	
-</html>
+ScatterJS.scatter.connect('YOUR_APP_NAME').then(connected => {
+    if(connected){
+        this.scatter = ScatterJS.scatter;
+        window.scatter = null;
+    }
+});
+
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('Hello World!');
+    res.write("The date and time are currently: " + dt.myDateTime());
+    res.write(req.url);
+    res.end();
+}).listen(8080);
+
+
 ```
 
 
