@@ -228,27 +228,70 @@ I installed node.js from the following web site. I chose the latest version of n
 https://nodejs.org/en/
 ```
 
-The following file is a starting point to get Scatter connenting in the browser.
+The following file is a starting point to get Scatter connecting in the browser.
 
 ```
-var http = require('http');
-var dt = require('./myfirstmodule');
-import ScatterJS from './scatter-js-2.5.1/dist/scatter.esm';
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="modules/scatter-js-2.5.1/dist/scatter.min.js"></script>
+		<script type="text/javascript" src="modules/web3.js/dist/web3.min.js"></script>
+		<script>
+				//Connecting to Scatter
+				console.log("Setting up blockchain configuration variables");
+				const Blockchains = {
+						Ethereum: {
+						blockchain: "ethO",
+						host: "127.0.0.1",
+						port: 8545,
+						protocol: "https",
+						chainId: "1"
+					},
+						CyberMiles: {
+						blockchain: "cmt",
+						host: "172.17.0.2",
+						port: 8545,
+						protocol: "http",
+						chainId: "19"
+					}
+				};
+				//Setting network to a CyberMiles Testnet full node
+				network = Blockchains.CyberMiles;
+				//Output the network config to console
+				console.log(network);
 
-ScatterJS.scatter.connect('YOUR_APP_NAME').then(connected => {
-    if(connected){
-        this.scatter = ScatterJS.scatter;
-        window.scatter = null;
-    }
-});
-
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('Hello World!');
-    res.write("The date and time are currently: " + dt.myDateTime());
-    res.write(req.url);
-    res.end();
-}).listen(8080);
+				scatter.connect("c2").then(function(connected){
+		    		if(!connected) {
+		        		// User does not have Scatter Desktop or Classic installed. 
+		        		console.log("User does not have Scatter installed.");
+		        		return false;
+		    		} 
+			    		console.log("Scatter IS connected");
+				        this.scatter = scatter;
+				        window.scatter = null;
+				});
+				
+				function transferFunds() {
+					//Set protocol
+					const protocol = 'http' || 'ws';
+					console.log(protocol);
+					const web3 = this.scatter.eth(network, Web3, protocol);
+					//Fire off a transaction (sends funds from a Scatter created key pair to a CyberMiles Testnet created key pair)
+					web3.eth.sendTransaction({
+					from: '0x357130c0ae600be06cd8d6f22d3ac8383078f78c',
+					to: '0xc315cc572e9c9be6630d899fd3b6122b36eab253',
+					value: '1'
+					});
+				}
+				
+			// Background of this file's purpose can be found at https://github.com/CyberMiles/tim-research/blob/master/scatter_integration/scatter_integration.md
+		</script>
+	</head>
+	<body>
+		<h1>Check the console output</h1>
+		<button type="button" id="cmtButton" onclick='transferFunds()'>Transfer Funds</button>
+	</body>	
+</html>
 
 
 ```
