@@ -220,7 +220,7 @@ web3.fromWei(cmt.getBalance("0x357130c0ae600be06cd8d6f22d3ac8383078f78c"), 'cmt'
 This confirms that the address space of Ethereum and CyberMiles are compatible with these addresses.
 
 ## Application
-The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability. I will be using nodejs (an open source server environment) for this web application. 
+The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability, written using only HTML and inline Javascript. This is for ease of use and understanding.
 
 ### Dependencies
 I created a folder for the project. I then downloaded scatter-js (from https://github.com/GetScatter/scatter-js/tree/2.5.1) and web3.js from (https://github.com/ethereum/web3.js/) and stored them both inside a folder called modules (you will see the relative paths which I use in the head->script->src of the HTML file below.
