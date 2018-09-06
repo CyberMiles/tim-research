@@ -222,6 +222,9 @@ This confirms that the address space of Ethereum and CyberMiles are compatible w
 ## Application
 The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability. I will be using nodejs (an open source server environment) for this web application. 
 
+### Dependencies
+I created a folder for the project. I then downloaded scatter-js (from https://github.com/GetScatter/scatter-js/tree/2.5.1) and web3.js from (https://github.com/ethereum/web3.js/) and stored them both inside a folder called modules (you will see the relative paths which I use in the head->script->src of the HTML file below.
+
 ### Server container
 I installed a server container using the following command
 ```
