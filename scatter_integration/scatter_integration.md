@@ -16,16 +16,29 @@ https://travis.readthedocs.io/en/latest/connect-testnet.html#docker
 ```
 Here are some details on how I did this.
 ```
+sudo usermod -a -G docker $USER
+
 docker pull ywonline/travis
-cd
-sudo rm -rf .travis
+cd ~
+sudo rm -rf $HOME/.travis
 git clone https://github.com/CyberMiles/testnet.git
 cd testnet/travis
 git pull
+
 ```
 Open the config.toml file and change the moniker value from "local" to something new, also make sure the chain id is 19 (this value is found at the very bottom of the config.toml file). 19 is the chain id of the CyberMiles Testnet.
 ```
 vi init/config/config.toml
+```
+Copy the config to the right area
+```
+cd ~
+cd testnet/travis
+cp -r init $HOME/.travis
+```
+Start Docker instance
+```
+$ docker run --publish-all=true --name travis -v $HOME/.travis:/travis -p 26657:26657 -p 8545:8545 -t ywonline/travis node start --home /travis
 ```
 Get Testnet ip
 ```
