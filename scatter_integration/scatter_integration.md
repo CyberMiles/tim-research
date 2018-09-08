@@ -336,10 +336,17 @@ The following file is a starting point to get Scatter connecting in the browser.
 The above code (minus the transferFunds function) connects to Scatter and makes the scatter object available. There are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
 
 ### Same-origin policy issue
+Running the transferFunds function returns the following error
+```
+Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+```
+
 
 ### Synchronous execution issue
-
-
+Running the transferFunds function returns the following error
+```
+Web3ProviderEngine does not support synchronous requests.
+```
 
 
 # Misc Info
