@@ -240,10 +240,23 @@ This confirms that the address space of Ethereum and CyberMiles are compatible w
 The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability, written using only HTML and inline Javascript. This is for ease of use and understanding.
 
 ### Dependencies
-I created a folder for the project. I then downloaded scatter-js (from https://github.com/GetScatter/scatter-js/tree/2.5.1) and web3.js from (https://github.com/ethereum/web3.js/) and stored them both inside a folder called modules (you will see the relative paths which I use in the head->script->src of the HTML file below.
+I created a folder for the project. I then downloaded scatter-js (from https://github.com/GetScatter/scatter-js/tree/2.5.1) and web3.js from (https://github.com/ethereum/web3.js/) and stored them both inside a folder called modules. Here is a simple diagram. You will see the actual relative paths which I used in the head->script->src of the HTML file below.
+
+```
+               /home/html
+	        |   |
+          modules   theHTMLFile.html
+  	 |      |
+   scatter      web3
+         |      |
+      dist      dist
+         |      |
+scatter.js      web3.js
+
+```
 
 ### Server container
-I installed a server container using the following command
+Here I am installing the simplest of server containers. The idea here is to keep things as simple as possible; using the http-server functionality of node (similar to using a python simple server etc.) to host the single HTML/Javascript page. This minimalistic node usage is just to satisfy the Javascript execution of the single HTML/Javascript page which I created. Of course I learned that opening the HTML/Javascript page from the file system (file:///home/html/theHTMLFile.html) does not satisfy the application's full and proper execution and Javascript context. I typed the following in order to install the server container.
 ```
 npm i -g http-server
 ```
@@ -319,6 +332,7 @@ The following file is a starting point to get Scatter connecting in the browser.
 
 
 ```
+
 
 
 # Misc Info
