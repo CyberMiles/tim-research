@@ -335,11 +335,14 @@ The following file is a starting point to get Scatter connecting in the browser.
 ## Transfer of funds
 The above code (minus the transferFunds function) connects to Scatter and makes the scatter object available. There are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
 
-### Same-origin policy issue
-Running the transferFunds function returns the following error
+### CORS & same-origin policy issue
+Running the transferFunds function returns the following error, in relation to security restrictions of cross origin resource sharig (CORS).
 ```
 Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 ```
+
+EOS deals with this by allowing a full node to allow 
+access-control-allow-origin = *
 
 
 ### Synchronous execution issue
