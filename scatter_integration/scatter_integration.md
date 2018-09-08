@@ -332,6 +332,13 @@ The following file is a starting point to get Scatter connecting in the browser.
 
 
 ```
+## Transfer of funds
+The above code (minus the transferFunds function) connects to Scatter and makes the scatter object available. There are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
+
+### Same-origin policy issue
+
+### Synchronous execution issue
+
 
 
 
