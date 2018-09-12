@@ -26,3 +26,5 @@ A collection of research and development performed and written up by @tpmccallum
 - [Tools for DApp developers](https://github.com/CyberMiles/tim-research/tree/master/tools_for_dapp_developers/tools_for_dapp_developers.md)
 
 - [Scatter Integration](https://github.com/CyberMiles/tim-research/blob/master/scatter_integration/scatter_integration.md)
+
+- [Gemini Dollar - the world’s first regulated stablecoin ](https://github.com/CyberMiles/tim-research/blob/master/gemini_dollar/gemini_dollar.asciidoc)
