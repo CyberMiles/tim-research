@@ -36,7 +36,9 @@ The ERC20Store smart contract also implements a Modifier which only allows funct
 
 == Contract upgrades - offline approval mechanism
 
-In certain situations, an offline approval mechanism is required. The workflow for an offline approval is along the lines of the following. Firstly the ERC20Proxy smart contract is instructed to delegate active token implementation to a new instance of ERC20Impl. The current instance of the ERC20Impl smart contract can be seen in Etherscan [5] (the 5th variable in the list). Secondly, The ERC20Store smart contract is instructed to adopt this new instance of the ERC20Impl smart contract as its single trusted source when accepting any updates in relation to the GUSD. These activities can only be executed if provided with the correct custodian. The current custodian of the ERC20Proxy smart contract can be seen on Etherscan (the 4th variable in the list). 
+In certain high-risk situations, an offline approval mechanism is required. The workflow for an offline approval is along the lines of the following. Firstly the ERC20Proxy smart contract is instructed to delegate active token implementation to a brand new instance of the ERC20Impl smart contract. The current instance of the ERC20Impl smart contract can be seen in Etherscan [5] (the 5th variable in the list). Secondly, The ERC20Store smart contract is instructed to adopt this new instance of the ERC20Impl smart contract as its single trusted source when accepting any updates in relation to the GUSD. These activities can only be executed if provided with the correct custodian. The current custodian of the ERC20Proxy smart contract can be seen on Etherscan (the 4th variable in the list). It appears that these smart contracts are designed to interoperate and therefore have an inherent relationship between instances of each other as well as custodians of each other. Below is a diagram which illustrates the current state of the smart contract instances and the custodians.
+
+
 
 
 [1] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-whitepaper.pdf
