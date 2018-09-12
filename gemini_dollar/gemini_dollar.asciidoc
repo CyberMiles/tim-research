@@ -32,17 +32,11 @@ The ERC20Impl smart contract contains the business logic in relation to token su
 
 == ERC20Store
 
-The ERC20Store smart contract also implements a Modifier which only allows functions to be called, in this case, by the ERC20Impl smart contract address. The name of this Modifier is onlyImpl.
+The ERC20Store smart contract also implements a Modifier which only allows functions to be called, in this case, by the ERC20Impl smart contract address. The name of this Modifier is called onlyImpl. 
 
+== Contract upgrades - offline approval mechanism
 
-
-
-and instead
-  * delegates to an instance of ERC20Impl. This contract also has no storage
-  * that constitutes the operational state of the token. This contract is
-  * upgradeable in the sense that the `custodian` can update the
-  * `erc20Impl` address, thus redirecting the delegation of business logic.
-  * The `custodian` is also authorized to pass custodianship. 
+In certain situations, an offline approval mechanism is required. The workflow for an offline approval is along the lines of the following. Firstly the ERC20Proxy smart contract is instructed to delegate active token implementation to a new instance of ERC20Impl. The current instance of the ERC20Impl smart contract can be seen in Etherscan [5] (the 5th variable in the list). Secondly, The ERC20Store smart contract is instructed to adopt this new instance of the ERC20Impl smart contract as its single trusted source when accepting any updates in relation to the GUSD. These activities can only be executed if provided with the correct custodian. The current custodian of the ERC20Proxy smart contract can be seen on Etherscan (the 4th variable in the list). 
 
 
 [1] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-whitepaper.pdf
@@ -54,6 +48,8 @@ and instead
 [4] https://etherscan.io/token/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd
 
 [5] https://etherscan.io/address/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd#code
+
+[6] https://etherscan.io/address/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd#readContract
 
 
 
