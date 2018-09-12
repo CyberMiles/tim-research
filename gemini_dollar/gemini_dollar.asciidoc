@@ -31,7 +31,7 @@ The image above shows that the individual ERC20Proxy, ERC20Impl and ERCStore sma
 
 From the outside, the ERC20Proxy smart contract is the public face of the GUSD. The ERC20Proxy smart contract contains no business logic. The executable logic is written in the ERC20Impl smart contract. The execution is essentially delegated and therefore, the logic of the ERC20Proxy smart contract's functions can be changed/upgraded by the custodian if the custodian changes/upgrades the ERC20Impl smart contract.
 
-== ERC20Imple smart contract
+== ERC20Impl smart contract
 
 The ERC20Impl smart contract contains the business logic in relation to token supply, token transfers, token burning and so forth. Some of the ERC20Impl smart contract functions can only be executed by the calling ERC20Proxy smart contract address; this is enforced through the use of a Modifier named onlyProxy. Interestingly, in much the same way as ERC20Proxy delegates logic to ERC20Impl, ERC20Impl delegates the data storage tasks to another smart contract called ERC20Store.
 
