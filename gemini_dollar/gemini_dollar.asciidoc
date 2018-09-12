@@ -20,12 +20,40 @@ Firstly, the following diagram illustrates the GUSD smart contract's inheritance
 
 image::solidity_inheritance_gusd.png[]
 
+The image above shows that the individual ERC20Proxy, ERC20Impl and ERCStore smart contracts all inherit from other smart contracts. 
+
+== ERC20Proxy smart contract
+
+From the outside, the ERC20Proxy smart contract is the public face of the GUSD. The ERC20Proxy smart contract contains no business logic. The executable logic is written in the ERC20Impl smart contract. The execution is essentially delegated and therefore, the logic of the ERC20Proxy smart contract's functions can be changed/upgraded by the custodian if the custodian changes/upgrades the ERC20Impl smart contract.
+
+== ERC20Imple smart contract
+
+The ERC20Impl smart contract contains the business logic in relation to token supply, token transfers, token burning and so forth. Some of the ERC20Impl smart contract functions can only be executed by the calling ERC20Proxy smart contract address; this is enforced through the use of a Modifier named onlyProxy. Interestingly, in much the same way as ERC20Proxy delegates logic to ERC20Impl, ERC20Impl delegates the data storage tasks to another smart contract called ERC20Store.
+
+== ERC20Store
+
+The ERC20Store smart contract also implements a Modifier which only allows functions to be called, in this case, by the ERC20Impl smart contract address. The name of this Modifier is onlyImpl.
+
+
+
+
+and instead
+  * delegates to an instance of ERC20Impl. This contract also has no storage
+  * that constitutes the operational state of the token. This contract is
+  * upgradeable in the sense that the `custodian` can update the
+  * `erc20Impl` address, thus redirecting the delegation of business logic.
+  * The `custodian` is also authorized to pass custodianship. 
 
 
 [1] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-whitepaper.pdf
+
 [2] https://medium.com/gemini/gemini-launches-the-gemini-dollar-62787f963fb4
+
 [3] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-examination-report-09-09-18.pdf
+
 [4] https://etherscan.io/token/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd
+
 [5] https://etherscan.io/address/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd#code
+
 
 
