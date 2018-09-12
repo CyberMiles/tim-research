@@ -17,7 +17,7 @@ The Gemini dollar is:
 
 * the world’s first regulated stablecoin 
 
-The first issuance of 100, 000 tokens is recorded in the Gemini Dollar Independent Accountants Report[3]. The report show the US Dollar reconciled balance of USD Gemini accounts is at $100, 000. These balances of accounts will be examined monthly by an independent accounting firm. The report also asserts that the amount of Gemini tokens issued and in circulation are in fact 100, 000 units. These tokens represent the Gemini dollar (GUSD) which is technically an ERC20 compliant token which can be publicly viewed on Etherscan [4] or any other Ethereum block explorer. The GUSD can be transferred on the Ethereum main network. The GUSD can be stored in any valid Ethereum address on the main Ethereum network.
+The first issuance of 100, 000 tokens is recorded in the Gemini Dollar Independent Accountants Report [3]. The report shows the US Dollar reconciled balance of USD Gemini accounts at $100, 000. These balances of accounts will be examined monthly by an independent accounting firm. The report also asserts that the amount of Gemini tokens issued, and in circulation, are in fact 100, 000 units. These tokens represent the Gemini dollar (GUSD) which is technically an ERC20 compliant token which can be publicly viewed on Etherscan [4] or any other Ethereum block explorer. The GUSD can be transferred on the Ethereum main network. The GUSD can be stored in any valid Ethereum address on the main Ethereum network.
 
 The issuance of GUSD is regulated and as such the issuer requires a level of technical functionality in relation to the GUSD token. Below is an overview of the Ethereum ERC20 token smart contract code [5] for the GUSD.
 
