@@ -51,6 +51,9 @@ As you can see from the diagram above a 1:1 relationship exists between ERC20Pro
 
 Interestingly, I did a diff on the ERC20Proxy, ERC20Impl and the ERC20Store and the source code files are identical i.e. each one has all of the code which the other 2 have. Put another way, they all have an exact copy of the LockRequestable CustodianUpgradable, ERC20Impl, ERC20Interface, ERC20ImplUpgradeable, ERC20Proxy and ERC20Store smart contracts. Given that the ERC20Proxy contract is the public facing endpoint, I guess that any changes to the logic in the ERC20Impl contract in the future will mean that the contracts will diverge in source code in some way.
 
+In closing, this system appears to have a smart contract upgrade path as well as an offline mechanism for high-risk actions. The trust element is weaved into independant licensed financial institutions and experts who regularly (I believe on a monthly basis) verify and report on both USD and GUSD quantities (which are potentially affected by the aforementioned high-risk actions and so forth).
+
+= References
 
 [1] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-whitepaper.pdf
 
