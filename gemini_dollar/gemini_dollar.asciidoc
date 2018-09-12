@@ -1,3 +1,31 @@
-[Gemini Dollar]
-= Gemini Dollar
+[Gemini dollar]
+Disclaimer: This is my brief summary of the stablecoin Gemini. This information is based on my personal understanding of the white paper, the announcement and the Solidity smart contract code. This document has only been produced to exercise my personal understanding; serves as a place to jot down my notes to prompt my thinking.
+
+= Gemini dollar
+
+The white paper [1] talks about trust and how a fiat-pegged stablecoin requires both cryptographic proof as well as trust due to its reliance on a central issuer. The announcement [2] presents the fact that "to date, there has been no trusted *and* regulated digital representation of the U.S. dollar that moves in an open, decentralized manner like cryptocurrencies".
+
+The Gemini dollar:
+* an Ethereum ERC20 compliant token
+* issued by Gemini, a New York trust company
+* strictly pegged to the U.S. dollar in a 1:1 relationship
+* overseen by the New York State Department of Financial Services (NYDFS)
+* the world’s first regulated stablecoin 
+
+The first issuance of 100, 000 tokens is recorded in the Gemini Dollar Independent Accountants Report[3]. The report show the US Dollar reconciled balance of USD Gemini accounts is at $100, 000. These balances of accounts will be examined monthly by an independent accounting firm. The report also asserts that the amount of Gemini tokens issued and in circulation are in fact 100, 000 units. These tokens represent the Gemini dollar (GUSD) which is technically an ERC20 compliant token which can be publicly viewed on Etherscan [4] or any other Ethereum block explorer. The GUSD can be transferred on the Ethereum main network. The GUSD can be stored in any valid Ethereum address on the main Ethereum network.
+
+The issuance of GUSD is regulated and as such the issuer requires a level of technical functionality in relation to the GUSD token. Below is an overview of the Ethereum ERC20 token smart contract code [5] for the GUSD.
+
+Firstly, the following diagram illustrates the GUSD smart contract's inheritance.
+
+image::solidity_inheritance_gusd.png[]
+
+
+
+[1] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-whitepaper.pdf
+[2] https://medium.com/gemini/gemini-launches-the-gemini-dollar-62787f963fb4
+[3] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-examination-report-09-09-18.pdf
+[4] https://etherscan.io/token/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd
+[5] https://etherscan.io/address/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd#code
+
 
