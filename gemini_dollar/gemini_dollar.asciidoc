@@ -40,6 +40,8 @@ In certain high-risk situations, an offline approval mechanism is required. The 
 
 image::smart_contract_instances.png[]
 
+As you can see from the diagram above a 1:1 relationship exists between ERC20Proxy and ERC20Impl. Further, another 1:1 relationship exists between the particular instance of ERC20Impl and ERC20Store. These relationships are enforced in the smart contract code via the use of Modifiers (which require the caller of a function to be a particular address). For example, if a new instance of ERC20Impl is created (let's call it ERC20Impl_v2) then the instance of ERC20Proxy will now only be able to interact with ERC20Impl_v2. Similarly, the ERC20Store will only interact with ERC20Impl_v2. As mentioned previously, this approval to interact is enforced in the smart contract code by Modifiers; there can only ever be one address which is allowed to interact with an instance of a GUSD smart contract.
+
 
 [1] https://gemini.com/wp-content/themes/gemini/assets/img/dollar/gemini-dollar-whitepaper.pdf
 
