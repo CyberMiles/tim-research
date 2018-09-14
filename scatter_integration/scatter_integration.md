@@ -341,8 +341,17 @@ Running the transferFunds function returns the following error, in relation to s
 Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 ```
 
-EOS deals with this by allowing a full node to allow 
+EOS deals with this via the following setting 
+
+```
 access-control-allow-origin = *
+```
+
+Ethereum also allows you (and your new applications) to interact [with Geth and the Ethereum network via your own programs and not manually through the console](https://github.com/ethereum/go-ethereum/blob/master/README.md#programatically-interfacing-geth-nodes)
+
+```
+--rpccorsdomain = *
+```
 
 
 ### Synchronous execution issue
