@@ -268,6 +268,7 @@ http-server .
 The following file is a starting point to get Scatter connecting in the browser.
 
 ```
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -286,9 +287,11 @@ The following file is a starting point to get Scatter connecting in the browser.
 					},
 						CyberMiles: {
 						blockchain: "cmt",
-						host: "172.17.0.2",
+						//host: "172.17.0.2",
+						host: "18.209.245.202",
 						port: 8545,
 						protocol: "http",
+						//rpccorsdomain: "*",
 						chainId: "19"
 					}
 				};
@@ -314,11 +317,10 @@ The following file is a starting point to get Scatter connecting in the browser.
 					console.log(protocol);
 					const web3 = this.scatter.eth(network, Web3, protocol);
 					//Fire off a transaction (sends funds from a Scatter created key pair to a CyberMiles Testnet created key pair)
-					web3.eth.sendTransaction({
-					from: '0x357130c0ae600be06cd8d6f22d3ac8383078f78c',
-					to: '0xc315cc572e9c9be6630d899fd3b6122b36eab253',
-					value: '1'
-					});
+					//Getting the following error 
+					//Uncaught Error: Web3ProviderEngine does not support synchronous requests.
+					amount = web3.toWei(100, 'ether');
+					web3.eth.sendTransaction({from:"0x357130c0ae600be06cd8d6f22d3ac8383078f78c",to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253",value: amount});
 				}
 				
 			// Background of this file's purpose can be found at https://github.com/CyberMiles/tim-research/blob/master/scatter_integration/scatter_integration.md
