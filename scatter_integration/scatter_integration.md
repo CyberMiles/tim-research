@@ -182,10 +182,10 @@ At present, this is a non existant Ethereum key pair as you can see from the Eth
 ```
 https://etherscan.io/address/0x357130c0ae600be06cd8d6f22d3ac8383078f78c
 ```
-### The state of the CyberMiles Testnet
+### Our current accounts on the CyberMiles Testnet
 At present the CyberMiles Testnet which I am working on via the Docker container has the following account state. The address of 0xc315cc572e9c9be6630d899fd3b6122b36eab253 has 1100 cmt tokens and the address of 0x6d758d5d69af474c6d18b67f252ee39772960967 has 900 cmt tokens.
 
-### Key compatibility
+### Transferring value using Geth (command line - no scatter at this stage)
 Let's try and transfer 100 cmt tokens from our original address (which is currently holding 1100 cmt) to our newly generated address (which was created by allowing Scatter to generate a private/public key pair on our behalf).
 
 First we unlock our account
@@ -236,7 +236,7 @@ web3.fromWei(cmt.getBalance("0x357130c0ae600be06cd8d6f22d3ac8383078f78c"), 'cmt'
 ```
 This confirms that the address space of Ethereum and CyberMiles are compatible with these addresses.
 
-## Application
+## Transferring value using Scatter (by clicking a button in our one page HTML/JS application)
 The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability, written using only HTML and inline Javascript. This is for ease of use and understanding.
 
 ### Dependencies
@@ -373,10 +373,3 @@ This looks like an issue in relation to how the web3.eth.sendTransaction command
 amount = web3.toWei(100, 'ether');				web3.eth.sendTransaction({from:"0x357130c0ae600be06cd8d6f22d3ac8383078f78c",to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253",value: amount});
 ```
 I will look into this and see if this can be re-written (or whether something in Scatter is reuquired). I believe that this issues is outside of the Travis Testnet's scope.
-
-
-
-
-
-
-
