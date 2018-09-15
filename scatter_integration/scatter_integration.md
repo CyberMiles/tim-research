@@ -335,7 +335,12 @@ The following file is a starting point to get Scatter connecting in the browser.
 
 ```
 ## Transfer of funds
-The above code (minus the transferFunds function) connects to Scatter and makes the scatter object available. There are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
+The above code (minus the transferFunds function) connects to Scatter and makes the scatter object available. 
+
+Once the page has loaded, clicking on the "Transfer Funds" button will execute the transfer of funds (on the Travis Tesnet via Scatter). 
+
+## Issues to be resolved
+At present, there are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
 
 ### CORS & same-origin policy issue
 Running the transferFunds function returns the following error, in relation to security restrictions of cross origin resource sharig (CORS).
@@ -343,7 +348,9 @@ Running the transferFunds function returns the following error, in relation to s
 Failed to load http://myTravisTestNet:8545/: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://127.0.0.1:8080' is therefore not allowed access.
 ```
 
-Ethereum allows external applications to interact [with Geth and the Ethereum network, as apposed to manually having to go through the Geth console](https://github.com/ethereum/go-ethereum/blob/master/README.md#programatically-interfacing-geth-nodes). Some extra setup is required in relation to the --rpccorsdomain flag as per the information directly below this paragraph.
+Ethereum allows external applications to interact with Geth and the Ethereum network, as apposed to manually having to go through the Geth console. Some extra setup is required in relation to the --rpccorsdomain flag as per the information directly below this paragraph.
+
+There is [official Ethereum documentation which relates to the rpccorsdomain](https://github.com/ethereum/go-ethereum/blob/master/README.md#programatically-interfacing-geth-nodes) setting
 
 ```
 --rpccorsdomain = *
@@ -353,43 +360,21 @@ CyberMiles Travis Repository has [a pending change/update in relation to rpccors
 
 CyberMiles Travis Repository also has [a commit in relation to rpccorsdomain](https://github.com/CyberMiles/travis/commit/4cb0245808ee4742fd74fbf9c89dc1fa5b57984b)
 
-
-
 ### Synchronous execution issue
 Running the transferFunds function returns the following error
+
 ```
 Web3ProviderEngine does not support synchronous requests.
 ```
 
+This looks like an issue in relation to how the web3.eth.sendTransaction command is written inside the application (HTML/JS page). 
 
-# Misc Info
+```
+amount = web3.toWei(100, 'ether');				web3.eth.sendTransaction({from:"0x357130c0ae600be06cd8d6f22d3ac8383078f78c",to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253",value: amount});
+```
+I will look into this and see if this can be re-written (or whether something in Scatter is reuquired). I believe that this issues is outside of the Travis Testnet's scope.
 
-## Accessing CyberMiles Testnet config, data and keystore, which are stored on local disk
-Obviously I am running Docker here, so I want to browse the file system and locate the private keys which were created automatically in the previous steps. The following commands will provide access to the internal Docker container files system.
 
-Firstly get the (CyberMiles Testnet) Docker container id (in our case 8d483d15eff2) by typing the following command
-```
-docker ps -q
-```
-Then run the following command which will launch a shell right inside the Docker container for you.
-```
-docker exec -it 8d483d15eff2 /bin/bash
-```
-If you change up and into the travis directory using the following command, you will have access to the keystore directory and more, for example
-```
-cd ../travis
-ls
-```
-The above commands will return the following
-```
-config  data  geth.ipc  keystore  vm
-```
-### Installing a text editor inside the Docker instance
-The CyberMiles Tesnet Docker instance is Ubuntu. The system does not have vim or emacs etc. I could use tail to access text inside files, however if I want to open files I will need to install a text editor in order to open and view the private keys of the accounts. This can be done as follows.
-```
-apt-get update
-apt-get install vim
-```
 
 
 
