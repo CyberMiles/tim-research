@@ -38,7 +38,7 @@ cp -r init $HOME/.travis
 ```
 Start Docker instance
 ```
-$ docker run --publish-all=true --name travis -v $HOME/.travis:/travis -p 26657:26657 -p 8545:8545 -t ywonline/travis node start --home /travis
+docker run --publish-all=true --name travis -v $HOME/.travis:/travis -p 26657:26657 -p 8545:8545 -t ywonline/travis node start --home /travis
 ```
 Get Testnet ip
 ```
