@@ -338,20 +338,19 @@ The above code (minus the transferFunds function) connects to Scatter and makes 
 ### CORS & same-origin policy issue
 Running the transferFunds function returns the following error, in relation to security restrictions of cross origin resource sharig (CORS).
 ```
-Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Failed to load http://myTravisTestNet:8545/: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://127.0.0.1:8080' is therefore not allowed access.
 ```
 
-EOS deals with this via the following setting 
-
-```
-access-control-allow-origin = *
-```
-
-Ethereum also allows you (and your new applications) to interact [with Geth and the Ethereum network via your own programs and not manually through the console](https://github.com/ethereum/go-ethereum/blob/master/README.md#programatically-interfacing-geth-nodes)
+Ethereum allows external applications to interact [with Geth and the Ethereum network, as apposed to manually having to go through the Geth console](https://github.com/ethereum/go-ethereum/blob/master/README.md#programatically-interfacing-geth-nodes). Some extra setup is required in relation to the --rpccorsdomain flag as per the information directly below this paragraph.
 
 ```
 --rpccorsdomain = *
 ```
+
+CyberMiles Travis Repository has [a pending change/update in relation to rpccorsdomain](https://github.com/CyberMiles/travis/pull/1)
+
+CyberMiles Travis Repository also has [a commit in relation to rpccorsdomain](https://github.com/CyberMiles/travis/commit/4cb0245808ee4742fd74fbf9c89dc1fa5b57984b)
+
 
 
 ### Synchronous execution issue
