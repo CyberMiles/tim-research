@@ -280,7 +280,7 @@ The following file is a starting point to get Scatter connecting in the browser.
 				const Blockchains = {
 						Ethereum: {
 						blockchain: "ethO",
-						host: "127.0.0.1",
+						host: "1.1.1.1",
 						port: 8545,
 						protocol: "https",
 						chainId: "1"
@@ -288,7 +288,7 @@ The following file is a starting point to get Scatter connecting in the browser.
 						CyberMiles: {
 						blockchain: "cmt",
 						//host: "172.17.0.2",
-						host: "18.209.245.202",
+						host: "127.0.0.1",
 						port: 8545,
 						protocol: "http",
 						//rpccorsdomain: "*",
@@ -310,6 +310,18 @@ The following file is a starting point to get Scatter connecting in the browser.
 				        this.scatter = scatter;
 				        window.scatter = null;
 				});
+
+				function getBlock48(){
+					const protocol = 'http' || 'ws';
+					console.log(protocol);
+					const web3 = this.scatter.eth(network, Web3, protocol);
+					web3.eth.getBlock(48, function(error, result){
+						if(!error)
+							console.log(JSON.stringify(result));
+						else
+							console.error(error);
+					})
+				}
 				
 				function transferFunds() {
 					//Set protocol
@@ -328,7 +340,10 @@ The following file is a starting point to get Scatter connecting in the browser.
 	</head>
 	<body>
 		<h1>Check the console output</h1>
+
+		<button type="button" id="cmtGetBlock" onclick='getBlock48()'>Get 48th block</button>
 		<button type="button" id="cmtButton" onclick='transferFunds()'>Transfer Funds</button>
+
 	</body>	
 </html>
 
@@ -343,6 +358,10 @@ Once the page has loaded, clicking on the "Transfer Funds" button will execute t
 At present, there are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
 
 ### CORS & same-origin policy issue
+#### UPDATE issue fixed 20180916
+Fixed this by adding --rpccorsdomain="*" to the bottom of the ~/.travis/config/config.toml file
+#### UPDATE END
+
 Running the transferFunds function returns the following error, in relation to security restrictions of cross origin resource sharig (CORS).
 ```
 Failed to load http://myTravisTestNet:8545/: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://127.0.0.1:8080' is therefore not allowed access.
@@ -352,16 +371,8 @@ Ethereum allows external applications to interact with Geth and the Ethereum net
 
 There is [official Ethereum documentation which relates to the rpccorsdomain](https://github.com/ethereum/go-ethereum/blob/master/README.md#programatically-interfacing-geth-nodes) setting
 
-```
---rpccorsdomain = *
-```
-
-CyberMiles Travis Repository has [a pending change/update in relation to rpccorsdomain](https://github.com/CyberMiles/travis/pull/1)
-
-CyberMiles Travis Repository also has [a commit in relation to rpccorsdomain](https://github.com/CyberMiles/travis/commit/4cb0245808ee4742fd74fbf9c89dc1fa5b57984b)
-
 ### Synchronous execution issue
-#### UPDATE 20180916
+#### UPDATE - issue fixed 20180916
 Function can be re-written using the following Ethereum reference
 https://github.com/ethereum/wiki/wiki/JavaScript-API#using-callbacks
 #### UPDATE END
@@ -377,4 +388,3 @@ This looks like an issue in relation to how the web3.eth.sendTransaction command
 ```
 amount = web3.toWei(100, 'ether');				web3.eth.sendTransaction({from:"0x357130c0ae600be06cd8d6f22d3ac8383078f78c",to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253",value: amount});
 ```
-I will look into this and see if this can be re-written (or whether something in Scatter is reuquired). I believe that this issues is outside of the Travis Testnet's scope.
