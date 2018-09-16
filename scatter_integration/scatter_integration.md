@@ -361,6 +361,11 @@ CyberMiles Travis Repository has [a pending change/update in relation to rpccors
 CyberMiles Travis Repository also has [a commit in relation to rpccorsdomain](https://github.com/CyberMiles/travis/commit/4cb0245808ee4742fd74fbf9c89dc1fa5b57984b)
 
 ### Synchronous execution issue
+#### UPDATE 20180916
+Function can be re-written using the following Ethereum reference
+https://github.com/ethereum/wiki/wiki/JavaScript-API#using-callbacks
+#### UPDATE END
+
 Running the transferFunds function returns the following error
 
 ```
