@@ -284,6 +284,7 @@ I then created an HTML file (as shown below) and ran the following command (from
 ```
 http-server .
 ```
+### Single page HTML/JS Application using Scatter
 
 The following file is a starting point to get Scatter connecting in the browser.
 
