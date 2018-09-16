@@ -371,12 +371,22 @@ The following file is a starting point to get Scatter connecting in the browser.
 
 
 ```
-## Transfer of funds
-The above code (minus the transferFunds function) connects to Scatter and makes the scatter object available. 
+## Interacting with the blockchain via Scatter
+You can type code, such as the following, into the Chrome browser's console, once the page has loaded. The following code queries the blockchain and returns the account balance for 0xb2da22ab2404a2b008105217293d3db54b0f9a2c
+```
+const protocol = 'http' || 'ws';
+console.log(protocol);
+const web3 = this.scatter.eth(network, Web3, protocol);
+web3.eth.getBalance("0xb2da22ab2404a2b008105217293d3db54b0f9a2c", function(error, result){
+	if(!error)
+		console.log(JSON.stringify(result));
+	else
+		console.log(error);
+	})
+```
+Obviously, clicking the button called "Get 4th block" (which is on the single page HTML/JS page) also queries the blockchain and returns the data from block number 4.
 
-Once the page has loaded, clicking on the "Transfer Funds" button will execute the transfer of funds (on the Travis Tesnet via Scatter). 
-
-## Issues encountered
+## Old issues encountered - error messages kept here to help others
 At present, there are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
 
 ### CORS & same-origin policy issue - resolved - see update
