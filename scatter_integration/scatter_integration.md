@@ -62,12 +62,12 @@ cmt.syncing
 //The following command will create a new account
 ```
 personal.newAccount()
-0x6d758d5d69af474c6d18b67f252ee39772960967
+0x8e91cd2b624882a46380bcea561fa5aa2d768755
 ```
 //Run this again so that we have two accounts to play with 
 ```
 personal.newAccount()
-0xc315cc572e9c9be6630d899fd3b6122b36eab253
+0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a
 ```
 
 Once you have synced the Tesnet (running cmt.syncing returns false for catching_up), visit the Travis Testnet faucet to grab some free Testnet tokens.
@@ -110,19 +110,19 @@ It will return something like this for each grab which you performed
 ```
 It is now time to check the balances of the two accounts which we created above. First we will unlock each account.
 ```
-personal.unlockAccount("0x6d758d5d69af474c6d18b67f252ee39772960967","PutPasswordHere")
+personal.unlockAccount("0x8e91cd2b624882a46380bcea561fa5aa2d768755","PutPasswordHere")
 true
-personal.unlockAccount("0xc315cc572e9c9be6630d899fd3b6122b36eab253","PutPasswordHere")
+personal.unlockAccount("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a","PutPasswordHere")
 true
 ```
 Then we will check each balance
 ```
-web3.fromWei(cmt.getBalance("0xc315cc572e9c9be6630d899fd3b6122b36eab253"), 'cmt');
+web3.fromWei(cmt.getBalance("0x8e91cd2b624882a46380bcea561fa5aa2d768755"), 'cmt');
 1000
 ```
 Notice how we are converting the denomination of token to a whole cmt unit (as apposed to using the smaller default denomination of wei.
 ```
-web3.fromWei(cmt.getBalance("0x6d758d5d69af474c6d18b67f252ee39772960967"), 'cmt');
+web3.fromWei(cmt.getBalance("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a"), 'cmt');
 1000
 ```
 Now that we have two accounts on the CyberMiles Testnet, let us perform a test transfer from one account to the other.
@@ -133,7 +133,7 @@ amount = web3.toWei(100, 'cmt')
 ```
 Now let's perform the transaction and pass in the amount variable which we just created. Notice how we also set the gas to zero. This is a CyberMiles specific feature; allows users to send legitimate transactions on the network at no cost.
 ```
-cmt.sendTransaction({from:"0x6d758d5d69af474c6d18b67f252ee39772960967", to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253", value:amount, gasPrice:0})
+cmt.sendTransaction({from:"0x8e91cd2b624882a46380bcea561fa5aa2d768755", to:"0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a", value:amount, gasPrice:0})
 ```
 The above will return a transaction hash, like this, "0x3bd0839327d0477fbe9d9a52190db8a73dc9d85d1d86bdc31ab382f83962466f". 
 Again, we can go and check this transaction on the blockchain using the following command syntax.
@@ -147,7 +147,7 @@ cmt.getTransaction("0x3bd0839327d0477fbe9d9a52190db8a73dc9d85d1d86bdc31ab382f839
 {
   blockHash: "0x7871c3e853de78504facdb19a891be921951161866df9db75fca56d8f1740b63",
   blockNumber: 106385,
-  from: "0x6d758d5d69af474c6d18b67f252ee39772960967",
+  from: "0x8e91cd2b624882a46380bcea561fa5aa2d768755",
   gas: 90000,
   gasPrice: 0,
   hash: "0x9881e8205f6114ae2a2a3ca038e655fd5883fd1a57729a6f7b58a07c3a0ade1d",
@@ -155,7 +155,7 @@ cmt.getTransaction("0x3bd0839327d0477fbe9d9a52190db8a73dc9d85d1d86bdc31ab382f839
   nonce: 0,
   r: "0xa229e67a76dc204267a47782907d7e84f8de3990153dd1fb93c4184e6448908c",
   s: "0x547d185a780ef7f788bbdb9a908d0009f718baf831b5fc1a0878f5f070f49fda",
-  to: "0xc315cc572e9c9be6630d899fd3b6122b36eab253",
+  to: "0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a",
   transactionIndex: 2,
   v: "0x49",
   value: 100000000000000000000
@@ -164,9 +164,9 @@ cmt.getTransaction("0x3bd0839327d0477fbe9d9a52190db8a73dc9d85d1d86bdc31ab382f839
 NOTICE: Notice how the value is in wie i.e. 100000000000000000000 wei is equal to 100 cmt.
 
 If we check both account balances again, we will see that the 100 tokens have been transfered successfully.
-web3.fromWei(cmt.getBalance("0xc315cc572e9c9be6630d899fd3b6122b36eab253"), 'cmt');
+web3.fromWei(cmt.getBalance("0x8e91cd2b624882a46380bcea561fa5aa2d768755"), 'cmt');
 900
-web3.fromWei(cmt.getBalance("0x6d758d5d69af474c6d18b67f252ee39772960967"), 'cmt');
+web3.fromWei(cmt.getBalance("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a"), 'cmt');
 1100
 
 # Scatter
@@ -177,24 +177,23 @@ This is where it gets interesting. In Ethereum, as part of the standard function
 ### Keys - Scatter can generate private key pair for you
 Whilst Scatter allows you to put in your own private keys (for EOS and Ethereum). Scatter can also generate an Ethereum key pair for you. From this point onwards you are responsible for the private/public key pair (which you can download by clicking "copy" button in the Scatter software).
 
-This is the key pair which Scatter created for me (via the Chrome extension). 
+This is the public key which Scatter Desktop created for me
 ```
-Private Key: 783a96d942c52dccaeac88dab556863d5f4c48ced6794270752a722d1cf5a87a 
-Public Key: 0x357130c0ae600be06cd8d6f22d3ac8383078f78c
+Public Key: 0xb2da22ab2404a2b008105217293d3db54b0f9a2c
 ```
 At present, this is a non existant Ethereum key pair as you can see from the Etherscan link below
 ```
-https://etherscan.io/address/0x357130c0ae600be06cd8d6f22d3ac8383078f78c
+https://etherscan.io/address/0xb2da22ab2404a2b008105217293d3db54b0f9a2c
 ```
 ### Our current accounts on the CyberMiles Testnet
-At present the CyberMiles Testnet which I am working on via the Docker container has the following account state. The address of 0xc315cc572e9c9be6630d899fd3b6122b36eab253 has 1100 cmt tokens and the address of 0x6d758d5d69af474c6d18b67f252ee39772960967 has 900 cmt tokens.
+At present the CyberMiles Testnet which I am working on via the Docker container has the following account state. The address of 0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a has 1100 cmt tokens and the address of 0x8e91cd2b624882a46380bcea561fa5aa2d768755 has 900 cmt tokens.
 
 ### Transferring value using Geth (command line - no scatter at this stage)
 Let's try and transfer 100 cmt tokens from our original address (which is currently holding 1100 cmt) to our newly generated address (which was created by allowing Scatter to generate a private/public key pair on our behalf).
 
 First we unlock our account
 ```
-personal.unlockAccount("0xc315cc572e9c9be6630d899fd3b6122b36eab253", "PutPasswordHere")
+personal.unlockAccount("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a", "PutPasswordHere")
 true
 ```
 Then we create an amount variable (100 cmt) for our next transaction
@@ -204,7 +203,7 @@ amount = web3.toWei(100, 'cmt')
 ```
 Then we transfer the funds
 ```
-cmt.sendTransaction({from:"0xc315cc572e9c9be6630d899fd3b6122b36eab253", to:"0x357130c0ae600be06cd8d6f22d3ac8383078f78c", value:amount, gasPrice:0})
+cmt.sendTransaction({from:"0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a", to:"0xb2da22ab2404a2b008105217293d3db54b0f9a2c", value:amount, gasPrice:0})
 
 "0xb4e1bd41dff2001da2e70ffbeb84aca926e6e892e0f56aeade939e05a2f41ca3"
 ```
@@ -214,7 +213,7 @@ cmt.getTransaction("0xb4e1bd41dff2001da2e70ffbeb84aca926e6e892e0f56aeade939e05a2
 {
   blockHash: "0xeff76bf20a11b17591f592ed3244131d2e5ef907b8f035b54cf5e0ccffa445c9",
   blockNumber: 107167,
-  from: "0xc315cc572e9c9be6630d899fd3b6122b36eab253",
+  from: "0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a",
   gas: 90000,
   gasPrice: 0,
   hash: "0xb4e1bd41dff2001da2e70ffbeb84aca926e6e892e0f56aeade939e05a2f41ca3",
@@ -222,7 +221,7 @@ cmt.getTransaction("0xb4e1bd41dff2001da2e70ffbeb84aca926e6e892e0f56aeade939e05a2
   nonce: 0,
   r: "0xe1663950f0c8f2fcea026782aacd26c0cf57b6ea7ebf6986bf0c0c2f4f383a8d",
   s: "0x7baf4399a39373e744d1b71f41c27ec7b9543713d88278123acdf1eba1e79130",
-  to: "0x357130c0ae600be06cd8d6f22d3ac8383078f78c",
+  to: "0xb2da22ab2404a2b008105217293d3db54b0f9a2c",
   transactionIndex: 1,
   v: "0x49",
   value: 100000000000000000000
@@ -230,12 +229,12 @@ cmt.getTransaction("0xb4e1bd41dff2001da2e70ffbeb84aca926e6e892e0f56aeade939e05a2
 ```
 If we check the account balance of the from account, we will see that the 100 cmt has been moved on. There is only 1000 cmt in that account now. This is correct!
 ```
-web3.fromWei(cmt.getBalance("0xc315cc572e9c9be6630d899fd3b6122b36eab253"), 'cmt')
+web3.fromWei(cmt.getBalance("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a"), 'cmt')
 1000
 ```
 Believe it or not, we can even check the Scatter generated account on this testnet. We do not need the private keys to get the account balance of a public key on this blockchain. The following command, correctly returns the result of 100 cmt.
 ```
-web3.fromWei(cmt.getBalance("0x357130c0ae600be06cd8d6f22d3ac8383078f78c"), 'cmt')
+web3.fromWei(cmt.getBalance("0xb2da22ab2404a2b008105217293d3db54b0f9a2c"), 'cmt')
 100
 ```
 This confirms that the address space of Ethereum and CyberMiles are compatible with these addresses.
