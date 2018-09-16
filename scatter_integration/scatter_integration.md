@@ -312,7 +312,6 @@ The following file is a starting point to get Scatter connecting in the browser.
 						host: "127.0.0.1",
 						port: 8545,
 						protocol: "http",
-						//rpccorsdomain: "*",
 						chainId: "19"
 					}
 				};
