@@ -10,11 +10,12 @@ Scatter:
 The following instructions were performed in order to test CyberMiles with Scatter
 
 ## Step 1 - Get the CyberMiles Testnet up and runnning
-There are instructions on how to use a single node local testnet (I have listed the link below).
+### Single local node
+There are instructions on how to use a single node local node (I have listed the link below). In reality the single local node is super fast to set up and deals with CORS by default.
 ```
 https://travis.readthedocs.io/en/latest/getting-started.html
 ```
-However, we will be using Docker to connect to the actual Testnet for this Scatter Test Case. The following URL has instructions on getting a CyberMiles Testnet node up and running using Docker.
+Alternatively, I have also used Docker to connect to the actual Testnet for a Scatter Test Case. The following URL has instructions on getting the official CyberMiles Testnet node up and running using Docker.
 ```
 https://travis.readthedocs.io/en/latest/connect-testnet.html#docker
 ```
@@ -53,12 +54,13 @@ Connect to Testnet command line tool
 docker run --rm -it ywonline/travis attach http://172.17.0.2:8545
 ```
 
-## Step 2 - Sync with the CyberMiles Testnet and fund some accounts
+## Step 2 - Sync with the CyberMiles Testnet 
 
 Check to see of the testnet is still syncing, you wont get any account (will not see any testnet tokens from the faucet until your node is synced)
 ```
 cmt.syncing
 ```
+## Step 3 - Funding some accounts
 //The following command will create a new account
 ```
 personal.newAccount()
