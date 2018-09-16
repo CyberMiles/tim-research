@@ -378,6 +378,7 @@ There is [official Ethereum documentation which relates to the rpccorsdomain](ht
 #### UPDATE - issue fixed 20180916
 Function can be re-written using the following Ethereum reference
 https://github.com/ethereum/wiki/wiki/JavaScript-API#using-callbacks
+This has been resolved for all functions except the transferFunds function, this is the next task
 #### UPDATE END
 
 Running the transferFunds function returns the following error
