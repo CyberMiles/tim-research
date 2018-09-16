@@ -398,14 +398,25 @@ https://github.com/ethereum/wiki/wiki/JavaScript-API#using-callbacks
 This has been resolved for all functions except the transferFunds function, this is the next task
 #### UPDATE END
 
-Running the transferFunds function returns the following error
+Running the transferFunds function used to return the following error
 
 ```
 Web3ProviderEngine does not support synchronous requests.
 ```
 
-This looks like an issue in relation to how the web3.eth.sendTransaction command is written inside the application (HTML/JS page). 
+This was an issue in relation to how the web3.eth.sendTransaction command is written inside the application (HTML/JS page). 
 
+The following synchronous syntax will not work.
 ```
-amount = web3.toWei(100, 'ether');				web3.eth.sendTransaction({from:"0x357130c0ae600be06cd8d6f22d3ac8383078f78c",to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253",value: amount});
+web3.eth.getBalance("0xb2da22ab2404a2b008105217293d3db54b0f9a2c")
+```
+
+Instead this asynchronous syntax will work
+```
+web3.eth.getBalance("0xb2da22ab2404a2b008105217293d3db54b0f9a2c", function(error, result){
+	if(!error)
+		console.log(JSON.stringify(result));
+	else
+		console.log(error);
+	})
 ```
