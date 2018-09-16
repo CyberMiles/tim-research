@@ -27,3 +27,14 @@ The CyberMiles Tesnet Docker instance is Ubuntu. The system does not have vim or
 apt-get update
 apt-get install vim
 ```
+
+### Cleaning up old Docker containers
+https://zaiste.net/removing_docker_containers/
+List all exited containers
+```
+docker ps -aq -f status=exited
+```
+Remove stopped containers
+```
+docker ps -aq --no-trunc -f status=exited | xargs docker rm
+```
