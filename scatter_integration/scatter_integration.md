@@ -344,15 +344,17 @@ The following file is a starting point to get Scatter connecting in the browser.
 				}
 				
 				function transferFunds() {
-					//Set protocol
+				//Set protocol
 					const protocol = 'http' || 'ws';
 					console.log(protocol);
 					const web3 = this.scatter.eth(network, Web3, protocol);
-					//Fire off a transaction (sends funds from a Scatter created key pair to a CyberMiles Testnet created key pair)
-					//Getting the following error 
-					//Uncaught Error: Web3ProviderEngine does not support synchronous requests.
 					amount = web3.toWei(100, 'ether');
-					web3.eth.sendTransaction({from:"0x357130c0ae600be06cd8d6f22d3ac8383078f78c",to:"0xc315cc572e9c9be6630d899fd3b6122b36eab253",value: amount});
+					web3.eth.sendTransaction({from:"0xb2da22ab2404a2b008105217293d3db54b0f9a2c",to:"0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a",value: amount}, function(error, result){ 
+					if(!error)
+						console.log(JSON.stringify(result));
+					else
+						console.log(error);
+					})
 				}
 				
 			// Background of this file's purpose can be found at https://github.com/CyberMiles/tim-research/blob/master/scatter_integration/scatter_integration.md
