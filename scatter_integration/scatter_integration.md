@@ -56,12 +56,12 @@ docker run --rm -it ywonline/travis attach http://172.17.0.2:8545
 ```
 
 ## Step 2 - Funding some accounts on the official CyberMiles Testnet
-//The following command will create a new account
+The following command will create a new account
 ```
 personal.newAccount()
 0x8e91cd2b624882a46380bcea561fa5aa2d768755
 ```
-//Run this again so that we have two accounts to play with 
+Run this again so that we have two accounts to play with 
 ```
 personal.newAccount()
 0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a
@@ -126,12 +126,12 @@ web3.fromWei(cmt.getBalance("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a"), 'cmt'
 1000
 ```
 ## Step 3 - Funding some accounts on your single local node (not the testnet)
-//The following command will create a new account
+The following command will create a new account
 ```
 personal.newAccount()
 0x8e91cd2b624882a46380bcea561fa5aa2d768755
 ```
-//Run this again so that we have two accounts to play with 
+Run this again so that we have two accounts to play with 
 ```
 personal.newAccount()
 0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a
@@ -331,11 +331,11 @@ The following file is a starting point to get Scatter connecting in the browser.
 				        window.scatter = null;
 				});
 
-				function getBlock48(){
+				function getBlock4(){
 					const protocol = 'http' || 'ws';
 					console.log(protocol);
 					const web3 = this.scatter.eth(network, Web3, protocol);
-					web3.eth.getBlock(48, function(error, result){
+					web3.eth.getBlock(4, function(error, result){
 						if(!error)
 							console.log(JSON.stringify(result));
 						else
@@ -361,7 +361,7 @@ The following file is a starting point to get Scatter connecting in the browser.
 	<body>
 		<h1>Check the console output</h1>
 
-		<button type="button" id="cmtGetBlock" onclick='getBlock48()'>Get 48th block</button>
+		<button type="button" id="cmtGetBlock" onclick='getBlock4()'>Get 4th block</button>
 		<button type="button" id="cmtButton" onclick='transferFunds()'>Transfer Funds</button>
 
 	</body>	
@@ -374,10 +374,10 @@ The above code (minus the transferFunds function) connects to Scatter and makes 
 
 Once the page has loaded, clicking on the "Transfer Funds" button will execute the transfer of funds (on the Travis Tesnet via Scatter). 
 
-## Issues to be resolved
+## Issues encountered
 At present, there are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
 
-### CORS & same-origin policy issue
+### CORS & same-origin policy issue - resolved - see update
 #### UPDATE issue fixed 20180916
 Fixed this by adding --rpccorsdomain="*" to the bottom of the ~/.travis/config/config.toml file
 #### UPDATE END
@@ -391,7 +391,7 @@ Ethereum allows external applications to interact with Geth and the Ethereum net
 
 There is [official Ethereum documentation which relates to the rpccorsdomain](https://github.com/ethereum/go-ethereum/blob/master/README.md#programatically-interfacing-geth-nodes) setting
 
-### Synchronous execution issue
+### Synchronous execution issue - resolved - see update
 #### UPDATE - issue fixed 20180916
 Function can be re-written using the following Ethereum reference
 https://github.com/ethereum/wiki/wiki/JavaScript-API#using-callbacks
