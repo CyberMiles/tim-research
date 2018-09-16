@@ -10,7 +10,11 @@ Scatter:
 The following instructions were performed in order to test CyberMiles with Scatter
 
 ## Step 1 - Get the CyberMiles Testnet up and runnning
-Run the following commands in order to get a Docker instance of the CyberMiles Testnet running as quickly as possible. The following URL has instructions on getting a CyberMiles Testnet node up and running using Docker.
+There are instructions on how to use a single node local testnet (I have listed the link below).
+```
+https://travis.readthedocs.io/en/latest/getting-started.html
+```
+However, we will be using Docker to connect to the actual Testnet for this Scatter Test Case. The following URL has instructions on getting a CyberMiles Testnet node up and running using Docker.
 ```
 https://travis.readthedocs.io/en/latest/connect-testnet.html#docker
 ```
