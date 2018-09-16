@@ -9,12 +9,13 @@ Scatter:
 
 The following instructions were performed in order to test CyberMiles with Scatter
 
-## Step 1 - Get the CyberMiles Testnet up and runnning
-### Single local node
-There are instructions on how to use a single node local node (I have listed the link below). In reality the single local node is super fast to set up and deals with CORS by default.
+## Step 1 - Get the CyberMiles blockchain up and runnning
+### Single local node, or ...
+There are instructions on how to use a single node local node (I have listed the link below). In reality the single local node is super fast to set up and deals with CORS by default. If you use this method, you can skip to step 3.
 ```
 https://travis.readthedocs.io/en/latest/getting-started.html
 ```
+### Official Testnet
 Alternatively, I have also used Docker to connect to the actual Testnet for a Scatter Test Case. The following URL has instructions on getting the official CyberMiles Testnet node up and running using Docker.
 ```
 https://travis.readthedocs.io/en/latest/connect-testnet.html#docker
@@ -54,13 +55,7 @@ Connect to Testnet command line tool
 docker run --rm -it ywonline/travis attach http://172.17.0.2:8545
 ```
 
-## Step 2 - Sync with the CyberMiles Testnet 
-
-Check to see of the testnet is still syncing, you wont get any account (will not see any testnet tokens from the faucet until your node is synced)
-```
-cmt.syncing
-```
-## Step 3 - Funding some accounts
+## Step 2 - Funding some accounts on the official CyberMiles Testnet
 //The following command will create a new account
 ```
 personal.newAccount()
@@ -71,7 +66,10 @@ personal.newAccount()
 personal.newAccount()
 0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a
 ```
-
+Check to see of the testnet is still syncing, you will not see any testnet tokens from the faucet until your node is synced.
+```
+cmt.syncing
+```
 Once you have synced the Tesnet (running cmt.syncing returns false for catching_up), visit the Travis Testnet faucet to grab some free Testnet tokens.
 ```
 > cmt.syncing
@@ -127,6 +125,23 @@ Notice how we are converting the denomination of token to a whole cmt unit (as a
 web3.fromWei(cmt.getBalance("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a"), 'cmt');
 1000
 ```
+## Step 3 - Funding some accounts on your single local node (not the testnet)
+//The following command will create a new account
+```
+personal.newAccount()
+0x8e91cd2b624882a46380bcea561fa5aa2d768755
+```
+//Run this again so that we have two accounts to play with 
+```
+personal.newAccount()
+0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a
+```
+You can unlock the coinbase account on your single local node by running the following command. This is a deliberate account and password which has been hardwired into the system for local node testing and so forth.
+```
+personal.unlockAccount('0x7eff122b94897ea5b0e2a9abf47b86337fafebdc', '1234')
+```
+Once you have unlocked the coinbase account, go ahead and fund the two new accounts which you have just created.
+
 Now that we have two accounts on the CyberMiles Testnet, let us perform a test transfer from one account to the other.
 
 First, let's quickly create a variable to hold an amount of cmt (the following command converts 100 cmt to wie so that it can be accepted by the transaction).
