@@ -13,7 +13,7 @@ By synchronous, we mean that at any given time (in the context of a trade) we ha
 
 === Asynchronous trading 
 
-Bancor is different to traditional markets (which facilitate synchronous trades). Bancor provides constant liquidity. The system will always trade tokens because tokens are mathematically linked to each other. Anytime a buyer or seller takes action the asynchronous nature of the system will respond appropriately with a trade.
+Bancor is different to traditional markets (which facilitate synchronous trades). Bancor provides constant liquidity. The system will always trade tokens because tokens are mathematically linked to each other. Anytime a buyer or seller takes action the asynchronous nature of the system will respond appropriately with a trade. "The Bancor protocol represents the first technological solution for the classic problem in economics known as the “Double Coincidence of Wants”, in the domain of asset exchange" [1].
 
 === Liquidity vs price
 
@@ -29,5 +29,7 @@ When a given token is listed on many exchanges, we have this notion of arbritrag
 
 Bancor provides constant liquidity and so it can be surmised that its more efficient market making should result in smoother and shorter deviations from a particular tokens overall fair value price point.
 
+= References
 
+[1] https://github.com/bancorprotocol/contracts
 
