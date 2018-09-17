@@ -1,1 +1,8 @@
 [Bancor]
+Disclaimer: This is my brief summary of Bancor. This information is based on my personal understanding of the white paper, the web site and the openly licensed Solidity smart contract code which resides in GitHub. 
+
+= Bancor
+
+== Background
+Bancor is essentially a non-profit automated market maker. The governing software will sell tokens to buyers and buy tokens from sellers. This trading activity has no spread (profits taken by the traditional synchronous buy/sell process). By synchronous, we mean that at any given time (in the context of a trade) we have a double coincidence of wants. Put simply, in traditional trading, the system has to find two parties who agree to buy/sell each other's tokens, at a particular price, at that particular point in time (the synchronous trade). Bancor is different to traditional markets (which facilitate synchronous trades). Bancor provides constant liquidity. The system will always trade tokens because tokens are mathematically linked to each other. Anytime a buyer or seller takes action the asynchronous nature of the system will respond appropriately with a trade.
+
