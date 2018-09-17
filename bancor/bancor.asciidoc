@@ -29,6 +29,11 @@ When a given token is listed on many exchanges, we have this notion of arbritrag
 
 Bancor provides constant liquidity and so it can be surmised that its more efficient market making should result in smoother and shorter deviations from a particular tokens overall fair value price point.
 
+== Bancor technology
+
+Bancor has two main components SmartTokens and Connectors. "Through the use of smart-contracts, Smart Tokens can be created that hold one or more other tokens as connectors. Tokens may represent existing national currencies or other types of assets [1]".
+
+
 = References
 
 [1] https://github.com/bancorprotocol/contracts
