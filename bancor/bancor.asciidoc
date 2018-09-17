@@ -1,12 +1,33 @@
 [Bancor]
-Disclaimer: This is my brief summary of Bancor. This information is based on my personal understanding of the white paper, the web site and the openly licensed Solidity smart contract code which resides in GitHub. 
+Disclaimer: This is my brief summary of Bancor. This information is based on my personal understanding of the white paper, the web site and the openly licensed Solidity smart contract code which resides in GitHub. This document offers no advice nor opinions. This document has only been produced to exercise my personal understanding; it serves as a place to jot down my notes to prompt my thinking. 
 
 = Bancor
 
 == Background
-Bancor is essentially a non-profit automated market maker. The governing software will sell tokens to buyers and buy tokens from sellers. This trading activity has no spread (profits taken by the traditional synchronous buy/sell process). By synchronous, we mean that at any given time (in the context of a trade) we have a double coincidence of wants. Put simply, in traditional trading, the system has to find two parties who agree to buy/sell each other's tokens, at a particular price, at that particular point in time (the synchronous trade). Bancor is different to traditional markets (which facilitate synchronous trades). Bancor provides constant liquidity. The system will always trade tokens because tokens are mathematically linked to each other. Anytime a buyer or seller takes action the asynchronous nature of the system will respond appropriately with a trade.
+
+Bancor is essentially a non-profit automated market maker. The governing software will sell tokens to buyers and buy tokens from sellers. This trading activity has no spread (profits taken by the traditional synchronous buy/sell process). 
+
+=== Traditional synchronous trading
+
+By synchronous, we mean that at any given time (in the context of a trade) we have a double coincidence of wants. Put simply, in traditional trading, the system has to find two parties who agree to buy/sell each other's tokens, at a particular price, at that particular point in time (the synchronous trade). 
+
+=== Asynchronous trading 
+
+Bancor is different to traditional markets (which facilitate synchronous trades). Bancor provides constant liquidity. The system will always trade tokens because tokens are mathematically linked to each other. Anytime a buyer or seller takes action the asynchronous nature of the system will respond appropriately with a trade.
+
+=== Liquidity vs price
 
 It is important to discern liquidity from price. Liquidity is the ability to perform a trade; Bancor always provides liquidity regardless of price. Price can change due to several factors. For example, if the holder of a token believes that there is no utility or purpose for the token they may sell the token. If this continues (holders not seeing utility or purpose and therefore selling tokens) the price will become lower and lower. Interestingly, if others do see potential and purpose of a token they will buy-in at a certain price point. The buying of these same tokens will then increase the tokens price. This supply and demand tug-of-war is fundamentally known as price discovery.
+
+=== Arbritrage
+
+Bancor is interesting in that it provides its own online exchange between the world's supply of tokens and in addition provides the open source source code (used by its own exchange) to implement this sort of exchange on other blockchain networks. 
+
+In a single exchange situation (where a given token is only listed on one exchange interface) price discovery works as previously described. When tokens are selling the price decreases, when tokens are being bought the price increases. Of course buyers and sellers constantly make decisions and take action to buy and sell their tokens at certain price points. Again, this supply and demand is basic price discovery.
+
+When a given token is listed on many exchanges, we have this notion of arbritrage. Arbritrage essentially involves the buying and selling of tokens via exchanges which are not synced. This buying and selling (buying at a low price on one exchange and instantly selling for a higher price on another exchange) for profit is essentially a way in which a trader can take advantage of pricing indiscrepancies (pricing errors) of the same commodity which is listed on different exchanges.
+
+Bancor provides constant liquidity and so it can be surmised that its more efficient market making should result in smoother and shorter deviations from a particular tokens overall fair value price point.
 
 
 
