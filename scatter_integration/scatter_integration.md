@@ -192,6 +192,7 @@ web3.fromWei(cmt.getBalance("0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a"), 'cmt'
 This is where it gets interesting. In Ethereum, as part of the standard functionality, you are unable to export private keys. This is for safety reasons. There are other ways to retrieve private keys from the keystore file (offline) but these tools are beyond the scope of this document.
 
 ### Keys - Scatter can generate private key pair for you
+
 Whilst Scatter allows you to put in your own private keys (for EOS and Ethereum). Scatter can also generate an Ethereum key pair for you. From this point onwards you are responsible for the private/public key pair (which you can download by clicking "copy" button in the Scatter software).
 
 This is the public key which Scatter Desktop created for me
@@ -203,9 +204,11 @@ At present, this is a non existant Ethereum key pair as you can see from the Eth
 https://etherscan.io/address/0xb2da22ab2404a2b008105217293d3db54b0f9a2c
 ```
 ### Our current accounts on the CyberMiles Testnet
+
 At present the CyberMiles Testnet which I am working on via the Docker container has the following account state. The address of 0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a has 1100 cmt tokens and the address of 0x8e91cd2b624882a46380bcea561fa5aa2d768755 has 900 cmt tokens.
 
 ### Transferring value using Geth (command line - no scatter at this stage)
+
 Let's try and transfer 100 cmt tokens from our original address (which is currently holding 1100 cmt) to our newly generated address (which was created by allowing Scatter to generate a private/public key pair on our behalf).
 
 First we unlock our account
@@ -257,9 +260,11 @@ web3.fromWei(cmt.getBalance("0xb2da22ab2404a2b008105217293d3db54b0f9a2c"), 'cmt'
 This confirms that the address space of Ethereum and CyberMiles are compatible with these addresses.
 
 ## Transferring value using Scatter (by clicking a button in our one page HTML/JS application)
+
 The following code is a the most simplistic of web applications. It is a prototype for research and development into Scatter / CyberMiles interoperability, written using only HTML and inline Javascript. This is for ease of use and understanding.
 
 ### Dependencies
+
 I created a folder for the project. I then downloaded scatter-js (from https://github.com/GetScatter/scatter-js/tree/2.5.1) and web3.js from (https://github.com/ethereum/web3.js/) and stored them both inside a folder called modules. Here is a simple diagram. You will see the actual relative paths which I used in the head->script->src of the HTML file below.
 
 ```
@@ -276,6 +281,7 @@ scatter.js      web3.js
 ```
 
 ### Server container
+
 Here I am installing the simplest of server containers. The idea here is to keep things as simple as possible; using the http-server functionality of node (similar to using a python simple server etc.) to host the single HTML/Javascript page. This minimalistic node usage is just to satisfy the Javascript execution of the single HTML/Javascript page which I created. Of course I learned that opening the HTML/Javascript page from the file system (file:///home/html/theHTMLFile.html) does not satisfy the application's full and proper execution and Javascript context. I typed the following in order to install the server container.
 ```
 npm i -g http-server
@@ -296,45 +302,57 @@ The following file is a starting point to get Scatter connecting in the browser.
 		<script type="text/javascript" src="modules/scatter-js-2.5.1/dist/scatter.min.js"></script>
 		<script type="text/javascript" src="modules/web3.js/dist/web3.min.js"></script>
 		<script>
+				//WARNING: You will see "window.scatter" throughout this file. Do not use window.scatter in a production environment (this file is just a rapid prototype, you will need to consider additional security in your application)
 				//Connecting to Scatter
 				console.log("Setting up blockchain configuration variables");
-				const Blockchains = {
-						Ethereum: {
-						blockchain: "ethO",
-						host: "1.1.1.1",
-						port: 8545,
-						protocol: "https",
-						chainId: "1"
-					},
-						CyberMiles: {
+				const network = {
 						blockchain: "cmt",
 						//host: "172.17.0.2",
 						host: "127.0.0.1",
 						port: 8545,
 						protocol: "http",
+						//rpccorsdomain: "*",
 						chainId: "19"
 					}
-				};
-				//Setting network to a CyberMiles Testnet full node
-				network = Blockchains.CyberMiles;
 				//Output the network config to console
 				console.log(network);
 
-				scatter.connect("c2").then(function(connected){
-		    		if(!connected) {
-		        		// User does not have Scatter Desktop or Classic installed. 
-		        		console.log("User does not have Scatter installed.");
-		        		return false;
-		    		} 
-			    		console.log("Scatter IS connected");
-				        this.scatter = scatter;
-				        window.scatter = null;
+				scatter.connect("cmt").then(function(connected){
+
+			    // If the user does not have Scatter or it is Locked or Closed this will return false;
+			    if(!connected) return false;
+			    	console.log("Scatter IS connected");
 				});
+
+				function getIdentity(){
+				//WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
+			    window.scatter.getIdentity({accounts:[network]}).then(() => {
+
+		        // Always use the accounts you got back from Scatter. Never hardcode them even if you are prompting
+		        // the user for their account name beforehand. They could still give you a different account.
+
+		        //WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
+		        const account = window.scatter.identity.accounts.find(x => x.blockchain === 'cmt');
+
+		        // You can pass in any additional options you want into the eosjs reference.
+		        const cmtOptions = { expireInSeconds:60 };
+
+		        // Get a proxy reference to web3js which you can use to sign transactions with a user's Scatter.
+
+		        //WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
+		        const web3 = window.scatter.eth(network, Web3, cmtOptions);
+				}).catch(error => {
+				        // The user rejected this request, or doesn't have the appropriate requirements.
+				        console.error(error);
+				    });
+				}
 
 				function getBlock4(){
 					const protocol = 'http' || 'ws';
 					console.log(protocol);
-					const web3 = this.scatter.eth(network, Web3, protocol);
+
+					//WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
+					const web3 = window.scatter.eth(network, Web3, protocol);
 					web3.eth.getBlock(4, function(error, result){
 						if(!error)
 							console.log(JSON.stringify(result));
@@ -347,7 +365,9 @@ The following file is a starting point to get Scatter connecting in the browser.
 				//Set protocol
 					const protocol = 'http' || 'ws';
 					console.log(protocol);
-					const web3 = this.scatter.eth(network, Web3, protocol);
+
+					//WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
+					const web3 = window.scatter.eth(network, Web3, protocol);
 					amount = web3.toWei(100, 'ether');
 					web3.eth.sendTransaction({from:"0xb2da22ab2404a2b008105217293d3db54b0f9a2c",to:"0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a",value: amount}, function(error, result){ 
 					if(!error)
@@ -364,11 +384,11 @@ The following file is a starting point to get Scatter connecting in the browser.
 		<h1>Check the console output</h1>
 
 		<button type="button" id="cmtGetBlock" onclick='getBlock4()'>Get 4th block</button>
+		<button type="button" id="getIdentity" onclick='getIdentity()'>Get Identity</button>
 		<button type="button" id="cmtButton" onclick='transferFunds()'>Transfer Funds</button>
 
 	</body>	
 </html>
-
 
 ```
 ## Interacting with the blockchain via Scatter
@@ -386,7 +406,13 @@ web3.eth.getBalance("0xb2da22ab2404a2b008105217293d3db54b0f9a2c", function(error
 ```
 Obviously, clicking the button called "Get 4th block" (which is on the single page HTML/JS page) also queries the blockchain and returns the data from block number 4.
 
+## Accessing a Scatter user's identity
+
+There are https://get-scatter.com/docs/dev/requirable-fields[required fields] which come from your user's Scatter. The Identity Requests and Signature Requests can provide information to your application.
+
+
 ## Old issues encountered - error messages kept here to help others
+
 At present, there are two issues which prevent the transfering of the funds (as shown in the transferFunds function). These are as follows.
 
 ### CORS & same-origin policy issue - resolved - see update
