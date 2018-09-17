@@ -44,7 +44,7 @@ the token’s governing software always offers to sell tokens to buyers and buy 
 
 "All Smart Tokens are ERC20-compatible tokens, meaning they function as and are compatible with any system or service which supports these now-standard Ethereum-based tokens" [2]. The official Ethereum ERC20 standard interface for tokens can be found on the Ethereum GitHub [3].
 
-==== ERC20 Implementations
+==== Standard ERC20 Implementations
 You can see the Solidity code for one of https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol[Consensys’s ERC20 implementations here] and you can see the Solidity code for one of the https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC20/ERC20.sol[OpenZeppelin StandardTokens here].
 
 == Bancor implementation
