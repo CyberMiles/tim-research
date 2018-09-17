@@ -28,3 +28,5 @@ A collection of research and development performed and written up by @tpmccallum
 - [Scatter Integration](https://github.com/CyberMiles/tim-research/blob/master/scatter_integration/scatter_integration.md)
 
 - [Gemini Dollar - the world’s first regulated stablecoin ](https://github.com/CyberMiles/tim-research/blob/master/gemini_dollar/gemini_dollar.asciidoc)
+
+- [Bancor](https://github.com/CyberMiles/tim-research/blob/master/bancor/bancor.asciidoc)
