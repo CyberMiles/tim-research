@@ -31,10 +31,31 @@ Bancor provides constant liquidity and so it can be surmised that its more effic
 
 == Bancor technology
 
-Bancor has two main components SmartTokens and Connectors. "Through the use of smart-contracts, Smart Tokens can be created that hold one or more other tokens as connectors. Tokens may represent existing national currencies or other types of assets [1]".
+Bancor has two main components SmartTokens and Connectors. "Through the use of smart-contracts, Smart Tokens can be created that hold one or more other tokens as connectors. Tokens may represent existing national currencies or other types of assets" [1].
+
+=== Smart Tokens
+
+"Smart Tokens™, are always available to be both bought and sold directly through their smart contracts. In other words, 4
+the token’s governing software always offers to sell tokens to buyers and buy back tokens from sellers" [2].
+
+"Each Smart Token has one or more connectors that link the Smart Token to other tokens in the network. These connectors hold a balance of another token, thus establishing a relationship between the Smart Token and the tokens held by its connectors, or its connected tokens" [2].
+
+==== ERC20 compatibility
+
+"All Smart Tokens are ERC20-compatible tokens, meaning they function as and are compatible with any system or service which supports these now-standard Ethereum-based tokens" [2]. The official Ethereum ERC20 standard interface for tokens can be found on the Ethereum GitHub [3].
+
+==== ERC20 Implementations
+You can see the Solidity code for one of [Consensys’s ERC20 implementations here](https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol) and you can see the Solidity code for one of the [OpenZeppelin StandardTokens here](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC20/ERC20.sol)
+
+== Bancor implementation
+
+
 
 
 = References
 
 [1] https://github.com/bancorprotocol/contracts
+[2] https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
+[3] https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
+
 
