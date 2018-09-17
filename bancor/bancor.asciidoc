@@ -42,10 +42,7 @@ the token’s governing software always offers to sell tokens to buyers and buy 
 
 ==== ERC20 compatibility
 
-"All Smart Tokens are ERC20-compatible tokens, meaning they function as and are compatible with any system or service which supports these now-standard Ethereum-based tokens" [2]. The official Ethereum ERC20 standard interface for tokens can be found on the Ethereum GitHub [3].
-
-==== Standard ERC20 Implementations
-You can see the Solidity code for one of https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol[Consensys’s ERC20 implementations here] and you can see the Solidity code for one of the https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC20/ERC20.sol[OpenZeppelin StandardTokens here].
+"All Smart Tokens are ERC20-compatible tokens, meaning they function as and are compatible with any system or service which supports these now-standard Ethereum-based tokens" [2]. There is an official https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md[Ethereum ERC20 standard interface for tokens] as well as many examples of ERC20 implementations in the field. For example, you can see the Solidity code for one of https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol[Consensys’s ERC20 implementations here] and you can see the Solidity code for one of the https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC20/ERC20.sol[OpenZeppelin StandardTokens here].
 
 == Bancor implementation
 
@@ -56,6 +53,6 @@ You can see the Solidity code for one of https://github.com/ConsenSys/Tokens/blo
 
 [1] https://github.com/bancorprotocol/contracts
 [2] https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
-[3] https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
+[3] 
 
 
