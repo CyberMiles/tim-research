@@ -9,7 +9,7 @@ Bancor is essentially a non-profit automated market maker. The governing softwar
 
 === Traditional synchronous trading
 
-By synchronous, we mean that at any given time (in the context of a trade) we have a double coincidence of wants. Put simply, in traditional trading, the system has to find two parties who agree to buy/sell each other's tokens, at a particular price, at that particular point in time (the synchronous trade). 
+By synchronous, we mean that at any given time (in the context of a trade) we have a double coincidence of wants. Put simply, in traditional trading, the system has to find two parties who agree to buy/sell each other's tokens, at a particular price, at that particular point in time (the synchronous trade). In the traditional trading model the current market price is fundamentally based on the "last" price (between the buyers and sellers). In Bankor however, there is no buyer and seller agreement. The price is constantly being calculated mathematically based on several factors such as the amount of inventory (tokens) which have been staked in the network, the amount of tokens being asked to be bought as well as the amount of tokens being asked to be sold.
 
 === Asynchronous trading 
 
@@ -31,14 +31,14 @@ Bancor provides constant liquidity and so it can be surmised that its more effic
 
 == Bancor technology
 
-Bancor has two main components SmartTokens and Connectors. "Through the use of smart-contracts, Smart Tokens can be created that hold one or more other tokens as connectors. Tokens may represent existing national currencies or other types of assets" [1].
+Bancor has two main components SmartTokens and Connectors. "Through the use of smart-contracts, Smart Tokens can be created that hold one or more other tokens as connectors. Tokens may represent existing national currencies or other types of assets" [1]. Bancor invites any new token https://support.bancor.network/hc/en-us/articles/360002098551-Apply-to-join-the-Bancor-Network[to join the Bancor exchange network via an online application form]. The token in question can run on any blockchain network i.e. Ethereum EOS etc.
 
 === Smart Tokens
 
-"Smart Tokens™, are always available to be both bought and sold directly through their smart contracts. In other words, 4
+"Smart Tokens™, are always available to be both bought and sold directly through their smart contracts. In other words,
 the token’s governing software always offers to sell tokens to buyers and buy back tokens from sellers" [2].
 
-"Each Smart Token has one or more connectors that link the Smart Token to other tokens in the network. These connectors hold a balance of another token, thus establishing a relationship between the Smart Token and the tokens held by its connectors, or its connected tokens" [2].
+"A Relay Token is an ERC20 compliant Smart Token that is configured with two connectors"[3]. The "two connector balances, each  have a 50% weight and can contain any amount of an ERC20 token. A Relay Token's primary utility is to allow converting between each of its connector balances" [4].
 
 ==== ERC20 compatibility
 
@@ -46,13 +46,16 @@ the token’s governing software always offers to sell tokens to buyers and buy 
 
 == Bancor implementation
 
-
-
+As previously shown, Bancor Smart Tokens are implemented differently to the standard ERC20 tokens, which we linked to above. "Smart tokens are money that hold money"[5]. 
 
 = References
 
 [1] https://github.com/bancorprotocol/contracts
 [2] https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
-[3] 
+[3] https://support.bancor.network/hc/en-us/articles/360000458052-What-is-a-Relay-Token-
+[4] https://support.bancor.network/hc/en-us/articles/360000471472-How-do-Relay-Tokens-work-
+[5] https://blog.bancor.network/smart-tokens-101-63edc2cc5a89
+
+
 
 
