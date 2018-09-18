@@ -87,6 +87,23 @@ Syntax like --allow-paths ../ will not work.
 --allow-paths ./,
 --allow-paths ../,
 ----
+
+[source, bash]
+----
+./lityc/lityc --allow-paths ../, --abi ~/contracts/solidity/contracts/token/SmartToken.sol
+----
+
+=== Compile Bancor using Lity - In a single step
+
+The above shows how to use Lity to compile .sol contracts. It is easier and neater to do all of this work in a single step like this.
+
+[source, bash]
+----
+mkdir output
+./lityc/lityc --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/SmartToken.sol
+----
+
+
 = References
 
 [1] https://github.com/bancorprotocol/contracts
