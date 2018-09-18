@@ -107,10 +107,15 @@ mkdir output
 = References
 
 [1] https://github.com/bancorprotocol/contracts
+
 [2] https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
+
 [3] https://support.bancor.network/hc/en-us/articles/360000458052-What-is-a-Relay-Token-
+
 [4] https://support.bancor.network/hc/en-us/articles/360000471472-How-do-Relay-Tokens-work-
+
 [5] https://blog.bancor.network/smart-tokens-101-63edc2cc5a89
+
 
 
 
