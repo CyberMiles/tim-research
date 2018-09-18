@@ -48,6 +48,45 @@ the token’s governing software always offers to sell tokens to buyers and buy 
 
 As previously shown, Bancor Smart Tokens are implemented differently to the standard ERC20 tokens, which we linked to above. "Smart tokens are money that hold money"[5]. 
 
+=== Install CyberMiles Lity (macOS High Sierra)
+
+[source,bash]
+----
+cd ~
+git clone https://github.com/CyberMiles/lity.git
+cd lity
+mkdir build
+cd build
+cmake ..
+make
+----
+
+=== Clone Bancor contracts
+
+[source, bash]
+----
+cd ~
+https://github.com/bancorprotocol/contracts.git
+----
+
+=== Compile Bancor using Lity
+
+[source, bash]
+----
+./lityc/lityc --allow-paths ../, --bin-runtime ~/contracts/solidity/contracts/token/SmartToken.sol
+----
+
+Note the use of --allow-paths in the command above. This is required because the Bancor Solidity files are referencing other Bancor Solidity files using relative paths i.e. import '../utility/Utils.sol';
+
+In order to allow the use of relative paths the syntax below must be used. Note the trailing comma! --allow-paths ../,
+Syntax like --allow-paths ../ will not work.
+
+[source, bash]
+----
+--allow-paths .
+--allow-paths ./,
+--allow-paths ../,
+----
 = References
 
 [1] https://github.com/bancorprotocol/contracts
