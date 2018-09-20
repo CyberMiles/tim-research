@@ -297,97 +297,62 @@ The following file is a starting point to get Scatter connecting in the browser.
 ```
 
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<script type="text/javascript" src="modules/scatter-js-2.5.1/dist/scatter.min.js"></script>
-		<script type="text/javascript" src="modules/web3.js/dist/web3.min.js"></script>
-		<script>
-				//WARNING: You will see "window.scatter" throughout this file. Do not use window.scatter in a production environment (this file is just a rapid prototype, you will need to consider additional security in your application)
-				//Connecting to Scatter
-				console.log("Setting up blockchain configuration variables");
-				const network = {
-						blockchain: "cmt",
-						//host: "172.17.0.2",
-						host: "127.0.0.1",
-						port: 8545,
-						protocol: "http",
-						//rpccorsdomain: "*",
-						chainId: "19"
-					}
-				//Output the network config to console
-				console.log(network);
 
-				scatter.connect("cmt").then(function(connected){
+<head>
+    <script type="text/javascript" src="modules/scatter-js-2.5.1/dist/scatter.min.js"></script>
+    <script type="text/javascript" src="modules/web3.js/dist/web3.min.js"></script>
 
-			    // If the user does not have Scatter or it is Locked or Closed this will return false;
-			    if(!connected) return false;
-			    	console.log("Scatter IS connected");
-				});
+    <script>
+        console.log("Setting up blockchain configuration variables");
+		const network = {
+			blockchain: "cmt",
+			host: "127.0.0.1",
+			port: 8545,
+			protocol: "http",
+			chainId: "19"
+		}
+		console.log(network);
 
-				function getIdentity(){
-				//WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
-			    window.scatter.getIdentity({accounts:[network]}).then(() => {
+		scatter.connect("cmt").then(function (connected) {
+			if (!connected) return false;
+			console.log("Scatter is now connected");
+		});
 
-		        // Always use the accounts you got back from Scatter. Never hardcode them even if you are prompting
-		        // the user for their account name beforehand. They could still give you a different account.
+		function testIdentity() {
+			scatter.getIdentity({
+				personal: ['firstname', 'lastname'],
+			}).then(function(error, identity){
+				if(!identity) console.log(error);
+			});
+		}
 
-		        //WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
-		        const account = window.scatter.identity.accounts.find(x => x.blockchain === 'cmt');
+		function getBlock4() {
+			const protocol = 'http' || 'ws';
+			console.log(protocol);
+			const web3 = scatter.eth(network, Web3, protocol);
+			web3.eth.getBlock(4, function (error, result) {
+				if (!error)
+					console.log(JSON.stringify(result));
+				else
+					console.error(error);
+			})
+		}
 
-		        // You can pass in any additional options you want into the eosjs reference.
-		        const cmtOptions = { expireInSeconds:60 };
+	</script>
+</head>
 
-		        // Get a proxy reference to web3js which you can use to sign transactions with a user's Scatter.
+<body>
 
-		        //WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
-		        const web3 = window.scatter.eth(network, Web3, cmtOptions);
-				}).catch(error => {
-				        // The user rejected this request, or doesn't have the appropriate requirements.
-				        console.error(error);
-				    });
-				}
+    <h1>Scatter / CyberMiles integration</h1>
+    <p>1. This button connects your Scatter account with the app</p>
+    <button type="button" id="testIdentity" onclick='testIdentity()'>1. Test Identity</button>
+    <p>2. This button queries the CMT blockchain and retrieves the 4th block - just because we can</p>
+    <button type="button" id="cmtGetBlock" onclick='getBlock4()'>Step 2. Get 4th block</button>
 
-				function getBlock4(){
-					const protocol = 'http' || 'ws';
-					console.log(protocol);
+</body>
 
-					//WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
-					const web3 = window.scatter.eth(network, Web3, protocol);
-					web3.eth.getBlock(4, function(error, result){
-						if(!error)
-							console.log(JSON.stringify(result));
-						else
-							console.error(error);
-					})
-				}
-				
-				function transferFunds() {
-				//Set protocol
-					const protocol = 'http' || 'ws';
-					console.log(protocol);
-
-					//WARNING do not use window.scatter in production (this file is just a rapid prototype, you will need to consider additional security in your application)
-					const web3 = window.scatter.eth(network, Web3, protocol);
-					amount = web3.toWei(100, 'ether');
-					web3.eth.sendTransaction({from:"0xb2da22ab2404a2b008105217293d3db54b0f9a2c",to:"0x3e06c3f127aaa3d93bb22b13fd59dc5257a52d5a",value: amount}, function(error, result){ 
-					if(!error)
-						console.log(JSON.stringify(result));
-					else
-						console.log(error);
-					})
-				}
-				
-			// Background of this file's purpose can be found at https://github.com/CyberMiles/tim-research/blob/master/scatter_integration/scatter_integration.md
-		</script>
-	</head>
-	<body>
-		<h1>Check the console output</h1>
-
-		<button type="button" id="cmtGetBlock" onclick='getBlock4()'>Get 4th block</button>
-		<button type="button" id="getIdentity" onclick='getIdentity()'>Get Identity</button>
-		<button type="button" id="cmtButton" onclick='transferFunds()'>Transfer Funds</button>
-
-	</body>	
 </html>
 
 ```
