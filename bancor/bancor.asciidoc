@@ -103,6 +103,9 @@ mkdir output
 ./lityc/lityc --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/SmartToken.sol
 ----
 
+= TODO
+Talked to two Bancor Telegram Admins and will now dive into the developer tools at the following location
+https://support.bancor.network/hc/en-us/sections/360001492551-Developer-Tools
 
 = References
 
