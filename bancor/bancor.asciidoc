@@ -294,8 +294,9 @@ I then unlock the account
 personal.unlockAccount("0xdc13d113fca85a2873d9ffd254bc556d80e52483", "password")
 ----
 
-I then grab the abi and binary executable and create the contract. The variable abi consists of the output/SmartToken.abi file's contents and the bytecode consists of the output/SmartToken.bin file's contents.
+=== Deploy the contract
 
+I then grab the abi and binary executable and create the contract. The variable abi consists of the output/SmartToken.abi file's contents and the bytecode consists of the output/SmartToken.bin file's contents.
 
 The output from the following command is used to create the abi variable
 
@@ -337,7 +338,7 @@ Typing deployedContract into the terminal will reveal, amongst other things, the
 
 [source, javascript]
 ----
-address: "0x94280fb7cf373b6578f4b3c4484581ad317ed9a2",
+  address: "0x94280fb7cf373b6578f4b3c4484581ad317ed9a2",
   transactionHash: "0x6e4aa245620b83fc5dc8135816f0db2ff6e7c890baee591f17db1eb5f39c9647",
   Approval: function(),
   Destruction: function(),
@@ -368,12 +369,44 @@ address: "0x94280fb7cf373b6578f4b3c4484581ad317ed9a2",
   withdrawTokens: function()
 ----
 
+=== Reconnecting with a past contract
+
+Just out of interest if the session has been closed I can initialize a new set of variables to interact with the contract like this.
+
+[source, javascript]
+----
+var existingContract = web3.cmt.contract(abi);
+var contractInstance = existingContract.at("0x94280fb7cf373b6578f4b3c4484581ad317ed9a2");
+----
+
+
+=== Call the contract's many functions
+
 I can call each of these functions in this same session by using the contract's variable called deployed contract.
 
 [source, javascript]
 ----
-hello.totalSupply()
+deployedContract.totalSupply()
 0
+----
+
+If I want to call the function issue I will need to ensure that the right arguments are passed in when the function is called. I can see the arguments (_to of type address and _amount of type uint256) in the Solidity file
+
+[source, javascript]
+----
+
+function issue(address _to, uint256 _amount)
+        public
+        ownerOnly
+        validAddress(_to)
+        notThis(_to)
+    {
+        totalSupply = safeAdd(totalSupply, _amount);
+        balanceOf[_to] = safeAdd(balanceOf[_to], _amount);
+
+        emit Issuance(_amount);
+        emit Transfer(this, _to, _amount);
+    }
 ----
 
 = TODO
