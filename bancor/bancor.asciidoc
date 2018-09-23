@@ -48,7 +48,7 @@ the token’s governing software always offers to sell tokens to buyers and buy 
 
 As previously shown, Bancor Smart Tokens are implemented differently to the standard ERC20 tokens, which we linked to above. "Smart tokens are money that hold money"[5]. 
 
-=== Using CyberMiles Remix/Metamask integration
+=== Bancor implementation using CyberMiles Remix/Metamask integration. Method A.
 
 I wrote https://gist.github.com/tpmccallum/929c04f7268be7375e5403afc10195cc[a Gist which explains how to install the CyberMiles development environment] (complete with Remix browser based compiler/editor and Metamask extension for Chrome etc).
 
@@ -184,7 +184,9 @@ contract SmartToken is ISmartToken, Owned, ERC20Token, TokenHolder {
 
 ----
 
-=== Using CyberMiles Lity (macOS High Sierra)
+=== Bancor implementation using CyberMiles Lity (macOS High Sierra). Method B
+
+Another, yet more complex, way to deploy the Bancor SmartToken.sol is by compiling it in the command line.
 
 [source,bash]
 ----
