@@ -54,7 +54,7 @@ I wrote https://gist.github.com/tpmccallum/929c04f7268be7375e5403afc10195cc[a Gi
 
 The following code originates from the Bancor GitHub. Specifically, https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/SmartToken.sol[the SmartToken.sol file].
 
-I have linked to the imports and this has been successfully deployed to the CyberMiles testnet (transaction hash of 0x92e6d8b2de61b1bf6e76217993c7ccca5c8270ae0x49bb98d8af892103898106106fe1fa196a1008ac0x313ce567)
+I have linked to the imports (using GitHub URLs) and this has been successfully deployed to the CyberMiles testnet (with a transaction hash of 0x27147ce0bfd4a97fa1fa8b8f9db7e60788bda4454539025f091681201ebacd2a).
 
 [source, javascript]
 ----
@@ -182,6 +182,43 @@ contract SmartToken is ISmartToken, Owned, ERC20Token, TokenHolder {
     }
 }
 
+----
+
+If I want to take a look at the contract, I can head over to the command line on my testnet node and run the following command (the getTransactionReceipt command which takes the transaction hash as an argument).
+
+[source, bash]
+----
+cmt.getTransactionReceipt("0x27147ce0bfd4a97fa1fa8b8f9db7e60788bda4454539025f091681201ebacd2a")
+----
+
+The output from the above command is as follows. I can see now that the contract has an address of 0xbcc3a887ee24ae99a88ddf785cf286b7860f0187 and that it was processed into the blockchain at block number 51555.
+
+[source, javascript]
+----
+{
+  blockHash: "0x77704ef223182cbfd559febe1de0a886b551c724e3632f64869374b86b6c7124",
+  blockNumber: 51555,
+  contractAddress: "0xbcc3a887ee24ae99a88ddf785cf286b7860f0187",
+  cumulativeGasUsed: 2160912,
+  from: "0x92e6d8b2de61b1bf6e76217993c7ccca5c8270ae",
+  gasUsed: 2160912,
+  logs: [{
+      address: "0xbcc3a887ee24ae99a88ddf785cf286b7860f0187",
+      blockHash: "0x77704ef223182cbfd559febe1de0a886b551c724e3632f64869374b86b6c7124",
+      blockNumber: 51555,
+      data: "0x000000000000000000000000bcc3a887ee24ae99a88ddf785cf286b7860f0187",
+      logIndex: 0,
+      removed: false,
+      topics: ["0xf4cd1f8571e8d9c97ffcb81558807ab73f9803d54de5da6a0420593c82a4a9f0"],
+      transactionHash: "0x27147ce0bfd4a97fa1fa8b8f9db7e60788bda4454539025f091681201ebacd2a",
+      transactionIndex: 0
+  }],
+  logsBloom: "0x0000000000000000000...0000000000000000000",
+  root: "0xe7e5fd7e8b765ecf263dda990f358ab0e2bbdf2e8c6460be4c8918962cd34e67",
+  to: null,
+  transactionHash: "0x27147ce0bfd4a97fa1fa8b8f9db7e60788bda4454539025f091681201ebacd2a",
+  transactionIndex: 0
+}
 ----
 
 === Bancor implementation using CyberMiles Lity (macOS High Sierra). Method B
