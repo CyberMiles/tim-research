@@ -278,6 +278,50 @@ mkdir output
 ./lityc/lityc --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/SmartToken.sol
 ----
 
+=== Create and fund a test account
+
+I ran the following command to create the new account and then headed over to http://travis-faucet.cybermiles.io/ to grab some test CMT from the faucet.
+
+[source, javascript]
+----
+personal.newAccount();
+----
+
+I then unlock the account
+
+[source, javascript]
+----
+personal.unlockAccount("0xdc13d113fca85a2873d9ffd254bc556d80e52483", "password")
+----
+
+I then grab the abi and binary executable and create the contract. The variable abi consists of the output/SmartToken.abi file's contents and the bytecode consists of the output/SmartToken.bin file's contents.
+
+
+The output from the following command is used to create the abi variable i.e. 
+
+[source, javascript]
+----
+var abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}], ... "name":"OwnerUpdate","type":"event"}]
+----
+
+[source, bash]
+----
+cat output/SmartToken.abi
+----
+
+The output from the following command is used to create the bytecode variable i.e. 
+
+[source, javascript]
+----
+var bytecode = "608060405260408051908101604052 ... fe49f9e0029"
+----
+
+[source, bash]
+----
+cat output/SmartToken.bin 
+----
+
+
 = TODO
 Talked to two Bancor Telegram Admins and will now dive into the developer tools at the following location
 https://support.bancor.network/hc/en-us/sections/360001492551-Developer-Tools
