@@ -297,30 +297,84 @@ personal.unlockAccount("0xdc13d113fca85a2873d9ffd254bc556d80e52483", "password")
 I then grab the abi and binary executable and create the contract. The variable abi consists of the output/SmartToken.abi file's contents and the bytecode consists of the output/SmartToken.bin file's contents.
 
 
-The output from the following command is used to create the abi variable i.e. 
-
-[source, javascript]
-----
-var abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}], ... "name":"OwnerUpdate","type":"event"}]
-----
+The output from the following command is used to create the abi variable
 
 [source, bash]
 ----
 cat output/SmartToken.abi
 ----
 
-The output from the following command is used to create the bytecode variable i.e. 
+Like this
 
 [source, javascript]
 ----
-var bytecode = "608060405260408051908101604052 ... fe49f9e0029"
+var abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}], ... "name":"OwnerUpdate","type":"event"}]
 ----
+
+The output from the following command is used to create the bytecode variable
 
 [source, bash]
 ----
 cat output/SmartToken.bin 
 ----
 
+Like this, be sure to add a 0x to the start of the bytecode string.
+
+[source, javascript]
+----
+var bytecode = "0x608060405260408051908101604052 ... fe49f9e0029"
+----
+
+The next task is to construct a contract object which can be run (note the "asdf", "asd" and 8 arguments; these are the 3 arguments required by the SmartToken's constructor).
+
+[source, javascript]
+----
+var newContract = web3.cmt.contract(abi);
+deployedContract = newContract.new("asdf", "asd", 8, {from: web3.cmt.accounts[0],data: bytecode,gas: "5000000"});
+----
+
+Typing deployedContract into the terminal will reveal, amongst other things, the contracts new address, transaction hash as well as a list of functions which I can now call.
+
+[source, javascript]
+----
+address: "0x94280fb7cf373b6578f4b3c4484581ad317ed9a2",
+  transactionHash: "0x6e4aa245620b83fc5dc8135816f0db2ff6e7c890baee591f17db1eb5f39c9647",
+  Approval: function(),
+  Destruction: function(),
+  Issuance: function(),
+  NewSmartToken: function(),
+  OwnerUpdate: function(),
+  Transfer: function(),
+  acceptOwnership: function(),
+  allEvents: function(),
+  allowance: function(),
+  approve: function(),
+  balanceOf: function(),
+  decimals: function(),
+  destroy: function(),
+  disableTransfers: function(),
+  issue: function(),
+  name: function(),
+  newOwner: function(),
+  owner: function(),
+  standard: function(),
+  symbol: function(),
+  totalSupply: function(),
+  transfer: function(),
+  transferFrom: function(),
+  transferOwnership: function(),
+  transfersEnabled: function(),
+  version: function(),
+  withdrawTokens: function()
+----
+
+I can call each of these functions in this same session by using the contract's variable called deployed contract.
+
+[source, javascript]
+----
+hello.totalSupply()
+0
+----
 
 = TODO
 Talked to two Bancor Telegram Admins and will now dive into the developer tools at the following location
