@@ -1,8 +1,8 @@
 import os
 import ast
-# This is for use on the testnet only. This script asks for an account's public key and password. This script is only for testing and should never be used on a production network or in conjunction with anything of value. Testing only!
+# This is for use on private network. This script asks for an account's public key and password. This script is only for testing and should never be used on a production network or in conjunction with anything of value. Testing only!
 
-# This python script compiles your smart contract, and then generates a javascript file filled with prewritten function calls to the contract so that you can deploy and test your contract without having to do everything by hand. This is useful if you want to change the smart contract code, recompile and quickly test, again and again.
+# This python script compiles your smart contract, and then automatically generates a javascript file filled with prewritten function calls to the contract so that you can deploy and test your contract without having to do everything by hand. This is useful if you want to change the smart contract code, recompile and quickly test, again and again.
 
 # 1. Install Lity using the following commands
 
@@ -75,7 +75,7 @@ for item in abiDict:
         if len(item["inputs"]) == 0:
             file.write("deployedContract." + item["name"] + "();")
 
-# So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has a list of the read only functions. More to come also...
+# So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has the correct syntax to execute the contrac's read only functions. More to come also...
 # The only thing left to do is to cut and paste the Javascript commands into web3 console. You can cut and paste commands one at a time, or if you are on a Mac you can pipe the whole output of the Javascript file to clipboard and run everything using a single paste action.
 print("Please copy the following command and then paste it into your MacOS command line. This will copy the javascript commands for use inside web3\n")
 
