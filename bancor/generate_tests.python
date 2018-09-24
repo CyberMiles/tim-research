@@ -1,4 +1,5 @@
 import os
+import ast
 # This is for use on the testnet only. This script asks for an account's public key and password. This script is only for testing and should never be used on a production network or in conjunction with anything of value. Testing only!
 
 # This python script compiles your smart contract, and then generates a javascript file filled with prewritten function calls to the contract so that you can deploy and test your contract without having to do everything by hand. This is useful if you want to change the smart contract code, recompile and quickly test, again and again.
@@ -19,6 +20,7 @@ import os
 
 # 4. Paste your contract's name as well as an account's public key as well as its password on the Testnet in the variable below.
 sc = "SmartToken"
+fileExtension = ".sol"
 pubK = "0xab52776885fb487ab60fd10f77604cb5dda4f6f5"
 passW = "asdfasdfasdf"
 
@@ -28,7 +30,7 @@ constructor = ""
 for item in constructorList:
     constructor = constructor + "\"" + item + "\"" + ","
 
-# 6. Run this file i.e. cd lity/build and then python3 generate_tests.py
+# 6. Run this Python file i.e. cd lity/build and then python3 generate_tests.py
 
 # Working directory
 wd = os.getcwd()
@@ -38,7 +40,7 @@ od = os.path.join(wd, "output",)
 
 # Compile contract to the output directory
 os.chdir(wd)
-compileContract = "./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/" + sc + ".sol"
+compileContract = "./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/" + sc + fileExtension
 
 os.system(compileContract)
 
@@ -48,10 +50,16 @@ file = open(os.path.join(wd, "output",  sc + "_test.js"), 'w')
 
 # Load the variables with data from the abi and bin files
 os.chdir(od)
-abi = abiFile = open(sc + ".abi", 'r').read()
-bytecode = binFile = open(sc + ".bin",'r').read()
-os.chdir(wd)
+abi = open(sc + ".abi", 'r').read()
+bytecode = open(sc + ".bin",'r').read()
+# Perform some operations on the abi so that we can parse it into a Python dictionary later
+parsedAbiPre3 = abi.replace("true", "\"true\"")
+parsedAbiPre2 = parsedAbiPre3.replace("false", "\"false\"")
+parsedAbiPre1 = parsedAbiPre2[:-1]
+parsedAbi0 = parsedAbiPre1[1:]
+abiDict = ast.literal_eval(parsedAbi0)
 
+os.chdir(wd)
 # Write some data to the output file
 
 file.write("personal.unlockAccount(" + "\"" + pubK + "\"" + ", " + "\"" + passW + "\"" + ");\n")
@@ -59,4 +67,16 @@ file.write("var abi = " + abi + ";\n")
 file.write("var bytecode = " + "\"" + "0x" + bytecode + "\";\n")
 file.write("var newContract = web3.cmt.contract(abi);\n")
 file.write("var deployedContract = newContract.new(" + constructor + "{from: " + "\"" + pubK + "\"" + ",data: bytecode, gas:" + "\"" + "5000000" + "\"" + "});\n")
-file.close()
+
+# Write javascript code that will call all of the read only functions
+for item in abiDict:
+    if item["type"] == "function":
+        print("Processing " + item["name"])
+        if len(item["inputs"]) == 0:
+            file.write("deployedContract." + item["name"] + "();")
+
+# So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has a list of the read only functions. More to come also...
+# The only thing left to do is to cut and paste the Javascript commands into web3 console. You can cut and paste commands one at a time, or if you are on a Mac you can pipe the whole output of the Javascript file to clipboard and run everything using a single paste action.
+print("Please copy the following command and then paste it into your MacOS command line. This will copy the javascript commands for use inside web3\n")
+
+print("cat " + os.path.join(wd, "output",  sc + "_test.js") + " | pbcopy")
