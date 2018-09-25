@@ -92,8 +92,8 @@ for item in abiDict:
         	## Call the function
             file.write("deployedContract." + item["name"] + "(function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 
-# So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has the correct syntax to execute the contrac's read only functions. More to come also...
-# The only thing left to do is to cut and paste the Javascript commands into web3 console. You can cut and paste commands one at a time, or if you are on a Mac you can pipe the whole output of the Javascript file to clipboard and run everything using a single paste action.
+# So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has the correct syntax to execute the contract's read only functions. More to come also...
+# The only thing left to do is to cut and paste the Javascript commands into web3 console. Some commands like sending a transaction have the standard delays so run commands like these separately and then wait a second.
 print("Please copy the following command and then paste it into your MacOS command line. This will copy the javascript commands for use inside web3\n")
 
 print("cat " + os.path.join(wd, "output",  sc + "_test.js") + " | pbcopy")
