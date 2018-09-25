@@ -1,6 +1,3 @@
-//This is an example of the output which is produced by the generate_tests.py file. The generate_tests.py file compiles the contract[s] in question and then provides all of the commands that are required to deploy and test the contracts functions.
-//This is only to be used in a unit testing capacity (on a private network). 
-
 //Run this next command separately because it has a delay in responding
 accountA = personal.newAccount("asdf");
 //Run this next command separately because it has a delay in responding
@@ -33,70 +30,70 @@ Function: name
 Takes no arguments
 Returns a string
 */
-deployedContract.name();
+deployedContract.name({from:0xSendingAccount});
 /*
 
 Function: totalSupply
 Takes no arguments
 Returns a uint256
 */
-deployedContract.totalSupply();
+deployedContract.totalSupply({from:0xSendingAccount});
 /*
 
 Function: decimals
 Takes no arguments
 Returns a uint8
 */
-deployedContract.decimals();
+deployedContract.decimals({from:0xSendingAccount});
 /*
 
 Function: version
 Takes no arguments
 Returns a string
 */
-deployedContract.version();
+deployedContract.version({from:0xSendingAccount});
 /*
 
 Function: standard
 Takes no arguments
 Returns a string
 */
-deployedContract.standard();
+deployedContract.standard({from:0xSendingAccount});
 /*
 
 Function: acceptOwnership
 Takes no arguments
 Returns nothing
 */
-deployedContract.acceptOwnership();
+deployedContract.acceptOwnership({from:0xSendingAccount});
 /*
 
 Function: owner
 Takes no arguments
 Returns a address
 */
-deployedContract.owner();
+deployedContract.owner({from:0xSendingAccount});
 /*
 
 Function: symbol
 Takes no arguments
 Returns a string
 */
-deployedContract.symbol();
+deployedContract.symbol({from:0xSendingAccount});
 /*
 
 Function: transfersEnabled
 Takes no arguments
 Returns a bool
 */
-deployedContract.transfersEnabled();
+deployedContract.transfersEnabled({from:0xSendingAccount});
 /*
 
 Function: newOwner
 Takes no arguments
 Returns a address
 */
-deployedContract.newOwner();
+deployedContract.newOwner({from:0xSendingAccount});
 /*
 Listing the functions that take arguments
 
@@ -108,7 +105,7 @@ Argument name: _value
 Argument type: uint256
 Returns a bool
 */
-deployedContract.approve(_spender address, _value uint256);
+deployedContract.approve(_spender address, _value uint256,  {from:0xSendingAccount});
 /*
 
 Function: disableTransfers
@@ -117,7 +114,7 @@ Argument name: _disable
 Argument type: bool
 Returns nothing!
 */
-deployedContract.disableTransfers(_disable bool);
+deployedContract.disableTransfers(_disable bool,  {from:0xSendingAccount});
 /*
 
 Function: transferFrom
@@ -130,7 +127,7 @@ Argument name: _value
 Argument type: uint256
 Returns a bool
 */
-deployedContract.transferFrom(_from address, _to address, _value uint256);
+deployedContract.transferFrom(_from address, _to address, _value uint256,  {from:0xSendingAccount});
 /*
 
 Function: withdrawTokens
@@ -143,7 +140,7 @@ Argument name: _amount
 Argument type: uint256
 Returns nothing!
 */
-deployedContract.withdrawTokens(_token address, _to address, _amount uint256);
+deployedContract.withdrawTokens(_token address, _to address, _amount uint256,  {from:0xSendingAccount});
 /*
 
 Function: balanceOf
@@ -152,7 +149,7 @@ Argument name:
 Argument type: address
 Returns a uint256
 */
-deployedContract.balanceOf( address);
+deployedContract.balanceOf( address,  {from:0xSendingAccount});
 /*
 
 Function: issue
@@ -163,7 +160,7 @@ Argument name: _amount
 Argument type: uint256
 Returns nothing!
 */
-deployedContract.issue(_to address, _amount uint256);
+deployedContract.issue(_to address, _amount uint256,  {from:0xSendingAccount});
 /*
 
 Function: destroy
@@ -174,7 +171,7 @@ Argument name: _amount
 Argument type: uint256
 Returns nothing!
 */
-deployedContract.destroy(_from address, _amount uint256);
+deployedContract.destroy(_from address, _amount uint256,  {from:0xSendingAccount});
 /*
 
 Function: transfer
@@ -185,7 +182,7 @@ Argument name: _value
 Argument type: uint256
 Returns a bool
 */
-deployedContract.transfer(_to address, _value uint256);
+deployedContract.transfer(_to address, _value uint256,  {from:0xSendingAccount});
 /*
 
 Function: allowance
@@ -196,7 +193,7 @@ Argument name:
 Argument type: address
 Returns a uint256
 */
-deployedContract.allowance( address,  address);
+deployedContract.allowance( address,  address,  {from:0xSendingAccount});
 /*
 
 Function: transferOwnership
@@ -205,7 +202,7 @@ Argument name: _newOwner
 Argument type: address
 Returns nothing!
 */
-deployedContract.transferOwnership(_newOwner address);
+deployedContract.transferOwnership(_newOwner address,  {from:0xSendingAccount});
 /*
 
 /*
