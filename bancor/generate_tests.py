@@ -61,29 +61,40 @@ parsedAbi0 = parsedAbiPre1[1:]
 abiDict = ast.literal_eval(parsedAbi0)
 
 os.chdir(wd)
+runInstruction = "//Run this next command separately because it has a delay in responding\n"
 # Write some data to the output file
 ## Create two new accounts to test with
+file.write(runInstruction)
 file.write("accountA = personal.newAccount(\"asdf\");\n")
+file.write(runInstruction)
 file.write("accountB = personal.newAccount(\"asdf\");\n")
 ## Unlock the coinbase account that ships with the CyberMiles Docker private network (https://travis.readthedocs.io/en/latest/getting-started.html#use-docker)
+file.write(runInstruction)
 file.write("personal.unlockAccount(cmt.coinbase" + ", " + "\"" + "1234" + "\"" + ", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 ## Send some funds to the two new accounts
+file.write(runInstruction)
 file.write("cmt.sendTransaction({\"from\": cmt.coinbase" + ", " + "\"to\": accountA" + ", " + "\"value\": web3.toWei(50, \"cmt\")}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
+file.write(runInstruction)
 file.write("cmt.sendTransaction({\"from\": cmt.coinbase" + ", " + "\"to\": accountB" + ", " + "\"value\": web3.toWei(50, \"cmt\")}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 ## Check all 3 account balances
 file.write("web3.fromWei(cmt.getBalance(cmt.coinbase), \"cmt\", function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 file.write("web3.fromWei(cmt.getBalance(accountA), \"cmt\", function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 file.write("web3.fromWei(cmt.getBalance(accountB), \"cmt\", function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 ## Unlock the two new accounts
+file.write(runInstruction)
 file.write("personal.unlockAccount(accountA " + ", " + "\"" + "asdf" + "\"" + ", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
+file.write(runInstruction)
 file.write("personal.unlockAccount(accountB " + ", " + "\"" + "asdf" + "\"" + ", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 ## Save the abi from the compiled contract to a variable
+file.write(runInstruction)
 file.write("var abi = " + abi + ";\n")
 ## Save the bytecode from the compiled contract to a variable
+file.write(runInstruction)
 file.write("var bytecode = " + "\"" + "0x" + bytecode + "\";\n")
 ## Instantiate a new contract
 file.write("var newContract = web3.cmt.contract(abi, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 ## Deploy the new contract from account A
+file.write(runInstruction)
 file.write("var deployedContract = newContract.new(" + constructor + "{from:accountA, data: bytecode, gas:" + "\"" + "5000000" + "\"" + "}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 
 ## Loop through all of the read only functions in the abi 
