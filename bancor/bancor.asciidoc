@@ -417,6 +417,7 @@ I have created a Python script called https://github.com/CyberMiles/tim-research
 Deploy the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/converter/BancorConverter.sol contract using the right arguments 
 Check on the status of my pull request to Bancor GitHub https://github.com/bancorprotocol/contracts/pull/243
 Document Remix and Command Line versions of this testing using screen shots etc.
+Create unit tests for functions and then test
 
 = References
 
