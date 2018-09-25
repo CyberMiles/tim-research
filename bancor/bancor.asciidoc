@@ -411,7 +411,7 @@ function issue(address _to, uint256 _amount)
 
 === Compile and deploy the contract in an automated fashion - Method C (private network only - testing only)
 
-I have created a Python script called https://github.com/CyberMiles/tim-research/blob/master/bancor/generate_tests.py[generate_tests.py]. Follow the directions at the top of the Python file. This file will compile, deploy and report on a contract. It can also be used to assert unit tests in web3.
+I have created a Python script called https://github.com/CyberMiles/tim-research/blob/master/bancor/generate_tests.py[generate_tests.py]. Follow the directions at the top of the Python file. This file will compile the contract and provide a written file of every command needed to deploy and test the functions of the smart contract in question. This is https://github.com/CyberMiles/tim-research/blob/master/bancor/sample_output.js[an example of the output] from the python file. This is only for use on a private network; it creates new accounts and also transfers funds from the private testnet's coinbase account (showing passwords etc). This method is for setting up fast deployment and unit testing.
 
 = References
 
