@@ -20,7 +20,8 @@ import ast
 
 # 3. Copy this script to the lity/build directory i.e. lity/build/generate_tests.py
 
-# 4. Paste your contract's name and file extension below.
+# 4. Paste your absolute path to contract's directory as well as the contract's name and the contract's file extension below.
+absolutePathToContractDir = "~/contracts/solidity/contracts/token/"
 sc = "SmartToken"
 fileExtension = ".sol"
 
@@ -40,7 +41,7 @@ od = os.path.join(wd, "output",)
 
 # Compile contract to the output directory
 os.chdir(wd)
-compileContract = "./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/" + sc + fileExtension
+compileContract = "./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ " + absolutePathToContractDir + sc + fileExtension
 
 os.system(compileContract)
 
