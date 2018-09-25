@@ -3,7 +3,8 @@ import ast
 # This script will assist in writing unit tests for smart contract functions
 # This script is only for testing and should never be used on a production network or in conjunction with anything of value. Testing only!
 
-# This python script compiles your smart contract, and then automatically generates a javascript file filled with prewritten function calls to the contract so that you can deploy and test your contract without having to do everything by hand. This is useful if you want to change the smart contract code, recompile and quickly test, again and again.
+# This python script compiles your smart contract, and then automatically generates a javascript file filled with prewritten function calls to the contract so that you can deploy and test your contract without having to do everything by hand. 
+# This is useful if you want to change the smart contract code, recompile and quickly test, again and again.
 
 # 1. Install Lity using the following commands
 
@@ -85,15 +86,56 @@ file.write("var newContract = web3.cmt.contract(abi, function(error, result){if(
 file.write("var deployedContract = newContract.new(" + constructor + "{from:accountA, data: bytecode, gas:" + "\"" + "5000000" + "\"" + "}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 
 ## Loop through all of the read only functions in the abi 
+file.write("\n/*\n")
+file.write("Listing the functions that have no arguments\n")
 for item in abiDict:
-    if item["type"] == "function":
-        print("Processing " + item["name"])
-        if len(item["inputs"]) == 0:
-        	## Call the function
-            file.write("deployedContract." + item["name"] + "(function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
+	if item["type"] == "function":
+		print("Processing " + item["name"])
+		if len(item["inputs"]) == 0:
+			file.write("\nFunction: " + item["name"] + "\n")
+			file.write("Takes no arguments\n")
+			if len(item["outputs"]) > 0:
+				file.write("Returns a " + item["outputs"][0]["type"] + "\n")
+			else:
+				file.write("Returns nothing\n")
+			stringCall = "deployedContract." + item["name"] + "();"
+			file.write("*/\n" + stringCall + "\n/*\n")
+			stringCall = ""
 
-# So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has the correct syntax to execute the contract's read only functions. More to come also...
-# The only thing left to do is to cut and paste the Javascript commands into web3 console. Some commands like sending a transaction have the standard delays so run commands like these separately and then wait a second.
-print("Please copy the following command and then paste it into your MacOS command line. This will copy the javascript commands for use inside web3\n")
+## Loop through all of the functions that take arguments
+file.write("Listing the functions that take arguments\n")
+for item in abiDict:
+	if item["type"] == "function":
+		stringCall = "deployedContract."
+		print("Processing " + item["name"] + "\n")
+		stringCall = stringCall + item["name"] + "("
+		if len(item["inputs"]) >= 1:
+			file.write("\nFunction: " + item["name"] + "\n")
+			file.write("Takes " + str(len(item["inputs"])) + " arguments\n")
+			i = 1
+			for theInput in item["inputs"]:
+				file.write("Argument name: " + theInput["name"] + "\n")
+				file.write("Argument type: " + theInput["type"] + "\n")
+				stringCall = stringCall + theInput["name"] + " " + theInput["type"]
+				if i < len(item["inputs"]):
+					stringCall = stringCall + ", "
+				i = i + 1
+			if len(item["outputs"]) > 0:
+				file.write("Returns a " + item["outputs"][0]["type"] + "\n")
+			else:
+				file.write("Returns nothing!\n")
+			stringCall = stringCall + ");"
+			file.write("*/\n" + stringCall + "\n/*\n")
+			stringCall = ""
+file.write("\n/*\n")
 
-print("cat " + os.path.join(wd, "output",  sc + "_test.js") + " | pbcopy")
+
+# So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has the correct syntax to execute the contrac's read only functions. More to come also...
+# The only thing left to do is to cut and paste the Javascript commands into web3 console. You can cut and paste commands one at a time, or if you are on a Mac you can pipe the whole output of the Javascript file to clipboard and run everything using a single paste action.
+print("The output of this script is at the following file location" + os.path.join(wd, "output",  sc + "_test.js"))
+
+#pbcopyCommand = "cat " + os.path.join(wd, "output",  sc + "_test.js") + " | pbcopy"
+#print(pbcopyCommand)
+
+
+#END
