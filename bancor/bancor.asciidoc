@@ -236,7 +236,7 @@ cmake ..
 make
 ----
 
-=== Clone Bancor contracts
+==== Clone Bancor contracts
 
 [source, bash]
 ----
@@ -244,7 +244,7 @@ cd ~
 https://github.com/bancorprotocol/contracts.git
 ----
 
-=== Compile Bancor using Lity
+==== Compile Bancor using Lity
 
 [source, bash]
 ----
@@ -268,7 +268,7 @@ Syntax like --allow-paths ../ will not work.
 ./lityc/lityc --allow-paths ../, --abi ~/contracts/solidity/contracts/token/SmartToken.sol
 ----
 
-=== Compile Bancor using Lity - In a single step
+==== Compile Bancor using Lity - In a single step
 
 The above shows how to use Lity to compile .sol contracts. It is easier and neater to do all of this work in a single step like this.
 
@@ -278,7 +278,7 @@ mkdir output
 ./lityc/lityc --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/SmartToken.sol
 ----
 
-=== Create and fund a test account
+==== Create and fund a test account
 
 I ran the following command to create the new account and then headed over to http://travis-faucet.cybermiles.io/ to grab some test CMT from the faucet.
 
@@ -294,7 +294,7 @@ I then unlock the account
 personal.unlockAccount("0xdc13d113fca85a2873d9ffd254bc556d80e52483", "password")
 ----
 
-=== Deploy the contract
+==== Deploy the contract
 
 I then grab the abi and binary executable and create the contract. The variable abi consists of the output/SmartToken.abi file's contents and the bytecode consists of the output/SmartToken.bin file's contents.
 
@@ -369,7 +369,7 @@ Typing deployedContract into the terminal will reveal, amongst other things, the
   withdrawTokens: function()
 ----
 
-=== Reconnecting with a past contract
+==== Reconnecting with a past contract
 
 Just out of interest if the session has been closed I can initialize a new set of variables to interact with the contract like this.
 
@@ -380,7 +380,7 @@ var contractInstance = existingContract.at("0x94280fb7cf373b6578f4b3c4484581ad31
 ----
 
 
-=== Call the contract's many functions
+==== Manually call the contract's many functions
 
 I can call each of these functions in this same session by using the contract's variable called deployed contract.
 
@@ -409,9 +409,9 @@ function issue(address _to, uint256 _amount)
     }
 ----
 
-= TODO
-Talked to two Bancor Telegram Admins and will now dive into the developer tools at the following location
-https://support.bancor.network/hc/en-us/sections/360001492551-Developer-Tools
+=== Compile and deploy the contract in an automated fashion - Method C (private network only - testing only)
+
+I have created a Python script called https://github.com/CyberMiles/tim-research/blob/master/bancor/generate_tests.py[generate_tests.py]. Follow the directions at the top of the Python file. This file will compile, deploy and report on a contract. It can also be used to assert unit tests in web3.
 
 = References
 
