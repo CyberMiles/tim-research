@@ -63,17 +63,26 @@ os.chdir(wd)
 ## Create two new accounts to test with
 file.write("accountA = personal.newAccount(\"asdf\");\n")
 file.write("accountB = personal.newAccount(\"asdf\");\n")
+## Unlock the coinbase account that ships with the CyberMiles Docker private network (https://travis.readthedocs.io/en/latest/getting-started.html#use-docker)
+file.write("personal.unlockAccount(cmt.coinbase" + ", " + "\"" + "1234" + "\"" + ");\n")
+## Send some funds to the two new accounts
+file.write("cmt.sendTransaction({\"from\": cmt.coinbase" + ", " + "\"to\": accountA" + ", " + "\"value\": web3.toWei(50, \"cmt\")});\n")
+file.write("cmt.sendTransaction({\"from\": cmt.coinbase" + ", " + "\"to\": accountB" + ", " + "\"value\": web3.toWei(50, \"cmt\")});\n")
+## Check all 3 account balances
+file.write("web3.fromWei(cmt.getBalance(cmt.coinbase), \"cmt\");\n")
+file.write("web3.fromWei(cmt.getBalance(accountA), \"cmt\");\n")
+file.write("web3.fromWei(cmt.getBalance(accountB), \"cmt\");\n")
 ## Unlock the two new accounts
-file.write("personal.unlockAccount(" + "\"" + accountA + "\"" + ", " + "\"" + "asdf" + "\"" + ");\n")
-file.write("personal.unlockAccount(" + "\"" + accountB + "\"" + ", " + "\"" + "asdf" + "\"" + ");\n")
+file.write("personal.unlockAccount(accountA " + ", " + "\"" + "asdf" + "\"" + ");\n")
+file.write("personal.unlockAccount(accountB " + ", " + "\"" + "asdf" + "\"" + ");\n")
 ## Save the abi from the compiled contract to a variable
 file.write("var abi = " + abi + ";\n")
 ## Save the bytecode from the compiled contract to a variable
 file.write("var bytecode = " + "\"" + "0x" + bytecode + "\";\n")
 ## Instantiate a new contract
 file.write("var newContract = web3.cmt.contract(abi);\n")
-## Deploy the new contract
-file.write("var deployedContract = newContract.new(" + constructor + "{from: " + "\"" + pubK + "\"" + ",data: bytecode, gas:" + "\"" + "5000000" + "\"" + "});\n")
+## Deploy the new contract from account A
+file.write("var deployedContract = newContract.new(" + constructor + "{from:accountA, data: bytecode, gas:" + "\"" + "5000000" + "\"" + "});\n")
 
 ## Loop through all of the read only functions in the abi 
 for item in abiDict:
