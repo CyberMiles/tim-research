@@ -1,6 +1,7 @@
 import os
 import ast
-# This is for use on private network. This script asks for an account's public key and password. This script is only for testing and should never be used on a production network or in conjunction with anything of value. Testing only!
+# This script will assist in writing unit tests for smart contract functions
+# This script is only for testing and should never be used on a production network or in conjunction with anything of value. Testing only!
 
 # This python script compiles your smart contract, and then automatically generates a javascript file filled with prewritten function calls to the contract so that you can deploy and test your contract without having to do everything by hand. This is useful if you want to change the smart contract code, recompile and quickly test, again and again.
 
@@ -18,11 +19,9 @@ import ast
 
 # 3. Copy this script to the lity/build directory i.e. lity/build/generate_tests.py
 
-# 4. Paste your contract's name as well as an account's public key as well as its password on the Testnet in the variable below.
+# 4. Paste your contract's name and file extension below.
 sc = "SmartToken"
 fileExtension = ".sol"
-pubK = "0xab52776885fb487ab60fd10f77604cb5dda4f6f5"
-passW = "asdfasdfasdf"
 
 # 5. Type the arguments for your smart contract's constructor in the list below
 constructorList = ["timtoken", "tim", "8"]
@@ -61,19 +60,28 @@ abiDict = ast.literal_eval(parsedAbi0)
 
 os.chdir(wd)
 # Write some data to the output file
-
-file.write("personal.unlockAccount(" + "\"" + pubK + "\"" + ", " + "\"" + passW + "\"" + ");\n")
+## Create two new accounts to test with
+file.write("accountA = personal.newAccount(\"asdf\");\n")
+file.write("accountB = personal.newAccount(\"asdf\");\n")
+## Unlock the two new accounts
+file.write("personal.unlockAccount(" + "\"" + accountA + "\"" + ", " + "\"" + "asdf" + "\"" + ");\n")
+file.write("personal.unlockAccount(" + "\"" + accountB + "\"" + ", " + "\"" + "asdf" + "\"" + ");\n")
+## Save the abi from the compiled contract to a variable
 file.write("var abi = " + abi + ";\n")
+## Save the bytecode from the compiled contract to a variable
 file.write("var bytecode = " + "\"" + "0x" + bytecode + "\";\n")
+## Instantiate a new contract
 file.write("var newContract = web3.cmt.contract(abi);\n")
+## Deploy the new contract
 file.write("var deployedContract = newContract.new(" + constructor + "{from: " + "\"" + pubK + "\"" + ",data: bytecode, gas:" + "\"" + "5000000" + "\"" + "});\n")
 
-# Write javascript code that will call all of the read only functions
+## Loop through all of the read only functions in the abi 
 for item in abiDict:
     if item["type"] == "function":
         print("Processing " + item["name"])
         if len(item["inputs"]) == 0:
-            file.write("deployedContract." + item["name"] + "();")
+        	## Call the function
+            file.write("deployedContract." + item["name"] + "();\n")
 
 # So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has the correct syntax to execute the contrac's read only functions. More to come also...
 # The only thing left to do is to cut and paste the Javascript commands into web3 console. You can cut and paste commands one at a time, or if you are on a Mac you can pipe the whole output of the Javascript file to clipboard and run everything using a single paste action.
