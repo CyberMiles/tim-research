@@ -110,7 +110,7 @@ for item in abiDict:
 				file.write("Returns a " + item["outputs"][0]["type"] + "\n")
 			else:
 				file.write("Returns nothing\n")
-			stringCall = "deployedContract." + item["name"] + "();"
+			stringCall = "deployedContract." + item["name"] + "({from:0xSendingAccount});"
 			file.write("*/\n" + stringCall + "\n/*\n")
 			stringCall = ""
 
@@ -136,7 +136,7 @@ for item in abiDict:
 				file.write("Returns a " + item["outputs"][0]["type"] + "\n")
 			else:
 				file.write("Returns nothing!\n")
-			stringCall = stringCall + ");"
+			stringCall = stringCall + ",  {from:0xSendingAccount});"
 			file.write("*/\n" + stringCall + "\n/*\n")
 			stringCall = ""
 file.write("\n/*\n")
