@@ -26,7 +26,6 @@ sc = "BancorConverter"
 fileExtension = ".sol"
 
 # 5. Type the arguments for your smart contract's constructor in the list below
-# These are just place holders for now
 constructorList = ["_token", "_registry", "_maxConversionFee", "_connectorToken", "_connectorWeight"]
 constructor = ""
 for item in constructorList:
@@ -96,7 +95,8 @@ file.write("var bytecode = " + "\"" + "0x" + bytecode + "\";\n")
 file.write("var newContract = web3.cmt.contract(abi, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 ## Deploy the new contract from account A
 file.write(runInstruction)
-file.write("var deployedContract = newContract.new(" + constructor + "{from:accountA, data: bytecode, gas:" + "\"" + "5000000" + "\"" + "}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
+deployedContract = "deployed" + sc + "Contract"
+file.write("var " + deployedContract + " = newContract.new(" + constructor + "{from:accountA, data: bytecode, gas:" + "\"" + "5000000" + "\"" + "}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 
 ## Loop through all of the read only functions in the abi 
 file.write("\n/*\n")
@@ -111,7 +111,7 @@ for item in abiDict:
 				file.write("Returns a " + item["outputs"][0]["type"] + "\n")
 			else:
 				file.write("Returns nothing\n")
-			stringCall = "deployedContract." + item["name"] + "({from:accountA});"
+			stringCall = deployedContract + "." + item["name"] + "({from:accountA});"
 			file.write("*/\n" + stringCall + "\n/*\n")
 			stringCall = ""
 
@@ -119,7 +119,7 @@ for item in abiDict:
 file.write("Listing the functions that take arguments\n")
 for item in abiDict:
 	if item["type"] == "function":
-		stringCall = "deployedContract."
+		stringCall = deployedContract + "."
 		print("Processing " + item["name"] + "\n")
 		stringCall = stringCall + item["name"] + "("
 		if len(item["inputs"]) >= 1:
