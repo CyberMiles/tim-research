@@ -26,6 +26,7 @@ sc = "BancorConverter"
 fileExtension = ".sol"
 
 # 5. Type the arguments for your smart contract's constructor in the list below
+# These are just place holders for now
 constructorList = ["_token", "_registry", "_maxConversionFee", "_connectorToken", "_connectorWeight"]
 constructor = ""
 for item in constructorList:
