@@ -95,7 +95,8 @@ file.write("var bytecode = " + "\"" + "0x" + bytecode + "\";\n")
 file.write("var newContract = web3.cmt.contract(abi, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 ## Deploy the new contract from account A
 file.write(runInstruction)
-file.write("var deployedContract = newContract.new(" + constructor + "{from:accountA, data: bytecode, gas:" + "\"" + "5000000" + "\"" + "}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
+deployedContract = "deployed" + sc + "Contract"
+file.write("var " + deployedContract + " = newContract.new(" + constructor + "{from:accountA, data: bytecode, gas:" + "\"" + "5000000" + "\"" + "}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});\n")
 
 ## Loop through all of the read only functions in the abi 
 file.write("\n/*\n")
@@ -110,7 +111,7 @@ for item in abiDict:
 				file.write("Returns a " + item["outputs"][0]["type"] + "\n")
 			else:
 				file.write("Returns nothing\n")
-			stringCall = "deployedContract." + item["name"] + "({from:accountA});"
+			stringCall = deployedContract + "." + item["name"] + "({from:accountA});"
 			file.write("*/\n" + stringCall + "\n/*\n")
 			stringCall = ""
 
@@ -118,7 +119,7 @@ for item in abiDict:
 file.write("Listing the functions that take arguments\n")
 for item in abiDict:
 	if item["type"] == "function":
-		stringCall = "deployedContract."
+		stringCall = deployedContract + "."
 		print("Processing " + item["name"] + "\n")
 		stringCall = stringCall + item["name"] + "("
 		if len(item["inputs"]) >= 1:
@@ -140,7 +141,6 @@ for item in abiDict:
 			file.write("*/\n" + stringCall + "\n/*\n")
 			stringCall = ""
 file.write("\n/*\n")
-
 
 # So now we have a single Javascript file which has a list of all of the commands you will need to deploy your contract. In addition the file has the correct syntax to execute the contrac's read only functions. More to come also...
 # The only thing left to do is to cut and paste the Javascript commands into web3 console. You can cut and paste commands one at a time, or if you are on a Mac you can pipe the whole output of the Javascript file to clipboard and run everything using a single paste action.
