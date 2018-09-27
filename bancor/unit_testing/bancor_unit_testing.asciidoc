@@ -2,6 +2,16 @@
 
 The following instructions will facilitate the testing of Bancor smart contracts as outlined on the official Bancor Contracts GitHub repository [1].
 
+[source, bash]
+----
+
+npm install decimal.js --save
+
+npm install ethereumjs-util --save
+
+npm install web3-utils --save
+
+----
 
 = References
 [1] https://github.com/bancorprotocol/contracts#testing
