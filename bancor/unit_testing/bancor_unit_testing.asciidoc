@@ -2,6 +2,37 @@
 
 The following instructions will facilitate the testing of Bancor smart contracts as outlined on the official Bancor Contracts GitHub repository [1].
 
+== Nodejs and npm
+
+Install nodejs v8.3.0 or above from https://nodejs.org/en/download/
+
+Install npm npm v5.3.0 or above from https://www.npmjs.com/get-npm
+
+== Truffle
+
+[source, bash]
+----
+
+npm install -g truffle
+
+----
+
+== Ganache
+
+[source, bash]
+----
+
+git clone https://github.com/trufflesuite/ganache.git
+
+cd ganache
+
+npm install
+
+npm start
+
+----
+
+== Additional dependencies 
 [source, bash]
 ----
 
@@ -12,6 +43,25 @@ npm install ethereumjs-util --save
 npm install web3-utils --save
 
 ----
+
+== Bancor Contracts
+
+[source, bash]
+----
+
+git clone https://github.com/bancorprotocol/contracts.git
+
+cd contracts
+
+npm test
+
+----
+
+The output will be similar to what is pictured below (output has been truncated to save space on this page)
+
+image::unit_test_1.png
+
+image::unit_test_2.png
 
 = References
 [1] https://github.com/bancorprotocol/contracts#testing
