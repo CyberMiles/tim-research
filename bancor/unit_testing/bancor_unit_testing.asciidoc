@@ -59,9 +59,9 @@ npm test
 
 The output will be similar to what is pictured below (output has been truncated to save space on this page)
 
-image::./unit_test_1.png
+image::unit_test_1.png[]
 
-image::./unit_test_2.png
+image::unit_test_2.png[]
 
 = References
 [1] https://github.com/bancorprotocol/contracts#testing
