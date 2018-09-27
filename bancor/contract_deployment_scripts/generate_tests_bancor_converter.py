@@ -20,9 +20,10 @@ import ast
 
 # 3. Copy this script to the lity/build directory i.e. lity/build/generate_tests.py
 
-# 4. Paste your absolute path to contract's directory as well as the contract's name and the contract's file extension below.
+# 4. Paste your absolute path to contract's directory as well as the contract's name, type, and the contract's file extension below.
 absolutePathToContractDir = "~/contracts/solidity/contracts/converter/"
 sc = "BancorConverter"
+contractType = "ERC20"
 fileExtension = ".sol"
 
 # 5. Type the arguments for your smart contract's constructor in the list below
@@ -41,7 +42,7 @@ od = os.path.join(wd, "output",)
 
 # Compile contract to the output directory
 os.chdir(wd)
-compileContract = "./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ " + absolutePathToContractDir + sc + fileExtension
+compileContract = "./lityc/lityc --contract-standard " + contractType + " --overwrite --allow-paths ../, --abi --bin -o output/ " + absolutePathToContractDir + sc + fileExtension
 
 os.system(compileContract)
 
