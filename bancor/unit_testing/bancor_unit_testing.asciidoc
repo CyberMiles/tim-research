@@ -59,7 +59,41 @@ npm test
 
 The output will be similar to what is pictured below (output has been truncated to save space on this page)
 
-image::unit_test_1.png[]
+[source, bash]
+----
+Contract: BancorConverter
+    ✓ verifies the converter data after construction (340ms)
+    ✓ should throw when attempting to construct a converter with no token
+    ✓ should throw when attempting to construct a converter with no contract registry (74ms)
+    ✓ should throw when attempting to construct a converter with invalid max fee (103ms)
+    ✓ verifies the first connector when provided at construction time (155ms)
+    ✓ should throw when attempting to construct a converter with a connector with invalid weight (102ms)
+    ✓ verifies the connector token count before / after adding a connector (267ms)
+    ✓ verifies the owner can update the converter contract registry contract address (193ms)
+    ✓ should throw when a non owner attempts update the converter contract registry contract address (170ms)
+    ✓ should throw when the attempts update the converter contract registry contract address with an invalid address (206ms)
+    ✓ should throw when the owner attempts update the converter contract registry contract address with the converter address (415ms)
+    ✓ verifies the owner can update the conversion whitelist contract address (409ms)
+    ✓ should throw when a non owner attempts update the conversion whitelist contract address (140ms)
+    ✓ verifies the owner can remove the conversion whitelist contract address (201ms)
+    ✓ should throw when the owner attempts update the conversion whitelist contract address with the converter address (267ms)
+    ✓ verifies the owner can update the fee (257ms)
+    ✓ verifies the manager can update the fee (289ms)
+    ✓ should throw when attempting to update the fee to an invalid value (269ms)
+    ✓ should throw when a non owner and non manager attempts to update the fee (805ms)
+    ✓ verifies that getFinalAmount returns the correct amount (216ms)
+    ✓ verifies that an event is fired when the owner update the fee (335ms)
+    ✓ verifies that an event is fired when the owner update the fee multiple times (1913ms)
+    ✓ should not fire an event when attempting to update the fee to an invalid value (511ms)
+    ✓ should not fire an event when a non owner attempts to update the fee (246ms)
+    ✓ verifies that 2 connectors are added correctly (414ms)
+    ✓ should throw when a non owner attempts to add a connector (140ms)
+    ✓ should throw when attempting to add a connector when the converter is active (420ms)
+    ✓ should throw when attempting to add a connector with invalid address (352ms)
+    ✓ should throw when attempting to add a connector with weight = 0 (227ms)
+    ✓ should throw when attempting to add a connector with weight greater than 100% (139ms)
+
+----
 
 image::unit_test_2.png[]
 
