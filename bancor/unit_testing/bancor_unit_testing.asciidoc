@@ -1,3 +1,8 @@
 = Running Bancor tests on macOS High Sierra (10.13.6)
-The following instructions will facilitate the testing of Bancor smart contracts as outlined on the official Bancor Contracts GitHub repository
+
+The following instructions will facilitate the testing of Bancor smart contracts as outlined on the official Bancor Contracts GitHub repository [1].
+
+
+= References
+[1] https://github.com/bancorprotocol/contracts#testing
 
