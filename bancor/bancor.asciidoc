@@ -409,15 +409,19 @@ function issue(address _to, uint256 _amount)
     }
 ----
 
+There are checks in Bancor (which use Solidity Modifiers) that require the caller of the function to be identified. The following {from:"0xabcdef...xzy"} syntax can be used when calling a function in the event that the Solidity code requires a valid calling address.
+Here is an example of using this syntax via web3 on a function which takes no arguments
+```
+deployedSmartTokenContract.acceptOwnership({from:accountA});
+```
+Here is an example of using this syntax via web3 on a function which does take arguments
+```
+deployedSmartTokenContract.issue(_to address, _amount uint256,  {from:accountA});
+```
+
 === Compile and deploy the contract in an automated fashion - Method C (private network only - testing only)
 
-I have created a Python script called https://github.com/CyberMiles/tim-research/blob/master/bancor/generate_tests.py[generate_tests.py]. Follow the directions at the top of the Python file. This file will compile the contract and provide a written file of every command needed to deploy and test the functions of the smart contract in question. This is https://github.com/CyberMiles/tim-research/blob/master/bancor/sample_output.js[an example of the output] from the python file. This is only for use on a private network; it creates new accounts and also transfers funds from the private testnet's coinbase account (showing passwords etc). This method is for setting up fast deployment and unit testing.
-
-= Next
-Deploy the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/converter/BancorConverter.sol contract using the right arguments 
-Check on the status of my pull request to Bancor GitHub https://github.com/bancorprotocol/contracts/pull/243
-Document Remix and Command Line versions of this testing using screen shots etc.
-Create unit tests for functions and then test
+I have created a Python script called https://github.com/CyberMiles/tim-research/blob/master/bancor/contract_deployment_scripts/generate_tests_smart_token_sol.py[generate_tests_smart_token_sol.py]. Follow the directions at the top of the Python file. This file will compile the contract and provide a written file of every command needed to deploy and test the functions of the smart contract in question. This is https://github.com/CyberMiles/tim-research/blob/master/bancor/contract_deployment_scripts/sample_output_smart_token.js[an example of the output] from the python file. This is only for use on a private network; it creates new accounts and also transfers funds from the private testnet's coinbase account (showing passwords etc). This method is for setting up fast deployment and unit testing.
 
 = References
 
