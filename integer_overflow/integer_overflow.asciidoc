@@ -119,8 +119,19 @@ Interestingly though, the following call to the multiply function demonstrates t
 
 == Solutions
 
-My personal testing (on Ethereum's Rinkeby test network) against other Solidity multiplication functions found https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol[here] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[here] still seem to return a value of zero, as shown aboce. Let me know if I am missing something.
+My personal testing (on Ethereum's Rinkeby test network) against other Solidity multiplication functions found https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol[here] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[here] still seem to return a value of zero, as shown above. I would love to provide a solution to the following question.
 
+[source, bash]
+----
+If one multiplied by 
+57896044618658097711785492504343953926634992332820282019728792003956564819968 
+equals 
+57896044618658097711785492504343953926634992332820282019728792003956564819968 
+then how can two multiplied by 
+57896044618658097711785492504343953926634992332820282019728792003956564819968
+equal
+zero?
+----
 
 
 
