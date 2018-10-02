@@ -60,7 +60,10 @@ Aside from when a zero is presented (as one of the inputs), if one of the inputs
 2
 > deployedSmartTokenContract.multiply(1, 123456789)
 123456789
-> deployedSmartTokenContract.multiply(1, 57896044618658097711785492504343953926634992332820282019728792003956564819968)
-5.78960446186581e+76
 ----
+
+=== Pushing the limits
+
+The most that a uint256 variable should accept as input is 2²⁵⁶ -1
+
 
