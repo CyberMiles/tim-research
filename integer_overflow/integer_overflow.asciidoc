@@ -1,2 +1,36 @@
 = Integer Overflow
 
+Disclaimer: This information is based on my personal understanding of integer overflows in code. This document offers no advice nor opinions. This document has only been produced to exercise my personal understanding; it serves as a place to jot down my notes to prompt my thinking.
+
+== Testing safe multiplication of numbers
+A Solidity Smart Contract code for multiplication might look something like this.
+
+[source, javascript]
+----
+pragma solidity ^0.4.23;
+
+/*
+        Integer Overflow Testing v0.1
+*/
+
+contract IntegerOverflowTesting{
+        string public version = "0.1";
+
+        /**
+        @dev    This function tests integer multiplication by allowing the caller to pass in any two uint256 integers
+        @param  _a is a single uint256 integer value which is passed in by the function caller
+        @param  _b is a single uint256 integer value which is passed in by the function caller
+        @return This function returns a single uint256 integer value
+        */
+        function multiply(uint256 _a, uint256 _b) public pure returns(uint256 _c){
+                _c = _a * _b;
+                return _c;
+        }
+}
+----
+
+If I have two positive numbers 2 and 2 and I multiply them together I get 4 
+[source, javascript]
+----
+deployedSmartTokenContract.multiply(2, 2)
+----
