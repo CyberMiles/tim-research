@@ -2,7 +2,7 @@
 
 Disclaimer: This information is based on my personal understanding of integer overflows in code. This document offers no advice nor opinions. This document has only been produced to exercise my personal understanding; it serves as a place to jot down my notes to prompt my thinking.
 
-== Testing safe multiplication of numbers
+== Testing multiplication of numbers
 A Solidity Smart Contract code for multiplication might look something like this.
 
 [source, bash]
@@ -35,7 +35,10 @@ If I have two positive numbers 2 and 2 and I multiply them together I get 4
 > deployedSmartTokenContract.multiply(2, 2)
 4
 ----
-Of course if any or both of the numbers passed in are zero then the answer will be zero
+
+=== Working with zeros
+
+If any or both of the numbers passed in are zero then the answer will be zero
 [source, bash]
 ----
 > deployedSmartTokenContract.multiply(0, 1)
@@ -44,5 +47,20 @@ Of course if any or both of the numbers passed in are zero then the answer will 
 0
 > deployedSmartTokenContract.multiply(0, 0)
 0
+----
+
+=== Working with ones
+
+Aside from when a zero is presented (as one of the inputs), if one of the inputs is "one" then the output should simply be the value of the other number which is passed in.
+[source, bash]
+----
+> deployedSmartTokenContract.multiply(1, 1)
+1
+> deployedSmartTokenContract.multiply(1, 2)
+2
+> deployedSmartTokenContract.multiply(1, 123456789)
+123456789
+> deployedSmartTokenContract.multiply(1, 57896044618658097711785492504343953926634992332820282019728792003956564819968)
+5.78960446186581e+76
 ----
 
