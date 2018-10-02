@@ -64,6 +64,18 @@ Aside from when a zero is presented (as one of the inputs), if one of the inputs
 
 === Pushing the limits
 
-The most that a uint256 variable should accept as input is 2²⁵⁶ -1
+The most that a uint256 variable should accept as input is 2²⁵⁶ -1. 
+This number can be represented as a whole number like this
+[source, bash]
+----
+57896044618658097711785492504343953926634992332820282019728792003956564819968
+----
+Or in hexadecimal form like this
+[source, bash]
+----
+0x8000000000000000000000000000000000000000000000000000000000000000
+----
+
+
 
 
