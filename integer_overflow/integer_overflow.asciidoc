@@ -76,7 +76,7 @@ Or in hexadecimal form like this
 0x8000000000000000000000000000000000000000000000000000000000000000
 ----
 
-If we pass either of these to the multiply function which wrote above we will get the following output.
+If I pass either of these to the multiply function which I wrote above I will get the following output.
 
 [source, bash]
 ----
@@ -84,6 +84,23 @@ If we pass either of these to the multiply function which wrote above we will ge
 5.78960446186581e+76
 > deployedSmartTokenContract.multiply(1, 0x8000000000000000000000000000000000000000000000000000000000000000)
 5.78960446186581e+76
+----
+
+=== Hitting the limits
+
+The system has the capability to refuse numbers bigger than this. For example if I pass 2 to the 25**7** -1 (instead of 2²⁵⁶ -1) the system will Error.
+
+[source, bash]
+----
+> deployedSmartTokenContract.multiply(1, 231584179999999997410779582514519949157839141792512746635478192824992309182464)
+Error: invalid argument 0: json: cannot unmarshal hex string of odd length into Go struct field CallArgs.data of type hexutil.Bytes
+    at web3-cmt.js:11472:20
+    at web3-cmt.js:14605:15
+    at web3-cmt.js:13390:36
+    at web3-cmt.js:12415:22
+    at apply (<native code>)
+    at web3-cmt.js:12540:12
+    at <anonymous>:1:1
 ----
 
 
