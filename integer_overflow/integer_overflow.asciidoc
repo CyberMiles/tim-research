@@ -5,7 +5,7 @@ Disclaimer: This information is based on my personal understanding of integer ov
 == Testing safe multiplication of numbers
 A Solidity Smart Contract code for multiplication might look something like this.
 
-[source, javascript]
+[source, bash]
 ----
 pragma solidity ^0.4.23;
 
@@ -30,7 +30,19 @@ contract IntegerOverflowTesting{
 ----
 
 If I have two positive numbers 2 and 2 and I multiply them together I get 4 
-[source, javascript]
+[source, bash]
 ----
-deployedSmartTokenContract.multiply(2, 2)
+> deployedSmartTokenContract.multiply(2, 2)
+4
 ----
+Of course if any or both of the numbers passed in are zero then the answer will be zero
+[source, bash]
+----
+> deployedSmartTokenContract.multiply(0, 1)
+0
+> deployedSmartTokenContract.multiply(1, 0)
+0
+> deployedSmartTokenContract.multiply(0, 0)
+0
+----
+
