@@ -103,6 +103,30 @@ Error: invalid argument 0: json: cannot unmarshal hex string of odd length into 
     at <anonymous>:1:1
 ----
 
+The above error is more in relation to an **invalid argument** than the system's inability to refuse uint256 numbers which are "to large".
+
+=== Beyond the limits
+
+So the system will not take a uint256 **argument** which is greater than 2²⁵⁶ -1. 
+
+Interestingly though, the following call to the multiply function demonstrates that a single allowable argument (2²⁵⁶ -1 or below) can be multiplied with another valid argument, say the number 2; the result will be saved to the uint256 variable _c in the multiply function. In fact, the multiply function will return the result as part of its successful execution.
+
+[source, bash]
+----
+> deployedSmartTokenContract.multiply(2, 57896044618658097711785492504343953926634992332820282019728792003956564819968)
+0
+----
+
+== Solutions
+
+My personal testing (on Ethereum's Rinkeby test network) against other Solidity multiplication functions found https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol[here] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[here] still seem to return a value of zero, as shown aboce. Let me know if I am missing something.
+
+
+
+
+
+
+
 
 
 
