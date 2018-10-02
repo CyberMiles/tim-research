@@ -30,3 +30,5 @@ A collection of research and development performed and written up by @tpmccallum
 - [Gemini Dollar - the world’s first regulated stablecoin ](https://github.com/CyberMiles/tim-research/blob/master/gemini_dollar/gemini_dollar.asciidoc)
 
 - [Bancor](https://github.com/CyberMiles/tim-research/blob/master/bancor/bancor.asciidoc)
+
+- [Integer Overflow](https://github.com/CyberMiles/tim-research/blob/master/integer_overflow/integer_overflow.asciidoc)
