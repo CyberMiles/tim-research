@@ -327,6 +327,20 @@ The constructor for this Solidity contract is hard coded as shown below.
 > var deployedEtherTokenContract = newContract.new({from:accountA, data: bytecode, gas:"5000000"}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
 ----
 
+The CyberMiles Token contract functions can be called as shown below
+
+[source, javascript]
+----
+> deployedEtherTokenContract.address
+"0xfa0892e910ea6ff671835f03527d8594372ccd68"
+
+> deployedEtherTokenContract.name({from:accountA});
+"CyberMiles Token"
+
+> deployedEtherTokenContract.symbol({from:accountA});
+"CMT"
+----
+
 === Bancor?
 
 [source, bash]
