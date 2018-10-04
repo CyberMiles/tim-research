@@ -412,31 +412,41 @@ You can call the functions of the deployedContractFeaturesContract like this
 "0x897c139e212ea4d18c2799ad7c2a72043df62e66"
 ----
 
-=== Bancor?
+=== Whitelist
 
 [source, bash]
 ----
-
+./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/Whitelist.sol
 ----
 
 [source, javascript]
 ----
-
+> var abi = [{"constant":false,"inputs":[{"name":"_addresses","type":"address[]"}],"name":"addAddresses","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_address","type":"address"}],"name":"addAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_address","type":"address"}],"name":"isWhitelisted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_address","type":"address"}],"name":"removeAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_addresses","type":"address[]"}],"name":"removeAddresses","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"AddressAddition","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_address","type":"address"}],"name":"AddressRemoval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_prevOwner","type":"address"},{"indexed":true,"name":"_newOwner","type":"address"}],"name":"OwnerUpdate","type":"event"}];
 ----
 
 [source, javascript]
 ----
-
+> var bytecode = "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610a52806100606000396000f300608060405260043610610099576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633628731c1461009e57806338eada1c146101045780633af32abf146101475780634ba79dfe146101a257806379ba5097146101e55780638da5cb5b146101fc578063a84eb99914610253578063d4ee1d90146102b9578063f2fde38b14610310575b600080fd5b3480156100aa57600080fd5b5061010260048036038101908080359060200190820180359060200190808060200260200160405190810160405280939291908181526020018383602002808284378201915050505050509192919290505050610353565b005b34801561011057600080fd5b50610145600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610393565b005b34801561015357600080fd5b50610188600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061053f565b604051808215151515815260200191505060405180910390f35b3480156101ae57600080fd5b506101e3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610595565b005b3480156101f157600080fd5b506101fa610704565b005b34801561020857600080fd5b506102116108a3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561025f57600080fd5b506102b7600480360381019080803590602001908201803590602001908080602002602001604051908101604052809392919081815260200183836020028082843782019150505050505091929192905050506108c8565b005b3480156102c557600080fd5b506102ce610908565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561031c57600080fd5b50610351600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061092e565b005b60008090505b815181101561038f57610382828281518110151561037357fe5b90602001906020020151610393565b8080600101915050610359565b5050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156103eb57fe5b80600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561042857600080fd5b600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff161561047f5761053b565b6001600260008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055507f2c51f80053e9ee7518567e43b2f8e8b48f50cf10daede6d11893df9ad49e4a8a82604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a15b5050565b6000600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105ed57fe5b600260008273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16151561064557610701565b6000600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055507f7ec2df28665f8610f9b1d2f74faae35dbc6bd58684a1194a6dfc31584953f03b81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a15b50565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561076057600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f343765429aea5a34b3ff6a3785a98a5abb2597aca87bfbb58632c173d585373a60405160405180910390a3600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008090505b8151811015610904576108f782828151811015156108e857fe5b90602001906020020151610595565b80806001019150506108ce565b5050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561098657fe5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156109e257600080fd5b80600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820b8adbf01e820eb1e1164c2bd4bfb47a86c27cb0a94a3d354a7a439e9e23582d10029";
 ----
 
 [source, javascript]
 ----
-
+> var newContract = web3.cmt.contract(abi, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
 ----
 
 [source, javascript]
 ----
+var deployedWhitelistContract = newContract.new({from:accountA, data: bytecode, gas:"5000000"}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
+----
 
+You can call the functions of the deployedWhitelistContract like this
+[source, javascript]
+----
+> deployedWhitelistContract.address
+"0x0679d413b7925dee6e24b53347584c94a73d65f3"
+
+> deployedWhitelistContract.owner({from:accountA});
+"0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
 ----
 
 === Bancor?
