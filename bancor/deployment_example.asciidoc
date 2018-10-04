@@ -29,10 +29,18 @@ git clone https://github.com/bancorprotocol/contracts.git
 cd ~/lity/build
 ----
 
+=== Create some new accounts to test with
 [source, javascript]
 ----
 > accountA = personal.newAccount("asdf");
 > accountB = personal.newAccount("asdf");
+----
+You will be required to unlock and fund these accounts from time to time i.e.
+[source, javascript]
+----
+> personal.unlockAccount(accountA , "asdf", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
+
+> cmt.sendTransaction({"from": cmt.coinbase, "to": accountA, "value": web3.toWei(50, "cmt")}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
 ----
 
 == Bancor Contracts
