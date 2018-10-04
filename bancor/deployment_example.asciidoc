@@ -1,5 +1,7 @@
 = Bancor deployment example
 
+Disclaimer: This document offers no advice nor opinions. This document has only been produced to exercise my personal understanding; it serves as a place to jot down my notes to prompt my thinking.
+
 == Housekeeping
 
 Please note: All commands below prefixed with > are to be executed in the travis testnet console. The console can be accessed by typing the following command.
@@ -603,7 +605,7 @@ If you remember from a few commands ago, we are able to retrieve the address of 
 > var deployedBancorNetworkContract = newContract.new("0x3dcddd954362ac845c96916092f208c5e1df68fc",{from:accountA, data: bytecode, gas:"5000000"}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
 ----
 
-We can not interact with the Bancor Network by calling functions like this
+The Bancor Network contract functions can now be called like this
 
 [source, javascript]
 ----
@@ -616,7 +618,7 @@ We can not interact with the Bancor Network by calling functions like this
 
 === Bancor Converter
 
-This is where it gets a little bit tricky. This contract takes quite a few arguments in its constructor. The Bancor developers have provided a lot of information to assist with deploying this contract. Many thanks to them. Here is the contstructor from the source code.
+This is where it gets a little bit tricky. This contract takes quite a few arguments in its constructor. The Bancor developers have provided a lot of information to assist with deploying this contract. Many thanks to them. Here is the constructor from the source code.
 [source, javascript]
 ----
 constructor(
@@ -641,6 +643,18 @@ _token is the address of an already-deployed contract which implements the `ISma
 > deployedSmartTokenContract.symbol({from:accountA});
 "NEW"
 ----
+
+**_registry**
+_registry is the address of an already-deployed contract which implements the `IContractRegistry` interface. If you remember from a few commands ago, we are able to retrieve the address of the deployed Contract Registry like this.
+
+[source, javascript]
+----
+> deployedContractRegistryContract.address
+"0x3dcddd954362ac845c96916092f208c5e1df68fc"
+----
+
+**__maxConversionFee**
+_maxConversionFee is the maximum conversion fee in PPM units. PPM means point per million, i.e., 1 PPM = 1/1000000 (= 1/10000 percent). The maximum allowable value for this argument is 1 million i.e. 1000000.
 
 [source, bash]
 ----
