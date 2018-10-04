@@ -596,7 +596,7 @@ If you remember from a few commands ago, we are able to retrieve the address of 
 ----
 > deployedContractRegistryContract.address
 "0x3dcddd954362ac845c96916092f208c5e1df68fc"
----
+----
 
 [source, javascript]
 ----
