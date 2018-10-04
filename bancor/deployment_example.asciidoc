@@ -378,31 +378,38 @@ You can call the functions of the ContractRegistry like this
 "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
 ----
 
-=== Bancor?
+=== Contract Features
 
 [source, bash]
 ----
-
+./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/ContractFeatures.sol
 ----
 
 [source, javascript]
 ----
-
+> var abi = [{"constant":false,"inputs":[{"name":"_features","type":"uint256"},{"name":"_enable","type":"bool"}],"name":"enableFeatures","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_contract","type":"address"},{"name":"_features","type":"uint256"}],"name":"isSupported","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_address","type":"address"},{"indexed":false,"name":"_features","type":"uint256"}],"name":"FeaturesAddition","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_address","type":"address"},{"indexed":false,"name":"_features","type":"uint256"}],"name":"FeaturesRemoval","type":"event"}];
 ----
 
 [source, javascript]
 ----
-
+> var bytecode = "0x608060405234801561001057600080fd5b506102d7806100206000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632c7077c014610051578063a5fbf2871461008a575b600080fd5b34801561005d57600080fd5b50610088600480360381019080803590602001909291908035151590602001909291905050506100ef565b005b34801561009657600080fd5b506100d5600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919050505061025e565b604051808215151515815260200191505060405180910390f35b80156101a8576100ff338361025e565b156101095761025a565b816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825417925050819055503373ffffffffffffffffffffffffffffffffffffffff167f461f0180592d0fa11ece082775c5b037a96f6a5418f3f23d4ee4ee063b5c1aac836040518082815260200191505060405180910390a2610259565b6101b2338361025e565b15156101bd5761025a565b81196000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825416925050819055503373ffffffffffffffffffffffffffffffffffffffff167f903f96a6f8c316bb88b30f8b641bd2aa80b6e92732bab4d1accf30e1d6eba89c836040518082815260200191505060405180910390a25b5b5050565b600081826000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205416149050929150505600a165627a7a7230582059bb862380d908320d29e7d1a3b25349fb0afd8e418ae0b96ae13b603e5ea8ab0029";
 ----
 
 [source, javascript]
 ----
-
+var newContract = web3.cmt.contract(abi, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
 ----
 
 [source, javascript]
 ----
+var deployedContractFeaturesContract = newContract.new({from:accountA, data: bytecode, gas:"5000000"}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
+----
 
+You can call the functions of the deployedContractFeaturesContract like this
+[source, javascript]
+----
+> deployedContractFeaturesContract.address
+"0x897c139e212ea4d18c2799ad7c2a72043df62e66"
 ----
 
 === Bancor?
