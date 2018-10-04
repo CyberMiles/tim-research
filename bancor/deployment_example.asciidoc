@@ -667,7 +667,7 @@ _token is the address of an already-deployed contract which implements the `ISma
 
 ----
 
-=== Bancor?
+=== Next Bancor Contract
 
 [source, bash]
 ----
