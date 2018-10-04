@@ -475,3 +475,138 @@ You can call the functions of the deployedWhitelistContract like this
 ----
 
 ----
+
+=== Bancor?
+
+[source, bash]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+=== Bancor?
+
+[source, bash]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+=== Bancor?
+
+[source, bash]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+=== Bancor?
+
+[source, bash]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+=== Bancor?
+
+[source, bash]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
+
+[source, javascript]
+----
+
+----
