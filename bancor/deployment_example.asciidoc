@@ -614,7 +614,33 @@ We can not interact with the Bancor Network by calling functions like this
 "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
 ----
 
-=== Bancor?
+=== Bancor Converter
+
+This is where it gets a little bit tricky. This contract takes quite a few arguments in its constructor. The Bancor developers have provided a lot of information to assist with deploying this contract. Many thanks to them. Here is the contstructor from the source code.
+[source, javascript]
+----
+constructor(
+        ISmartToken _token,
+        IContractRegistry _registry,
+        uint32 _maxConversionFee,
+        IERC20Token _connectorToken,
+        uint32 _connectorWeight
+    )
+----
+**_token**
+
+_token is the address of an already-deployed contract which implements the `ISmartToken` interface. In this case our previously deployed token called New Token. 
+[source, javascript]
+----
+> deployedSmartTokenContract.address
+"0xb4e67433cd977799a5b748340525e9d36e5525cd"
+
+> deployedSmartTokenContract.name({from:accountA});
+"New Token"
+
+> deployedSmartTokenContract.symbol({from:accountA});
+"NEW"
+----
 
 [source, bash]
 ----
