@@ -76,6 +76,9 @@ Compile and deploy the Bancor Migrations Solidity file
 Functions of the Migrations contract can be called like this
 [source, javascript]
 ----
+> deployedMigrationsContract.address
+"0x89c9a3b7c334b135fed7c7ba4ca58360346ce6e0"
+
 > deployedMigrationsContract.owner({from:accountA});
 "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
 > deployedMigrationsContract.last_completed_migration({from:accountA});
@@ -112,6 +115,9 @@ Functions of the Migrations contract can be called like this
 Functions of the BancorFormula contract can be called like this
 [source, javascript]
 ----
+> deployedBancorFormulaContract.address
+"0x164df0edf5d508ccc16cda4d00a39f69b28f7959"
+
 > deployedBancorFormulaContract.version({from:accountA});
 "0.3"
 ----
@@ -140,6 +146,9 @@ Functions of the BancorFormula contract can be called like this
 
 [source, javascript]
 ----
+> deployedOwnedContract.address
+"0xfa285416d8a57776b70223d979e42fccef640e42"
+
 > var deployedOwnedContract = newContract.new({from:accountA, data: bytecode, gas:"5000000"}, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
 ----
 
@@ -184,6 +193,9 @@ var newContract = web3.cmt.contract(abi, function(error, result){if(!error){cons
 The functions of the Managed contract can be called like this
 [source, javascript]
 ----
+> deployedManagedContract.address
+"0xdcc3f1c860af5f61c6dd8f6c2f0f296b3353b23b"
+
 > accountA
 "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
 
@@ -221,6 +233,9 @@ The functions of the Managed contract can be called like this
 You can access the TokenHolder contract functions like this
 [source, javascript]
 ----
+> deployedTokenHolderContract.address
+"0x495b3663527c47544b8b3654a8a4a6ec0dd13906"
+
 > accountA
 "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
 
@@ -259,6 +274,9 @@ You can call the functions of the ERC20Token contract like this
 
 [source, javascript]
 ----
+> deployedERC20TokenContract.address
+"0xe3a3df7717c7e6acb6c882cf5b32c460209cce9c"
+
 > deployedERC20TokenContract.name({from:accountA});
 "DummyToken"
 ----
