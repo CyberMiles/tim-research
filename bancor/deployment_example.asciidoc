@@ -83,8 +83,22 @@ Functions of the Migrations contract can be called like this
 
 > deployedMigrationsContract.owner({from:accountA});
 "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
+
 > deployedMigrationsContract.last_completed_migration({from:accountA});
 0
+----
+
+**Reconnecting with a past contract**
+If the Travis testnet console session is restarted, the variables such as deployedMigrationsContract will no longer exist. Even in a new session, a past contract's functions can always be accessed (as long as the abi and address were preserved when the contract was deployed). There are just a couple of lines of code which will re-establish the variable as shown below.
+[source, javascript]
+----
+var existingContract = web3.cmt.contract(abi);
+
+var deployedMigrationsContract = existingContract.at("0x89c9a3b7c334b135fed7c7ba4ca58360346ce6e0");
+
+// Now the variable is once again able to be used to access the contract and its functions
+> deployedMigrationsContract.owner({from:accountA});
+"0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
 ----
 
 === BancorFormula
@@ -653,8 +667,16 @@ _registry is the address of an already-deployed contract which implements the `I
 "0x3dcddd954362ac845c96916092f208c5e1df68fc"
 ----
 
-**__maxConversionFee**
+**_maxConversionFee**
 _maxConversionFee is the maximum conversion fee in PPM units. PPM means point per million, i.e., 1 PPM = 1/1000000 (= 1/10000 percent). The maximum allowable value for this argument is 1 million i.e. 1000000.
+
+**_connectorToken**
+_connectorToken is the initial connector (the first connector at deployment time). This is the address of the already deployed contract which implements the IERC20Token interface. 
+
+[source, javascript]
+----
+0xe3a3df7717c7e6acb6c882cf5b32c460209cce9c
+----
 
 [source, bash]
 ----
@@ -707,3 +729,5 @@ _maxConversionFee is the maximum conversion fee in PPM units. PPM means point pe
 ----
 
 ----
+
+
