@@ -716,7 +716,7 @@ _connectorWeight is the connector weight in PPM units
 
 ----
 
-=== Bancor?
+=== Next Bancor Contract
 
 [source, bash]
 ----
