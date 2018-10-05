@@ -58,7 +58,7 @@ You will be required to unlock and fund these accounts from time to time i.e.
 Compile and deploy the Bancor Migrations Solidity file
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/helpers/Migrations.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/helpers/Migrations.sol
 ----
 
 [source, javascript]
@@ -111,7 +111,7 @@ var deployedMigrationsContract = existingContract.at("0x89c9a3b7c334b135fed7c7ba
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorFormula.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorFormula.sol
 ----
 
 [source, javascript]
@@ -148,7 +148,7 @@ Functions of the BancorFormula contract can be called like this
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/Owned.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/Owned.sol
 ----
 
 [source, javascript]
@@ -189,7 +189,7 @@ You can call the functions of the Bancor Owner contracts like this
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/Managed.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/Managed.sol
 ----
 
 [source, javascript]
@@ -229,7 +229,7 @@ The functions of the Managed contract can be called like this
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/TokenHolder.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/TokenHolder.sol
 ----
 
 [source, javascript]
@@ -269,7 +269,7 @@ You can access the TokenHolder contract functions like this
 
 [source, bash]
 ----
-./lityc/lityc --contract-standard ERC20 --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/ERC20Token.sol
+./lityc/lityc --contract-standard ERC20 --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/ERC20Token.sol
 ----
 
 [source, javascript]
@@ -326,7 +326,7 @@ The constructor for this Solidity contract is hard coded as shown below.
 
 [source, bash]
 ----
-./lityc/lityc --contract-standard ERC20 --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/EtherToken.sol
+./lityc/lityc --contract-standard ERC20 --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/EtherToken.sol
 ----
 
 [source, javascript]
@@ -367,7 +367,7 @@ The CyberMiles Token contract functions can be called as shown below
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/ContractRegistry.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/ContractRegistry.sol
 ----
 
 [source, javascript]
@@ -404,7 +404,7 @@ You can call the functions of the ContractRegistry like this
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/ContractFeatures.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/ContractFeatures.sol
 ----
 
 [source, javascript]
@@ -438,7 +438,7 @@ You can call the functions of the deployedContractFeaturesContract like this
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/Whitelist.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/utility/Whitelist.sol
 ----
 
 [source, javascript]
@@ -475,7 +475,7 @@ You can call the functions of the deployedWhitelistContract like this
 
 [source, bash]
 ----
-./lityc/lityc --contract-standard ERC20 --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/SmartToken.sol
+./lityc/lityc --contract-standard ERC20 --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/token/SmartToken.sol
 ----
 
 [source, javascript]
@@ -516,7 +516,7 @@ You can call the functions of the Smart Token by using the following syntax
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorFormula.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorFormula.sol
 ----
 
 [source, javascript]
@@ -554,7 +554,7 @@ You can call the functions of the deployedBancorFormulaContract by using the fol
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorGasPriceLimit.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorGasPriceLimit.sol
 ----
 
 [source, javascript]
@@ -592,7 +592,7 @@ You can call the functions of the deployedBancorGasPriceLimitContract by using t
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/BancorNetwork.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/BancorNetwork.sol
 ----
 
 [source, javascript]
@@ -693,7 +693,7 @@ _connectorWeight is the connector weight in PPM units
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorConverter.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorConverter.sol
 ----
 
 [source, javascript]
@@ -732,7 +732,7 @@ The Bancor Converter contract's functions can be called using the following synt
 
 [source, bash]
 ----
-./lityc/lityc --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorConverterFactory.sol
+./lityc/lityc --optimize --overwrite --allow-paths ../, --abi --bin -o output/ ~/contracts/solidity/contracts/converter/BancorConverterFactory.sol
 ----
 
 [source, javascript]
