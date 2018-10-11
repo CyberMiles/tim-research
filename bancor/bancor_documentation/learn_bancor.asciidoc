@@ -15,6 +15,7 @@ Continuing on from the above work, the rest of this document is aimed at interac
 Just as an aside, https://github.com/CyberMiles/tim-research/blob/master/bancor/restore_deployment_example.js[this script] is an example of how you would re-initialize the Bancor smart contract instance variables in the CyberMiles testnet console, in the event that you exited and then reconnected.
 
 == Bancor smart contracts
+The following documentation list all of the major Bancor smart contracts and their functions, and in addition demonstrates the calling of the smart contract functions in accordance with the https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example] running on the CyberMiles testnet.
 
 === Smart Token
 Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/SmartToken.sol[Smart Token contract] inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/interfaces/ISmartToken.sol[ISmartToken], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/ERC20Token.sol[ERC20Token] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/TokenHolder.sol[TokenHolder] contracts. All Smart Tokens are ERC20 compatible.
@@ -30,6 +31,12 @@ Returns a string
 ```
 deployedSmartTokenContract.name({from:accountA});
 ```
+```
+> deployedSmartTokenContract.name({from:accountA});
+
+"New Token"
+```
+
 **totalSupply**
 
 Takes no arguments
@@ -39,6 +46,12 @@ Returns a uint256
 ```
 deployedSmartTokenContract.totalSupply({from:accountA});
 ```
+```
+> deployedSmartTokenContract.totalSupply({from:accountA});
+
+0
+```
+
 **decimals**
 
 Takes no arguments
@@ -48,6 +61,12 @@ Returns a uint8
 ```
 deployedSmartTokenContract.decimals({from:accountA});
 ```
+```
+> deployedSmartTokenContract.decimals({from:accountA});
+
+18
+```
+
 **version**
 
 Takes no arguments
@@ -57,6 +76,12 @@ Returns a string
 ```
 deployedSmartTokenContract.version({from:accountA});
 ```
+```
+> deployedSmartTokenContract.version({from:accountA});
+
+"0.3"
+```
+
 **standard**
 
 Takes no arguments
@@ -66,6 +91,12 @@ Returns a string
 ```
 deployedSmartTokenContract.standard({from:accountA});
 ```
+```
+> deployedSmartTokenContract.standard({from:accountA});
+
+"Token 0.1"
+```
+
 **acceptOwnership**
 
 Takes no arguments
@@ -74,6 +105,15 @@ Returns nothing
 
 ```
 deployedSmartTokenContract.acceptOwnership({from:accountA});
+```
+```
+> personal.unlockAccount(accountA , "asdf", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
+
+true
+
+> deployedSmartTokenContract.acceptOwnership({from:accountA});
+
+"0x9fcbe7979c0b7d12fdf610f02b642c57c04800a176261d62bace1434314fbe82"
 ```
 **owner**
 
@@ -84,6 +124,12 @@ Returns a address
 ```
 deployedSmartTokenContract.owner({from:accountA});
 ```
+```
+> deployedSmartTokenContract.owner({from:accountA});
+
+"0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
+```
+
 **symbol**
 
 Takes no arguments
@@ -92,6 +138,11 @@ Returns a string
 
 ```
 deployedSmartTokenContract.symbol({from:accountA});
+```
+```
+> deployedSmartTokenContract.symbol({from:accountA});
+
+"NEW"
 ```
 **transfersEnabled**
 
@@ -102,6 +153,12 @@ Returns a bool
 ```
 deployedSmartTokenContract.transfersEnabled({from:accountA});
 ```
+```
+> deployedSmartTokenContract.transfersEnabled({from:accountA});
+
+true
+```
+
 **newOwner**
 
 Takes no arguments
@@ -110,6 +167,11 @@ Returns a address
 
 ```
 deployedSmartTokenContract.newOwner({from:accountA});
+```
+```
+> deployedSmartTokenContract.newOwner({from:accountA});
+
+"0x0000000000000000000000000000000000000000"
 ```
 **approve**
 
