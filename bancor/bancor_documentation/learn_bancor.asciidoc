@@ -1,6 +1,6 @@
 = Bancor
 
-== Bancor example running on an independent blockchain
+== Blockchain infrastructure used in this documentation
 
 This iteration of documentation has been performed on the CyberMiles testnet.
 
@@ -10,11 +10,176 @@ The CyberMiles testnet can be installed on an Ubuntu 16.04 LTS instance, in just
 
 This https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example], with detailed instructions and syntax, demonstrates how the Bancor smart contracts, themselves, have been deployed on the CyberMiles testnet.
 
-Continuing on from the above work, the rest of this document is aimed at interacting with each of these Bancor smart contracts; demonstrating how functions are called i.e. what arguments the Bancor smart contract functions require, as well as what values the Bancor smart contract functions return, to the calling code.
+Continuing on from the above work, the rest of this document is aimed at interacting with each of these Bancor smart contracts, which have already been deployed on the CyberMiles testnet. More specifically, demonstrating how Bancor smart contract functions are called i.e. what arguments the Bancor smart contract functions require, as well as what values the Bancor smart contract functions return, to the calling code and so forth.
 
 Just as an aside, https://github.com/CyberMiles/tim-research/blob/master/bancor/restore_deployment_example.js[this script] is an example of how you would re-initialize the Bancor smart contract instance variables in the CyberMiles testnet console, in the event that you exited and then reconnected.
 
-=== 
+== Bancor smart contracts
+
+=== Smart Token
+Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/SmartToken.sol[Smart Token contract] inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/interfaces/ISmartToken.sol[ISmartToken], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/ERC20Token.sol[ERC20Token] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/TokenHolder.sol[TokenHolder] contracts. All Smart Tokens are ERC20 compatible.
+
+The functions of the Smart Token contract are as follows
+
+**name**
+Takes no arguments
+Returns a string
+```
+deployedSmartTokenContract.name({from:accountA});
+```
+**totalSupply**
+Takes no arguments
+Returns a uint256
+```
+deployedSmartTokenContract.totalSupply({from:accountA});
+```
+**decimals**
+Takes no arguments
+Returns a uint8
+```
+deployedSmartTokenContract.decimals({from:accountA});
+```
+**version**
+Takes no arguments
+Returns a string
+```
+deployedSmartTokenContract.version({from:accountA});
+```
+**standard**
+Takes no arguments
+Returns a string
+```
+deployedSmartTokenContract.standard({from:accountA});
+```
+**acceptOwnership**
+Takes no arguments
+Returns nothing
+```
+deployedSmartTokenContract.acceptOwnership({from:accountA});
+```
+**owner**
+Takes no arguments
+Returns a address
+```
+deployedSmartTokenContract.owner({from:accountA});
+```
+**symbol**
+Takes no arguments
+Returns a string
+```
+deployedSmartTokenContract.symbol({from:accountA});
+```
+**transfersEnabled**
+Takes no arguments
+Returns a bool
+```
+deployedSmartTokenContract.transfersEnabled({from:accountA});
+```
+**newOwner**
+Takes no arguments
+Returns a address
+```
+deployedSmartTokenContract.newOwner({from:accountA});
+```
+**approve**
+Takes 2 arguments
+Argument name: _spender
+Argument type: address
+Argument name: _value
+Argument type: uint256
+Returns a bool
+```
+deployedSmartTokenContract.approve(_spender address, _value uint256,  {from:accountA});
+```
+**disableTransfers**
+Takes 1 arguments
+Argument name: _disable
+Argument type: bool
+Returns nothing
+```
+deployedSmartTokenContract.disableTransfers(_disable bool,  {from:accountA});
+```
+**transferFrom**
+Takes 3 arguments
+Argument name: _from
+Argument type: address
+Argument name: _to
+Argument type: address
+Argument name: _value
+Argument type: uint256
+Returns a bool
+```
+deployedSmartTokenContract.transferFrom(_from address, _to address, _value uint256,  {from:accountA});
+```
+**withdrawTokens**
+Takes 3 arguments
+Argument name: _token
+Argument type: address
+Argument name: _to
+Argument type: address
+Argument name: _amount
+Argument type: uint256
+Returns nothing
+```
+deployedSmartTokenContract.withdrawTokens(_token address, _to address, _amount uint256,  {from:accountA});
+```
+**balanceOf**
+Takes 1 arguments
+Argument name: 
+Argument type: address
+Returns a uint256
+```
+deployedSmartTokenContract.balanceOf( address,  {from:accountA});
+```
+**issue**
+Takes 2 arguments
+Argument name: _to
+Argument type: address
+Argument name: _amount
+Argument type: uint256
+Returns nothing
+```
+deployedSmartTokenContract.issue(_to address, _amount uint256,  {from:accountA});
+```
+**destroy**
+Takes 2 arguments
+Argument name: _from
+Argument type: address
+Argument name: _amount
+Argument type: uint256
+Returns nothing
+```
+deployedSmartTokenContract.destroy(_from address, _amount uint256,  {from:accountA});
+```
+**transfer**
+Takes 2 arguments
+Argument name: _to
+Argument type: address
+Argument name: _value
+Argument type: uint256
+Returns a bool
+```
+deployedSmartTokenContract.transfer(_to address, _value uint256,  {from:accountA});
+```
+**allowance**
+Takes 2 arguments
+Argument name: 
+Argument type: address
+Argument name: 
+Argument type: address
+Returns a uint256
+```
+deployedSmartTokenContract.allowance( address,  address,  {from:accountA});
+```
+**transferOwnership**
+Takes 1 arguments
+Argument name: _newOwner
+Argument type: address
+Returns nothing
+```
+deployedSmartTokenContract.transferOwnership(_newOwner address,  {from:accountA});
+```
+
 
 = References
 
