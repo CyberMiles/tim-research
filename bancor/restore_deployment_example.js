@@ -1,14 +1,10 @@
 //This is just a quick script to restore my deployed contracts on the CyberMiles testnet so that I can interact with the contracts using web3 in the event that I start a new travis console instance
 
-//Establish account
-accountA = "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
+//Attach to the Travis console using the bash shell command prompt
+travis attach http://localhost:8545
 
 
-//Unlock account
-personal.unlockAccount(accountA , "asdf", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
-
-
-//Establish existing contracts
+//Establish existing contract variables inside the Travis console using the information from the original deployment example at https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc
 var migrationsAbi = [{"constant":false,"inputs":[{"name":"new_address","type":"address"}],"name":"upgrade","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"last_completed_migration","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"completed","type":"uint256"}],"name":"setCompleted","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
 var existingMigrationsContract = web3.cmt.contract(migrationsAbi);
 var deployedMigrationsContract = existingMigrationsContract.at("0x89c9a3b7c334b135fed7c7ba4ca58360346ce6e0");
