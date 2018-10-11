@@ -473,7 +473,7 @@ Returns a bool
 deployedSmartTokenContract.transferFrom(_from address, _to address, _value uint256,  {from:accountA});
 ```
 
-This function relies heavily on https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol#L55[the assertion] in the safeSub function of the Utils.sol file. Specifically, that the **allowance** mapping instance between **_from** argument and **msg.sender** system value is greater than or equal to the **_value** argument.
+This function relies heavily on https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol#L55[the assertion] in the safeSub function of the Utils.sol file. Specifically, that the **allowance** mapping instance between **_from** argument and **msg.sender** https://solidity.readthedocs.io/en/v0.4.25/miscellaneous.html#global-variables[global variable] has a value which is greater than or equal to the **_value** argument.
 
 **withdrawTokens**
 
