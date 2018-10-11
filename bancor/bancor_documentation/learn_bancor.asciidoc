@@ -240,6 +240,7 @@ deployedSmartTokenContract.transfersEnabled({from:accountA});
 true
 ```
 **disableTransfers**
+
 Passing in a boolean of true will disable transfers to and from addresses. Passing in a boolean of false will allow addresses to transfer value to and from each other. The contract owner is the only one that can enable and disable transfers.
 
 Takes 1 arguments
@@ -513,6 +514,7 @@ deployedSmartTokenContract.balanceOf( address,  {from:accountA});
 
 
 **transfer**
+
 Takes 2 arguments
 
 Argument name: _to
