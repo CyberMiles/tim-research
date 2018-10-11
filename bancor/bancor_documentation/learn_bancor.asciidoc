@@ -22,160 +22,252 @@ Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/ba
 The functions of the Smart Token contract are as follows
 
 **name**
+
 Takes no arguments
+
 Returns a string
+
 ```
 deployedSmartTokenContract.name({from:accountA});
 ```
 **totalSupply**
+
 Takes no arguments
+
 Returns a uint256
+
 ```
 deployedSmartTokenContract.totalSupply({from:accountA});
 ```
 **decimals**
+
 Takes no arguments
+
 Returns a uint8
+
 ```
 deployedSmartTokenContract.decimals({from:accountA});
 ```
 **version**
+
 Takes no arguments
+
 Returns a string
+
 ```
 deployedSmartTokenContract.version({from:accountA});
 ```
 **standard**
+
 Takes no arguments
+
 Returns a string
+
 ```
 deployedSmartTokenContract.standard({from:accountA});
 ```
 **acceptOwnership**
+
 Takes no arguments
+
 Returns nothing
+
 ```
 deployedSmartTokenContract.acceptOwnership({from:accountA});
 ```
 **owner**
+
 Takes no arguments
+
 Returns a address
+
 ```
 deployedSmartTokenContract.owner({from:accountA});
 ```
 **symbol**
+
 Takes no arguments
+
 Returns a string
+
 ```
 deployedSmartTokenContract.symbol({from:accountA});
 ```
 **transfersEnabled**
+
 Takes no arguments
+
 Returns a bool
+
 ```
 deployedSmartTokenContract.transfersEnabled({from:accountA});
 ```
 **newOwner**
+
 Takes no arguments
+
 Returns a address
+
 ```
 deployedSmartTokenContract.newOwner({from:accountA});
 ```
 **approve**
+
 Takes 2 arguments
+
 Argument name: _spender
+
 Argument type: address
+
 Argument name: _value
+
 Argument type: uint256
+
 Returns a bool
+
 ```
 deployedSmartTokenContract.approve(_spender address, _value uint256,  {from:accountA});
 ```
 **disableTransfers**
+
 Takes 1 arguments
+
 Argument name: _disable
+
 Argument type: bool
+
+
 Returns nothing
 ```
 deployedSmartTokenContract.disableTransfers(_disable bool,  {from:accountA});
 ```
 **transferFrom**
+
 Takes 3 arguments
+
 Argument name: _from
+
 Argument type: address
+
 Argument name: _to
+
 Argument type: address
+
 Argument name: _value
+
 Argument type: uint256
+
 Returns a bool
+
 ```
 deployedSmartTokenContract.transferFrom(_from address, _to address, _value uint256,  {from:accountA});
 ```
 **withdrawTokens**
+
 Takes 3 arguments
+
 Argument name: _token
+
 Argument type: address
+
 Argument name: _to
+
 Argument type: address
+
 Argument name: _amount
+
 Argument type: uint256
+
 Returns nothing
+
 ```
 deployedSmartTokenContract.withdrawTokens(_token address, _to address, _amount uint256,  {from:accountA});
 ```
 **balanceOf**
+
 Takes 1 arguments
+
 Argument name: 
+
 Argument type: address
+
 Returns a uint256
+
 ```
 deployedSmartTokenContract.balanceOf( address,  {from:accountA});
 ```
 **issue**
+
 Takes 2 arguments
+
 Argument name: _to
+
 Argument type: address
+
 Argument name: _amount
+
 Argument type: uint256
+
 Returns nothing
+
 ```
 deployedSmartTokenContract.issue(_to address, _amount uint256,  {from:accountA});
 ```
 **destroy**
+
 Takes 2 arguments
+
 Argument name: _from
+
 Argument type: address
+
 Argument name: _amount
+
 Argument type: uint256
+
 Returns nothing
+
 ```
 deployedSmartTokenContract.destroy(_from address, _amount uint256,  {from:accountA});
 ```
 **transfer**
 Takes 2 arguments
+
 Argument name: _to
+
 Argument type: address
+
 Argument name: _value
+
 Argument type: uint256
+
 Returns a bool
+
 ```
 deployedSmartTokenContract.transfer(_to address, _value uint256,  {from:accountA});
 ```
 **allowance**
+
 Takes 2 arguments
-Argument name: 
+
 Argument type: address
-Argument name: 
+
 Argument type: address
+
 Returns a uint256
 ```
 deployedSmartTokenContract.allowance( address,  address,  {from:accountA});
 ```
 **transferOwnership**
+
 Takes 1 arguments
+
 Argument name: _newOwner
+
 Argument type: address
+
 Returns nothing
+
 ```
 deployedSmartTokenContract.transferOwnership(_newOwner address,  {from:accountA});
 ```
