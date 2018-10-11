@@ -260,25 +260,106 @@ true
 ```
 //Disable transfers
 > deployedSmartTokenContract.disableTransfers(true,  {from:accountA});
+
 "0x3683da63a6c5e8ed595ef168a7a6b9e6529950a5f61976a9fa788fae038a6923"
 ```
 ```
 //Confirm the status of transfers is in fact disables
 > deployedSmartTokenContract.transfersEnabled({from:accountA});
+
 false
 ```
 ```
 //Re-enable transfers
 > deployedSmartTokenContract.disableTransfers(false,  {from:accountA});
+
 "0xd15f9e2c406e59981d43019b7377611df063c02d1800c5c7fc167917a9c33da0"
 ```
 ```
 //Confirm
 > deployedSmartTokenContract.transfersEnabled({from:accountA});
+
 true
 ```
 
+**issue**
+
+Takes 2 arguments
+
+Argument name: _to
+
+Argument type: address
+
+Argument name: _amount
+
+Argument type: uint256
+
+Returns nothing
+
+```
+deployedSmartTokenContract.issue(_to address, _amount uint256,  {from:accountA});
+```
+```
+//Issue new supply
+> deployedSmartTokenContract.issue(accountB, 100,  {from:accountA});
+
+"0x3f2d67df5b9e483f92197f6c1e8bb3e7a20270774cfb941a5a6d2ef931d08388"
+```
+```
+//Check supply
+> deployedSmartTokenContract.totalSupply()
+
+100
+```
+**destroy**
+
+As the opposite of the **issue** function, the **destroy** function removes/burns tokens from the system.
+
+Takes 2 arguments
+
+Argument name: _from
+
+Argument type: address
+
+Argument name: _amount
+
+Argument type: uint256
+
+Returns nothing
+
+```
+deployedSmartTokenContract.destroy(_from address, _amount uint256,  {from:accountA});
+```
+```
+//accountA (owner of the smart contract) can issue tokens to accountB
+> deployedSmartTokenContract.issue(accountB, 100000000000000000000,  {from:accountA});
+
+"0xb3a47ea849737f80d4ae0ffe567adf8be9fab50feda4e58fba78e66ad51c124d"
+```
+```
+//Check supply
+> deployedSmartTokenContract.totalSupply()
+
+100000000000000000000
+```
+```
+//Destroy supply
+> deployedSmartTokenContract.destroy(accountB, 100000000000000000000,  {from:accountA});
+
+"0x30ae1f113f41a8a454d0c7de99e44cb6e26838567aa9eba017df40b7c1637ac7"
+```
+```
+//Confirm supply
+> deployedSmartTokenContract.totalSupply()
+
+0
+```
+
 **approve**
+
+The approve function is inherited from the ERC20Token smart contract. The approve function allows another account/contract to spend some tokens on your behalf.
+
+Approve has to be called twice in 2 separate transactions - once to change the allowance to 0 and secondly to change it to the new allowance value.
 
 Takes 2 arguments
 
@@ -294,6 +375,17 @@ Returns a bool
 
 ```
 deployedSmartTokenContract.approve(_spender address, _value uint256,  {from:accountA});
+```
+
+Let's try an example of the approve functionality.
+```
+//Initialize 3 accounts as variables accounts A,B and C
+> accountA = cmt.accounts[2]
+"0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
+> accountB = cmt.accounts[1]
+"0x194a20ea8a03564234a5a7fd4108d69a65587abf"
+> accountC = cmt.accounts[0]
+"0xd1cf5a620fdae055d4dfb58ed420a5e89bc56858"
 ```
 
 **transferFrom**
@@ -351,40 +443,9 @@ Returns a uint256
 ```
 deployedSmartTokenContract.balanceOf( address,  {from:accountA});
 ```
-**issue**
 
-Takes 2 arguments
 
-Argument name: _to
 
-Argument type: address
-
-Argument name: _amount
-
-Argument type: uint256
-
-Returns nothing
-
-```
-deployedSmartTokenContract.issue(_to address, _amount uint256,  {from:accountA});
-```
-**destroy**
-
-Takes 2 arguments
-
-Argument name: _from
-
-Argument type: address
-
-Argument name: _amount
-
-Argument type: uint256
-
-Returns nothing
-
-```
-deployedSmartTokenContract.destroy(_from address, _amount uint256,  {from:accountA});
-```
 **transfer**
 Takes 2 arguments
 
