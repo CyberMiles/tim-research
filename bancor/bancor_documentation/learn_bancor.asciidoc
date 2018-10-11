@@ -23,6 +23,7 @@ Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/ba
 The functions of the Smart Token contract are as follows
 
 **name**
+This is just the default getter which returns the name of the Smart Token which was passed into the constructor during initialization of the smart contract.
 
 Takes no arguments
 
@@ -38,6 +39,7 @@ deployedSmartTokenContract.name({from:accountA});
 ```
 
 **totalSupply**
+This function returns the total supply. This value should be zero by default as there is no way to issue token supply in the contstructor. Issuing token supply must be done with this contract's **issue** function, which is listed below.
 
 Takes no arguments
 
@@ -53,6 +55,7 @@ deployedSmartTokenContract.totalSupply({from:accountA});
 ```
 
 **decimals**
+This is just the default getter which returns the amount of decimal places of the Smart Token which was passed into the constructor during initialization of the smart contract.
 
 Takes no arguments
 
@@ -68,7 +71,7 @@ deployedSmartTokenContract.decimals({from:accountA});
 ```
 
 **version**
-
+This returns the value of the public string **version** which is hard-coded into the source code of this smart contract.
 Takes no arguments
 
 Returns a string
@@ -83,6 +86,7 @@ deployedSmartTokenContract.version({from:accountA});
 ```
 
 **standard**
+This returns the value of the public string **standard** which is hard-coded into the source of the ERC20Token.sol of which this smart contract inherits from.
 
 Takes no arguments
 
@@ -97,25 +101,89 @@ deployedSmartTokenContract.standard({from:accountA});
 "Token 0.1"
 ```
 
+**newOwner**
+This is the address of a new owner who has been offered the opportunity to accept ownership of the smart contract. The current owner of the smart contract is the one and only address which can offer this opportunity to the proposed newOwner as we will demonstrate below. The default address value for this variable is 0. It can be set over and over by the current contract owner but is returned to 0 after a new owner accepts via the **acceptOwnership** function, which we also demonstrate below.
+
+Takes no arguments
+
+Returns a address
+
+```
+deployedSmartTokenContract.newOwner({from:accountA});
+```
+```
+> deployedSmartTokenContract.newOwner({from:accountA});
+
+"0x0000000000000000000000000000000000000000"
+```
+**transferOwnership**
+This function allows transferring the contract ownership a newly proposed owner. In order for ownership of the contract to be achieved the newly proposed owner still needs to accept via the acceptOwnership function as shown below. This function can only be called by the current contract owner.
+
+Takes 1 arguments
+
+Argument name: _newOwner
+
+Argument type: address
+
+Returns nothing
+
+```
+deployedSmartTokenContract.transferOwnership(_newOwner address,  {from:accountA});
+```
+In the following example we propose that ownership is transferred from the current owner to a new address.
+```
+//The current owner is accountA
+> deployedSmartTokenContract.owner({from:accountA});
+"0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
+```
+```
+//We now propose that accountB become the new owner
+> accountB = cmt.accounts[1]
+"0x194a20ea8a03564234a5a7fd4108d69a65587abf"
+```
+```
+> deployedSmartTokenContract.transferOwnership(accountB, {from:accountA});
+"0xc569261316b88278cb9050ef93f7562568d27964dc7f13b5946d3d91a5f8c9ef"
+```
+```
+//We can see now that the newOwner has changed from the default value of 0 to accountB's address
+> deployedSmartTokenContract.newOwner({from:accountA});
+"0x194a20ea8a03564234a5a7fd4108d69a65587abf"
+```
+
 **acceptOwnership**
+This function allows a proposed new owner (who is proposed by the current owner via the transferOwnership function in the Owner.sol) to accept the ownership proposal and therefore have their address stored as the, one and only, address in the **owner** variable of the Owner.sol contract which this contract inherits from. The proposal period is initiated when the original owner sets the **newOwner** variable of the Owner.sol. If the proposed new owner accepts, then the **owner** variable is set to the proposed new owner's calling address and the **newOwner** variable is set back to 0x0000000000000000000000000000000000000000, in preparation for the next proposed new owner.
 
 Takes no arguments
 
 Returns nothing
 
 ```
-deployedSmartTokenContract.acceptOwnership({from:accountA});
-```
-```
-> personal.unlockAccount(accountA , "asdf", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
+//Unlock accountB so that it can transact on the network
+> personal.unlockAccount(accountB , "asdf", 600, function(error, result){if(!error){console.log(result)}else{console.log(error)}});
 
 true
+```
+```
+//Accept ownership
+> deployedSmartTokenContract.acceptOwnership({from:accountB});
 
-> deployedSmartTokenContract.acceptOwnership({from:accountA});
+"0xd07e8e83c535a44b0b64dee815cbb21b3d7be0a409338077bc91ce9211ec4c20"
+```
+```
+//Confirmed by anyone on the network who queries
+> deployedSmartTokenContract.owner({from:accountA});
 
-"0x9fcbe7979c0b7d12fdf610f02b642c57c04800a176261d62bace1434314fbe82"
+"0x194a20ea8a03564234a5a7fd4108d69a65587abf"
+```
+```
+//Confirm that the newOwner has reverted to the default value of 0
+> deployedSmartTokenContract.newOwner({from:accountA});
+
+"0x0000000000000000000000000000000000000000"
 ```
 **owner**
+Reveals the owner of the smart contract.
 
 Takes no arguments
 
@@ -131,6 +199,7 @@ deployedSmartTokenContract.owner({from:accountA});
 ```
 
 **symbol**
+This is just the default getter which returns the symbol of the Smart Token which was passed into the constructor during initialization of the smart contract.
 
 Takes no arguments
 
@@ -159,20 +228,6 @@ deployedSmartTokenContract.transfersEnabled({from:accountA});
 true
 ```
 
-**newOwner**
-
-Takes no arguments
-
-Returns a address
-
-```
-deployedSmartTokenContract.newOwner({from:accountA});
-```
-```
-> deployedSmartTokenContract.newOwner({from:accountA});
-
-"0x0000000000000000000000000000000000000000"
-```
 **approve**
 
 Takes 2 arguments
@@ -320,19 +375,7 @@ Returns a uint256
 ```
 deployedSmartTokenContract.allowance( address,  address,  {from:accountA});
 ```
-**transferOwnership**
 
-Takes 1 arguments
-
-Argument name: _newOwner
-
-Argument type: address
-
-Returns nothing
-
-```
-deployedSmartTokenContract.transferOwnership(_newOwner address,  {from:accountA});
-```
 
 
 = References
