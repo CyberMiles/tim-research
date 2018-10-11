@@ -330,24 +330,28 @@ Returns nothing
 ```
 deployedSmartTokenContract.destroy(_from address, _amount uint256,  {from:accountA});
 ```
+
 ```
 //accountA (owner of the smart contract) can issue tokens to accountB
 > deployedSmartTokenContract.issue(accountB, 100000000000000000000,  {from:accountA});
 
 "0xb3a47ea849737f80d4ae0ffe567adf8be9fab50feda4e58fba78e66ad51c124d"
 ```
+
 ```
 //Check supply
 > deployedSmartTokenContract.totalSupply()
 
 100000000000000000000
 ```
+
 ```
 //Destroy supply
 > deployedSmartTokenContract.destroy(accountB, 100000000000000000000,  {from:accountA});
 
 "0x30ae1f113f41a8a454d0c7de99e44cb6e26838567aa9eba017df40b7c1637ac7"
 ```
+
 ```
 //Confirm supply
 > deployedSmartTokenContract.totalSupply()
@@ -387,21 +391,25 @@ Let's try an example of the approve functionality.
 > accountC = cmt.accounts[0]
 "0xd1cf5a620fdae055d4dfb58ed420a5e89bc56858"
 ```
+
 ```
 //Issue 100 to accountB
 > deployedSmartTokenContract.issue(accountB, 100,  {from:accountA});
 
 "0xaf442c48c80c2092e5b965a1b1205f97a200f988cd3e8854f374bae671fde0bf"
 ```
+
 ```
 //Issue 100 to accountC also
 deployedSmartTokenContract.issue(accountC, 100,  {from:accountA});
 ```
+
 ```
 //Check the total supply
 > deployedSmartTokenContract.totalSupply()
 200
 ```
+
 ```
 > deployedSmartTokenContract.balanceOf(accountA,  {from:accountA});
 0
@@ -410,10 +418,12 @@ deployedSmartTokenContract.issue(accountC, 100,  {from:accountA});
 > deployedSmartTokenContract.balanceOf(accountC,  {from:accountC});
 100
 ```
+
 ```
 //Now accountC attempts to spend AccountB's tokens by sending them to accountA
 > deployedSmartTokenContract.transferFrom(accountB, accountA, 50,  {from:accountC});
 ```
+
 ```
 //However, this does not work and the balances remain the same
 > deployedSmartTokenContract.balanceOf(accountA,  {from:accountA});
@@ -422,6 +432,7 @@ deployedSmartTokenContract.issue(accountC, 100,  {from:accountA});
 100
 > deployedSmartTokenContract.balanceOf(accountC,  {from:accountC});
 100
+```
 ```
 //If accountB now approves accountC to spend a value of 50 like this
 deployedSmartTokenContract.approve(accountC, 50,  {from:accountB});
