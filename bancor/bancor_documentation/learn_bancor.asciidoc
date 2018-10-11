@@ -1,1 +1,22 @@
 = Bancor
+
+== Bancor example running on an independent blockchain
+
+This iteration of documentation has been performed on the CyberMiles testnet.
+
+CyberMiles is a blockchain network which is backwards compatible with Ethereum, and therefore, the existing https://github.com/bancorprotocol/contracts[Bancor protocol] code is able to be deployed on the CyberMiles network natively. This provides a fantastic opportunity to deploy and test the Bancor software using a very fast and powerful blockchain. If more information is required, the CyberMiles team have provided certain examples of superior performance and functionality over Ethereum using https://www.cybermiles.io/technical-benchmark/[technical benchmarking].
+
+The CyberMiles testnet can be installed on an Ubuntu 16.04 LTS instance, in just minutes, using https://github.com/CyberMiles/travis/blob/develop/README.md[this bash script]. CyberMiles testnet tokens are available from the http://travis-faucet.cybermiles.io/[Faucet]. 
+
+This https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example], with detailed instructions and syntax, demonstrates how the Bancor smart contracts, themselves, have been deployed on the CyberMiles testnet.
+
+Continuing on from the above work, the rest of this document is aimed at interacting with each of these Bancor smart contracts; demonstrating how functions are called i.e. what arguments the Bancor smart contract functions require, as well as what values the Bancor smart contract functions return, to the calling code.
+
+Just as an aside, https://github.com/CyberMiles/tim-research/blob/master/bancor/restore_deployment_example.js[this script] is an example of how you would re-initialize the Bancor smart contract instance variables in the CyberMiles testnet console, in the event that you exited and then reconnected.
+
+=== 
+
+= References
+
+https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
+https://www.researchgate.net/publication/327231140_Blockchain_Technology_-_Frequently_Asked_Questions
