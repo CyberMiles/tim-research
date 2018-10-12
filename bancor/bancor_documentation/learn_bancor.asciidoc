@@ -30,9 +30,18 @@ Smart Token
 -----------
 Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/SmartToken.sol[Smart Token contract] inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/interfaces/ISmartToken.sol[ISmartToken], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/ERC20Token.sol[ERC20Token] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/TokenHolder.sol[TokenHolder] contracts. All Smart Tokens are ERC20 compatible.
 
+.Smart Token Fundamentals
+* Anyone can create a Smart Token
+* A Smart Token can hold and trade other cryptocurrencies
+* A Smart Token can discover its own price
+* A Smart Token is always able to be bought and sold due to the tokens which it holds in reserve
+* A Smart Token can hold multiple reserves
+* A reserve can be any Smart Token or any standard ERC20 compatible token
+* Each reserve has an independent Constant Reserve Ration (CRR)
+* The CRR is set, for each of the reserves, by the creator of the Smart Token
 
-
-The functions of the Smart Token contract are as follows
+Smart Token Functions
+~~~~~~~~~~~~~~~~~~~~~
 
 **name**
 
