@@ -1,6 +1,11 @@
 = Learn Bancor
 
-You are free to share and adapt this work under the https://creativecommons.org/licenses/by-sa/4.0/[Attribution-ShareAlike 4.0 International terms]
+== Disclaimer
+This entire document is based on my personal understanding of the Bancor White Paper [1], Bancor FAQ [2] and in addition, my understanding of the bancorprotocol/contracts code [3] from GitHub. All testing is performed on an independent testnet. Any results, outputs and assumptions are based on my lived experience of independently compiling and running any and all code. This documentation is performed solely for the purpose of improving my own understanding and for my own learning purpose. As stated in the Bancor source code repository, "Bancor is a work in progress. Make sure you understand the risks before using it" [4]. 
+
+== License
+
+If you find any of this work helpful in any way, you are free to share and adapt this work under the https://creativecommons.org/licenses/by-sa/4.0/[Attribution-ShareAlike 4.0 International terms]
 
 image::license.png[]
 
@@ -551,5 +556,8 @@ deployedSmartTokenContract.allowance( address,  address,  {from:accountA});
 
 = References
 
-https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
-https://www.researchgate.net/publication/327231140_Blockchain_Technology_-_Frequently_Asked_Questions
+[1] https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
+[2] https://www.researchgate.net/publication/327231140_Blockchain_Technology_-_Frequently_Asked_Questions
+[3] https://github.com/bancorprotocol/contracts
+[4] https://github.com/bancorprotocol/contracts#warning
+
