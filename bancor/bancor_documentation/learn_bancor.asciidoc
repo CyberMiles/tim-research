@@ -26,8 +26,11 @@ Just as an aside, https://github.com/CyberMiles/tim-research/blob/master/bancor/
 == Bancor smart contracts
 The following documentation list all of the major Bancor smart contracts and their functions, and in addition demonstrates the calling of the smart contract functions in accordance with the https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example] running on the CyberMiles testnet.
 
-=== Smart Token
+Smart Token
+-----------
 Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/SmartToken.sol[Smart Token contract] inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/interfaces/ISmartToken.sol[ISmartToken], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/token/ERC20Token.sol[ERC20Token] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/TokenHolder.sol[TokenHolder] contracts. All Smart Tokens are ERC20 compatible.
+
+
 
 The functions of the Smart Token contract are as follows
 
