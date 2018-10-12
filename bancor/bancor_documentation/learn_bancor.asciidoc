@@ -557,7 +557,11 @@ deployedSmartTokenContract.allowance( address,  address,  {from:accountA});
 = References
 
 [1] https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
+
 [2] https://www.researchgate.net/publication/327231140_Blockchain_Technology_-_Frequently_Asked_Questions
+
 [3] https://github.com/bancorprotocol/contracts
+
 [4] https://github.com/bancorprotocol/contracts#warning
+
 
