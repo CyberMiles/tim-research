@@ -40,10 +40,10 @@ Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/ba
 * Each reserve has an independent Constant Reserve Ration (CRR)
 * The CRR is set, for each of the reserves, by the creator of the Smart Token
 
-.Smart Token Functions
+Smart Token Functions
+~~~~~~~~~~~~~~~~~~~~~
 
-
-* name
+**name**
 
 This is just the default getter which returns the name of the Smart Token which was passed into the constructor during initialization of the smart contract.
 
@@ -77,7 +77,7 @@ deployedSmartTokenContract.totalSupply({from:accountA});
 0
 ```
 
-* decimals
+**decimals**
 
 This is just the default getter which returns the amount of decimal places of the Smart Token which was passed into the constructor during initialization of the smart contract.
 
