@@ -8,11 +8,11 @@ CyberMiles is a blockchain network which is backwards compatible with Ethereum, 
 
 The CyberMiles testnet can be installed on an Ubuntu 16.04 LTS instance, in just minutes, using https://github.com/CyberMiles/travis/blob/develop/README.md[this bash script]. CyberMiles testnet tokens are available from the http://travis-faucet.cybermiles.io/[Faucet]. 
 
-This https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example], with detailed instructions and syntax, demonstrates how the Bancor smart contracts, themselves, have been deployed on the CyberMiles testnet.
+https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[This deployment example link], provides detailed instructions and syntax. It demonstrates how the Bancor smart contracts, themselves, have been deployed on the CyberMiles testnet.
 
-Continuing on from the above work, the rest of this document is aimed at interacting with each of these Bancor smart contracts, which have already been deployed on the CyberMiles testnet. More specifically, demonstrating how Bancor smart contract functions are called i.e. what arguments the Bancor smart contract functions require, as well as what values the Bancor smart contract functions return, to the calling code and so forth.
+Continuing on from the above work, the rest of the document, which you are reading now, is aimed at interacting with each of the already deployed Bancor smart contracts, on the CyberMiles testnet. The aim of this document is to demonstrate how Bancor smart contract functions are called i.e. what arguments the Bancor smart contract functions require, as well as what values the Bancor smart contract functions return, to the calling code and so forth.
 
-Just as an aside, https://github.com/CyberMiles/tim-research/blob/master/bancor/restore_deployment_example.js[this script] is an example of how you would re-initialize the Bancor smart contract instance variables in the CyberMiles testnet console, in the event that you exited and then reconnected.
+Just as an aside, https://github.com/CyberMiles/tim-research/blob/master/bancor/restore_deployment_example.js[this script] is an example of how you would re-initialize the Bancor smart contract instance variables in the CyberMiles testnet console, in the event that you detached and then re-attached from the testnet via the "travis attach http://localhost:8545" command.
 
 == Bancor smart contracts
 The following documentation list all of the major Bancor smart contracts and their functions, and in addition demonstrates the calling of the smart contract functions in accordance with the https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example] running on the CyberMiles testnet.
