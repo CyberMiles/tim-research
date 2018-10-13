@@ -40,6 +40,10 @@ Smart Tokens are the heart of the Bancor Protocol [2]. The https://github.com/ba
 * Each reserve has an independent Constant Reserve Ration (CRR)
 * The CRR is set, for each of the reserves, by the creator of the Smart Token
 
+Smart Token Deployment
+~~~~~~~~~~~~~~~~~~~~~~
+Please refer to the https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example] which covers not only Smart Token deployment, but all of the other significant Bancor contracts as well.
+
 Smart Token Functions
 ~~~~~~~~~~~~~~~~~~~~~
 
