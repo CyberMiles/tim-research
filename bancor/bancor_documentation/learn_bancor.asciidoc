@@ -147,11 +147,9 @@ deployedSmartTokenContract.newOwner({from:accountA});
 
 This function allows transferring the contract ownership a newly proposed owner. In order for ownership of the contract to be achieved the newly proposed owner still needs to accept via the acceptOwnership function as shown below. This function can only be called by the current contract owner.
 
-Takes 1 arguments
+Takes 1 argument
 
-Argument name: _newOwner
-
-Argument type: address
+_newOwner (address)
 
 Returns nothing
 
@@ -217,7 +215,7 @@ Reveals the owner of the smart contract.
 
 Takes no arguments
 
-Returns a address
+Returns an address
 
 ```
 deployedSmartTokenContract.owner({from:accountA});
@@ -264,11 +262,9 @@ true
 
 Passing in a boolean of true will disable transfers to and from addresses. Passing in a boolean of false will allow addresses to transfer value to and from each other. The contract owner is the only one that can enable and disable transfers.
 
-Takes 1 arguments
+Takes 1 argument
 
-Argument name: _disable
-
-Argument type: bool
+_disable (bool)
 
 Returns nothing
 ```
@@ -310,13 +306,9 @@ The issue function creates new tokens (increases the token supply) and sends the
 
 Takes 2 arguments
 
-Argument name: _to
+_to (address)
 
-Argument type: address
-
-Argument name: _amount
-
-Argument type: uint256
+_amount (uint256)
 
 Returns nothing
 
@@ -341,13 +333,9 @@ As the opposite of the **issue** function, the **destroy** function removes/burn
 
 Takes 2 arguments
 
-Argument name: _from
+_from (address)
 
-Argument type: address
-
-Argument name: _amount
-
-Argument type: uint256
+_amount (uint256)
 
 Returns nothing
 
@@ -385,19 +373,15 @@ deployedSmartTokenContract.destroy(_from address, _amount uint256,  {from:accoun
 
 **approve**
 
-The approve function is inherited from the ERC20Token smart contract. The approve function allows another account/contract to spend some tokens on your behalf.
+The approve function is inherited from the ERC20Token smart contract. The approve function allows another account/contract to spend some tokens on their behalf.
 
 Approve has to be called twice in 2 separate transactions - once to change the allowance to 0 and secondly to change it to the new allowance value.
 
 Takes 2 arguments
 
-Argument name: _spender
+_spender (address)
 
-Argument type: address
-
-Argument name: _value
-
-Argument type: uint256
+_value (uint256)
 
 Returns a bool
 
@@ -477,19 +461,15 @@ Will now succeed, as reflected by the balances below
 
 **transferFrom**
 
+This function is part of the ERC20 standard smart contract (ERC20Token.sol). However it is overridden in this (SmartToken.sol) to include the transfersAllowed modifier (implemented in the syntax of the function's decleration). 
+
 Takes 3 arguments
 
-Argument name: _from
+_from (address)
 
-Argument type: address
+_to (address)
 
-Argument name: _to
-
-Argument type: address
-
-Argument name: _value
-
-Argument type: uint256
+_value (uint256)
 
 Returns a bool
 
@@ -503,17 +483,11 @@ This function relies heavily on https://github.com/bancorprotocol/contracts/blob
 
 Takes 3 arguments
 
-Argument name: _token
+_token (address)
 
-Argument type: address
+_to (address)
 
-Argument name: _to
-
-Argument type: address
-
-Argument name: _amount
-
-Argument type: uint256
+_amount (uint256)
 
 Returns nothing
 
@@ -522,11 +496,11 @@ deployedSmartTokenContract.withdrawTokens(_token address, _to address, _amount u
 ```
 **balanceOf**
 
-Takes 1 arguments
+This function is part of the ERC20 standard smart contract. **balanceOf** is a public mapping variable in the ERC20Token.sol and therefore this function is essentially the getter which is created automatically by the compiler. 
 
-Argument name: 
+Takes 1 argument
 
-Argument type: address
+name (address)
 
 Returns a uint256
 
@@ -534,37 +508,61 @@ Returns a uint256
 deployedSmartTokenContract.balanceOf( address,  {from:accountA});
 ```
 
-
-
 **transfer**
+
+This function is part of the ERC20 standard smart contract (ERC20Token.sol). However it is overridden in this (SmartToken.sol) to include the transfersAllowed modifier (implemented in the syntax of the function's decleration). 
 
 Takes 2 arguments
 
-Argument name: _to
+_to (address)
 
-Argument type: address
-
-Argument name: _value
-
-Argument type: uint256
+_value (uint256)
 
 Returns a bool
 
 ```
 deployedSmartTokenContract.transfer(_to address, _value uint256,  {from:accountA});
 ```
+Of course, any value which is transferred comes directly from the calling address (in the above case accountA). Value can also be transferred more dynamically between two explicitly named accounts; see **transferFrom** above.
+
 **allowance**
+
+Allowance is used to find out about the relationship between two addresses. More specifically, if an address has given approval for another address to spend on its behalf. Allowance is a public mapping variable called **allowance** and therefore the following function is simply accessing the default getter for **allowance** which is auto generated by the compiler. 
+
+How is allowance used?
+You may recall our example of the transferFrom function above, where accountC attempted to spend accountB's tokens by sending them to accountA. As we demonstrated, this sort of delegate spending is possible, but only if accountB had previously given accountC approval to do so via the approve function. We cover the **approve** in depth above. In regards to the **allowance** function, if a spending approval mapping between two accounts exists then passing in those two addresses will return the allowance amount.
+
+allowance[_from][msg.sender]
 
 Takes 2 arguments
 
-Argument type: address
+authorizingAddress (address)
 
-Argument type: address
+callingAddress (address)
 
 Returns a uint256
 ```
-deployedSmartTokenContract.allowance( address,  address,  {from:accountA});
+//In the context of the example above ...
+deployedSmartTokenContract.allowance(accountB, accountC, {from:accountB});
 ```
+```
+//No approval set
+> deployedSmartTokenContract.allowance(accountB, accountC, {from:accountB});
+
+0
+```
+```
+//With approval set
+> deployedSmartTokenContract.approve(accountC, 50, {from:accountB});
+
+"0x5d003c47147f17e4992f889c0fe0219150876da2c2e374a96f0b3dd00d4a3840"
+
+> deployedSmartTokenContract.allowance(accountB, accountC, {from:accountB});
+
+50
+```
+
+
 
 
 
