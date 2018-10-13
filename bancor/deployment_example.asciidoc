@@ -465,7 +465,7 @@ You can call the functions of the deployedWhitelistContract like this
 [source, javascript]
 ----
 > deployedWhitelistContract.address
-"0x0679d413b7925dee6e24b53347584c94a73d65f3"
+"0xbf52e1ddc71745eb4aaa9e67e6859539d581a3d4"
 
 > deployedWhitelistContract.owner({from:accountA});
 "0xbc7a8577c52ad0ec7e0e5df55018fbbd1cec2209"
