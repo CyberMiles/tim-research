@@ -586,8 +586,6 @@ Please refer to the https://github.com/CyberMiles/tim-research/blob/master/banco
 
 Whitelist Functions
 ~~~~~~~~~~~~~~~~~~~
-/*
-Listing the functions that have no arguments
 
 **acceptOwnership**
 
