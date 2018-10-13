@@ -183,6 +183,8 @@ In the following example we propose that ownership is transferred from the curre
 
 **acceptOwnership**
 
+acceptOwnership is an example of an inherited function; derived from the Owned.sol contract from which this contract inherits. Whilst inheritance allows a contract to harness the functionality of other contracts, we must remember that any ownership data or ownership related code which is executed is done so in the context of this specific instance of the deployed SmartToken contract i.e. by inheriting from Owned, we can now transfer ownership of this SmartToken contract instance.
+
 This function allows a proposed new owner (who is proposed by the current owner via the transferOwnership function in the Owner.sol) to accept the ownership proposal and therefore have their address stored as the, one and only, address in the **owner** variable of the Owner.sol contract which this contract inherits from. The proposal period is initiated when the original owner sets the **newOwner** variable of the Owner.sol. If the proposed new owner accepts, then the **owner** variable is set to the proposed new owner's calling address and the **newOwner** variable is set back to 0x0000000000000000000000000000000000000000, in preparation for the next proposed new owner.
 
 Takes no arguments
@@ -571,7 +573,7 @@ The whitelist contract is essentially a utility. A single instance (a single dep
 
 https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[Whitelist.sol] contract inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[Utils.sol], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned.sol] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/interfaces/IWhitelist.sol[IWhitelist.sol] contracts.
 
-The Whitelist contract is an interesting example of inheritance. If you read https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[the source code] you will only see a few functions. However, as mentioned above the Whitelist contract does inherits from Utils and Owned and therefore the deployed Whitelist contract intance offers functions as per the rules of multiple inheritance. The true functionality of the Whitelist contract can therefore be viewed in the compiled contract's ABI file; the compiler inherits and makes available, to the base contract, all of the appropriate functions, modifiers and so on.
+The Whitelist contract is an simple yet interesting example of inheritance. If you read https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[the source code] you will only see a few functions. However, as mentioned above the Whitelist contract does inherit from, say, Owned and therefore the deployed Whitelist contract intance offers functions as per the rules of multiple inheritance. The true (and improved) functionality of the Whitelist contract can be viewed in the compiled contract's ABI file (as apposed to the Whitelist.sol's source code); the compiler inherits and makes available, to the base contract, a bunch more functions which we will cover below.
 
 .Whitelist Fundamentals
 * There is only one variable in the Whitelist contract; a mapping between address and bool called whitelist which is private
@@ -587,83 +589,103 @@ Whitelist Functions
 /*
 Listing the functions that have no arguments
 
-Function: acceptOwnership
+**acceptOwnership**
+
+acceptOwnership is an example of an inherited function; derived from the Owned.sol contract from which this contract inherits.
+
 Takes no arguments
+
 Returns nothing
-*/
+
+```
 deployedWhitelistContract.acceptOwnership({from:accountA});
-/*
+```
 
-Function: owner
+**owner**
+
 Takes no arguments
+
 Returns a address
-*/
+
+```
 deployedWhitelistContract.owner({from:accountA});
-/*
+```
 
-Function: newOwner
+**newOwner**
 Takes no arguments
+
 Returns a address
-*/
+
+```
 deployedWhitelistContract.newOwner({from:accountA});
-/*
-Listing the functions that take arguments
+```
 
-Function: addAddresses
+**addAddresses**
+
 Takes 1 arguments
-Argument name: _addresses
-Argument type: address[]
-Returns nothing!
-*/
+
+_addresses (address[])
+
+Returns nothing
+
+```
 deployedWhitelistContract.addAddresses(_addresses address[],  {from:accountA});
-/*
+```
 
-Function: addAddress
+**addAddress**
+
 Takes 1 arguments
-Argument name: _address
-Argument type: address
-Returns nothing!
-*/
+
+_address (address)
+
+Returns nothing
+```
 deployedWhitelistContract.addAddress(_address address,  {from:accountA});
-/*
+```
 
-Function: isWhitelisted
+**isWhitelisted**
+
 Takes 1 arguments
-Argument name: _address
-Argument type: address
+
+_address (address)
+
 Returns a bool
-*/
+```
 deployedWhitelistContract.isWhitelisted(_address address,  {from:accountA});
-/*
+```
 
-Function: removeAddress
+**removeAddress**
+
 Takes 1 arguments
-Argument name: _address
-Argument type: address
+
+_address (address)
+
 Returns nothing!
-*/
+```
 deployedWhitelistContract.removeAddress(_address address,  {from:accountA});
-/*
+```
 
-Function: removeAddresses
+**removeAddresses**
+
 Takes 1 arguments
-Argument name: _addresses
-Argument type: address[]
+
+_addresses (address[])
+
 Returns nothing!
-*/
+```
 deployedWhitelistContract.removeAddresses(_addresses address[],  {from:accountA});
-/*
+```
 
-Function: transferOwnership
+**transferOwnership**
+
 Takes 1 arguments
-Argument name: _newOwner
-Argument type: address
-Returns nothing!
-*/
-deployedWhitelistContract.transferOwnership(_newOwner address,  {from:accountA});
-/*
 
-/*
+_newOwner (address)
+
+Returns nothing!
+```
+deployedWhitelistContract.transferOwnership(_newOwner address,  {from:accountA});
+```
 
 = References
 
