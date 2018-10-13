@@ -567,11 +567,103 @@ deployedSmartTokenContract.allowance(accountB, accountC, {from:accountB});
 Whitelist
 ---------
 
-The whitelist contract manages a list of addresses and provides execution permissions to calling address which successfully satisfy its internal whitelistedOnly modifier. The https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[Whitelist.sol] contract inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[Utils.sol], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned.sol] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/interfaces/IWhitelist.sol[IWhitelist.sol] contracts.
+The whitelist contract is essentially a utility. A single instance (a single deployed Whitelist contract) manages a list of addresses on behalf of the Whitelist contract owner. Another contract (say contractABC) can call this contract's instance at its appropriate address to verify if the calling address (interacting with contractABC) satisfies the whitelistedOnly modifier of this specific Whitelist contract instance.
+
+https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[Whitelist.sol] contract inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[Utils.sol], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned.sol] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/interfaces/IWhitelist.sol[IWhitelist.sol] contracts.
+
+The Whitelist contract is an interesting example of inheritance. If you read https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[the source code] you will only see a few functions. However, as mentioned above the Whitelist contract does inherits from Utils and Owned and therefore the deployed Whitelist contract intance offers functions as per the rules of multiple inheritance. The true functionality of the Whitelist contract can therefore be viewed in the compiled contract's ABI file; the compiler inherits and makes available, to the base contract, all of the appropriate functions, modifiers and so on.
 
 .Whitelist Fundamentals
-* Addresses can only be added to the whitelist by the owner of the contract
-* Addresses can only be removed from the whitelist by the owner of the contract
+* There is only one variable in the Whitelist contract; a mapping between address and bool called whitelist which is private
+* Addresses can only be added to the private whitelist mapping by the owner of the Whitelist contract instance
+* Addresses can only be removed from the private whitelist mapping by the owner of the Whitelist contract instance
+
+Smart Token Deployment
+~~~~~~~~~~~~~~~~~~~~~~
+Please refer to the https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example] which covers not only Whitelist deployment, but all of the other significant Bancor contracts as well.
+
+Whitelist Functions
+~~~~~~~~~~~~~~~~~~~
+/*
+Listing the functions that have no arguments
+
+Function: acceptOwnership
+Takes no arguments
+Returns nothing
+*/
+deployedWhitelistContract.acceptOwnership({from:accountA});
+/*
+
+Function: owner
+Takes no arguments
+Returns a address
+*/
+deployedWhitelistContract.owner({from:accountA});
+/*
+
+Function: newOwner
+Takes no arguments
+Returns a address
+*/
+deployedWhitelistContract.newOwner({from:accountA});
+/*
+Listing the functions that take arguments
+
+Function: addAddresses
+Takes 1 arguments
+Argument name: _addresses
+Argument type: address[]
+Returns nothing!
+*/
+deployedWhitelistContract.addAddresses(_addresses address[],  {from:accountA});
+/*
+
+Function: addAddress
+Takes 1 arguments
+Argument name: _address
+Argument type: address
+Returns nothing!
+*/
+deployedWhitelistContract.addAddress(_address address,  {from:accountA});
+/*
+
+Function: isWhitelisted
+Takes 1 arguments
+Argument name: _address
+Argument type: address
+Returns a bool
+*/
+deployedWhitelistContract.isWhitelisted(_address address,  {from:accountA});
+/*
+
+Function: removeAddress
+Takes 1 arguments
+Argument name: _address
+Argument type: address
+Returns nothing!
+*/
+deployedWhitelistContract.removeAddress(_address address,  {from:accountA});
+/*
+
+Function: removeAddresses
+Takes 1 arguments
+Argument name: _addresses
+Argument type: address[]
+Returns nothing!
+*/
+deployedWhitelistContract.removeAddresses(_addresses address[],  {from:accountA});
+/*
+
+Function: transferOwnership
+Takes 1 arguments
+Argument name: _newOwner
+Argument type: address
+Returns nothing!
+*/
+deployedWhitelistContract.transferOwnership(_newOwner address,  {from:accountA});
+/*
+
+/*
 
 = References
 
