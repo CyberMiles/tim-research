@@ -532,8 +532,6 @@ Allowance is used to find out about the relationship between two addresses. More
 How is allowance used?
 You may recall our example of the transferFrom function above, where accountC attempted to spend accountB's tokens by sending them to accountA. As we demonstrated, this sort of delegate spending is possible, but only if accountB had previously given accountC approval to do so via the approve function. We cover the **approve** in depth above. In regards to the **allowance** function, if a spending approval mapping between two accounts exists then passing in those two addresses will return the allowance amount.
 
-allowance[_from][msg.sender]
-
 Takes 2 arguments
 
 authorizingAddress (address)
@@ -561,10 +559,6 @@ deployedSmartTokenContract.allowance(accountB, accountC, {from:accountB});
 
 50
 ```
-
-
-
-
 
 = References
 
