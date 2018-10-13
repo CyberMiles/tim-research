@@ -306,6 +306,8 @@ true
 
 **issue**
 
+The issue function creates new tokens (increases the token supply) and sends them to a specified address. Only the owner of the Smart Token contract can call this function successfully. The Smart Contract owner can not send the tokens to their own address (they have to be sent to another/new valid address).
+
 Takes 2 arguments
 
 Argument name: _to
