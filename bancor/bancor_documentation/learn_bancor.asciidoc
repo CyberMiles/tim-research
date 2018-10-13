@@ -565,7 +565,7 @@ deployedSmartTokenContract.allowance(accountB, accountC, {from:accountB});
 ```
 
 Whitelist
------------
+---------
 
 The whitelist contract manages a list of addresses and provides execution permissions to calling address which successfully satisfy its internal whitelistedOnly modifier. The https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[Whitelist.sol] contract inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[Utils.sol], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned.sol] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/interfaces/IWhitelist.sol[IWhitelist.sol] contracts.
 
