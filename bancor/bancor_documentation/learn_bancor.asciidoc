@@ -759,6 +759,64 @@ Returns nothing!
 deployedWhitelistContract.transferOwnership(_newOwner address,  {from:accountA});
 ```
 
+Managed
+-------
+
+Managed is a utility contract which facilitates exclusivity of execution, in the context of a single manager.
+
+.Managed Fundamentals
+* The manager of the contract is set explicitly upon deployment to the address which has deployed the contract (the msg.sender)
+* The manager of the contract can transfer management to a new address
+* A new manager (proposed by the current manager) must accept management for it to take effect
+
+Managed Deployment
+~~~~~~~~~~~~~~~~~~
+
+Please refer to the https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example] which covers not only Managed deployment, but all of the other significant Bancor contracts as well.
+
+Managed Functions
+~~~~~~~~~~~~~~~~~
+
+The Managed contract also inherits from the Owned.sol contract. As we have previously covered the inherited Owner.sol functions, we will not be covering them again here. Please see above syntax and functionality examples for more details.
+
+**transferManagement**
+```
+//Check current management address
+> deployedManagedContract.manager()
+
+//Address of accountA
+"0x106ea067e105e6f21a950efb655944f007d3c556"
+```
+```
+//Transfer management to accountB
+> deployedManagedContract.transferManagement(accountB, {from:accountA})
+```
+```
+//Check address of proposed new manager 
+> deployedManagedContract.newManager()
+
+//Address of accountB
+"0xe80d12c3c2d0f690328d74adf4ea1eb5df6974ed"
+```
+```
+//Accept management by running the acceptManagement function from accountB
+> deployedManagedContract.acceptManagement({from:accountB})
+```
+```
+//Confirm that management has been updated
+> deployedManagedContract.manager()
+
+//Address of accountB
+"0xe80d12c3c2d0f690328d74adf4ea1eb5df6974ed"
+```
+```
+//Confirm that newManager variable has been set back to 0
+> deployedManagedContract.newManager()
+
+"0x0000000000000000000000000000000000000000"
+```
+
+
 = References
 
 [1] https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf
