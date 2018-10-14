@@ -798,6 +798,8 @@ The Managed contract also inherits from the Owned.sol contract. As we have previ
 //Address of accountB
 "0xe80d12c3c2d0f690328d74adf4ea1eb5df6974ed"
 ```
+**acceptManagement**
+
 ```
 //Accept management by running the acceptManagement function from accountB
 > deployedManagedContract.acceptManagement({from:accountB})
