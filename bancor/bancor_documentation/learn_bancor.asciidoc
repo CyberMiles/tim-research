@@ -573,7 +573,7 @@ The whitelist contract is essentially a utility. A single instance (a single dep
 
 https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[Whitelist.sol] contract inherits from the https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[Utils.sol], https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Owned.sol[Owned.sol] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/interfaces/IWhitelist.sol[IWhitelist.sol] contracts.
 
-The Whitelist contract is an simple yet interesting example of inheritance. If you read https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[the source code] you will only see a few functions. However, as mentioned above the Whitelist contract does inherit from, say, Owned and therefore the deployed Whitelist contract intance offers functions as per the rules of multiple inheritance. The true (and improved) functionality of the Whitelist contract can be viewed in the compiled contract's ABI file (as apposed to the Whitelist.sol's source code); the compiler inherits and makes available, to the base contract, a bunch more functions which we will cover below.
+The Whitelist contract is an simple yet interesting example of inheritance. If you read https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Whitelist.sol[the source code] you will only see a few functions. However, as mentioned above the Whitelist contract does inherit from, say, Owned and therefore the deployed Whitelist contract instance offers functions as per the rules of multiple inheritance. The true (and improved) functionality of the Whitelist contract can be viewed in the compiled contract's ABI file (as apposed to the Whitelist.sol's source code); the compiler inherits and makes available, to the base contract, a bunch more functions which we will cover below.
 
 .Whitelist Fundamentals
 * There is only one variable in the Whitelist contract; a mapping between address and bool called whitelist which is private
@@ -589,7 +589,7 @@ Whitelist Functions
 
 **acceptOwnership**
 
-acceptOwnership is an example of an inherited function; derived from the Owned.sol contract from which this contract inherits.
+This is an example of an inherited function; derived from the Owned.sol contract from which this contract inherits. Please see above syntax and functionality example.
 
 Takes no arguments
 
@@ -601,6 +601,8 @@ deployedWhitelistContract.acceptOwnership({from:accountA});
 
 **owner**
 
+This is an example of an inherited function; derived from the Owned.sol contract from which this contract inherits. Please see above syntax and functionality example.
+
 Takes no arguments
 
 Returns a address
@@ -610,6 +612,9 @@ deployedWhitelistContract.owner({from:accountA});
 ```
 
 **newOwner**
+
+This is an example of an inherited function; derived from the Owned.sol contract from which this contract inherits. Please see above syntax and functionality example.
+
 Takes no arguments
 
 Returns a address
@@ -629,19 +634,23 @@ Returns nothing
 ```
 deployedWhitelistContract.addAddresses(_addresses address[],  {from:accountA});
 ```
-
-**addAddress**
-
-Takes 1 arguments
-
-_address (address)
-
-Returns nothing
 ```
-deployedWhitelistContract.addAddress(_address address,  {from:accountA});
+//Create an address list
+> addressesToAdd = []
+```
+```
+//Push two addresses to this list
+> addressesToAdd.push(accountB)
+> addressesToAdd.push(accountC)
+```
+```
+//Call the function which adds both addresses
+deployedWhitelistContract.addAddresses(addressesToAdd, {from:accountA})
 ```
 
 **isWhitelisted**
+
+We can now check that the addresses which we added are in fact whitelisted
 
 Takes 1 arguments
 
@@ -651,8 +660,21 @@ Returns a bool
 ```
 deployedWhitelistContract.isWhitelisted(_address address,  {from:accountA});
 ```
+```
+//Passing in accountB as an argument to see if it is whitelisted
+> deployedWhitelistContract.isWhitelisted(accountB, {from:accountA})
+
+true
+
+//We can do the same with accountC
+> deployedWhitelistContract.isWhitelisted(accountC, {from:accountA})
+
+true
+```
 
 **removeAddress**
+
+We can now remove one of the addresses and check that it is no longer whitelisted
 
 Takes 1 arguments
 
@@ -662,8 +684,42 @@ Returns nothing!
 ```
 deployedWhitelistContract.removeAddress(_address address,  {from:accountA});
 ```
+```
+//Remove accountB
+deployedWhitelistContract.removeAddress(accountB, {from:accountA})
+```
+```
+//Check that it has been removed
+> deployedWhitelistContract.isWhitelisted(accountB, {from:accountA})
 
+false
+```
+
+**addAddress**
+
+Let's add a single address only i.e. let's add accountB back again 
+
+Takes 1 arguments
+
+_address (address)
+
+Returns nothing
+```
+deployedWhitelistContract.addAddress(_address address,  {from:accountA});
+```
+```
+//Adding accountB as a single address
+> deployedWhitelistContract.addAddress(accountB,  {from:accountA});
+```
+```
+//Confirm
+> deployedWhitelistContract.isWhitelisted(accountB, {from:accountA})
+
+true
+```
 **removeAddresses**
+
+Let's now remove all of the addresses which we have added to date (accountB and accountC)
 
 Takes 1 arguments
 
@@ -673,8 +729,26 @@ Returns nothing!
 ```
 deployedWhitelistContract.removeAddresses(_addresses address[],  {from:accountA});
 ```
+```
+//Removing accountB and accountC which are both still stored in the addressesToAdd variable
+> deployedWhitelistContract.removeAddresses(addressesToAdd,  {from:accountA});
+```
+```
+//Confirming that accountB is not whitelisted
+> deployedWhitelistContract.isWhitelisted(accountB, {from:accountA})
+
+false
+```
+```
+//Confirming that accountC is not whitelisted
+> deployedWhitelistContract.isWhitelisted(accountC, {from:accountA})
+
+false
+```
 
 **transferOwnership**
+
+This is an example of an inherited function; derived from the Owned.sol contract from which this contract inherits. Please see above syntax and functionality example.
 
 Takes 1 arguments
 
