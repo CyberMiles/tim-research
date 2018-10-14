@@ -580,8 +580,8 @@ The Whitelist contract is an simple yet interesting example of inheritance. If y
 * Addresses can only be added to the private whitelist mapping by the owner of the Whitelist contract instance
 * Addresses can only be removed from the private whitelist mapping by the owner of the Whitelist contract instance
 
-Smart Token Deployment
-~~~~~~~~~~~~~~~~~~~~~~
+Whitelist Deployment
+~~~~~~~~~~~~~~~~~~~~
 Please refer to the https://github.com/CyberMiles/tim-research/blob/master/bancor/deployment_example.asciidoc[deployment example] which covers not only Whitelist deployment, but all of the other significant Bancor contracts as well.
 
 Whitelist Functions
