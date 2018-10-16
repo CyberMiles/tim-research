@@ -1,5 +1,7 @@
 # Vyper
 
+UPDATE: I created and continued to add content to the Vyper chapter over on [masteringethereum](https://github.com/ethereumbook/ethereumbook/graphs/contributors). Please read the information there as it is much more recent and comprehensive.
+
 Vyper is an experimental smart contract programming language for Ethereum which strives to be simple. As stated on Vyper's GitHub [1] page:
 
 - Vyper code should be maximally human-readable
