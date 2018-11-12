@@ -2,6 +2,8 @@
 
 Two new accounts and two new tokens have been set up on the CyberMiles testnet. The following code will reinitialize the associated variables in a new travis console session.
 
+## Restoring the variables on a new Travis console instance
+
 [source, javascript]
 ----
 // Generic Bancor ERC20 Smart Token abi
