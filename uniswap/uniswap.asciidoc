@@ -32,7 +32,7 @@ web3.fromWei(cmt.getBalance(newAccount2)) //currently returns 2199.999926747979
 web3.fromWei(cmt.getBalance(newAccount1)) //currently returns 1799.981237588
 ----
 
-## Draft - addresses.js example
+## addresses.js example
 [source, javascript]
 ----
 const TRAVIS = {
@@ -148,4 +148,10 @@ function handleAddExchange(state, { payload }) {
     },
   };
 }
+----
+
+## package.js example
+[source, javascript]
+----
+"start:travis": "REACT_APP_NETWORK_ID=19 REACT_APP_NETWORK='Travis Test Network' react-scripts start",
 ----
