@@ -23,4 +23,9 @@ newAccount2 = "0xb14019366e8d150412814b88a2d64ef1e177983c"
 //Just unlocking testnet testing accounts
 personal.unlockAccount(newAccount1, "asdfasdfasdf")
 personal.unlockAccount(newAccount2, "asdfasdfasdf")
+// The following commands will give a tally of which accounts own what at the outset of any testing that we will start doing
+web3.fromWei(deployedBobTokenContract.balanceOf(newAccount2, {from:newAccount1})) //currently returns 100
+web3.fromWei(deployedBobTokenContract.balanceOf(newAccount1, {from:newAccount1})) //currently returns 0
+web3.fromWei(cmt.getBalance(newAccount2)) //currently returns 2199.999926747979
+web3.fromWei(cmt.getBalance(newAccount1)) //currently returns 1799.981237588
 ----
