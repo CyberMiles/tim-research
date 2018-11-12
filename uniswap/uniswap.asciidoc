@@ -42,18 +42,36 @@ web3.fromWei(cmt.getBalance(newAccount1)) //currently returns 1799.981237588
 ## addresses.js example
 [source, javascript]
 ----
+const RINKEBY = {
+  factoryAddress: '0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36',
+  exchangeAddresses: {
+    addresses: [
+      ['BAT','0x9B913956036a3462330B0642B20D3879ce68b450'],
+    ],
+    fromToken: {
+      '0xDA5B056Cfb861282B4b59d29c9B395bcC238D29B': '0x9B913956036a3462330B0642B20D3879ce68b450',
+    },
+  },
+  tokenAddresses: {
+    addresses: [
+      ['BAT','0xDA5B056Cfb861282B4b59d29c9B395bcC238D29B'],
+    ],
+  },
+};
+
 const TRAVIS = {
   factoryAddress: '0x54ee54718e37fd2efd3521bf2ff2e1b55fe040a7',
   exchangeAddresses: {
     addresses: [
+      ['TIM','0x490b49b11301cac7277245695944f7e7749e5a7d'],
     ],
     fromToken: {
+      '0xdcb18351f968887ddda9ba1cb5901badde74ee54': '0x490b49b11301cac7277245695944f7e7749e5a7d',
     },
   },
   tokenAddresses: {
     addresses: [
       ['TIM','0xdcb18351f968887ddda9ba1cb5901badde74ee54'],
-      ['BOB','0xa063a807c40a0664a87cbd08c6c7664bb9471e3c'],
     ],
   },
 };
