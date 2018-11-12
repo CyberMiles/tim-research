@@ -72,14 +72,17 @@ const TRAVIS = {
   exchangeAddresses: {
     addresses: [
       ['TIM','0x490b49b11301cac7277245695944f7e7749e5a7d'],
+      ['BOB','0x8cf42dc5497d295f988dba7b55c0f5fdb388b4c8'],
     ],
     fromToken: {
       '0xdcb18351f968887ddda9ba1cb5901badde74ee54': '0x490b49b11301cac7277245695944f7e7749e5a7d',
+      '0xa063a807c40a0664a87cbd08c6c7664bb9471e3c': '0x8cf42dc5497d295f988dba7b55c0f5fdb388b4c8',
     },
   },
   tokenAddresses: {
     addresses: [
       ['TIM','0xdcb18351f968887ddda9ba1cb5901badde74ee54'],
+      ['BOB','0xa063a807c40a0664a87cbd08c6c7664bb9471e3c'],
     ],
   },
 };
