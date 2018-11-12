@@ -24,12 +24,12 @@ uniswap_exchange_abi = [{"name": "TokenPurchase", "inputs": [{"type": "address",
 
 // Reinitializing exchange contract variable (earmarked for the Tim token) in a new travis console instance
 // There must be one instance of an exchange contract per token (this creates a single point of liquidity)
-var existingTimExchangeContract = web3.cmt.contract(uniswap_exchange_abi);
+var existingExchangeContract = web3.cmt.contract(uniswap_exchange_abi);
 var deployedTimExchangeContract = existingExchangeContract.at("0x490b49b11301cac7277245695944f7e7749e5a7d");
 
 // Reinitializing exchange contract variable (earmarked for the Bob Token) in a new travis console instance
 // There must be one instance of an exchange contract per token (this creates a single point of liquidity, a single liquidity pool)
-var existingBobExchangeContract = web3.cmt.contract(uniswap_exchange_abi);
+var existingExchangeContract = web3.cmt.contract(uniswap_exchange_abi);
 var deployedBobExchangeContract = existingExchangeContract.at("0x8cf42dc5497d295f988dba7b55c0f5fdb388b4c8");
 
 // Just setting accounts as variables 
