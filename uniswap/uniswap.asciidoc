@@ -17,7 +17,7 @@ deployedBobExchangeContract.factoryAddress()
 deployedBobExchangeContract.totalSupply()
 // Adding liquidity
 deployedBobExchangeContract.addLiquidity(0, tokenAmount, 1642075763).send(ethAmount)
-
+----
 
 ## Restoring the variables on a new Travis console instance
 
