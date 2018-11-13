@@ -2,6 +2,23 @@
 
 Two new accounts and two new tokens have been set up on the CyberMiles testnet. The following code will reinitialize the associated variables in a new travis console session.
 
+## Testing Uniswap in the console
+[source, javascript]
+----
+//A Bob token example
+// Token contract allowance
+deployedBobTokenContract.allowance(userAddress, exchangeAddress)
+// Exchange contract's token address
+deployedBobExchangeContract.tokenAddress()
+// Exchange contract's factory contract address
+deployedBobExchangeContract.factoryAddress()
+// Exchange contract's liquidity pool
+// This should be zero if nobody has added liquidity
+deployedBobExchangeContract.totalSupply()
+// Adding liquidity
+deployedBobExchangeContract.addLiquidity(0, tokenAmount, 1642075763).send(ethAmount)
+
+
 ## Restoring the variables on a new Travis console instance
 
 [source, javascript]
