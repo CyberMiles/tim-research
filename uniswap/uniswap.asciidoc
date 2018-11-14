@@ -45,6 +45,12 @@ web3.fromWei(deployedTimTokenContract.balanceOf(newAccount2, {from:newAccount1})
 web3.fromWei(deployedTimTokenContract.balanceOf(newAccount1, {from:newAccount1})) //currently returns 0
 web3.fromWei(cmt.getBalance(newAccount2)) //currently returns 2199.999926747979
 web3.fromWei(cmt.getBalance(newAccount1)) //currently returns 1799.981237588
+
+// Setting some variables for further testing
+// One hundred tokens (18 decimal places i.e. Wei)
+tokenAmount = 100000000000000000000;
+timeStamp20220113 = 1642075763;
+ethAmount = 100;
 ----
 
 ## Testing Uniswap in the console
@@ -61,7 +67,7 @@ deployedBobExchangeContract.factoryAddress()
 // This should be zero if nobody has added liquidity
 deployedBobExchangeContract.totalSupply()
 // Adding liquidity
-deployedBobExchangeContract.addLiquidity(0, tokenAmount, 1642075763).send(ethAmount)
+deployedBobExchangeContract.addLiquidity(0, tokenAmount, timeStamp20220113).send(ethAmount)
 ----
 
 ## addresses.js example
