@@ -2,23 +2,6 @@
 
 Two new accounts and two new tokens have been set up on the CyberMiles testnet. The following code will reinitialize the associated variables in a new travis console session.
 
-## Testing Uniswap in the console
-[source, javascript]
-----
-//A Bob token example
-// Token contract allowance
-deployedBobTokenContract.allowance(userAddress, exchangeAddress)
-// Exchange contract's token address
-deployedBobExchangeContract.tokenAddress()
-// Exchange contract's factory contract address
-deployedBobExchangeContract.factoryAddress()
-// Exchange contract's liquidity pool
-// This should be zero if nobody has added liquidity
-deployedBobExchangeContract.totalSupply()
-// Adding liquidity
-deployedBobExchangeContract.addLiquidity(0, tokenAmount, 1642075763).send(ethAmount)
-----
-
 ## Restoring the variables on a new Travis console instance
 
 [source, javascript]
@@ -62,6 +45,23 @@ web3.fromWei(deployedTimTokenContract.balanceOf(newAccount2, {from:newAccount1})
 web3.fromWei(deployedTimTokenContract.balanceOf(newAccount1, {from:newAccount1})) //currently returns 0
 web3.fromWei(cmt.getBalance(newAccount2)) //currently returns 2199.999926747979
 web3.fromWei(cmt.getBalance(newAccount1)) //currently returns 1799.981237588
+----
+
+## Testing Uniswap in the console
+[source, javascript]
+----
+//A Bob token example
+// Token contract allowance
+deployedBobTokenContract.allowance(newAccount1, deployedBobExchangeContract.address)
+// Exchange contract's token address
+deployedBobExchangeContract.tokenAddress()
+// Exchange contract's factory contract address
+deployedBobExchangeContract.factoryAddress()
+// Exchange contract's liquidity pool
+// This should be zero if nobody has added liquidity
+deployedBobExchangeContract.totalSupply()
+// Adding liquidity
+deployedBobExchangeContract.addLiquidity(0, tokenAmount, 1642075763).send(ethAmount)
 ----
 
 ## addresses.js example
