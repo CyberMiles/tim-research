@@ -67,7 +67,7 @@ deployedBobExchangeContract.factoryAddress()
 // This should be zero if nobody has added liquidity
 deployedBobExchangeContract.totalSupply()
 // Adding liquidity
-deployedBobExchangeContract.addLiquidity(0, tokenAmount, timeStamp20220113).send(ethAmount)
+deployedBobExchangeContract.addLiquidity(0, tokenAmount, timeStamp20220113, {from:newAccount1}).send(ethAmount)
 ----
 
 ## addresses.js example
