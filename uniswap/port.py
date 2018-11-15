@@ -127,6 +127,6 @@ for (root, dirs, files) in os.walk(os.path.join(os.getcwd(), 'uniswap-frontend',
             print(os.path.join(root, name))
             print(sedCommandSingleQuotes)
             print(sedCommandDoubleQuotes)
-            subprocess.call(['sed', '-i', '-e', '-r', sedCommandSingleQuotes, os.path.join(root, name)])
-            subprocess.call(['sed', '-i', '-e', '-r', sedCommandDoubleQuotes, os.path.join(root, name)])
+            subprocess.call(['sed', '-ir', sedCommandSingleQuotes, os.path.join(root, name)])
+            subprocess.call(['sed', '-ir', sedCommandDoubleQuotes, os.path.join(root, name)])
 # EXECUTION END #
