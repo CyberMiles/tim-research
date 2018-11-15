@@ -119,16 +119,14 @@ const MYTESTNET = {
 
 # Replace text
 
-for (root, dirs, files) in os.walk(os.path.join(os.getcwd(),
-                                   'uniswap-frontend', 'src')):
+for (root, dirs, files) in os.walk(os.path.join(os.getcwd(), 'uniswap-frontend', 'src')):
     for name in files:
         for (key, value) in replaceDict.items():
-            sedCommandSingleQuotes = "s/\\\'" + key + "\\\'/\\\'" \
-                + value + "\\\'/g"
-            sedCommandDoubleQuotes = 's/\\"' + key + '\\"/\\"' + value \
-                + '\\"/g'
-            subprocess.call(['sed', '-i', '-e', sedCommandSingleQuotes,
-                            os.path.join(root, name)])
-            subprocess.call(['sed', '-i', '-e', sedCommandDoubleQuotes,
-                            os.path.join(root, name)])
+            sedCommandSingleQuotes = 's/\'' + key + '\'/\'' + value + '\'/g'
+            sedCommandDoubleQuotes = 's/\"' + key + '\"/\"' + value + '\"/g'
+            print(os.path.join(root, name))
+            print(sedCommandSingleQuotes)
+            print(sedCommandDoubleQuotes)
+            subprocess.call(['sed', '-i', '-e', '-r', sedCommandSingleQuotes, os.path.join(root, name)])
+            subprocess.call(['sed', '-i', '-e', '-r', sedCommandDoubleQuotes, os.path.join(root, name)])
 # EXECUTION END #
