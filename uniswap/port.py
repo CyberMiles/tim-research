@@ -73,7 +73,7 @@ pairExchangeAndTokenAddresses()
 
 stringForAddressJsFile = ''
 stringForAddressJsFile = stringForAddressJsFile + 'const ' \
-    + networkName.upper() + ' = ' + json.dumps(addressJsData, indent=4)
+    + networkName.upper() + ' = ' + json.dumps(addressJsData, indent=4) + ";"
 print(stringForAddressJsFile)
 
 '''
