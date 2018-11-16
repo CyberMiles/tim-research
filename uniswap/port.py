@@ -1,5 +1,7 @@
 #TODO write address.js json directoy to the very start of the file in src/ducks/address.js
 #TODO write alternate config for start up scripts also
+#TODO change image file names in code
+#TODO move required images from cybermiles source to uniswap file structure
 
 # Place and execute this file alongside the root uniswap Github directory
 # This will clear up and issues where ETH, Eth and eth is hard-coded in the source code.
