@@ -1,5 +1,6 @@
 import json
-
+# The following ABI is from the most recent CMTD smart contract.
+# This code will eventually fetch an ABI rather than having to have it statically pasted in here as a string
 cmtdAbi = '''[
 	{
 		"constant": true,
@@ -513,8 +514,9 @@ cmtdAbi = '''[
 	}
 ]'''
 
+# Load the above ABI as a json object
 jsonData = json.loads(cmtdAbi)
-
+# Loop through the json object and find all of the events and their associated data
 for abiComponents in jsonData:
 	isEvent = False
 	name = ""
