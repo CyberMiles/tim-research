@@ -1,6 +1,8 @@
 # tim-research
 A collection of research and development performed and written up by @tpmccallum
 
+- [Reading Event Logs](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/reading_event_logs.md)
+
 - [Uniswap](https://github.com/CyberMiles/uniswap-frontend/blob/master/documentation/deploying_uniswap.md)
 
 - [First impressions of Ethereum's proof of stake consensus mechanism - Casper (the friendly finality gadget)](https://medium.com/cybermiles/first-impressions-of-ethereums-casper-proof-of-stake-pos-5ce752e4edd9)
