@@ -1,6 +1,9 @@
 import json
-# The following ABI is from the most recent CMTD smart contract.
-# This code will eventually fetch an ABI rather than having to have it statically pasted in here as a string
+import re
+
+# The following address is where the CMTD smart contract is deployed in the testnet
+cmtdContractAddress = "0x190fb9f3b452fc023f2bfe1cf320f2200c9eb7bef9af13be0082b8daeeeb5ee8"
+# The following ABI is from the CMTD smart contract. Ideally both of these variables (cmtdContractAddress and cmtdAbi) could be fetched online in v2
 cmtdAbi = '''[
 	{
 		"constant": true,
@@ -514,8 +517,11 @@ cmtdAbi = '''[
 	}
 ]'''
 
+# Clean up this ABI
+cleanCmtdAbi = re.sub(' +|\n|\t', '', cmtdAbi)
+print(cleanCmtdAbi)
 # Load the above ABI as a json object
-jsonData = json.loads(cmtdAbi)
+jsonData = json.loads(cleanCmtdAbi)
 # Loop through the json object and find all of the events and their associated data
 for abiComponents in jsonData:
 	isEvent = False
