@@ -1,8 +1,11 @@
-import json
 import re
+import json
+from web3 import Web3
+from web3 import IPCProvider
+from web3 import HTTPProvider
 
 # The following address is where the CMTD smart contract is deployed in the testnet
-cmtdContractAddress = "0x190fb9f3b452fc023f2bfe1cf320f2200c9eb7bef9af13be0082b8daeeeb5ee8"
+cmtdContractAddress = 0x190fb9f3b452fc023f2bfe1cf320f2200c9eb7bef9af13be0082b8daeeeb5ee8
 # The following ABI is from the CMTD smart contract. Ideally both of these variables (cmtdContractAddress and cmtdAbi) could be fetched online in v2
 cmtdAbi = '''[
 	{
@@ -544,3 +547,6 @@ for abiComponents in jsonData:
 			for inputKey, inputValue in input.items():
 				print("\t\t" + str(inputKey) + ":" + str(inputValue))
 			inputCounter = inputCounter + 1
+#Testing web3
+web3 = Web3(HTTPProvider('http://node:8545'))
+deployedContract = web3.eth.contract(abi=cleanCmtdAbi,address=str(cmtdContractAddress))
