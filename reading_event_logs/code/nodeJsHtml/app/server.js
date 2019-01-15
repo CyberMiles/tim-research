@@ -2,6 +2,12 @@ console.log('Server-side code running');
 
 const express = require('express');
 
+var elasticsearch = require('elasticsearch');
+var client = new elasticsearch.Client({
+  host: 'localhost:9200',
+  log: 'trace'
+});
+
 const app = express();
 
 // serve files from the public directory
@@ -26,5 +32,5 @@ app.post('/clicked', (req, res) => {
 
 app.post('/clicked2', (req, res) => {
     console.log("Clicked2");
-    res.sendStatus(201);
+    res.sendStatus(201)
 });
