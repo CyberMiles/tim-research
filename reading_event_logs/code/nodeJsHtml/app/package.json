@@ -1,0 +1,25 @@
+{
+  "name": "event_log_reader",
+  "version": "1.0.0",
+  "description": "An application that reads event logs from the blockchain and stores them in a local MySQL database.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CyberMiles/tim-research/tree/master/reading_event_logs/nodeJsHtml/app"
+  },
+  "keywords": [
+    "events",
+    "logs",
+    "logging"
+  ],
+  "author": "tpmccallum",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.9"
+  }
+}
