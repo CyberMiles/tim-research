@@ -177,10 +177,56 @@ The above command will return the following JSON object
 
 # Using the application
 ## Fetch the source code
+Fetch the source code from [GitHub](https://github.com/CyberMiles/tim-research/tree/master/reading_event_logs/code/nodeJsHtml/app)
 ```bash
 cd app/
 npm install
 ```
+
+# Contracts to harvest
+Each contract has source code which is compiled into bytecode and an abi.json file. Once deployed each instance of a contract has an address on the network. In order to harvest the logs of a particular contract instance, this application requires the abi of the contract as well as the address of the contract. I have created a folder structure as follows to allow for flexibility.
+Go to the app directory
+```bash
+cd /home/ubuntu/reading_event_logs/code/nodeJsHtml/app
+Create a directory to store all of the contracts
+```bash
+mkdir contracts
+cd contracts
+```
+Create a directory to house one specific contract (which has 1 abi file and one to many deployed addresses)
+```bash
+mkdir uniswap_exchange_contract
+```
+Paste in the abi of the contract
+```bash
+vi abi.json
+```
+I also like to clean up the abi, because they have a lot of redundant characters. I clean an abi like this
+```python
+python3
+>>>import re
+>>>abi = '''PasteTheAbiInsideTripleSingleQuotes'''
+>>>abi = re.sub(' +|\n|\t', '', abi)
+```
+Paste in a valid json file containing all of the addresses where the above abi is deployed (this can be one or many)
+```bash
+vi addresses.json
+```
+For example
+```javascript
+{
+	"ANT": "0x077d52B047735976dfdA76feF74d4d988AC25196"
+}
+```
+or
+```javascript
+{
+	"ANT": "0x077d52B047735976dfdA76feF74d4d988AC25196",
+	"BAT": "0x2E642b8D59B45a1D8c5aEf716A84FF44ea665914",
+	"CVC": "0x1C6c712b1F4a7c263B1DBd8F97fb447c945d3b9a"
+}
+```
+
 
 
 
