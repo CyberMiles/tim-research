@@ -11,6 +11,7 @@ Log into your ec2 instance and perform the following tasks.
 ```bash
 sudo apt-get update
 sudo apt-get -y upgrade
+sudo apt-get install -y build-essential
 ```
 #### Storage
 Elasticsearch requires the fast disk i/o. A Solid State Drive (SSD) is recommended. The c5d.xlarge instance that I am using for this demonstration has a "non-volatile memory express" (NVMe) SSD. This is how I set it up.
@@ -82,12 +83,46 @@ I can also go ahead and change to the /media/nvme directory and create files and
 sudo chown -R ubuntu:ubuntu /media/nvme/
 cd /media/nvme/
 mkdir event_log_data
+mkdir event_log_logs
 ```
+A final point/warning. The SSD file system will be terminated, along with the c5d.xlarge instance, if it is terminated. It would be a good idea to perform application level backups of the data on the SSD. For example use application software to export data and then store that in S3 or wherever is suitable. 
 
 #### Application specific software
-I install Elasticsearch using the following commands
-```bash
 
+##### Java
+```bash
+sudo apt-get -y install default-jre
+
+sudo apt-get -y install default-jdk
+```
+##### Elasticsearch install
+```bash
+cd ~
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.4.deb
+sudo dpkg -i elasticsearch-6.5.4.deb 
+```
+##### Elasticsearch config - elasticsearch.yml
+Open /etc/elasticsearch/elasticsearch.yml 
+```bash
+sudo vi /etc/elasticsearch/elasticsearch.yml 
+```
+Perform the following tasks.
+
+Uncomment the network.host (ensuring it is sett to 0.0.0.0) and then also uncomment the http.port setting (leaving it at 9200)
+```bash
+ifconfig 
+network.host: 0.0.0.0
+http.port: 9200
+```
+Change the path to the data and the logs to the new ~100Gb NVMe SSD drive
+```bash
+path.data: /media/nvme/event_log_data
+path.logs: /media/nvme/event_log_logs
+```
+Uncomment the cluster.name and node.name in the elasticsearch.yaml file and then add your own values
+```bash
+cluster.name: event_log_reader
+node.name: event_log_node_1
 ```
 
 ```bash
