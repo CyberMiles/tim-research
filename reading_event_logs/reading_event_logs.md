@@ -6,7 +6,7 @@
 For this demonstration I used an Amazon ec2 instance. I used the c5d.xlarge with an Ubuntu 16.04LTS Server instance. The [cost for this machine](https://aws.amazon.com/ec2/pricing/on-demand/), at the time of writing this was about 19 cents per hour. The c5d.xlarge instance has 8 GiB	RAM and a single 100Gb SSD drive. This is just the bare minimum spec for purposes of demonstrating event log harvesting. Feel free to increase specs as you wish.
 
 ### System housekeeping
-#### Operating system and software
+#### Operating system software
 Log into your ec2 instance and perform the following tasks.
 ```bash
 sudo apt-get update
@@ -58,10 +58,42 @@ I will not create an easily accesible mount point on the main drive (where the o
 sudo mkdir /media/nvme
 sudo chown -R ubuntu:ubuntu /media/nvme/
 ```
-I will now ensure that this drive is mounted each time the system is restarted. I add this line to the /etc/fstab file.
+I will now ensure that this drive is mounted each time the system is restarted. I add this line to the /etc/fstab file (remember I suggested to store the UUID, this is where it is needed).
 ```bash
 UUID=5bb95be7-3f67-4acf-936f-7ee5868a51a9 /media/nvme ext4 defaults 0 0
 ```
+The UUID can also be found, fresh, by using the following command.
+```bash
+sudo blkid
+```
+Once the above commands have succeeded, I reboot the instance.
+```bash
+sudo shutdown -r now
+```
+After the reboot, I can see the mounted ~100Gb NVMe SSD using the df command once more
+```bash
+df -h
+```
+```bash
+/dev/nvme1n1     92G   60M   87G   1% /media/nvme
+```
+I can also go ahead and change to the /media/nvme directory and create files and folders in there. For some reason I had to rerun the chown command again. All works as intended now.
+```bash
+sudo chown -R ubuntu:ubuntu /media/nvme/
+cd /media/nvme/
+mkdir event_log_data
+```
+
+#### Application specific software
+I install Elasticsearch using the following commands
+```bash
+
+```
+
+```bash
+
+```
+
 
 
 
