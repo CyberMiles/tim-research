@@ -80,10 +80,18 @@ df -h
 ```
 I can also go ahead and change to the /media/nvme directory and create files and folders in there. For some reason I had to rerun the chown command again. All works as intended now.
 ```bash
+#ensure that the /media/nvme directory is owned by ubuntu by typing ls -la /media/nvme If it is not then type the following command
 sudo chown -R ubuntu:ubuntu /media/nvme/
+```
+I now create two directories, one for the elasticsearch data and one for the elasticsearch logs
+```bash
 cd /media/nvme/
 mkdir event_log_data
 mkdir event_log_logs
+```
+I now recursively change the ownership of the mount point to elasticsearch because it will exclusively use this area now. I can interact with the logs and the data via the HTTP API and there is no need for the ubuntu user to access this dir directly.
+```bash
+sudo chown -R elasticsearch:elasticsearch /media/nvme/event_log_data/
 ```
 A final point/warning. The SSD file system will be terminated, along with the c5d.xlarge instance, if it is terminated. It would be a good idea to perform application level backups of the data on the SSD. For example use application software to export data and then store that in S3 or wherever is suitable. 
 
@@ -125,6 +133,18 @@ cluster.name: event_log_reader
 node.name: event_log_node_1
 ```
 
+##### Elasticsearch start
+The following commands will start Elasticsearch. Most of the future interaction with Elasticsearch will be done via its RESTful HTTP API (including reading data, writing data and also changes to config and more).
+```bash
+sudo chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/
+sudo systemctl start elasticsearch
+```
+If future the following command can be run to restart Elasticsearch if required
+```bash
+sudo systemctl restart elasticsearch
+```
+##### Elasticsearch test
+The following command can be used to ensure that Elasticsearch is running
 ```bash
 
 ```
