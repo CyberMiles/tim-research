@@ -8,10 +8,10 @@ For this demonstration I used an Amazon ec2 instance. I used the c5d.xlarge with
 ### System housekeeping
 #### Operating system and software
 Log into your ec2 instance and perform the following tasks.
-
+```bash
 sudo apt-get update
 sudo apt-get -y upgrade
-
+```
 #### Storage
 Elasticsearch requires the fast disk i/o. A Solid State Drive (SSD) is recommended. The c5d.xlarge instance that I am using for this demonstration has a "non-volatile memory express" (NVMe) SSD. This is how I set it up.
 List the NVMe devices (make sure that the NVMe is registered)
