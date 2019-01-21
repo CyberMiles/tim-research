@@ -97,6 +97,12 @@ A final point/warning. The SSD file system will be terminated, along with the c5
 
 #### Application specific software
 
+##### Node
+```bash
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
 ##### Java
 ```bash
 sudo apt-get -y install default-jre
@@ -167,6 +173,13 @@ The above command will return the following JSON object
   },
   "tagline" : "You Know, for Search"
 }
+```
+
+# Using the application
+## Fetch the source code
+```bash
+cd app/
+npm install
 ```
 
 
