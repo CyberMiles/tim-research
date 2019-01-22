@@ -13,6 +13,17 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get install -y build-essential
 ```
+Elasticsearch memory usage is controlled by the JVM options and therefore the system should not control memory swap.
+Check the swappiness of the system.
+```bash
+cat /proc/sys/vm/swappiness
+```
+If swappiness is high i.e. 60, it must be set down to 1. Elasticsearch does not operate efficiently when the system is swappy.
+This can be done permanently via the following command
+```bash
+sudo bash -c "echo 'vm.swappiness = 1' >> /etc/sysctl.conf"
+```
+
 #### Storage
 Elasticsearch requires the fast disk i/o. A Solid State Drive (SSD) is recommended. The c5d.xlarge instance that I am using for this demonstration has a "non-volatile memory express" (NVMe) SSD. This is how I set it up.
 List the NVMe devices (make sure that the NVMe is registered)
@@ -138,9 +149,17 @@ Uncomment the cluster.name and node.name in the elasticsearch.yaml file and then
 cluster.name: event_log_reader
 node.name: event_log_node_1
 ```
+Add/uncomment the following line to enable memory lock
+```bash
+bootstrap.memory_lock: true
+```
 
 ##### Elasticsearch start
 The following commands will start Elasticsearch. Most of the future interaction with Elasticsearch will be done via its RESTful HTTP API (including reading data, writing data and also changes to config and more).
+Before starting Elasticsearch make sure that half of the systems RAM is assigned to the ES_HEAP. In this case 4 out of the 8g
+```bash
+export ES_HEAP_SIZE=4g
+```
 ```bash
 sudo chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/
 sudo systemctl start elasticsearch
@@ -175,11 +194,35 @@ The above command will return the following JSON object
 }
 ```
 
+# Elasticsearch data
+I now create an index for the uniswap exchange events. This is where the event log JSON objects will be stored
+```bash
+curl -X PUT "localhost:9200/uniswap_exchange_events" -H 'Content-Type: application/json' -d'
+{
+    "settings" : {
+        "number_of_shards" : 3,
+        "number_of_replicas" : 2
+    }
+}
+'
+```
+and an index which is essentially a register for all of the uniswap contract exchange instances that the application is working with. This is where the information like contract address, lastIndexed block number and so forth will be stored.
+```bash
+curl -X PUT "localhost:9200/uniswap_exchange_register" -H 'Content-Type: application/json' -d'
+{
+    "settings" : {
+        "number_of_shards" : 3,
+        "number_of_replicas" : 2
+    }
+}
+'
+```
+
 # Contracts to harvest
 Each contract has source code which is compiled into bytecode and an abi.json file. Once deployed each instance of a contract has an address on the network. In order to harvest the logs of a particular contract instance, this application requires the abi of the contract as well as the address of the contract. I have created a folder structure as follows to allow for flexibility.
-Go to the app directory
+Go to the app's public directory
 ```bash
-cd /home/ubuntu/reading_event_logs/code/nodeJsHtml/app
+cd /home/ubuntu/reading_event_logs/code/nodeJsHtml/app/public
 Create a directory to store all of the contracts
 ```bash
 mkdir contracts
