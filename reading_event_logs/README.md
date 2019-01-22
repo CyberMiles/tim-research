@@ -149,18 +149,22 @@ Uncomment the cluster.name and node.name in the elasticsearch.yaml file and then
 cluster.name: event_log_reader
 node.name: event_log_node_1
 ```
-Add/uncomment the following line to enable memory lock
-```bash
-bootstrap.memory_lock: true
-```
 
-##### Elasticsearch start
-The following commands will start Elasticsearch. Most of the future interaction with Elasticsearch will be done via its RESTful HTTP API (including reading data, writing data and also changes to config and more).
+###### Before you start Elasticsearch
 Before starting Elasticsearch make sure that half of the systems RAM is assigned to the ES_HEAP. In this case 4 out of the 8g
 ```bash
 export ES_HEAP_SIZE=4g
 ```
+Also whilst we set the swappiness to 1, it is advised to disable swap like this before starting
 ```bash
+sudo swapoff -a
+```
+The above commands must be run each time Elasticsearch is started.
+
+##### Elasticsearch start
+The following commands will start Elasticsearch. Most of the future interaction with Elasticsearch will be done via its RESTful HTTP API (including reading data, writing data and also changes to config and more).
+```bash
+# Just ensure that the permissions are correct before starting
 sudo chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/
 sudo systemctl start elasticsearch
 ```
