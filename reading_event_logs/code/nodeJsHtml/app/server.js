@@ -6,16 +6,34 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhr = new XMLHttpRequest();
 
 function checkIfItemExists(theIndex, theType, theId) {
-    request = new XMLHttpRequest();
-    const url = "http://127.0.0.1:9200" + "/" + theIndex + "/" + theType + "/" + theId;
-    request.open('GET', url, /* async = */ false);
-    request.send();
-    console.log('status code: ' + request.status);
-    if (request.status === 404) {
-        return false;
-    } else {
-        return true;
+	request = new XMLHttpRequest();
+	const url = "http://127.0.0.1:9200" + "/" + theIndex + "/" + theType + "/" + theId;
+	request.open('GET', url, /* async = */ false);
+	request.send();
+	console.log('status code: ' + request.status);
+	if(request.status === 404){
+		return false;
+	} else{
+		return true;
+	}	
+}
+
+function bulkIngest(indexName, theType, dataToLoad){
+client.create({
+    index: indexName, 
+    type: theType, 
+    id: i, 
+    body: pubs[i] // *** THIS ASSUMES YOUR DATA FILE IS FORMATTED LIKE SO: [{prop: val, prop2: val2}, {prop:...}, {prop:...}] - I converted mine from a CSV so pubs[i] is the current object {prop:..., prop2:...}
+  }, function(error, response) {
+    if (error) {
+      console.error(error);
+      return;
     }
+    else {
+    console.log(response);  //  I don't recommend this but I like having my console flooded with stuff.  It looks cool.  Like I'm compiling a kernel really fast.
+    }
+  });
+
 }
 
 function loadContracts() {
@@ -25,11 +43,11 @@ function loadContracts() {
     var eventsToLoad = {};
     var uniswapAbi = require("./public/contracts/uniswap_exchange_contract/abi.json");
     //console.log(JSON.stringify(uniswapAbi));
-    for (var key in uniswapAbi) {
-        if (uniswapAbi[key]["type"] === "event") {
-            eventsToLoad[uniswapAbi[key].name] = uniswapAbi[key]
-        }
-    }
+    for(var key in uniswapAbi){
+		if (uniswapAbi[key]["type"] === "event"){
+			eventsToLoad[uniswapAbi[key].name] = uniswapAbi[key]
+		}
+	}
 
     var uniswapAddresses = require("./public/contracts/uniswap_exchange_contract/addresses.json");
     //console.log(JSON.stringify(uniswapAddresses));
@@ -37,18 +55,25 @@ function loadContracts() {
         if (uniswapAddresses.hasOwnProperty(key)) {
             console.log("Processing: " + uniswapAddresses[key]);
             var contractExists = checkIfItemExists('uniswap_exchange_register', '_all', uniswapAddresses[key]);
-            if (contractExists == false) {
-                console.log("Item does not exist, let's add it ...")
-                newData = {};
-                newData["name"] = key;
-                newData["lastIndexedBlock"] = -1;
-                newData["beingHarvested"] = false;
-                newData["events"] = JSON.stringify(eventsToLoad);
-                dataToLoad[uniswapAddresses[key]] = newData;
-                console.log(dataToLoad);
+            if(contractExists == false){
+            	console.log("Item does not exist, let's add it ...")
+            	newData = {};
+            	theId = {};
+            	theId["_id"] = uniswapAddresses[key];
+            	theId["_type"] = "exchange";
+            	theId["_index"] = 'uniswap_exchange_register';
+            	newData["index"] = theId;
+            	newData["name"] = key;
+            	newData["lastIndexedBlock"] = -1;
+            	newData["beingHarvested"] = false;
+            	newData["events"] = JSON.stringify(eventsToLoad);
+            	dataToLoad[uniswapAddresses[key]] = newData;
+            	
             }
         }
     }
+    console.log(dataToLoad);
+    bulkIngest('uniswap_exchange_register', dataToLoad);
 }
 
 
