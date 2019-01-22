@@ -23,14 +23,14 @@ client.create({
     index: indexName, 
     type: theType, 
     id: i, 
-    body: pubs[i] // *** THIS ASSUMES YOUR DATA FILE IS FORMATTED LIKE SO: [{prop: val, prop2: val2}, {prop:...}, {prop:...}] - I converted mine from a CSV so pubs[i] is the current object {prop:..., prop2:...}
+    body: pubs[i] 
   }, function(error, response) {
     if (error) {
       console.error(error);
       return;
     }
     else {
-    console.log(response);  //  I don't recommend this but I like having my console flooded with stuff.  It looks cool.  Like I'm compiling a kernel really fast.
+    console.log(response);  
     }
   });
 
