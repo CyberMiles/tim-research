@@ -8,6 +8,9 @@ var Web3 = require('web3');
 node = 'https://mainnet.infura.io/v3/46d1afae8b55464585222887f55eab6a';
 const web3 = new Web3(new Web3.providers.HttpProvider(node));
 
+// Dealing with promises
+var Promise = require('bluebird');
+
 // Uniswap ABI
 var uniswapAbi = require("./public/contracts/uniswap_exchange_contract/abi.json");
 var elasticsearch = require('elasticsearch');
@@ -18,18 +21,40 @@ var client = new elasticsearch.Client({
 
 getCurrentBlock().then(value => blockNumber = value);
 
-async function getCurrentBlock() {
+async function getCurrentBlockOrig() {
     let response = await web3.eth.getBlockNumber();
     return response;
 }
 
-async function getEvents(theKey, theContract, theLastIndexedBlock, theBlockNumber) {
+function getCurrentBlock() {
+    return new Promise(function(fulfill, reject) {
+        web3.eth.getBlockNumber( function(error, content) {
+            if (error) reject(error)
+            else fulfill(content);
+        })
+    })
+}
+
+async function getEventsOrig(theKey, theContract, theLastIndexedBlock, theBlockNumber) {
     let theEvents = await theContract.getPastEvents(theKey, {
         filter: {},
         fromBlock: theLastIndexedBlock,
         toBlock: theBlockNumber
     });
     return theEvents;
+}
+
+function getEvents(theKey, theContract, theLastIndexedBlock, theBlockNumber) {
+    return new Promise(function(fulfill, reject) {
+        theContract.getPastEvents(theKey, {
+            filter: {},
+            fromBlock: theLastIndexedBlock,
+            toBlock: theBlockNumber
+        }, function(error, content) {
+            if (error) reject(error)
+            else fulfill(content);
+        })
+    })
 }
 
 function checkIfItemExists(theUrl) {
@@ -105,7 +130,8 @@ function loadContracts(uniswapAbi) {
                 theBodyArray.push(actionDescription);
                 theDocumentToIndex = {};
                 theDocumentToIndex["name"] = key;
-                theDocumentToIndex["lastIndexedBlock"] = 0;
+                // The block when Uniswap was deployed on the mainnet
+                theDocumentToIndex["lastIndexedBlock"] = 6627917;
                 theDocumentToIndex["beingHarvested"] = false;
                 theDocumentToIndex["events"] = eventsToLoad;
                 theBodyArray.push(theDocumentToIndex);
@@ -143,8 +169,10 @@ function harvestContracts(uniswapAbi) {
                 if (lastIndexedBlock == 0 || lastIndexedBlock < blockNumber) {
                     console.log("We have some harvesting to do ...");
                     console.log("Harvesting " + key);
-                    var theEvents = getEvents(key, aContract, lastIndexedBlock, blockNumber);
-                    console.log(theEvents);
+                    getEvents(key, aContract, lastIndexedBlock, blockNumber).then(value => theEvents = value);
+                    //Orig
+                    //var theEvents = getEvents(key, aContract, lastIndexedBlock, blockNumber);
+                    console.log(JSON.stringify(theEvents));
                     //theItems.hits.hits[ii]._source.events
 
                 }
