@@ -6,33 +6,27 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhr = new XMLHttpRequest();
 
 function checkIfItemExists(theIndex, theType, theId) {
-	request = new XMLHttpRequest();
-	const url = "http://127.0.0.1:9200" + "/" + theIndex + "/" + theType + "/" + theId;
-	request.open('GET', url, /* async = */ false);
-	request.send();
-	console.log('status code: ' + request.status);
-	if(request.status === 404){
-		return false;
-	} else{
-		return true;
-	}	
+    request = new XMLHttpRequest();
+    const url = "http://127.0.0.1:9200" + "/" + theIndex + "/" + theType + "/" + theId;
+    request.open('GET', url, /* async = */ false);
+    request.send();
+    console.log('status code: ' + request.status);
+    if (request.status === 404) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
-function bulkIngest(indexName, theType, dataToLoad){
-client.create({
-    index: indexName, 
-    type: theType, 
-    id: i, 
-    body: pubs[i] 
-  }, function(error, response) {
-    if (error) {
-      console.error(error);
-      return;
-    }
-    else {
-    console.log(response);  
-    }
-  });
+function bulkIngest(bulkData) {
+    client.bulk(bulkData, function(error, response) {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            console.log(response);
+        }
+    });
 
 }
 
@@ -42,38 +36,45 @@ function loadContracts() {
     var dataToLoad = {};
     var eventsToLoad = {};
     var uniswapAbi = require("./public/contracts/uniswap_exchange_contract/abi.json");
-    //console.log(JSON.stringify(uniswapAbi));
-    for(var key in uniswapAbi){
-		if (uniswapAbi[key]["type"] === "event"){
-			eventsToLoad[uniswapAbi[key].name] = uniswapAbi[key]
-		}
-	}
+    for (var key in uniswapAbi) {
+        if (uniswapAbi[key]["type"] === "event") {
+            eventsToLoad[uniswapAbi[key].name] = uniswapAbi[key]
+        }
+    }
 
     var uniswapAddresses = require("./public/contracts/uniswap_exchange_contract/addresses.json");
-    //console.log(JSON.stringify(uniswapAddresses));
+    var bulkData = {};
+    var theBodyArray = [];
     for (var key in uniswapAddresses) {
         if (uniswapAddresses.hasOwnProperty(key)) {
             console.log("Processing: " + uniswapAddresses[key]);
             var contractExists = checkIfItemExists('uniswap_exchange_register', '_all', uniswapAddresses[key]);
-            if(contractExists == false){
-            	console.log("Item does not exist, let's add it ...")
-            	newData = {};
-            	theId = {};
-            	theId["_id"] = uniswapAddresses[key];
-            	theId["_type"] = "exchange";
-            	theId["_index"] = 'uniswap_exchange_register';
-            	newData["index"] = theId;
-            	newData["name"] = key;
-            	newData["lastIndexedBlock"] = -1;
-            	newData["beingHarvested"] = false;
-            	newData["events"] = JSON.stringify(eventsToLoad);
-            	dataToLoad[uniswapAddresses[key]] = newData;
-            	
+            if (contractExists == false) {
+                console.log("Item does not exist, let's add it ...")
+                theId = {};
+                actionDescription = {};
+                theId["_id"] = uniswapAddresses[key];
+                theId["_type"] = "exchange";
+                theId["_index"] = 'uniswap_exchange_register';
+                actionDescription["index"] = theId;
+                theBodyArray.push(actionDescription);
+                theDocumentToIndex = {};
+                theDocumentToIndex["name"] = key;
+                theDocumentToIndex["lastIndexedBlock"] = -1;
+                theDocumentToIndex["beingHarvested"] = false;
+                theDocumentToIndex["events"] = eventsToLoad;
+                theBodyArray.push(theDocumentToIndex);
+
             }
         }
     }
-    console.log(dataToLoad);
-    bulkIngest('uniswap_exchange_register', dataToLoad);
+    if (theBodyArray.length > 0) {
+        bulkData["body"] = theBodyArray;
+        console.log("Adding the following data to the uniswap_exchange_register")
+        console.log(JSON.stringify(bulkData));
+        bulkIngest(bulkData);
+    }
+
 }
 
 
