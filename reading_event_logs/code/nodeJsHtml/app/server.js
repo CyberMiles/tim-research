@@ -174,26 +174,13 @@ async function poll(fn) {
     await sleep(timeout * 1000);
     await poll(fn);
 }
-async function cacheEvents(_contractInstance, _event, _fromBlock, _toBlock) {
-    console.log("Looking for any " + _event.toString() + " events, between block " + _fromBlock + ", and block " + _toBlock);
 
-    try {
-
-        var events = await _contractInstance.getPastEvents(_event.toString(), {
-            filter: {},
-            fromBlock: _fromBlock,
-            toBlock: _toBlock
-        });
-    } catch (err) {
-        console.log("Error running cacheEvents");
-        console.log(err);
-    }
-
-    console.log("Found events = " + events.length);
-    if (events.length > 0) {
+async function writetheEventCollectionToElasticsearch(theEventCollection, _event) {
+    console.log("Found theEventCollection = " + theEventCollection.length);
+    if (theEventCollection.length > 0) {
         var bulkData = {};
         var theBodyArray = [];
-        events.forEach(function(obj) {
+        theEventCollection.forEach(function(obj) {
             eventHash = web3.utils.sha3(obj.transactionHash, obj.logIndex);
             theId = {};
             actionDescription = {};
@@ -209,26 +196,56 @@ async function cacheEvents(_contractInstance, _event, _fromBlock, _toBlock) {
         });
         if (theBodyArray.length > 0) {
             bulkData["body"] = theBodyArray;
-            console.log("Adding the following data to the uniswap_exchange_register")
+            console.log("Adding the following data to the uniswap_exchange_events")
             console.log(JSON.stringify(bulkData));
             bulkIngest(bulkData);
         }
+    }
+}
+
+
+async function cacheEvents(_contractInstance, _event, _fromBlock, _toBlock) {
+    console.log("Looking for any " + _event.toString() + " events, between block " + _fromBlock + ", and block " + _toBlock);
+
+    try {
+
+        var events = _contractInstance.getPastEvents(_event.toString(), {
+            filter: {},
+            fromBlock: _fromBlock,
+            toBlock: _toBlock
+        });
+        return events;    		
+
+    } catch (err) {
+        console.log("Error running cacheEvents");
+        console.log(err);
     }
 
 }
 
 async function scan(_contractInstance, _currentBlock, _latestCachedBlock, _event) {
-    const MaxBlockRange = 50;
+    const MaxBlockRange = 5000;
+    console.log("Outside the scan functions await poll...........");
     await poll(async () => {
         try {
-            _currentBlock = Math.min(
-                _currentBlock,
+        	latestEthBlock = await web3.eth.getBlockNumber();
+        	console.log("Running the scan function");
+        	console.log("CurrentBlock before calc is " + latestEthBlock);
+            var latestEthBlock = Math.min(
+                latestEthBlock,
                 _latestCachedBlock + MaxBlockRange
             );
-            if (_currentBlock > _latestCachedBlock) {
+            console.log("CurrentBlock AFTER calc is " + latestEthBlock);
+            console.log("Current block is " + latestEthBlock + " and latest cached block is " + _latestCachedBlock);
+            if (latestEthBlock > _latestCachedBlock) {
                 console.log("Running the cacheEvents function");
-                await cacheEvents(_contractInstance, _event, _latestCachedBlock, _currentBlock).then(console.log("Finished calling caheEvents from inside scan"));
-                _latestCachedBlock = _currentBlock + 1;
+                var events = await cacheEvents(_contractInstance, _event, _latestCachedBlock, latestEthBlock).then(console.log("Finished calling caheEvents from inside scan"));
+                await writetheEventCollectionToElasticsearch(events, _event);
+                console.log("Latest cached block was " + _latestCachedBlock);
+                _latestCachedBlock = latestEthBlock + 1;
+                console.log("*RESULT");
+                console.log(events.length);
+                console.log("Latest cached block is now " + _latestCachedBlock);
 
             } else {
                 return;
@@ -260,8 +277,8 @@ function harvestContracts(uniswapAbi) {
             if (theEvents.hasOwnProperty(key)) {
                 scan(aContract, blockNumber, lastIndexedBlock, key).then(console.log("Performed a single scan of " + key));
                 //For testing only
-                //console.log("Making an early exit");
-                //return;
+                console.log("Making an early exit");
+                return;
             }
 
         }
