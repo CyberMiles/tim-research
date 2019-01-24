@@ -28,7 +28,7 @@ async function getCurrentBlockOrig() {
 
 function getCurrentBlock() {
     return new Promise(function(fulfill, reject) {
-        web3.eth.getBlockNumber( function(error, content) {
+        web3.eth.getBlockNumber(function(error, content) {
             if (error) reject(error)
             else fulfill(content);
         })
@@ -45,14 +45,27 @@ async function getEventsOrig(theKey, theContract, theLastIndexedBlock, theBlockN
 }
 
 function getEvents(theKey, theContract, theLastIndexedBlock, theBlockNumber) {
+    console.log("Getting events at " + theLastIndexedBlock);
     return new Promise(function(fulfill, reject) {
         theContract.getPastEvents(theKey, {
             filter: {},
             fromBlock: theLastIndexedBlock,
             toBlock: theBlockNumber
         }, function(error, content) {
-            if (error) reject(error)
-            else fulfill(content);
+            if (error) {
+                console.log("We have an error with getting the events!");
+                console.log(error);
+                reject(error)
+            } else {
+                console.log("There don't seem to be any issues with getting the events, please wait ...");
+                if (content.length > 0) {
+                    var message1 = "We have content to write";
+                    fulfill(message1);
+                } else {
+                    var message2 = "There is no content to write";
+                    fulfill(message2);
+                }
+            }
         })
     })
 }
@@ -148,6 +161,86 @@ function loadContracts(uniswapAbi) {
 
 }
 
+//Attribution @olekon on GitHub < https://github.com/olekon/p1_eth_caching/blob/master/src/index.js >
+const timeout = 10;
+
+function sleep(milliseconds) {
+    return new Promise(resolve =>
+        setTimeout(resolve, milliseconds)
+    );
+}
+async function poll(fn) {
+    await fn();
+    await sleep(timeout * 1000);
+    await poll(fn);
+}
+async function cacheEvents(_contractInstance, _event, _fromBlock, _toBlock) {
+    console.log("Looking for any " + _event.toString() + " events, between block " + _fromBlock + ", and block " + _toBlock);
+
+    try {
+
+        var events = await _contractInstance.getPastEvents(_event.toString(), {
+            filter: {},
+            fromBlock: _fromBlock,
+            toBlock: _toBlock
+        });
+    } catch (err) {
+        console.log("Error running cacheEvents");
+        console.log(err);
+    }
+
+    console.log("Found events = " + events.length);
+    if (events.length > 0) {
+        var bulkData = {};
+        var theBodyArray = [];
+        events.forEach(function(obj) {
+            eventHash = web3.utils.sha3(obj.transactionHash, obj.logIndex);
+            theId = {};
+            actionDescription = {};
+            theId["_id"] = eventHash;
+            theId["_type"] = "event";
+            theId["_index"] = 'uniswap_exchange_events';
+            actionDescription["index"] = theId;
+            theBodyArray.push(actionDescription);
+            theDocumentToIndex = {};
+            theDocumentToIndex["name"] = _event;
+            theDocumentToIndex["jsonEventObject"] = obj;
+            theBodyArray.push(theDocumentToIndex);
+        });
+        if (theBodyArray.length > 0) {
+            bulkData["body"] = theBodyArray;
+            console.log("Adding the following data to the uniswap_exchange_register")
+            console.log(JSON.stringify(bulkData));
+            bulkIngest(bulkData);
+        }
+    }
+
+}
+
+async function scan(_contractInstance, _currentBlock, _latestCachedBlock, _event) {
+    const MaxBlockRange = 50;
+    await poll(async () => {
+        try {
+            _currentBlock = Math.min(
+                _currentBlock,
+                _latestCachedBlock + MaxBlockRange
+            );
+            if (_currentBlock > _latestCachedBlock) {
+                console.log("Running the cacheEvents function");
+                await cacheEvents(_contractInstance, _event, _latestCachedBlock, _currentBlock).then(console.log("Finished calling caheEvents from inside scan"));
+                _latestCachedBlock = _currentBlock + 1;
+
+            } else {
+                return;
+            }
+
+        } catch (e) {
+            console.log("Error found");
+            console.log(e);
+        }
+    });
+}
+
 function harvestContracts(uniswapAbi) {
     console.log("Harvesting contracts...");
 
@@ -159,23 +252,16 @@ function harvestContracts(uniswapAbi) {
         console.log("Processing: " + theItems.hits.hits[ii]._source.name + " at address: " + theItems.hits.hits[ii]._id);
         var lastIndexedBlock = theItems.hits.hits[ii]._source.lastIndexedBlock;
         console.log("The last indexed block for " + theItems.hits.hits[ii]._source.name + " is " + lastIndexedBlock);
+        console.log("Creating a contract instance for the " + theItems.hits.hits[ii]._source.name + " contract, which is located at " + theItems.hits.hits[ii]._id);
         var aContract = new web3.eth.Contract(uniswapAbi, theItems.hits.hits[ii]._id);
-        console.log(lastIndexedBlock);
-        console.log(blockNumber);
         var theEvents = theItems.hits.hits[ii]._source.events;
         console.log("Events:");
         for (var key in theEvents) {
             if (theEvents.hasOwnProperty(key)) {
-                if (lastIndexedBlock == 0 || lastIndexedBlock < blockNumber) {
-                    console.log("We have some harvesting to do ...");
-                    console.log("Harvesting " + key);
-                    getEvents(key, aContract, lastIndexedBlock, blockNumber).then(value => theEvents = value);
-                    //Orig
-                    //var theEvents = getEvents(key, aContract, lastIndexedBlock, blockNumber);
-                    console.log(JSON.stringify(theEvents));
-                    //theItems.hits.hits[ii]._source.events
-
-                }
+                scan(aContract, blockNumber, lastIndexedBlock, key).then(console.log("Performed a single scan of " + key));
+                //For testing only
+                //console.log("Making an early exit");
+                //return;
             }
 
         }
