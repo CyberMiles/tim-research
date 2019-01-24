@@ -275,6 +275,17 @@ npm install
 npm start
 ```
 
+To make an index read only use.
+```bash
+curl -X PUT "localhost:9200/uniswap_exchange_register/_settings" -H 'Content-Type: application/json' -d'
+{
+    "index" : {
+        "blocks.read_only" : "true"
+    }
+}
+'
+```
+
 
 
 
