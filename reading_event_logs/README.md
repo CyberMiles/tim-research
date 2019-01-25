@@ -286,10 +286,143 @@ curl -X PUT "localhost:9200/uniswap_exchange_register/_settings" -H 'Content-Typ
 '
 ```
 
+# Querying the data
 
+Each Uniswap event log looks like this.
 
+```javascript
+{
+        "_index" : "uniswap_exchange_events",
+        "_type" : "event",
+        "_id" : "0x2af6515e09e7524019064bec192d9d6fe5f782a7be090799b7eded3135d8cfa6",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "TokenPurchase",
+          "jsonEventObject" : {
+            "address" : "0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14",
+            "blockHash" : "0x36052b47d9b91dff42db0e43d065adf7a4cd059fef0c27f734c1bee926894de6",
+            "blockNumber" : 6629640,
+            "logIndex" : 5,
+            "removed" : false,
+            "transactionHash" : "0x99639252e7b5a2f01919e5c4a366b3350ce2ba4fd131cf716a5bf0b5dfc293b2",
+            "transactionIndex" : 8,
+            "id" : "log_91a43de2",
+            "returnValues" : {
+              "0" : "0x11E4857Bb9993a50c685A79AFad4E6F65D518DDa",
+              "1" : "100000000000000000",
+              "2" : "19383556793487195127",
+              "buyer" : "0x11E4857Bb9993a50c685A79AFad4E6F65D518DDa",
+              "eth_sold" : "100000000000000000",
+              "tokens_bought" : "19383556793487195127"
+            },
+            "event" : "TokenPurchase",
+            "signature" : "0xcd60aa75dea3072fbc07ae6d7d856b5dc5f4eee88854f5b4abf7b680ef8bc50f",
+            "raw" : {
+              "data" : "0x",
+              "topics" : [
+                "0xcd60aa75dea3072fbc07ae6d7d856b5dc5f4eee88854f5b4abf7b680ef8bc50f",
+                "0x00000000000000000000000011e4857bb9993a50c685a79afad4e6f65d518dda",
+                "0x000000000000000000000000000000000000000000000000016345785d8a0000",
+                "0x0000000000000000000000000000000000000000000000010d003a348769fbf7"
+              ]
+            }
+          }
+        }
+      },
+```
 
+The data can be queried using JSON. For example.
 
+Multiple fields
+```javascript
+{
+ "query": {
+       "bool" : {
+         "must": [
+           { "match": { "name": "TokenPurchase" }},
+           { "match": { "jsonEventObject.address": "0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14" }}
+         ]
+       }
+ }
+}
+```
+Single field
+```javascript
+{
+   "query": {
+       "match" : {
+           "jsonEventObject.address" : "0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14"
+       }
+   },
+   "_source": [ "name", "jsonEventObject.returnValues" ],
+   "highlight": {
+       "fields" : {
+           "title" : {}
+       }
+   }
+}
+```
+Here is a curl example 
+```javascript
+curl -X GET "http://13.211.130.70:9200/uniswap_exchange_events/_search/?pretty=true" -H 'Content-Type: application/json' -d'
+{
+   "query": {
+       "match" : {
+           "jsonEventObject.address" : "0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14"
+       }
+   },
+   "_source": [ "name", "jsonEventObject.returnValues" ],
+   "highlight": {
+       "fields" : {
+           "title" : {}
+       }
+   }
+}
+'
+```
+Notice how we simply follow the data structure to reach a single point of data i.e. if we only want to return the buyers of the TokenPurchase event log for the DAI exchange contract.
+
+```javascript
+jsonEventObject.returnValues.buyer
+```
+The complete query would look like this.
+
+```javascript
+curl -X GET "http://13.211.130.70:9200/uniswap_exchange_events/_search/?pretty=true" -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match" : {
+            "jsonEventObject.address" : "0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14"
+        }
+    },
+    "_source": [ "name", "jsonEventObject.returnValues.buyer" ],
+    "highlight": {
+        "fields" : {
+            "title" : {}
+        }
+    }
+}
+'
+```
+
+Each returned item would look like this
+
+```javascript
+ {
+        "_index" : "uniswap_exchange_events",
+        "_type" : "event",
+        "_id" : "0x6b3a51c0107bcf8fbade0bec20eb0e00ab520951049b65a2307d7a3e8c091829",
+        "_score" : 1.0311675,
+        "_source" : {
+          "name" : "TokenPurchase",
+          "jsonEventObject" : {
+            "returnValues" : {
+              "buyer" : "0x11E4857Bb9993a50c685A79AFad4E6F65D518DDa"
+            }
+          }
+        }
+      },
+```
 
 
 
