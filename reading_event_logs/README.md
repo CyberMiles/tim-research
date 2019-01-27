@@ -363,7 +363,7 @@ Single field
 }
 ```
 Here is a curl example 
-```javascript
+```bash
 curl -X GET "http://13.211.130.70:9200/uniswap_exchange_events/_search/?pretty=true" -H 'Content-Type: application/json' -d'
 {
    "query": {
@@ -382,12 +382,12 @@ curl -X GET "http://13.211.130.70:9200/uniswap_exchange_events/_search/?pretty=t
 ```
 Notice how we simply follow the data structure to reach a single point of data i.e. if we only want to return the buyers of the TokenPurchase event log for the DAI exchange contract.
 
-```javascript
+```bash
 jsonEventObject.returnValues.buyer
 ```
 The complete query would look like this.
 
-```javascript
+```bash
 curl -X GET "http://13.211.130.70:9200/uniswap_exchange_events/_search/?pretty=true" -H 'Content-Type: application/json' -d'
 {
     "query": {
