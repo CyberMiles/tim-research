@@ -424,6 +424,23 @@ Each returned item would look like this
       },
 ```
 
+TODO
+```javascript
+{
+ "query": {
+       "bool" : {
+         "should": [
+           { "match": { "name": "TokenPurchase" }},
+           { "match": { "name": "Transfer" }}
+         ],
+         "must": [
+           { "match": { "jsonEventObject.blockNumber": "6668371" }}
+         ]
+       }     
+ }
+}
+```
+
 
 
 
