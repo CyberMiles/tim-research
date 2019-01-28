@@ -333,19 +333,6 @@ Each Uniswap event log looks like this.
 
 The data can be queried using JSON. For example.
 
-Multiple fields
-```javascript
-{
- "query": {
-       "bool" : {
-         "must": [
-           { "match": { "name": "TokenPurchase" }},
-           { "match": { "jsonEventObject.address": "0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14" }}
-         ]
-       }
- }
-}
-```
 Single field
 ```javascript
 {
@@ -362,6 +349,37 @@ Single field
    }
 }
 ```
+
+Multiple fields
+```javascript
+{
+ "query": {
+       "bool" : {
+         "must": [
+           { "match": { "name": "TokenPurchase" }},
+           { "match": { "jsonEventObject.address": "0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14" }}
+         ]
+       }
+ }
+}
+```
+Multiple fields where block number must be 6668371 but name can be TokenPurchase OR Transfer
+```javascript
+{
+ "query": {
+       "bool" : {
+         "should": [
+           { "match": { "name": "TokenPurchase" }},
+           { "match": { "name": "Transfer" }}
+         ],
+         "must": [
+           { "match": { "jsonEventObject.blockNumber": "6668371" }}
+         ]
+       }     
+ }
+}
+```
+
 Here is a curl example 
 ```bash
 curl -X GET "http://13.211.130.70:9200/uniswap_exchange_events/_search/?pretty=true" -H 'Content-Type: application/json' -d'
@@ -422,23 +440,6 @@ Each returned item would look like this
           }
         }
       },
-```
-
-TODO
-```javascript
-{
- "query": {
-       "bool" : {
-         "should": [
-           { "match": { "name": "TokenPurchase" }},
-           { "match": { "name": "Transfer" }}
-         ],
-         "must": [
-           { "match": { "jsonEventObject.blockNumber": "6668371" }}
-         ]
-       }     
- }
-}
 ```
 
 
