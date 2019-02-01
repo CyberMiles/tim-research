@@ -1,42 +1,3 @@
-/* The following mapping must be performed in the Elasticsearch system before the data can be queried in Kibana
-
-{
-  "mappings": {
-    "_doc": {
-      "properties": {
-        "eth_sold": {
-          "type": "long"
-        },
-        "blockTimestamp": {
-			"format": "epoch_millis",
-			"type": "date"
-		},
-		"tokens_sold": {
-          "type": "long"
-        },
-        "tokens_bought": {
-          "type": "long"
-        },
-        "token_amount": {
-          "type": "long"
-        },
-        "eth_bought": {
-          "type": "long"
-        },
-        "eth_amount": {
-          "type": "long"
-        },
-        "_value": {
-          "type": "long"
-        }
-      }
-    }
-  }
-}
-
-*/
-
-
 console.log('Server-side code running');
 const express = require('express');
 
@@ -285,13 +246,6 @@ async function updateTimestamp() {
                 body: {
                     // put the partial document under the `doc` key
                     doc: {
-                    	// This addition requires that the following mapping be created first
-                    	/*
-                    	{"properties":{"blockTimestamp": {
-							"format": "epoch_millis",
-							"type": "date"
-						}}}
-						*/
                         blockTimestamp: timestampDate
                     }
                 }
