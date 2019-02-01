@@ -199,7 +199,7 @@ The above command will return the following JSON object
 ```
 
 # Elasticsearch data
-I now create an index for the uniswap exchange events. This is where the event log JSON objects will be stored
+THIS STEP IS REDUNDANT because we are deliberately generating data types below. Just for the record this is how you would create the index for the uniswap exchange events. This is where the event log JSON objects will be stored
 ```bash
 curl -X PUT "localhost:9200/uniswap_exchange_events" -H 'Content-Type: application/json' -d'
 {
