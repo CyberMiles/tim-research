@@ -1,3 +1,42 @@
+/* The following mapping must be performed in the Elasticsearch system before the data can be queried in Kibana
+
+{
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "eth_sold": {
+          "type": "long"
+        },
+        "blockTimestamp": {
+			"format": "epoch_millis",
+			"type": "date"
+		},
+		"tokens_sold": {
+          "type": "long"
+        },
+        "tokens_bought": {
+          "type": "long"
+        },
+        "token_amount": {
+          "type": "long"
+        },
+        "eth_bought": {
+          "type": "long"
+        },
+        "eth_amount": {
+          "type": "long"
+        },
+        "_value": {
+          "type": "long"
+        }
+      }
+    }
+  }
+}
+
+*/
+
+
 console.log('Server-side code running');
 const express = require('express');
 
@@ -67,7 +106,7 @@ function checkIfItemExists(theUrl) {
 // Call this function like this
 // await wait(500);
 function wait(ms) {
-    return new Promise(r => setTimeout(r, ms));
+  return new Promise(r => setTimeout(r, ms));
 }
 
 // Loads in all of the contract addresses and abi, creates a bulk json object and then calls bulkIngest function
@@ -75,10 +114,10 @@ async function loadContracts(uniswapAbi) {
     url = "http://localhost:9200/uniswap_exchange_register/_all/";
     for (var key in uniswapAbi) {
         if (uniswapAbi[key]["type"] === "event") {
-            var eventName = uniswapAbi[key]["name"];
-            var eventInputs = uniswapAbi[key]["inputs"];
+        	var eventName =  uniswapAbi[key]["name"];
+        	var eventInputs = uniswapAbi[key]["inputs"];
             var uniswapAddresses = require("./public/contracts/uniswap_exchange_contract/addresses.json");
-
+            
             //console.log(JSON.stringify(uniswapAddresses));
             var bulkData = {};
             var theBodyArray = [];
@@ -101,20 +140,20 @@ async function loadContracts(uniswapAbi) {
                         theDocumentToIndex["contractAddress"] = uniswapAddresses[key];
                         theDocumentToIndex["lastIndexedBlock"] = 6627917;
                         theDocumentToIndex["eventName"] = eventName;
-                        theDocumentToIndex["eventInputs"] = eventInputs;
+						theDocumentToIndex["eventInputs"] = eventInputs;
 
                         theBodyArray.push(theDocumentToIndex);
                     }
                 }
-            }
+            }   
         }
         if (theBodyArray.length > 0) {
-            bulkData["body"] = theBodyArray;
-            console.log("Adding the following data to the uniswap_exchange_register")
-            console.log(JSON.stringify(bulkData));
-            bulkIngest(bulkData);
-            await wait(1000);
-        }
+        bulkData["body"] = theBodyArray;
+        console.log("Adding the following data to the uniswap_exchange_register")
+        console.log(JSON.stringify(bulkData));
+        bulkIngest(bulkData);
+        await wait(1000);
+    	}
     }
 }
 
@@ -131,51 +170,52 @@ function getRequestWithOnlyUrl(theUrl) {
     }
 }
 
-async function harvestContracts() {
-    var theGetHitsUrl = "http://localhost:9200/uniswap_exchange_register/_search/?filter_path=hits.total";
-    var theTotalHits = JSON.parse(getRequestWithOnlyUrl(theGetHitsUrl));
-    var registerLength = theTotalHits["hits"]["total"];
-    console.log(registerLength);
-    for (var i = 0; i < registerLength; i++) {
-        console.log("Processing " + i + " of " + registerLength);
-        // Fetch every combination of "contract" and "event type" and process one by one 
-        theGetSingleEventUrl = "http://localhost:9200/uniswap_exchange_register/_search/?from=" + i + "&size=1&filter_path=hits.hits._source";
-        singleEventFromRegister = JSON.parse(getRequestWithOnlyUrl(theGetSingleEventUrl));
-        // Instantiate variables which hold the key values for the web3 harvesting
-        lastIndexedBlock = singleEventFromRegister["hits"].hits[0]._source.lastIndexedBlock;
-        eventName = singleEventFromRegister["hits"].hits[0]._source.eventName;
-        // Instantiate web3 contract instance
-        var web3ContractInstance = new web3.eth.Contract(uniswapAbi, singleEventFromRegister["hits"].hits[0]._source.contractAddress);
-        await wait(1000);
-        harvestSingleInstanceOfContractEvent(web3ContractInstance, eventName, lastIndexedBlock, blockNumber);
+async function harvestContracts(){
+	var theGetHitsUrl = "http://localhost:9200/uniswap_exchange_register/_search/?filter_path=hits.total";
+	var theTotalHits = JSON.parse(getRequestWithOnlyUrl(theGetHitsUrl));
+	var registerLength = theTotalHits["hits"]["total"];
+	console.log(registerLength);
+	for(var i = 0; i < registerLength; i++){
+		console.log("Processing " + i + " of " + registerLength);
+		// Fetch every combination of "contract" and "event type" and process one by one 
+		theGetSingleEventUrl = "http://localhost:9200/uniswap_exchange_register/_search/?from=" + i + "&size=1&filter_path=hits.hits._source";
+		singleEventFromRegister = JSON.parse(getRequestWithOnlyUrl(theGetSingleEventUrl));
+		// Instantiate variables which hold the key values for the web3 harvesting
+		lastIndexedBlock = singleEventFromRegister["hits"].hits[0]._source.lastIndexedBlock;
+		eventName = singleEventFromRegister["hits"].hits[0]._source.eventName;
+		// Instantiate web3 contract instance
+		var web3ContractInstance = new web3.eth.Contract(uniswapAbi, singleEventFromRegister["hits"].hits[0]._source.contractAddress);
+		await wait(1000);
+		harvestSingleInstanceOfContractEvent(web3ContractInstance, eventName, lastIndexedBlock, blockNumber);
 
-    }
+	}
 }
 
-function getWholePercent(percentFor, percentOf) {
-    return Math.floor(percentFor / percentOf * 100);
+function getWholePercent(percentFor,percentOf)
+{
+    return Math.floor(percentFor/percentOf*100);
 }
 
 async function harvestSingleInstanceOfContractEvent(web3ContractInstance, eventName, lastIndexedBlock, blockNumber) {
     console.log("Looking for any " + eventName + " events, between block " + lastIndexedBlock + ", and block " + blockNumber);
     var target = lastIndexedBlock;
-    while (getWholePercent(target, blockNumber) <= 98) {
-        target += 500;
-        try {
-            var events = await web3ContractInstance.getPastEvents(eventName, {
-                filter: {},
-                fromBlock: lastIndexedBlock,
-                toBlock: target
-            });
-            writetheEventCollectionToElasticsearch(events, eventName);
-            await wait(1000);
+    while(getWholePercent(target, blockNumber) <= 98){
+    	target += 500;
+	    try {
+	        var events = await web3ContractInstance.getPastEvents(eventName, {
+	            filter: {},
+	            fromBlock: lastIndexedBlock,
+	            toBlock: target
+	        });
+	        writetheEventCollectionToElasticsearch(events, eventName);
+	        await wait(1000); 		
 
-        } catch (err) {
-            console.log("Error running cacheEvents");
-            console.log("Failed to harvest " + eventName);
-            console.log(err);
-        }
-    }
+	    } catch (err) {
+	        console.log("Error running cacheEvents");
+	        console.log("Failed to harvest " + eventName);
+	        console.log(err);
+	    }
+	}
 
 
 }
@@ -211,7 +251,7 @@ async function writetheEventCollectionToElasticsearch(theEventCollection, eventN
 // Get the current block
 function fetchTimestamp(blockNumberToFetch) {
     return new Promise(function(fulfill, reject) {
-        console.log("Fetching timestamp");
+    	console.log("Fetching timestamp");
         web3.eth.getBlock(blockNumberToFetch, function(error, content) {
             if (error) reject(error)
             else fulfill(content.timestamp);
@@ -219,7 +259,7 @@ function fetchTimestamp(blockNumberToFetch) {
     })
 }
 
-
+	
 async function updateTimestamp() {
     try {
         var theGetHitsUrl = "http://localhost:9200/uniswap_exchange_events/_search/";
@@ -229,12 +269,12 @@ async function updateTimestamp() {
         for (var i = 0; i < registerLength; i++) {
             console.log("Processing " + i + " of " + registerLength);
             theGetSingleEventUrl = "http://localhost:9200/uniswap_exchange_events/_search/?from=" + i + "&size=1";
-            await wait(500);
+            await wait(10);
             singleEventFromEvents = JSON.parse(getRequestWithOnlyUrl(theGetSingleEventUrl));
             singleEventBlockNumber = singleEventFromEvents["hits"].hits[0]._source.jsonEventObject.blockNumber;
             console.log(singleEventBlockNumber);
             var timestampToWrite = await fetchTimestamp(singleEventBlockNumber);
-            await wait(500);
+            await wait(10);
             var timestampDate = timestampToWrite * 1000;
             console.log(timestampDate);
             var idToWrite = singleEventFromEvents["hits"].hits[0]._id;
@@ -245,7 +285,14 @@ async function updateTimestamp() {
                 body: {
                     // put the partial document under the `doc` key
                     doc: {
-                        blockTimeStamp: timestampDate
+                    	// This addition requires that the following mapping be created first
+                    	/*
+                    	{"properties":{"blockTimestamp": {
+							"format": "epoch_millis",
+							"type": "date"
+						}}}
+						*/
+                        blockTimestamp: timestampDate
                     }
                 }
             })
