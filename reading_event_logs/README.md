@@ -222,6 +222,48 @@ curl -X PUT "localhost:9200/uniswap_exchange_register" -H 'Content-Type: applica
 '
 ```
 
+# Elasticsearch data types - blockchain 
+The following URL must have a PUT request sent to it which contains the mappings below
+```bash
+http://13.211.130.70:9200/uniswap_exchange_events/
+```
+These mappings ensure that values such as tokens_sold are set to long/integers as apposed to just text. This also configures the date/time as the epoch milliseconds (we take this from the blockchain as epoch seconds and * 1000 in the harvester).
+```javascript
+{
+	"mappings": {
+		"_doc": {
+			"properties": {
+				"eth_sold": {
+					"type": "long"
+				},
+				"blockTimestamp": {
+					"format": "epoch_millis",
+					"type": "date"
+				},
+				"tokens_sold": {
+					"type": "long"
+				},
+				"tokens_bought": {
+					"type": "long"
+				},
+				"token_amount": {
+					"type": "long"
+				},
+				"eth_bought": {
+					"type": "long"
+				},
+				"eth_amount": {
+					"type": "long"
+				},
+				"_value": {
+					"type": "long"
+				}
+			}
+		}
+	}
+}
+```
+
 # Contracts to harvest
 Each contract has source code which is compiled into bytecode and an abi.json file. Once deployed each instance of a contract has an address on the network. In order to harvest the logs of a particular contract instance, this application requires the abi of the contract as well as the address of the contract. I have created a folder structure as follows to allow for flexibility.
 Go to the app's public directory
