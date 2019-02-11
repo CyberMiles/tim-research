@@ -1,6 +1,6 @@
 # Object based unit testing for blockchains
 
-This is a new idea built on the premise that unit testing against a blockchain using a non blocking asynchronious language such as Javascript is problematic.
+This is a new idea built on the premise that unit testing against a blockchain using a non blocking asynchronious language such as Javascript is problematic. Problematic in the way that the calling code (used to perform the unit testing) executes very quickly. In contract, the data (which is crutial to the testing) endures a round-trip (the journey of firstly becoming part of the blockchain's new state and then secondly being returned from the blockchain network to the calling code (which is performing the unit testing).
 
 ## The unit testing object
 A single unit test object would be as follows.
