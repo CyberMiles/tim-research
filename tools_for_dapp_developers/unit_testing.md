@@ -1,5 +1,8 @@
 # Object based unit testing for blockchains
 
+## Overall goal
+Reliability and consistency
+
 ## Why object based - Timing
 This is a new idea built on the premise that unit testing against a blockchain using a non blocking asynchronious language such as Javascript is problematic. Problematic in the way that the calling code (used to perform the unit testing) executes very quickly. In contrast, the data (which is crutial to the testing) endures a round-trip (the journey of firstly becoming part of the blockchain's new state and then secondly being returned from the blockchain network to the calling code (which is performing the unit testing). The testing process in a non blocking asynchronous environment needs a lot of help to ensure that tests are carried out in context.
 
@@ -29,15 +32,17 @@ A single unit test object would be as follows.
 	},
 	"testCases": [{
 		"id": "test_1",
-		"variablesConditions": [{
+		"variables": [{
 				"name": "totalSupply",
 				"type": "uint",
+				"getter": "getTotalSupply",
 				"preCondition": "0",
 				"postCondition": "100"
 			},
 			{
 				"name": "supplyChanged",
 				"type": "uint",
+				"getter": "getSupplyChanged",
 				"preCondition": "false",
 				"postCondition": "true"
 			}
