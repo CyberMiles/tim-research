@@ -1,6 +1,12 @@
 # Object based unit testing for blockchains
 
-This is a new idea built on the premise that unit testing against a blockchain using a non blocking asynchronious language such as Javascript is problematic. Problematic in the way that the calling code (used to perform the unit testing) executes very quickly. In contract, the data (which is crutial to the testing) endures a round-trip (the journey of firstly becoming part of the blockchain's new state and then secondly being returned from the blockchain network to the calling code (which is performing the unit testing).
+## Why object based - Timing
+This is a new idea built on the premise that unit testing against a blockchain using a non blocking asynchronious language such as Javascript is problematic. Problematic in the way that the calling code (used to perform the unit testing) executes very quickly. In contrast, the data (which is crutial to the testing) endures a round-trip (the journey of firstly becoming part of the blockchain's new state and then secondly being returned from the blockchain network to the calling code (which is performing the unit testing). The testing process in a non blocking asynchronous environment needs a lot of help to ensure that tests are carried out in context.
+
+## Why object based - Live network
+Smart contracts need to be deployed in order for us to call their functions. This means that (even if they are deployed on a test network) the testing data is live and unable to be easily "reset". On a traditional computer system, one could simply reset all variables back to zero or revert changes made by the test suite. This is not entirely possible with a blockchain network, so instead additional code would be employed to appropriately update the unit testing object to create a clean slate for testing to continue. A simple example of this would be testing the increase of tokenSupply. If the tokenSupply was increased by 100 (and could not be decreased due to the nature of the contract) then the new baseline for the second test would be 100 not zero. The result of this test being run again would obviously result in a tokenSupply of 200 (increased by 100); and so 200 would now become the new baseline and so forth.
+
+Let's take a look at a unit testing object.
 
 ## The unit testing object
 A single unit test object would be as follows.
