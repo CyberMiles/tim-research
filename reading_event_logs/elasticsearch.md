@@ -73,9 +73,13 @@ Users interact with the [Uniswap smart contract code](https://github.com/Uniswap
 
 Each of a smart contract’s functions can write one or more event logs to the blockchain. In this case, the [TokenPurchase](https://github.com/Uniswap/contracts-vyper/blob/c10c08d81d6114f694baa8bd32f555a40f6264da/contracts/uniswap_exchange.vy#L133) event is emitted.
 
+### Potential growth of smart contracts and DApps
+
 The Uniswap DApp which only 3 months old, at the time of writing, has approximately 130 daily active users, who perform almost 400 daily trades which results in a monthly turnover of approximately USD$1.5 Million [4]. 
 
 As one could imagine, being able to access all of the event log data for this DApp would be incredibly useful. Taking it a step further being able to access monitoring, alerting, reporting, graph exploration and machine learning features would be invaluable.
+
+### Potential for sourcing blockchain events
 
 At present there is only a very limited amount of dedicated blockchain data APIs available.
 
@@ -90,7 +94,7 @@ At present there is only a very limited amount of dedicated blockchain data APIs
 
 ## Elasticsearch
 
-Harvesting blockchain data using Elasticsearch is trivial. Bulk objects can be created programmatically, thanks to the consistency of the blockchain data. Here is an example of how we upload blockchain event logs using the Elasticsearch client’s bulk upload feature.
+Elasticsearch is a very well established and mature product. Harvesting blockchain data using Elasticsearch is trivial. Bulk objects can be created programmatically, thanks to the consistency of the blockchain data. Here is an example of how we upload blockchain event logs using the Elasticsearch client’s bulk upload feature.
 
 ```
 async function writeTheEventCollectionToElasticsearch(theEventCollection, eventName) {
@@ -178,7 +182,11 @@ The actual fetching of the event logs from the blockchain is also quite trivial 
     }
 }
 ```
-Elasticsearch can autodetect data field types; a feature which is highly suitable to blockchain data. This is because blockchain data, consists of mainly key:value pairs which not only represent valid JSON, but are immaculate and consistent. So what's the catch?
+Elasticsearch can autodetect data field types; a feature which is highly suitable to blockchain data. This is because blockchain data, consists of mainly key:value pairs which not only represent valid JSON, but are immaculate and consistent. 
+
+## Low to no security
+
+Public blockchain networks expose all of their data in one form or another. The Bitcoin, Ethereum and CyberMiles networks emit only open data and the underlying blockchain source code is entirely open source and publicly available. 
 
 # The road ahead - Support for blockchain data types
 
