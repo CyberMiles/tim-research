@@ -9,3 +9,12 @@ As we will discover shortly, smart contracts and DApps generate a lot of immutab
 A [new wave of blockchain data](https://medium.com/cybermiles/the-next-wave-in-blockchain-data-36e45bab246) is rising and, right now, there are big opportunities for holistic off-chain search and analytics engines such as Elasticsearch to thrive in the blockchain space. Specifically, in the areas of blockchain data-harvesting, data-interpretation, machine-learning and data-visualization.
 
 This is extremely exciting but as we will soon discover, there is a minor challenge to overcome before Elasticsearch can provide all of the aforementioned benefits to existing blockchain smart contracts and DApps.
+
+# Background
+
+## Decentralisation
+
+Blockchain networks do not have a central authority. Instead, they are decentralized.
+
+![decentralisation diagram](./images/decentralized.jpeg)
+
