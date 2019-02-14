@@ -32,15 +32,23 @@ The aforementioned data requirement of a full node obviously make it impractical
 
 Smartphones and tablets overtook Personal Computers (PCs), in terms of web traffic, for the first time in mid 2016 [2]. Given the affinity between unstructured p2p networks and decentralized blockchain architectures, it seems obvious that the current and ongoing domination of smaller personal devices in the e-commerce space is inevitable.
 
-So how can these smaller devices interact with the blockchain? Interestingly the only real prerequisite to “spending” on a blockchain network is possessing a key that can sign a transaction [3]. Nowadays, end-users can access a variety of lightweight wallet solutions, which not only store and protect end-users private keys but make it possible for these users to broadcast transaction to the blockchain network. Whilst, these [hardware wallets](https://trezor.io/), [browser extensions](https://chrome.google.com/webstore/detail/metamask-for-cmt/hmiddckbbijmdkamphkgkelnjjdkicck) and [desktop applications](https://get-scatter.com/) provide a mechanism to manage externally owned accounts (EOAs) and broadcast transactions to the blockchain, they essentially only allow end-users to transact value. 
+So how can these smaller devices interact with the blockchain? 
+
+**This is the opportunity which we spoke about at the outset.** 
+
+Before we get to far ahead of ourselves, let's take a look back and justify the need for software applications which can augment an underlying blockchain.
+
+## Spending on the blockchain
+
+Interestingly the only real prerequisite to “spending” on a blockchain network is possessing a key that can sign a transaction [3]. Nowadays, end-users can access a variety of lightweight wallet solutions, which not only store and protect end-users private keys but make it possible for these users to broadcast transaction to the blockchain network. Whilst, these [hardware wallets](https://trezor.io/), [browser extensions](https://chrome.google.com/webstore/detail/metamask-for-cmt/hmiddckbbijmdkamphkgkelnjjdkicck) and [desktop applications](https://get-scatter.com/) provide a mechanism to manage externally owned accounts (EOAs) and broadcast transactions to the blockchain, they essentially only allow end-users to transact value. 
 
 ## Scanning the blockchain
 
-It seems obvious that an end user would need to know, at the very least, how much they can spend in a given transaction. This introduces the notion of additional software applications that can provide insights into underlying blockchain data. One excellent example of such software is the original Bitcoin Core Wallet.
+It seems obvious that an end user would need to know, at the very least, how much they can spend in a given transaction. This reiterates the notion of additional software applications that can provide insights into underlying blockchain data. One excellent example of such software is the original Bitcoin Core Wallet.
 
 ![Bitcoin Core Wallet](./images/bitcoin_core_wallet.png)
 
-You may be surprised to learn that the Bitcoin blockchain does not actually store an end-user’s account balance. “The concept of a balance is created by the wallet application. The wallet calculates the user’s balance by scanning the blockchain and aggregating the value of any UTXO the wallet can spend with the keys it controls”[3]. This is the simplest example of how an application can augment a blockchain network.
+You may be surprised to learn that the Bitcoin blockchain does not actually store an end-user’s account balance. “The concept of a balance is created by the wallet application. The wallet calculates the user’s balance **by scanning the blockchain** and aggregating the value of any UTXO the wallet can spend with the keys it controls”[3]. This is perhaps the simplest example of how an application can fundamentally augment a blockchain network.
 
 ## Smart contracts
 Smart contracts and DApps take blockchain functionality to the next level, providing functionality far beyond merely transferring value. At present, and it is only early days, there are DApps which allow end-users to [create token exchanges](https://www.stateofthedapps.com/dapps/uniswap), [trade prediction markets](https://www.stateofthedapps.com/dapps/augur), [contribute to a blockchain encyclopedia](https://www.stateofthedapps.com/dapps/everipedia), play [Texas Hold’em poker](https://www.stateofthedapps.com/dapps/pokerking-texas-holdem) and even [collect and breed digital cats](https://www.stateofthedapps.com/dapps/cryptokitties). Smart contracts can generate a variety of data types including strings, booleans, integers and more. Let’s take a look at how a smart contract declares and then emits event log data.
@@ -66,6 +74,17 @@ Each of a smart contract’s functions can write one or more event logs to the b
 This DApp which only 3 months old, at the time of writing, has approximately 130 daily active users, who perform almost 400 daily trades which results in a monthly turnover of approximately USD$1.5 Million [4]. 
 
 As one could imagine, being able to access all of the event log data for this DApp would be incredibly useful. Taking it a step further being able to access monitoring, alerting, reporting, graph exploration and machine learning features would be invaluable. This is where Elasticsearch comes in!
+
+
+
+### TheGraph (Exclusive to Ethereum)
+
+At present there is only a very limited amount of dedicated blockchain data APIs available.[The Graph](https://thegraph.com/) is one such project/product which is specifically designed to work with the Ethereum blockchain. 
+
+### Demux (Exclusive to EOS)
+
+[Demux](https://github.com/EOSIO/demux-js) is a backend infrastructure pattern for sourcing blockchain events but is built exclusively for EOS.
+
 
 ## Elasticsearch
 
