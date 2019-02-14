@@ -44,8 +44,13 @@ You may be surprised to learn that the Bitcoin blockchain does not actually stor
 
 
 # References
+
 [1] https://bitcoincore.org/en/download/
+
 [2] https://www.theguardian.com/technology/2016/nov/02/mobile-web-browsing-desktop-smartphones-tablets
+
 [3] Antonopoulos, A. (2017). Mastering Bitcoin. 2nd ed. O’Reilly Media, Inc.
+
 [4] https://www.stateofthedapps.com/dapps/uniswap
+
 
