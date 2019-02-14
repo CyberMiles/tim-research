@@ -40,6 +40,12 @@ It seems obvious that an end user would need to know, at the very least, how muc
 
 ![Bitcoin Core Wallet](./images/bitcoin_core_wallet.png)
 
+You may be surprised to learn that the Bitcoin blockchain does not actually store an end-user’s account balance. “The concept of a balance is created by the wallet application. The wallet calculates the user’s balance by scanning the blockchain and aggregating the value of any UTXO the wallet can spend with the keys it controls”[3]. This is the simplest example of how an application can augment a blockchain network.
 
 
+# References
+[1] https://bitcoincore.org/en/download/
+[2] https://www.theguardian.com/technology/2016/nov/02/mobile-web-browsing-desktop-smartphones-tablets
+[3] Antonopoulos, A. (2017). Mastering Bitcoin. 2nd ed. O’Reilly Media, Inc.
+[4] https://www.stateofthedapps.com/dapps/uniswap
 
