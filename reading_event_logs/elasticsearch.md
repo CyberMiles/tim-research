@@ -42,6 +42,21 @@ It seems obvious that an end user would need to know, at the very least, how muc
 
 You may be surprised to learn that the Bitcoin blockchain does not actually store an end-user’s account balance. “The concept of a balance is created by the wallet application. The wallet calculates the user’s balance by scanning the blockchain and aggregating the value of any UTXO the wallet can spend with the keys it controls”[3]. This is the simplest example of how an application can augment a blockchain network.
 
+## Smart contracts
+Smart contracts and DApps take blockchain functionality to the next level, providing functionality far beyond merely transferring value. At present, and it is only early days, there are DApps which allow end-users to [create token exchanges](https://www.stateofthedapps.com/dapps/uniswap), [trade prediction markets](https://www.stateofthedapps.com/dapps/augur), [contribute to a blockchain encyclopedia](https://www.stateofthedapps.com/dapps/everipedia), play [Texas Hold’em poker](https://www.stateofthedapps.com/dapps/pokerking-texas-holdem) and even [collect and breed digital cats](https://www.stateofthedapps.com/dapps/cryptokitties). Smart contracts can generate a variety of data types including strings, booleans, integers and more. Let’s take a look at how a smart contract declares and then emits event log data.
+
+## Event log data
+The following is a list of event logs which are declared in one of the Uniswap Exchange Protocol’s smart contracts. 
+
+```
+TokenPurchase: event({buyer: indexed(address), eth_sold: indexed(uint256(wei)), tokens_bought: indexed(uint256)})
+EthPurchase: event({buyer: indexed(address), tokens_sold: indexed(uint256), eth_bought: indexed(uint256(wei))})
+AddLiquidity: event({provider: indexed(address), eth_amount: indexed(uint256(wei)), token_amount: indexed(uint256)})
+RemoveLiquidity: event({provider: indexed(address), eth_amount: indexed(uint256(wei)), token_amount: indexed(uint256)})
+Transfer: event({_from: indexed(address), _to: indexed(address), _value: uint256})
+Approval: event({_owner: indexed(address), _spender: indexed(address), _value: uint256})
+```
+
 
 # References
 
