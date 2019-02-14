@@ -61,6 +61,58 @@ Users interact with the [Uniswap smart contract code](https://github.com/Uniswap
 
 ![Uniswap DApp](./images/uniswap_cmt_screenshot%20(1).png)
 
+Each of a smart contract’s functions can write one or more event logs to the blockchain. In this case, the [TokenPurchase](https://github.com/Uniswap/contracts-vyper/blob/c10c08d81d6114f694baa8bd32f555a40f6264da/contracts/uniswap_exchange.vy#L133) event is emitted.
+
+This DApp which only 3 months old, at the time of writing, has approximately 130 daily active users, who perform almost 400 daily trades which results in a monthly turnover of approximately USD$1.5 Million [4]. 
+
+As one could imagine, being able to access all of the event log data for this DApp would be incredibly useful. Taking it a step further being able to access monitoring, alerting, reporting, graph exploration and machine learning features would be invaluable. This is where Elasticsearch comes in!
+
+## Elasticsearch
+
+Harvesting blockchain data using Elasticsearch is trivial. Bulk objects can be created programmatically, thanks to the consistency of the blockchain data. Here is an example of how we upload blockchain event logs using the Elasticsearch client’s bulk upload feature.
+
+```
+async function writeTheEventCollectionToElasticsearch(theEventCollection, eventName) {
+    console.log("Found theEventCollection = " + theEventCollection.length);
+    if (theEventCollection.length > 0) {
+        var bulkData = {};
+        var theBodyArray = [];
+        theEventCollection.forEach(function(obj) {
+            eventHash = web3.utils.sha3(obj.transactionHash, obj.logIndex);
+            theId = {};
+            actionDescription = {};
+            theId["_id"] = eventHash;
+            theId["_type"] = "event";
+            theId["_index"] = 'events';
+            actionDescription["index"] = theId;
+            theBodyArray.push(actionDescription);
+            theDocumentToIndex = {};
+            theDocumentToIndex["name"] = eventName;
+            theDocumentToIndex["jsonEventObject"] = obj;
+            theBodyArray.push(theDocumentToIndex);
+        });
+        if (theBodyArray.length > 0) {
+            bulkData["body"] = theBodyArray;
+            console.log("Adding the following data to the events")
+            console.log(JSON.stringify(bulkData));
+            bulkIngest(bulkData);
+        }
+    }
+}
+
+function bulkIngest(bulkData) {
+    client.bulk(bulkData, function(error, response) {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            console.log(response);
+        }
+    });
+
+}
+
+```
 
 # References
 
