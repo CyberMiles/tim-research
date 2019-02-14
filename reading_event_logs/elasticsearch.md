@@ -1,6 +1,6 @@
 # The world’s blockchain data
 
-Our world has numerous production blockchain networks which are transacting real-value in real-time. Examples of these exciting projects include [Bitcoin](https://bitcoin.org/en/), [Ethereum](https://ethereum.org/) and [CyberMiles](https://www.cybermiles.io/en-us/).
+There are numerous production blockchain networks which are transacting real-value in real-time. Examples of these exciting projects include [Bitcoin](https://bitcoin.org/en/), [Ethereum](https://ethereum.org/) and [CyberMiles](https://www.cybermiles.io/en-us/).
 
 CyberMiles is a public e-commerce blockchain which supports a global community of buyers and sellers. The CyberMiles mainnet was launched in October 2018 and since then the global CyberMiles community have been invited to create and deploy their own smart contracts and decentralized blockchain applications (DApps) on the CyberMiles blockchain.
 
@@ -8,7 +8,7 @@ As we will discover shortly, smart contracts and DApps generate a lot of immutab
 
 A [new wave of blockchain data](https://medium.com/cybermiles/the-next-wave-in-blockchain-data-36e45bab246) is rising and, right now, there are big opportunities for holistic off-chain search and analytics engines such as Elasticsearch to thrive in the blockchain space. Specifically, in the areas of blockchain data-harvesting, data-interpretation, machine-learning and data-visualization.
 
-This is extremely exciting but as we will soon discover, there is a minor challenge to overcome before Elasticsearch can provide all of the aforementioned benefits to existing blockchains, their smart contracts, and their DApps.
+This is extremely exciting. This article endeavours to explore how Elasticsearch can provide all of the aforementioned benefits to existing blockchains, their smart contracts, and their DApps.
 
 # Background
 
@@ -75,11 +75,13 @@ Each of a smart contract’s functions can write one or more event logs to the b
 
 The Uniswap DApp which only 3 months old, at the time of writing, has approximately 130 daily active users, who perform almost 400 daily trades which results in a monthly turnover of approximately USD$1.5 Million [4]. 
 
-As one could imagine, being able to access all of the event log data for this DApp would be incredibly useful. Taking it a step further being able to access monitoring, alerting, reporting, graph exploration and machine learning features would be invaluable. This is where Elasticsearch comes in!
+As one could imagine, being able to access all of the event log data for this DApp would be incredibly useful. Taking it a step further being able to access monitoring, alerting, reporting, graph exploration and machine learning features would be invaluable.
+
+At present there is only a very limited amount of dedicated blockchain data APIs available.
 
 ### TheGraph (Exclusive to Ethereum)
 
-At present there is only a very limited amount of dedicated blockchain data APIs available.[The Graph](https://thegraph.com/) is one such project/product which is specifically designed to work with the Ethereum blockchain. 
+[The Graph](https://thegraph.com/) is one such project/product which is specifically designed to work with the Ethereum blockchain. 
 
 ### Demux (Exclusive to EOS)
 
@@ -176,7 +178,11 @@ The actual fetching of the event logs from the blockchain is also quite trivial 
     }
 }
 ```
+Elasticsearch can autodetect data field types; a feature which is highly suitable to blockchain data. This is because blockchain data, consists of mainly key:value pairs which not only represent valid JSON, but are immaculate and consistent. So what's the catch?
 
+# The road ahead - Support for blockchain data types
+
+If you look closely at the event logs above you will notice that the "tokens_bought" data has 23 characters. Upon closer inspection, you will learn that blockchain data types are significantly larger than what Elasticsearch, or Lucine which underpins it can 
 
 # References
 
