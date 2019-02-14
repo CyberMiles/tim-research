@@ -114,6 +114,51 @@ function bulkIngest(bulkData) {
 
 ```
 
+The actual fetching of the event logs from the blockchain is also quite trivial thanks to pre-built libraries such as [web3js](https://github.com/CyberMiles/tim-research/blob/85b40f7bac1750db53f98344515baf833cb78d77/reading_event_logs/code/nodeJsHtml/app/server.js#L166) and [web3py](https://github.com/CyberMiles/tim-research/blob/85b40f7bac1750db53f98344515baf833cb78d77/reading_event_logs/code/python3/reading_ethereum_mainnet_event_logs.py#L25). 
+
+
+```
+{
+    "_index": "uniswap_exchange_events",
+    "_type": "event",
+    "_id": "0x9bea54018a37303ae44a2024ce0e31249f25a7be30deebb6042a0c89ce1b4369",
+    "_score": 1,
+    "_source": {
+        "name": "TokenPurchase",
+        "jsonEventObject": {
+            "address": "0xA2881A90Bf33F03E7a3f803765Cd2ED5c8928dFb",
+            "blockHash": "0x480f5544d9b69bd7e691af3b7df710301f6fae1683b71a20b027d63f23182932",
+            "blockNumber": 6899858,
+            "logIndex": 16,
+            "removed": false,
+            "transactionHash": "0xc5511f1e30d2a4f9298810c842bd547c6d3bdf66501e4c891e1be7f643aa2b3b",
+            "transactionIndex": 23,
+            "id": "log_791f598c",
+            "returnValues": {
+                "0": "0x918453d249A22b6A8535c81e21F7530CD6Ab59F1",
+                "1": "3000000000000000",
+                "2": "3307634457115859",
+                "buyer": "0x918453d249A22b6A8535c81e21F7530CD6Ab59F1",
+                "eth_sold": "400000000000000000000",
+                "tokens_bought": "11601187230900000000000"
+            },
+            "event": "TokenPurchase",
+            "signature": "0xcd60aa75dea3072fbc07ae6d7d856b5dc5f4eee88854f5b4abf7b680ef8bc50f",
+            "raw": {
+                "data": "0x",
+                "topics": [
+                    "0xcd60aa75dea3072fbc07ae6d7d856b5dc5f4eee88854f5b4abf7b680ef8bc50f",
+                    "0x000000000000000000000000918453d249a22b6a8535c81e21f7530cd6ab59f1",
+                    "0x000000000000000000000000000000000000000000000000000aa87bee538000",
+                    "0x000000000000000000000000000000000000000000000000000bc046a8dcfcd3"
+                ]
+            }
+        }
+    }
+}
+```
+
+
 # References
 
 [1] https://bitcoincore.org/en/download/
