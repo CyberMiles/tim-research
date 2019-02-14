@@ -57,6 +57,10 @@ Transfer: event({_from: indexed(address), _to: indexed(address), _value: uint256
 Approval: event({_owner: indexed(address), _spender: indexed(address), _value: uint256})
 ```
 
+Users interact with the [Uniswap smart contract code](https://github.com/Uniswap/contracts-vyper/blob/master/contracts/uniswap_exchange.vy), pictured above, by clicking buttons inside [Uniswap’s frontend DApp](https://github.com/Uniswap/uniswap-frontend), pictured below.
+
+![Uniswap DApp](./images/uniswap_cmt_screenshot%20(1).png)
+
 
 # References
 
