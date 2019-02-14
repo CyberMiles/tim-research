@@ -32,6 +32,8 @@ The aforementioned data requirement of a full node obviously make it impractical
 
 Smartphones and tablets overtook Personal Computers (PCs), in terms of web traffic, for the first time in mid 2016 [2]. Given the affinity between unstructured p2p networks and decentralized blockchain architectures, it seems obvious that the current and ongoing domination of smaller personal devices in the e-commerce space is inevitable.
 
+![Mobile Phone User](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/images/email-2056028_640.jpg)
+
 So how can these smaller devices interact with the blockchain? 
 
 **This is the opportunity which we spoke about at the outset.** 
