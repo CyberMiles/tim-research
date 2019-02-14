@@ -30,7 +30,7 @@ As an individual blockchain grows, each node is expected to store the entire his
 
 The aforementioned data requirement of a full node obviously make it impractical for smaller devices like mobile phones and handheld devices to participate as equal nodes in a given blockchain network. 
 
-Smartphones and tablets overtook Personal Computers (PCs), in terms of web traffic, for the first time in mid 2016 [2]. Given the affinity between unstructured p2p networks and decentralized blockchain architectures, it seems obvious that the current and ongoing domination of smaller personal devices in the e-commerce space is inevitable.
+Smartphones and tablets overtook Personal Computers (PCs), in terms of web traffic, for the first time in mid 2016 [2]. Given the affinity between unstructured p2p networks and decentralized blockchain architectures, it seems obvious that the current and ongoing domination of mobile and handheld devices in the e-commerce space is inevitable.
 
 ![Mobile Phone User](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/images/email-2056028_640.jpg)
 
@@ -191,6 +191,8 @@ Public blockchain networks expose all of their data in one form or another. The 
 # The road ahead - Support for blockchain data types
 
 If you look closely at the event logs above you will notice that the "tokens_bought" data has 23 characters. Upon closer inspection, you will learn that blockchain data types are significantly larger than what Elasticsearch, or Lucine which underpins it can 
+
+< https://github.com/elastic/elasticsearch/issues/38242 >
 
 # References
 
