@@ -6,12 +6,11 @@ CyberMiles is a public e-commerce blockchain which supports a global community o
 
 As we will discover shortly, smart contracts and DApps generate a lot of immutable blockchain data. Unsurprisingly, the volume of this data is set to increase, as Information Technology (IT) infrastructure moves away from traditional centralized models, and towards the new and emerging decentralised blockchain architectures.
 
-A [new wave of blockchain data](https://medium.com/cybermiles/the-next-wave-in-blockchain-data-36e45bab246) is rising and, right now, there are big opportunities for holistic off-chain search and analytics engines such as Elasticsearch to thrive in the blockchain space. Products which can assist in the areas of blockchain data-harvesting, data-interpretation, machine-learning and data-visualization will play a vital role in acheving the grand vision of the serverless internet and decentralised web. 
+A [new wave of blockchain data](https://medium.com/cybermiles/the-next-wave-in-blockchain-data-36e45bab246) is rising and, right now, there are big opportunities for holistic off-chain search and analytics engines such as Elasticsearch to thrive in the blockchain space. Products, like Elasticsearch, which can assist in the areas of blockchain data-harvesting, data-interpretation, machine-learning and data-visualization will play a vital role in acheving the grand vision of the serverless internet and the decentralised web. 
 
 In this article we will demonstrate how Elasticsearch can effortlessly harvest and process blockchain data; providing the appropriate information to blockchain DApps, in real-time and at scale. 
 
-Our research and development concludes by revealing one single, yet essential, element of Elasticsearch which can be extended, in order to accomplish impeccable blockchain interoperability.
-
+Our research and development concludes by revealing one single, yet essential, element of Elasticsearch which can be extended in order to accomplish impeccable blockchain interoperability.
 
 # Background
 
