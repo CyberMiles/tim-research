@@ -226,6 +226,6 @@ Elasticsearch is a flexible, fast and scalable solution which is strongly positi
 
 [3] Antonopoulos, A. (2017). Mastering Bitcoin. 2nd ed. O’Reilly Media, Inc.
 
-[4] hhttps://www.stateofthedapps.com/dapps/makerdao
+[4] https://www.stateofthedapps.com/dapps/makerdao
 
 [5] Antonopoulos, A. and Wood, G. (2018). Mastering Ethereum. 1st ed. O'Reilly Media, Incorporated, p.p 13.
