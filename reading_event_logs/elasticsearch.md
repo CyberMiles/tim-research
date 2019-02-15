@@ -2,13 +2,13 @@
 
 There are numerous production blockchain networks which are transacting real-value. Examples of these exciting projects include [Bitcoin](https://bitcoin.org/en/), [Ethereum](https://ethereum.org/) and [CyberMiles](https://www.cybermiles.io/en-us/).
 
-CyberMiles is a public e-commerce blockchain which supports a global community of buyers and sellers. The CyberMiles mainnet was launched in October 2018 and since then the global CyberMiles community have been invited to create and deploy their own smart contracts and decentralized blockchain applications (DApps) on the CyberMiles blockchain.
+CyberMiles is a public e-commerce blockchain which supports a global community of buyers and sellers. The CyberMiles mainnet was launched in October 2018 and since then the global CyberMiles community have been invited to create and deploy their own smart contracts and decentralized blockchain applications (DApps), on the CyberMiles blockchain.
 
 As we will discover shortly, smart contracts and DApps generate a lot of immutable blockchain data. Unsurprisingly, the volume of this data is set to increase, as Information Technology (IT) infrastructure moves away from traditional centralized models, and towards the new and emerging decentralised blockchain architectures.
 
 A [new wave of blockchain data](https://medium.com/cybermiles/the-next-wave-in-blockchain-data-36e45bab246) is rising and, right now, there are big opportunities for holistic off-chain search and analytics engines such as Elasticsearch to thrive in the blockchain space. Products, like Elasticsearch, which can assist in the areas of blockchain data-harvesting, data-interpretation, machine-learning and data-visualization will play a vital role in acheving the grand vision of the serverless internet and the decentralised web. 
 
-In this article we will demonstrate how Elasticsearch can effortlessly harvest and process blockchain data; providing the appropriate information to blockchain DApps, in real-time and at scale. 
+In this article we will demonstrate how Elasticsearch can effortlessly harvest and process blockchain data; providing the appropriate information to blockchain DApps, in real-time, and at scale. 
 
 Our research and development concludes by revealing one single, yet essential, element of Elasticsearch which can be extended in order to accomplish impeccable blockchain interoperability.
 
@@ -34,27 +34,31 @@ To put this into perspective, a new Bitcoin Core node needs to perform a one-tim
 
 The aforementioned data requirement of a full node obviously make it impractical for smaller devices like mobile phones and handheld devices to participate as equal nodes in a given blockchain network. 
 
+Mobile DApps will rely heavily on indexing services which can provide trustworthy responses to DApp queries.
+
 Smartphones and tablets overtook Personal Computers (PCs), in terms of web traffic, for the first time in mid 2016 [2] and have since then maintained unprecedented growth and adoption. Given the affinity between unstructured p2p networks and decentralized blockchain architectures, it seems obvious that the current and ongoing domination of mobile and handheld devices in the e-commerce space is inevitable.
 
 ![Mobile Phone User](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/images/email-2056028_640.jpg)
 
-A software application does not have to run as a full node in order to be able to interact with a blockchain. The only real prerequisite to transacting on a blockchain network is possessing a key that can sign a transaction [3]. Nowadays, end-users can access a variety of lightweight wallet solutions, which not only store and protect that end-user's private key but will also allow the user to broadcast transactions to the blockchain network. These solutions can come in the form of [hardware wallets](https://trezor.io/), [browser extensions](https://chrome.google.com/webstore/detail/metamask-for-cmt/hmiddckbbijmdkamphkgkelnjjdkicck) and [desktop applications](https://get-scatter.com/).
+Having reliable information means that end-users will not just be blindly broadcasting transactions to the blockchain. The more information which can be provided to DApps the better.
 
-Of course we are not recommending that a user would just blindly broadcast transactions to the blockchain. An end user will always require knowledge about the underlying blockchain and this is where the opportunity for search and analytic engines comes in. 
-
-Here is the simplest example of how a software application can provide insights into underlying blockchain data. Insights which are critical to the end-user's next move; in this case, transferring value.
+Here is the simplest example of how a software application can provide insights into underlying blockchain data. Insights which are critical to the end-user's next move; in this case, transferring value on the Bitcoin network.
 
 You may be surprised to learn that the Bitcoin blockchain does not actually store an end-user’s account balance. “The concept of a balance is created by the wallet application. The wallet calculates the user’s balance **by scanning the blockchain** and aggregating the value of any UTXO the wallet can spend with the keys it controls”[3]. Once the user is made aware of how much value they are in control of, they can go ahead and make decisions and execute transactions.
 
 ![Bitcoin Core Wallet](./images/bitcoin_core_wallet.png)
 
+We have seen many advances in wallet applications in recent times. Nowadays, end-users can access a variety of lightweight wallet solutions, which come in the form of [hardware wallets](https://trezor.io/), [browser extensions](https://chrome.google.com/webstore/detail/metamask-for-cmt/hmiddckbbijmdkamphkgkelnjjdkicck) and [desktop applications](https://get-scatter.com/).
+
 ## Smart contracts
 Smart contracts and DApps take blockchain functionality to the next level, this is where blockchain data gets very interesting. 
 
-At present, and it is only early days, there are DApps which allow end-users to [create token exchanges](https://www.stateofthedapps.com/dapps/uniswap), [trade prediction markets](https://www.stateofthedapps.com/dapps/augur), [contribute to a blockchain encyclopedia](https://www.stateofthedapps.com/dapps/everipedia), play [Texas Hold’em poker](https://www.stateofthedapps.com/dapps/pokerking-texas-holdem) and even [collect and breed digital cats](https://www.stateofthedapps.com/dapps/cryptokitties). Smart contracts can generate a variety of data types including strings, booleans, integers and more. We will now take a look at how a smart contract can declare and then emit event log data. We will then discuss the importance of this data is to DApps and end-users.
+At present, and it is only early days, there are DApps which allow end-users to [create token exchanges](https://www.stateofthedapps.com/dapps/uniswap), [trade prediction markets](https://www.stateofthedapps.com/dapps/augur), [contribute to a blockchain encyclopedia](https://www.stateofthedapps.com/dapps/everipedia), play [Texas Hold’em poker](https://www.stateofthedapps.com/dapps/pokerking-texas-holdem) and even [collect and breed digital cats](https://www.stateofthedapps.com/dapps/cryptokitties). Smart contract developers are free to capture and store many different data types in accordance with their DApps operation. The most efficient (cheapest) way to record immutable data is to emit events to the blockchain's logs.
 
-## Event log data
-The following is a list of event logs which are declared in one of the Uniswap Exchange Protocol’s smart contracts. 
+Let's take a look at how a smart contract developer declares an event inside their smart contract.
+
+## Declaring events
+The following is a list of events which have been declared in one of the Uniswap Exchange Protocol’s smart contracts. 
 
 ```
 TokenPurchase: event({buyer: indexed(address), eth_sold: indexed(uint256(wei)), tokens_bought: indexed(uint256)})
@@ -69,7 +73,66 @@ Users interact with the [Uniswap smart contract code](https://github.com/Uniswap
 
 ![Uniswap DApp](./images/uniswap_cmt_screenshot%20(1).png)
 
-Each of a smart contract’s functions can write one or more event logs to the blockchain. In this case, the [TokenPurchase](https://github.com/Uniswap/contracts-vyper/blob/c10c08d81d6114f694baa8bd32f555a40f6264da/contracts/uniswap_exchange.vy#L133) event is emitted.
+## Emitting events
+
+Each of a smart contract’s functions can emit one or more of the smart contract's declared events. Let's take a look at how an event is emitted.
+
+```
+@private
+def ethToTokenInput(eth_sold: uint256(wei), min_tokens: uint256, deadline: timestamp, buyer: address, recipient: address) -> uint256:
+    assert deadline >= block.timestamp and (eth_sold > 0 and min_tokens > 0)
+    token_reserve: uint256 = self.token.balanceOf(self)
+    tokens_bought: uint256 = self.getInputPrice(as_unitless_number(eth_sold), as_unitless_number(self.balance - eth_sold), token_reserve)
+    assert tokens_bought >= min_tokens
+    assert self.token.transfer(recipient, tokens_bought)
+    log.TokenPurchase(buyer, eth_sold, tokens_bought)
+    return tokens_bought
+```
+
+As you can see, in the second last line of the ethToTokenInput function, this smart contract is emitting the TokenPurchase event. Specifically, writing the buyer's address, amount of Eth sold and the amount of tokens bought.
+
+## Reading event logs
+
+The event log data which is stored in the blockchain is as follows. You will see that this blockchain data is valid JSON. 
+
+```
+{
+	"address": "0xA2881A90Bf33F03E7a3f803765Cd2ED5c8928dFb",
+	"blockHash": "0x480f5544d9b69bd7e691af3b7df710301f6fae1683b71a20b027d63f23182932",
+	"blockNumber": 6899858,
+	"logIndex": 16,
+	"removed": false,
+	"transactionHash": "0xc5511f1e30d2a4f9298810c842bd547c6d3bdf66501e4c891e1be7f643aa2b3b",
+	"transactionIndex": 23,
+	"id": "log_791f598c",
+	"returnValues": {
+		"buyer": "0x918453d249A22b6A8535c81e21F7530CD6Ab59F1",
+		"eth_sold": "400000000000000000000",
+		"tokens_bought": "11601187230900000000000"
+	},
+	"event": "TokenPurchase",
+	"signature": "0xcd60aa75dea3072fbc07ae6d7d856b5dc5f4eee88854f5b4abf7b680ef8bc50f",
+	"raw": {
+		"data": "0x",
+		"topics": [
+			"0xcd60aa75dea3072fbc07ae6d7d856b5dc5f4eee88854f5b4abf7b680ef8bc50f",
+			"0x000000000000000000000000918453d249a22b6a8535c81e21f7530cd6ab59f1",
+			"0x000000000000000000000000000000000000000000000000000aa87bee538000",
+			"0x000000000000000000000000000000000000000000000000000bc046a8dcfcd3"
+		]
+	}
+}
+```
+
+If you look closely, you will notice the nested "returnValues" object where the buyer, eth_sold and tokens_bought data is stored. You will again notice that this is also valid JSON in itself. Perfectly formed key:value pairs, exactly what Elasticsearch loves.
+
+```
+{
+	"buyer": "0x918453d249A22b6A8535c81e21F7530CD6Ab59F1",
+	"eth_sold": "400000000000000000000",
+	"tokens_bought": "11601187230900000000000"
+}
+```
 
 ### Potential growth of smart contracts and DApps
 
@@ -158,9 +221,6 @@ The actual fetching of the event logs from the blockchain is also quite trivial 
             "transactionIndex": 23,
             "id": "log_791f598c",
             "returnValues": {
-                "0": "0x918453d249A22b6A8535c81e21F7530CD6Ab59F1",
-                "1": "3000000000000000",
-                "2": "3307634457115859",
                 "buyer": "0x918453d249A22b6A8535c81e21F7530CD6Ab59F1",
                 "eth_sold": "400000000000000000000",
                 "tokens_bought": "11601187230900000000000"
@@ -207,8 +267,11 @@ If you look closely at the event logs above you will notice that the "tokens_bou
 
 to discover how, let's start by only discussing the transferring of a blockchain's native currency (network token). Soon after this, we will also move on to the broader topic of smart contracts which bring about more complex data types, more complex storage and improved functionality.
 
+A software application does not have to run as a full node in order to be able to interact with a blockchain. The only real prerequisite to transacting on a blockchain network is possessing a key that can sign a transaction [3]. 
 
+Of course we are not recommending that a user would just blindly broadcast transactions to the blockchain. An end user will always require knowledge about the underlying blockchain and this is where the opportunity for search and analytic engines comes in. 
 
 This is perhaps the simplest example of how an application can fundamentally augment a blockchain network.
 
-
+# security
+public information data can be stored openly by many and varied parties and can also be verified randomly
