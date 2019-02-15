@@ -1,14 +1,16 @@
 # The world’s blockchain data
 
-There are numerous production blockchain networks which are transacting real-value in real-time. Examples of these exciting projects include [Bitcoin](https://bitcoin.org/en/), [Ethereum](https://ethereum.org/) and [CyberMiles](https://www.cybermiles.io/en-us/).
+There are numerous production blockchain networks which are transacting real-value. Examples of these exciting projects include [Bitcoin](https://bitcoin.org/en/), [Ethereum](https://ethereum.org/) and [CyberMiles](https://www.cybermiles.io/en-us/).
 
 CyberMiles is a public e-commerce blockchain which supports a global community of buyers and sellers. The CyberMiles mainnet was launched in October 2018 and since then the global CyberMiles community have been invited to create and deploy their own smart contracts and decentralized blockchain applications (DApps) on the CyberMiles blockchain.
 
 As we will discover shortly, smart contracts and DApps generate a lot of immutable blockchain data. Unsurprisingly, the volume of this data is set to increase, as Information Technology (IT) infrastructure moves away from traditional centralized models, and towards the new and emerging decentralised blockchain architectures.
 
-A [new wave of blockchain data](https://medium.com/cybermiles/the-next-wave-in-blockchain-data-36e45bab246) is rising and, right now, there are big opportunities for holistic off-chain search and analytics engines such as Elasticsearch to thrive in the blockchain space. Products which can assist in the areas of blockchain data-harvesting, data-interpretation, machine-learning and data-visualization will play a vital role in acheving the grand vision of the serverless internet and decentralised web. This article will demonstrate how Elasticsearch can easily harvest blockchain data and provide valuable information to  decentralized applications (DApps) in real-time. 
+A [new wave of blockchain data](https://medium.com/cybermiles/the-next-wave-in-blockchain-data-36e45bab246) is rising and, right now, there are big opportunities for holistic off-chain search and analytics engines such as Elasticsearch to thrive in the blockchain space. Products which can assist in the areas of blockchain data-harvesting, data-interpretation, machine-learning and data-visualization will play a vital role in acheving the grand vision of the serverless internet and decentralised web. 
 
-We have performed a great deal of research and development, integrating Elasticsearch with the CyberMiles public blockchain. Our findings have been incredibly positive. However, there has been one interesting barrier which we would like to unpack and share in this article. In short, our research discovered that there is a blockchain data type which Elasticsearch does not support in its native format. We will get to that shortly, but first a little background.
+In this article we will demonstrate how Elasticsearch can effortlessly harvest and process blockchain data; providing the appropriate information to blockchain DApps, in real-time and at scale. 
+
+Our research and development concludes by revealing one single, yet essential, element of Elasticsearch which can be extended, in order to accomplish impeccable blockchain interoperability.
 
 
 # Background
