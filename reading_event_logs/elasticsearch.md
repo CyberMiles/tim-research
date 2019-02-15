@@ -198,7 +198,7 @@ If you look closely, at the data which we read from the blockchain in the previo
 
 It is only at this depth and level of detail that we can see the incompatability between the blockchain's data and Elasticsearch's integer data types. The largest numerical data type available in Elasticsearch is "long". Long is a signed 64-bit integer with a minimum value of -2 ^ 63 and a maximum value of 2 ^ 63 -1. These upper and lower bounds can be represented as whole numbers like this -9,223,372,036,854,775,808 through to 9,223,372,036,854,775,807.
 
-We mentioned just before that Elasticsearch is capable of autodetecting data types. What we discovered is that Elasticsearch indexes blockchain unsigned integers as strings. This is because their values can exceed the length of all available Elasticsearch integer types.
+We mentioned just before that Elasticsearch is capable of autodetecting data types. What we discovered is that Elasticsearch indexes blockchain unsigned integers as strings. This is because the blockchain interger values can exceed the length of all available Elasticsearch integer types.
 
 ## Blockchain data types
 
