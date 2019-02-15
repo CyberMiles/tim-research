@@ -38,18 +38,20 @@ Smartphones and tablets overtook Personal Computers (PCs), in terms of web traff
 
 ![Mobile Phone User](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/images/email-2056028_640.jpg)
 
-Independant software applications are able to interact with a blockchain, to discover how, let's start by only discussing the transferring of a blockchain's native currency (network token). Soon after this, we will also move on to the broader topic of smart contracts which bring about more complex data types, more complex storage and improved functionality.
+A software application does not have to run as a full node in order to be able to interact with a blockchain. The only real prerequisite to transacting on a blockchain network is possessing a key that can sign a transaction [3]. Nowadays, end-users can access a variety of lightweight wallet solutions, which not only store and protect that end-user's private key but will also allow the user to broadcast transactions to the blockchain network. These solutions can come in the form of [hardware wallets](https://trezor.io/), [browser extensions](https://chrome.google.com/webstore/detail/metamask-for-cmt/hmiddckbbijmdkamphkgkelnjjdkicck) and [desktop applications](https://get-scatter.com/).
 
-Software applications can provide insights into underlying blockchain data and can also create and broadcast transactions on a given blockchain. You may be surprised to learn that the Bitcoin blockchain does not actually store an end-user’s account balance. “The concept of a balance is created by the wallet application. The wallet calculates the user’s balance **by scanning the blockchain** and aggregating the value of any UTXO the wallet can spend with the keys it controls”[3]. 
+Of course we are not recommending that a user would just blindly broadcast transactions to the blockchain. An end user will always require knowledge about the underlying blockchain and this is where the opportunity for search and analytic engines comes in. 
+
+Here is the simplest example of how a software application can provide insights into underlying blockchain data. Insights which are critical to the end-user's next move; in this case, transferring value.
+
+You may be surprised to learn that the Bitcoin blockchain does not actually store an end-user’s account balance. “The concept of a balance is created by the wallet application. The wallet calculates the user’s balance **by scanning the blockchain** and aggregating the value of any UTXO the wallet can spend with the keys it controls”[3]. Once the user is made aware of how much value they are in control of, they can go ahead and make decisions and execute transactions.
 
 ![Bitcoin Core Wallet](./images/bitcoin_core_wallet.png)
 
-This is perhaps the simplest example of how an application can fundamentally augment a blockchain network.
-
-In order to transact value on a blockchain network, the only real prerequisite is possessing a key that can sign a transaction [3]. Nowadays, end-users can access a variety of lightweight wallet solutions, which not only store and protect that end-user's private key but will also allow the user to broadcast transactions to the blockchain network. These solutions can come in the form of [hardware wallets](https://trezor.io/), [browser extensions](https://chrome.google.com/webstore/detail/metamask-for-cmt/hmiddckbbijmdkamphkgkelnjjdkicck) and [desktop applications](https://get-scatter.com/).
-
 ## Smart contracts
-Smart contracts and DApps take blockchain functionality to the next level, providing functionality which is only limited by the imagination. At present, and it is only early days, there are DApps which allow end-users to [create token exchanges](https://www.stateofthedapps.com/dapps/uniswap), [trade prediction markets](https://www.stateofthedapps.com/dapps/augur), [contribute to a blockchain encyclopedia](https://www.stateofthedapps.com/dapps/everipedia), play [Texas Hold’em poker](https://www.stateofthedapps.com/dapps/pokerking-texas-holdem) and even [collect and breed digital cats](https://www.stateofthedapps.com/dapps/cryptokitties). Smart contracts can generate a variety of data types including strings, booleans, integers and more. We will now take a look at how a smart contract can declare and then emit event log data. We will then discuss the importance of this data is to DApps and end-users.
+Smart contracts and DApps take blockchain functionality to the next level, this is where blockchain data gets very interesting. 
+
+At present, and it is only early days, there are DApps which allow end-users to [create token exchanges](https://www.stateofthedapps.com/dapps/uniswap), [trade prediction markets](https://www.stateofthedapps.com/dapps/augur), [contribute to a blockchain encyclopedia](https://www.stateofthedapps.com/dapps/everipedia), play [Texas Hold’em poker](https://www.stateofthedapps.com/dapps/pokerking-texas-holdem) and even [collect and breed digital cats](https://www.stateofthedapps.com/dapps/cryptokitties). Smart contracts can generate a variety of data types including strings, booleans, integers and more. We will now take a look at how a smart contract can declare and then emit event log data. We will then discuss the importance of this data is to DApps and end-users.
 
 ## Event log data
 The following is a list of event logs which are declared in one of the Uniswap Exchange Protocol’s smart contracts. 
@@ -199,5 +201,14 @@ If you look closely at the event logs above you will notice that the "tokens_bou
 [3] Antonopoulos, A. (2017). Mastering Bitcoin. 2nd ed. O’Reilly Media, Inc.
 
 [4] https://www.stateofthedapps.com/dapps/uniswap
+
+
+# DRAFT
+
+to discover how, let's start by only discussing the transferring of a blockchain's native currency (network token). Soon after this, we will also move on to the broader topic of smart contracts which bring about more complex data types, more complex storage and improved functionality.
+
+
+
+This is perhaps the simplest example of how an application can fundamentally augment a blockchain network.
 
 
