@@ -34,11 +34,11 @@ To put this into perspective, a new Bitcoin Core node needs to perform a one-tim
 
 The aforementioned data requirement of a full node obviously make it impractical for smaller devices like mobile phones and handheld devices to participate as equal nodes in a given blockchain network. 
 
-Mobile DApps will rely heavily on indexing services which can provide trustworthy responses to DApp queries.
-
 Smartphones and tablets overtook Personal Computers (PCs), in terms of web traffic, for the first time in mid 2016 [2] and have since then maintained unprecedented growth and adoption. Given the affinity between unstructured p2p networks and decentralized blockchain architectures, it seems obvious that the current and ongoing domination of mobile and handheld devices in the e-commerce space is inevitable.
 
 ![Mobile Phone User](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/images/email-2056028_640.jpg)
+
+Mobile blockchain DApps will rely heavily on indexing services which can provide trustworthy responses to DApp queries.
 
 Having reliable information means that end-users will not just be blindly broadcasting transactions to the blockchain. The more information which can be provided to DApps the better.
 
