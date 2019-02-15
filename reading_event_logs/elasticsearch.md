@@ -133,6 +133,15 @@ If you look closely, you will notice the nested "returnValues" object where the 
 	"tokens_bought": "11601187230900000000000"
 }
 ```
+# Elasticsearch data types
+
+It is only at this depth and level of detail that we can see the incompatability between the blockchain's data and Elasticsearch's integer data types. The largest numerical data type available in Elasticsearch is "long". Long is a signed 64-bit integer with a minimum value of -2 ^ 63 and a maximum value of 2 ^ 63 -1. These upper and lower bounds can be represented as whole numbers like this -9,223,372,036,854,775,808 through to 9,223,372,036,854,775,807.
+
+# Blockchain data types
+
+"Ether is subdivided into smaller units, down to the smallest unit possible, which is named wei. One ether is 1 quintillion wei (1 * 1018 or 1,000,000,000,000,000,000)"[5]. Although DApps and wallet software may represent network tokens in a more human readable format the actual value is **always** represented internally as an unsigned integer value with 18 decimal places. For example, when you transact 1 unit, the transaction encodes 1000000000000000000 as the value which is stored in the blockchain. As another example, if you transact 400 units the transaction encodes 400000000000000000000; again, this is the actual value which is stored in the blockchain.
+
+The largest integer which a blockchain stores is an unsigned integer uint256. An unsigned integer with a maximum value of 2 ^ 256 -1. This upper bound can be represented by the following while number 115792089237316195423570985008687907853269984665640564039457584007913129639935.
 
 ### Potential growth of smart contracts and DApps
 
@@ -261,6 +270,8 @@ If you look closely at the event logs above you will notice that the "tokens_bou
 [3] Antonopoulos, A. (2017). Mastering Bitcoin. 2nd ed. O’Reilly Media, Inc.
 
 [4] https://www.stateofthedapps.com/dapps/uniswap
+
+[5] Antonopoulos, A. and Wood, G. (2018). Mastering Ethereum. 1st ed. O'Reilly Media, Incorporated, p.p 13.
 
 
 # DRAFT
