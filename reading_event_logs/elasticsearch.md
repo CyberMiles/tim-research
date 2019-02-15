@@ -212,18 +212,11 @@ It is not possible to perform logical operations on the blockchain network token
 
 This is also an issue when using data visualization software such as Kibana. For example, we are unable to create filters based on basic arithmetic and comparison operators.
 
-## The importance of facilitating support for financial DApps
+## Conclusion
 
-We mentioned a few DApps above. What we did not mention is that some blockchain DApps such as the Uniswap DApp have met with explosive growth, since being deployed. For example Uniswap, which only 3 months old at the time of writing, has approximately 130 daily active users, who perform almost 400 daily trades turning over over USD$1.5 Million [4] per month.
+Blockchain DApps can launch with and sustain explosive growth, in some cases turning over millions of dollars per month [4]. There are only a very limited amount of software applications which are designed to support the DApps of the future and their associated data. [The Graph](https://thegraph.com/) is one project but is specifically designed to work with the Ethereum blockchain. [Demux](https://github.com/EOSIO/demux-js) is another project which is similar in operation (backend infrastructure for sourcing blockchain events), however Demux is blockchain exclusive, built specifically for the EOS blockchain.
 
-### TheGraph (Exclusive to Ethereum)
-
-[The Graph](https://thegraph.com/) is one such project/product which is specifically designed to work with the Ethereum blockchain. 
-
-### Demux (Exclusive to EOS)
-
-[Demux](https://github.com/EOSIO/demux-js) is a backend infrastructure pattern for sourcing blockchain events but is built exclusively for EOS.
-
+Elasticsearch is a flexible, fast and scalable solution which is strongly positioned to provide the ultimate data ecosystem for all blockchain DApps. Before we conclude it is important to note that blockchain data is completely open and public. This removes the need to implement any authentication and/or access control when creating a public facing software solution (API) for future DApp builders.
 
 # References
 
@@ -233,20 +226,6 @@ We mentioned a few DApps above. What we did not mention is that some blockchain 
 
 [3] Antonopoulos, A. (2017). Mastering Bitcoin. 2nd ed. O’Reilly Media, Inc.
 
-[4] https://www.stateofthedapps.com/dapps/uniswap
+[4] hhttps://www.stateofthedapps.com/dapps/makerdao
 
 [5] Antonopoulos, A. and Wood, G. (2018). Mastering Ethereum. 1st ed. O'Reilly Media, Incorporated, p.p 13.
-
-
-# DRAFT
-
-to discover how, let's start by only discussing the transferring of a blockchain's native currency (network token). Soon after this, we will also move on to the broader topic of smart contracts which bring about more complex data types, more complex storage and improved functionality.
-
-A software application does not have to run as a full node in order to be able to interact with a blockchain. The only real prerequisite to transacting on a blockchain network is possessing a key that can sign a transaction [3]. 
-
-Of course we are not recommending that a user would just blindly broadcast transactions to the blockchain. An end user will always require knowledge about the underlying blockchain and this is where the opportunity for search and analytic engines comes in. 
-
-This is perhaps the simplest example of how an application can fundamentally augment a blockchain network.
-
-# security
-public information data can be stored openly by many and varied parties and can also be verified randomly
