@@ -89,7 +89,7 @@ def ethToTokenInput(eth_sold: uint256(wei), min_tokens: uint256, deadline: times
     return tokens_bought
 ```
 
-As you can see, in the second last line of the ethToTokenInput function, this smart contract is emitting the TokenPurchase event. Specifically, writing the buyer's address, amount of Eth sold and the amount of tokens bought.
+As you can see, in the second last line of the ethToTokenInput function, this smart contract is emitting the TokenPurchase event. Specifically, writing the buyer's address, amount of eth_sold and the amount of tokens_bought.
 
 
 ## Reading events from the blockchain
@@ -208,13 +208,13 @@ The largest integer which a blockchain stores is an unsigned integer uint256. An
 
 ## The issue at hand
 
-It is not possible to perform logical operations on the blockchain network token data, due to the fact that they can only be stored as strings inside Elasticsearch. More specifically, these important numerical values do not respond to basic arithmetic operators such as addition (+), subtraction (-) or comparison operators such as equal-to (=), greater-than (>), less-than (<) and so forth.
+Essentially, [the issue](https://github.com/elastic/elasticsearch/issues/38242) is more of a feature request; one which will enable Elasticsearch to support blockchain data types. Without this feature being implemented it is not possible to perform logical operations on blockchain data. This is because, the all important integer values can only be stored as strings inside Elasticsearch. More specifically, these important numerical values which represent immense value to end-users, do not respond to basic arithmetic operators such as addition (+), subtraction (-) or comparison operators such as equal-to (=), greater-than (>), less-than (<) and so forth.
 
 This is also an issue when using data visualization software such as Kibana. For example, we are unable to create filters based on basic arithmetic and comparison operators.
 
 ## Conclusion
 
-Blockchain DApps can launch with and sustain explosive growth, in some cases turning over millions of dollars per month [4]. There are only a very limited amount of software applications which are designed to support the DApps of the future and their associated data. [The Graph](https://thegraph.com/) is one project but is specifically designed to work with the Ethereum blockchain. [Demux](https://github.com/EOSIO/demux-js) is another project which is similar in operation (backend infrastructure for sourcing blockchain events), however Demux is blockchain exclusive, built specifically for the EOS blockchain.
+Blockchain DApps can launch with, and sustain, explosive growth. In some cases turning over millions of dollars per month [4]. There are only a very limited amount of software applications which are designed to support the DApps of the future. [The Graph](https://thegraph.com/) is one such project, however it is specifically designed to only work with the Ethereum blockchain. [Demux](https://github.com/EOSIO/demux-js) is another project which is similar in operation (backend infrastructure for sourcing blockchain events), however Demux is also blockchain exclusive, built specifically for the EOS blockchain.
 
 Elasticsearch is a flexible, fast and scalable solution which is strongly positioned to provide the ultimate data ecosystem for all blockchain DApps. Before we conclude it is important to note that blockchain data is completely open and public. This removes the need to implement any authentication and/or access control when creating a public facing software solution (API) for future DApp builders.
 
