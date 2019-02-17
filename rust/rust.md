@@ -129,6 +129,23 @@ The Cargo.toml file will not update. You can update it yourself if you want to b
 rand = "0.4.0" // Now the cargo update will upgrade and resolve all dependencies from 0.4.0 to but NOT including 0.5.x
 ```
 
+The above change to the Cargo.toml file and the execution of the cargo update command produced the following result in the Cargo.lock file. Note the **version = "0.4.6"**
+```
+[[package]]
+name = "rand"
+version = "0.4.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "fuchsia-cprng 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "libc 0.2.48 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rand_core 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rdrand 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "winapi 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+```
+
+
+
 
 #### Binary crate
 
