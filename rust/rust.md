@@ -48,3 +48,20 @@ Execute the release
 ```
 ./target/release/hello_cargo
 ```
+### Syntax
+Calling a Macro
+```
+println!
+```
+Calling a function
+```
+println
+```
+Variables are immutable by default
+```
+let foo = 5; // Immutable
+```
+Create a mutable variable using mut
+```
+let mut bar = 5;
+```
