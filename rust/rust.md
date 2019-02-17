@@ -123,6 +123,12 @@ for i in &v {
 }
 ```
 
+#### Constants
+Constants are there to provide information to the developer who is auditing the code (explicit). You might think that a constant is just like a standard variable which is immutable but constants have to have their type declared explicitly and also they can be all caps by convention to help programmers understand what the code is doing.
+```
+const MAX_POINTS: u32 = 100000;
+```
+
 ### Crates
 
 Crates are libraries which you can import into your application. Obviously you will not know what functions are available for each crate. You can use the following command to generate documentation specific to your programs crates and their installed dependencies.
