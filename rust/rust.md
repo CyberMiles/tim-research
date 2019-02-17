@@ -70,15 +70,27 @@ Note: References are immutable by default!
 doSomething(&mut foo)
 ```
 #### Variable mutability
-
+##### Immutable
 Variables are immutable by default
 ```
 let foo = 5; // Immutable
 ```
+##### Mutable
 Create a mutable variable using mut
 ```
 let mut bar = 5;
 ```
+Now that the variable is mutable, we can change its value like this (NOT using the let keyword).
+```
+bar = 10;
+```
+#### Variable shadowing
+A variable can be shadowed; creating a new variable (even using a different type) whilst using the same variable name. You can't just use mut and change the type of a variable with the same name, you must shadow. This reduces the amount of names that you have to create in your code i.e. _spaces_string vs _spaces_lenth.
+```
+let _spaces = "   ";
+let _spaces = _spaces.len();
+```
+
 #### Printing
 Print variable (string literal)
 ```
