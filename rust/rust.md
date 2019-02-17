@@ -69,7 +69,7 @@ Note: References are immutable by default!
 ```
 doSomething(&mut foo)
 ```
-#### Variables
+#### Variable mutability
 
 Variables are immutable by default
 ```
@@ -79,10 +79,7 @@ Create a mutable variable using mut
 ```
 let mut bar = 5;
 ```
-Create a mutable variable which is bound to new, but empty, instance of String
-```
-let mut emptyString = String::new();
-```
+#### Printing
 Print variable (string literal)
 ```
 println!("{}", foo); // Prints 5
@@ -90,6 +87,24 @@ println!("{}", foo); // Prints 5
 Print more than one
 ```
 println!("Foo is {} and bar is {}", foo, bar);
+```
+#### Strings
+Probably don't use
+```
+let s = String::new();
+let data = "initial contents";
+let s = data.to_string();
+```
+Or, probably don't use
+```
+let _s = String::new();
+let _s = "initial contents".to_string();
+println!("{}",_s);
+```
+Instead, use 
+```
+let s = String::from("initial contents");
+println!("{}", s);
 ```
 
 #### Vectors
