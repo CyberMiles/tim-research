@@ -93,6 +93,12 @@ println!("Foo is {} and bar is {}", foo, bar);
 ```
 ### Crates
 
+Crates are libraries which you can import into your application. Obviously you will not know what functions are available for each crate. You can use the following command to generate documentation specific to your programs crates and their installed dependencies.
+```
+cargo doc --open
+```
+Once youe browser displays the documentation, go ahead and click on the crate in the left side bar i.e. rand
+
 #### Library crate
 
 Library crate is a crate that contains code which is intended to be used in other programs.
