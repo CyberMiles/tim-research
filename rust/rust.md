@@ -91,6 +91,23 @@ Print more than one
 ```
 println!("Foo is {} and bar is {}", foo, bar);
 ```
+
+#### Vectors
+Create a vector and push values
+```
+let mut v = Vec::new();
+for x in 0..100000{
+	   v.push(x);
+	   println!("Adding {}", x);
+}
+```
+Read the values of the vector
+```
+for i in &v {
+    println!("Reading {}", i)
+}
+```
+
 ### Crates
 
 Crates are libraries which you can import into your application. Obviously you will not know what functions are available for each crate. You can use the following command to generate documentation specific to your programs crates and their installed dependencies.
@@ -149,9 +166,6 @@ dependencies = [
  "winapi 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 ```
-
-
-
 
 #### Binary crate
 
