@@ -87,3 +87,7 @@ Print variable (string literal)
 ```
 println!("{}", foo); // Prints 5
 ```
+Print more than one
+```
+println!("Foo is {} and bar is {}", foo, bar);
+```
