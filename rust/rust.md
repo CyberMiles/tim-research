@@ -49,14 +49,28 @@ Execute the release
 ./target/release/hello_cargo
 ```
 ### Syntax
-Calling a Macro
+
+#### Macro
+
+Calling a Macro (requires !)
 ```
-println!
+myMacro!
 ```
-Calling a function
+
+#### Function
+
+Calling a function (no !)
 ```
-println
+myFunction()
 ```
+Function arguments
+Use & to make argument by reference, use &mut to make the reference mutable i.e. allow function change foo's contents.
+Note: References are immutable by default!
+```
+doSomething(&mut foo)
+```
+#### Variables
+
 Variables are immutable by default
 ```
 let foo = 5; // Immutable
@@ -64,4 +78,12 @@ let foo = 5; // Immutable
 Create a mutable variable using mut
 ```
 let mut bar = 5;
+```
+Create a mutable variable which is bound to new, but empty, instance of String
+```
+let mut emptyString = String::new();
+```
+Print variable (string literal)
+```
+println!("{}", foo); // Prints 5
 ```
