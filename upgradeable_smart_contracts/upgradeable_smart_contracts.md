@@ -33,6 +33,8 @@ Let's say that we wanted to keep that contract deployed (because it was being ca
 Consider the following example of an upgraded contract. As you can see the templateLogic1 function now multiplies a by 2 (instead of just increasing a by 1).
 
 ```
+pragma lity ^1.2.3;
+
 // Contract Template
 contract Template {
     event LogA(safeuint valueOfA);
