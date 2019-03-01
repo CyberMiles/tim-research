@@ -38,15 +38,21 @@ pragma lity ^1.2.3;
 // Contract Template
 contract Template {
     event LogA(safeuint valueOfA);
-    safeuint a;
-    function templateLogic1(){
+    safeuint a = 1;
+    function templateLogic1() public{
         a = a * 2;
         emit LogA(a);
     }
 }
 ```
+You can see this is correct by inspecting the logs
+```
+"valueOfA": "2",
+
+"valueOfA": "4",
+```
 
 We now have the original contract deployed at [this address 0x522a498d1ca7fa277f605110929393eba04f772d](https://testnet.cmttracking.io/address/0x522a498d1ca7fa277f605110929393eba04f772d)
 
-We also have the upgraded contract deployed at [this address 0x5b7f986aae23b4741cdea6df624f3a26e65521be](https://testnet.cmttracking.io/address/0x5b7f986aae23b4741cdea6df624f3a26e65521be)
+We also have the upgraded contract deployed at [this address 0x81f463598b4f9805d472a7a595f77ad9225fcaed](https://testnet.cmttracking.io/address/0x81f463598b4f9805d472a7a595f77ad9225fcaed)
 
