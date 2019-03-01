@@ -140,6 +140,33 @@ Constants are there to provide information to the developer who is auditing the 
 ```
 const MAX_POINTS: u32 = 100000;
 ```
+#### Tuples (are fixed size at declaration)
+##### Destructuring
+```
+let tup = (500, 6.4, 1);
+let (x, y, z) = tup;
+println!("The value of y is: {}", y); // prints The value of y is: 6.4
+```
+##### Dot notation
+```
+let x: (i32, f64, u8) = (500, 6.4, 1);
+let five_hundred = x.0; // First element is zero 0 which holds the value of 500
+```
+
+#### Arrays - (are fixed size at declaration)
+Useful when you want your data allocated on the stack rather than the heap.
+Useful when your data is of a fized size like the following months of the year.
+```
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+```
+All elements have the same type and so you explicitly define type once like this
+```
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+let first = a[0]; // First element in the a array will have the value of 1
+let out = a[10] // This will not produce undefined behaviour, instead it will panic at runtime (which other languages don't offer).
+```
+
+#### Vectors (are dynamic at runtime) TODO test if you can still access removed element using bracket notation (as is the case with c++ i.e. a.[3] when 3 does not exist)
 
 ### Crates
 
@@ -204,3 +231,6 @@ dependencies = [
 
 A binary crate is an executable, like the hello_cargo application which you wrote
 
+### The stack (TODO)
+
+### The heap (TODO)
