@@ -52,7 +52,13 @@ You can see this is correct by inspecting the logs
 "valueOfA": "4",
 ```
 
+The problem with deploying a second contract is that we now just have two individual contracts (that don't know about each other) deployed at two different addresses.
+
 We now have the original contract deployed at [this address 0x522a498d1ca7fa277f605110929393eba04f772d](https://testnet.cmttracking.io/address/0x522a498d1ca7fa277f605110929393eba04f772d)
 
 We also have the upgraded contract deployed at [this address 0x81f463598b4f9805d472a7a595f77ad9225fcaed](https://testnet.cmttracking.io/address/0x81f463598b4f9805d472a7a595f77ad9225fcaed)
+
+## CyberMiles Upgrade Operation
+
+
 
