@@ -2,7 +2,7 @@
 
 ##  Existing upgradeable smart contracts
 
-A short while ago, we explored the [Gemini Dollar's smart contract layout](https://github.com/CyberMiles/tim-research/blob/master/gemini_dollar/gemini_dollar.asciidoc#gemini-dollar).
+A short while ago, we explored the [Gemini Dollar's smart contract layout](https://github.com/CyberMiles/tim-research/blob/master/gemini_dollar/gemini_dollar.asciidoc#gemini-dollar). We inspected [the code](https://etherscan.io/address/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd#code) that was published on Etherscan and learned that Gemini consists of 3 separate contracts ERC20Proxy, ERC20Impl and ERC20Store.
 
 ## CyberMiles upgradeable smart contracts
 
