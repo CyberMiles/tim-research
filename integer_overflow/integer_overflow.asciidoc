@@ -1,5 +1,9 @@
 = Integer Overflow
 
+UPDATE: My newer article, published on HackerNoon, which clears everything up.
+https://hackernoon.com/exploding-rockets-millions-of-free-tokens-lets-take-a-good-look-at-integer-overflows-2800794e48d9[https://hackernoon.com/exploding-rockets-millions-of-free-tokens-lets-take-a-good-look-at-integer-overflows-2800794e48d9]
+
+
 Disclaimer: This information is based on my personal understanding of integer overflows in code. This document offers no advice nor opinions. This document has only been produced to exercise my personal understanding; it serves as a place to jot down my notes to prompt my thinking.
 
 == Testing multiplication of numbers
@@ -117,23 +121,10 @@ Interestingly though, the following call to the multiply function demonstrates t
 0
 ----
 
-== Solutions
 
-My personal testing (on Ethereum's Rinkeby test network) against other Solidity multiplication functions found https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol[here] and https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/utility/Utils.sol[here] still seem to return a value of zero, as shown above. I would love to provide a solution to the following question.
+I wrote an article on HackerNoon which goes into details about this and shows how CyberMiles prevents integer overflows.
 
-[source, bash]
-----
-If one multiplied by 
-57896044618658097711785492504343953926634992332820282019728792003956564819968 
-equals 
-57896044618658097711785492504343953926634992332820282019728792003956564819968 
-then how can two multiplied by 
-57896044618658097711785492504343953926634992332820282019728792003956564819968
-equal
-zero?
-----
-
-
+https://hackernoon.com/exploding-rockets-millions-of-free-tokens-lets-take-a-good-look-at-integer-overflows-2800794e48d9
 
 
 
