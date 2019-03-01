@@ -1,6 +1,8 @@
 # tim-research
 A collection of research and development performed and written up by @tpmccallum
 
+- [Upgradeable Smart Contracts](https://github.com/CyberMiles/tim-research/blob/master/upgradeable_smart_contracts/upgradeable_smart_contracts.md)
+
 - [Reading Event Logs](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/reading_event_logs.md)
 
 - [Uniswap](https://github.com/CyberMiles/uniswap-frontend/blob/master/documentation/deploying_uniswap.md)
