@@ -49,6 +49,24 @@ Execute the release
 ./target/release/hello_cargo
 ```
 ### Syntax
+Rust code uses snake case as the conventional style for function and variable names.
+
+Statements are instructions that perform some action and do not return (evaluate to) a value!
+
+Expressions are instructions that evaluate to a resulting value!
+Calling a function is an expression.
+Calling a macro is an expression.
+```
+fn main() {
+    let x = plus_one(5);
+    println!("The value of x is: {}", x);
+}
+
+fn plus_one(x: i32) -> i32 {
+    x + 1 // This Expression evaluates to (returns) a value of type i32
+    x + 1; // This (with the added ;) is a Statement which does not evaluate (return to) a value. This will result in an error
+}
+```
 
 #### Macro
 
@@ -58,11 +76,20 @@ myMacro!
 ```
 
 #### Function
+Rust doesn’t care where you define your functions, only that they’re defined somewhere. In other words, unlike Python, Rust has hoisting.
 
-Calling a function (no !)
+Lines execute in the order in which they appear in the main function.
+
 ```
-myFunction()
+fn main() {
+    another_function(5);
+}
+
+fn another_function(x: i32) { //you must declare the type of each parameter
+    println!("The value of x is: {}", x);
+}
 ```
+
 Function arguments
 Use & to make argument by reference, use &mut to make the reference mutable i.e. allow function change foo's contents.
 Note: References are immutable by default!
