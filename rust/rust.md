@@ -261,3 +261,51 @@ A binary crate is an executable, like the hello_cargo application which you wrot
 ### The stack (TODO)
 
 ### The heap (TODO)
+
+## Coding for blockchain interoperability (Web3 using Rust)
+```
+extern crate web3;
+use web3::futures::Future;
+use web3::types::{Address, U256};
+
+fn main() {
+    // Connect to the blockchain
+    let (_eloop, transport) = web3::transports::Http::new(
+        "https://mainnet.infura.io/v3/46d1afae8b55464585222887f55eab6a",
+    )
+    .unwrap();
+    let web3 = web3::Web3::new(transport);
+
+    // Declare and print account 1
+    let my_account_1: Address = "5bd1b43b599f4f6b5ca993375fa4a1ea05221f04".parse().unwrap();
+    println!("Account 1: {:?}\n", my_account_1);
+
+    // Declare and print account 2
+    let my_account_2: Address = "497A49648885f7aaC3d761817F191ee1AFAF399C".parse().unwrap();
+    println!("Account 2: {:?}\n", my_account_2);
+
+    // Get and print the balance of account 1
+    let balance_of_1: U256 = web3.eth().balance(my_account_1, None).wait().unwrap();
+    println!("Balance 1: {:?}\n", balance_of_1);
+
+    // Get and print the balance of account 2
+    let balance_of_2: U256 = web3.eth().balance(my_account_2, None).wait().unwrap();
+    println!("Balance 2: {:?}\n", balance_of_2);
+}
+```
+Produces the following output
+```
+tpmccallum$ cargo run
+Compiling hello_cargo v0.1.0 (/Users/tpmccallum/projects/hello_cargo)
+Finished dev [unoptimized + debuginfo] target(s) in 3.44s
+Running `target/debug/hello_cargo`
+
+Account 1: 0x5bd1b43b599f4f6b5ca993375fa4a1ea05221f04
+
+Account 2: 0x497a49648885f7aac3d761817f191ee1afaf399c
+
+Balance 1: 0
+
+Balance 2: 2029697268026803386
+
+```
