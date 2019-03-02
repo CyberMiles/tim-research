@@ -483,6 +483,8 @@ Fetch the source code from [GitHub](https://github.com/CyberMiles/tim-research/t
 ```bash
 cd app/
 npm install
+npm install web3
+npm install xmlhttprequest
 npm start
 ```
 
