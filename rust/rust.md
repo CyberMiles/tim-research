@@ -48,6 +48,14 @@ Execute the release
 ```
 ./target/release/hello_cargo
 ```
+### Enable diagnosis / Backtrace
+```
+export RUST_BACKTRACE=1
+```
+Usage
+```
+./target/debug/hello_cargo
+```
 ### Syntax
 Rust code uses snake case as the conventional style for function and variable names.
 
