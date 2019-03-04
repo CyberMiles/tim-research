@@ -135,24 +135,41 @@ Print more than one
 ```
 println!("Foo is {} and bar is {}", foo, bar);
 ```
-#### Strings
-Probably don't use
-```
-let s = String::new();
-let data = "initial contents";
-let s = data.to_string();
-```
-Or, probably don't use
-```
-let _s = String::new();
-let _s = "initial contents".to_string();
-println!("{}",_s);
-```
-Instead, use 
+#### Strings on the heap
+Use the following which creates a mutable String which can manage memory on the heap 
 ```
 let s = String::from("initial contents");
 println!("{}", s);
 ```
+For example, doing the following (which would be considered a copy in other languages) actually moves. After this code s1 is gone and s2 is active. When s2 goes out of scope the memory is freed. This is memory safe because s1 and s2 can not create a double free error if only s2 exists.
+```
+let s1 = String::from("hello");
+let s2 = s1;
+```
+If you actually want to copy s1 to s2 then do it properly using the following code
+```
+let s2 = s1.clone();
+```
+Variables on the heap act completely differently
+```
+fn main() {
+    let s = String::from("hello");  // s comes into scope
+    takes_ownership(s);             // s's value moves into the function...
+                                    // s is no longer valid here
+    let x = 5;                      // x comes into scope
+    makes_copy(x);                  // x would move into the function,
+                                    // x is still valid here
+} // Here, x goes out of scope, then s. But because s's value was moved, nothing
+  // special happens.
+fn takes_ownership(some_string: String) { // some_string comes into scope
+    println!("{}", some_string);
+} // Here, some_string goes out of scope and `drop` is called. The backing
+  // memory is freed.
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!("{}", some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
+```
+The reason is that types such as integers that **have a known size at compile time** are stored entirely on the stack, so copies of the actual values are quick to make. Mutable string do not have a known size and are stored on the heap.
 
 #### Vectors
 Create a vector and push values
