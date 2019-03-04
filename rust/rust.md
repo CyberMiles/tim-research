@@ -90,23 +90,37 @@ Lines execute in the order in which they appear in the main function.
 
 ```
 fn main() {
-    another_function(5);
+    let a: i32 = 5;
+    another_function(a);
 }
 
-fn another_function(x: i32) { //you must declare the type of each parameter
-    println!("The value of x is: {}", x);
+fn another_function(_a: i32) { //you must declare the type of each parameter
+    println!("The value of _a is: {}", _a);
 }
 ```
 
 Function arguments
-Use & to make argument by reference, use &mut to make the reference mutable i.e. allow function change foo's contents.
-Note: References are immutable by default!
+
+Use & to make argument "by reference", 
 ```
-doSomething(&mut foo)
+another_function(&a);
+```
+Remember though that another_function can not alter _a because it is only being borrowed (by reference). Variables are immutable by default, so are references.
+
+Use **&mut a** and **_a: &mut i32** as shown below, if you want to make _a (the reference to a) mutable i.e. allow another_function to change _a's contents inside another_function.
+```
+fn main() {
+    let a: i32 = 5;
+    another_function(&mut a);
+}
+
+fn another_function(_a: &mut i32) { //you must declare the type of each parameter
+    println!("The value of _a is: {}", _a);
+}
 ```
 #### Variable mutability
 ##### Immutable
-Variables are immutable by default
+Variables are immutable by default.
 ```
 let foo = 5; // Immutable
 ```
