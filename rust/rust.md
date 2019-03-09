@@ -1,5 +1,5 @@
 # Rust
-Why Rust - WebAssembly (Wasm) is a technology that has the chance to reshape how we build DApps for the browser. There are [many reasons](https://rustwasm.github.io/docs/book/why-rust-and-webassembly.html) [why you should use Rust in WebAssembly](https://opensource.com/article/19/2/why-use-rust-webassembly). This page is a quick reference for the Rust programming language.
+Why Rust - WebAssembly (Wasm) is a technology that has the chance to reshape how we build DApps for the browser. There are [many reasons for choosing](https://rustwasm.github.io/docs/book/why-rust-and-webassembly.html) and [using Rust in WebAssembly](https://opensource.com/article/19/2/why-use-rust-webassembly). This page is a quick reference for the Rust programming language.
 
 ## Quick reference
 
