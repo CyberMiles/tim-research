@@ -1,4 +1,5 @@
 # Rust
+Why Rust - WebAssembly (Wasm) is a technology that has the chance to reshape how we build DApps for the browser. There are [many reasons why  you should use Rust in WebAssembly](https://opensource.com/article/19/2/why-use-rust-webassembly). This page is a quick reference for the Rust programming language.
 
 ## Quick reference
 
@@ -119,6 +120,34 @@ fn another_function(_a: &mut i32) { //you must declare the type of each paramete
 }
 ```
 #### Variable mutability
+You can not reference a variable mutably more than once i.e. you can't do this
+```
+let mut s = String::from("hello");
+let r1 = &mut s; //notice we are using &mut
+let r2 = &mut s; //notice we are using &mut - this will fail because Rust is protecting you from a data race
+```
+You can reference a variable immutably more than once like this 
+```
+let mut s = String::from("hello");
+let r1 = &s; // no problem because we are not using &mut
+let r2 = &s; // no problem because we are not using &mut
+```
+Rust is great at preventing potential issues with pointers, here is another example. Rust will ensure that the data will not go out of scope before the reference to the data does.
+
+```
+fn dangle() -> &String { // dangle returns a reference to a String
+    let s = String::from("hello"); // s is a new String
+    &s // we return a reference to the String, s but this function is about to be deallocated; &s will not point to anything 
+} 
+```
+Instead you have to return the string and in doing so are transferring ownership
+```
+fn no_dangle() -> String {
+    let s = String::from("hello");
+    s
+}
+```
+
 ##### Immutable
 Variables are immutable by default.
 ```
@@ -150,7 +179,7 @@ Print more than one
 println!("Foo is {} and bar is {}", foo, bar);
 ```
 #### Strings on the heap
-Use the following which creates a mutable String which can manage memory on the heap 
+Use the following which creates a mutable String which can manage memory on the heap. The ```String::from``` syntax is that of an "associated function" we cover this in the next section.
 ```
 let s = String::from("initial contents");
 println!("{}", s);
@@ -185,6 +214,24 @@ fn makes_copy(some_integer: i32) { // some_integer comes into scope
 ```
 The reason is that types such as integers that **have a known size at compile time** are stored entirely on the stack, so copies of the actual values are quick to make. Mutable string do not have a known size and are stored on the heap.
 
+#### Associated Functions
+Associated functions are called using the :: syntax and in general return an instance (commonly used in constructors). In the case below, the function fn square returns an instance of the Rectangle struct.
+```
+// Create this impl in a file where we have Rectangle Struct declared
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle { width: size, height: size }
+    }
+}
+// Then call this in the main
+let sq = Rectangle::square(3)
+```
+#### Slices 
+```
+let s = String::from("hello world");
+let hello = &s[0..5]; // slice of the string from char 0 to 5 (but not including 5)
+let hello = &s[0..=4]; // slice of the string from char 0 to 4 (inclusive of 4 i.e. =4)
+```
 #### Vectors
 Create a vector and push values
 ```
@@ -200,7 +247,186 @@ for i in &v {
     println!("Reading {}", i)
 }
 ```
+#### Structs
+Declare the struct
+```
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+```
+Write a function to build (and return) the struct. 
+Please note: If argument name exactly matches struct key then you can take the shorthand (i.e. email and username below).
+Please note: If the argument name does not match the struct key then you have to explicitly declare using the key:value notation (i.e. active: the_boolean).
+```
+fn build_user(email: String, username: String, the_boolean: bool) -> User {
+    User {
+        email,
+        username,
+        active: the_boolean,
+        sign_in_count: 1,
+    }
+```
+Call the function which builds (and returns) the Struct
+```
+let user1 = build_user(String::from("mistermac@asdf.asdf"),String::from("tpmccallum"), true);
+```
+You can also declare a new struct modelled from an existing one, using shorthand like this
+```
+struct A {
+    a: bool,
+    b: bool, 
+    c: bool,
+    d:bool,
+}
+```
+a has a, b, c and d booleans set
+```
+let a = A {a: true, b: true, c:false, d:false};
+```
+b only has a and b but uses the rest of a's key:values as part of this awesome shorthand (i.e. ..a)
+```
+let b = A {a: false, b:false, ..a};
+```
+Print the results
+```
+println!("\na is {}\nb is {}\nc is {}\nd is {}\n", a.a, a.b, a.c, a.d);
+println!("\na is {}\nb is {}\nc is {}\nd is {}\n", b.a, b.b, b.c, b.d);
+```
+```
+a is true
+b is true
+c is false
+d is false
 
+
+a is false
+b is false
+c is false
+d is false
+```
+#### Tuple Struct (without named fields i.e. accessed by index)
+```
+struct Color(i32, i32, i32);
+let black = Color(0, 0, 0);
+println!("black.0 is equal to {},\nblack.1 is equal to {},\nblack.2 is equal to {}\n", black.0, black.1, black.2);
+```
+Prints the results
+```
+black.0 is equal to 0,
+black.1 is equal to 0,
+black.2 is equal to 0
+```
+#### Methods 
+Methods are diffferent to functions. They are indeed declared using the fn keyword however their first argument is always (&self). This is the giveaway.
+
+Here is an example of a method which uses mutability to instantiate and then alter a Struct.
+
+Methods allow us to expose all of the logic available inside the ```impl``` code block. This is great so that developers can see what the capabilities area.
+```
+struct Rectangle {
+    width: u32,
+    height: u32,
+    area: u32,
+}
+
+impl Rectangle {
+    fn calculate_area(&mut self) {
+        self.area = self.width * self.height;
+    }
+}
+
+fn main() {
+    let rect1 = &mut Rectangle { width: 30, height: 50, area: 0 };
+    rect1.calculate_area();
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area
+    );
+}
+```
+Here is an example of a method which does not use mutability but achieves the same result to the output (just does not change the state of the struct).
+```
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle { width: 30, height: 50 };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    );
+}
+```
+#### Enums (storing things of kind)
+An IP address is a great example of an Enum. It must always be an IP address but may be either ipv4 or ipv6.
+
+You declare an enum like this ...
+```
+enum IpAddrKind {
+    V4,
+    V6,
+}
+```
+
+You assign enums to variables like this ...
+```
+let four = IpAddrKind::V4;
+let six = IpAddrKind::V6;
+```
+
+You create a function which accepts enums as arguments like this ...
+```
+fn route(ip_type: IpAddrKind) {
+    //do stuff
+}
+```
+
+You call that function like this ... 
+```
+route(IpAddrKind::V4);
+```
+
+#### Option<T>
+Rust does not have nulls!
+It does however have an enum that can encode the concept of a value being present or absent. Option<T> is especially defined in the standard library (to solve the expensive issues of null). Option<T> is useful because it does not even have to be brought into scope and you don't even have to use the Option:: prefix to use it.
+	
+```
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+Here is an example of how it would be used
+```
+fn main(){
+    let name = String::from("Timothy");
+    println!("Character at index 7 is {}", match name.chars().nth(7){ // Character at index 6 is y and 7 "No character"
+        Some(c) => c.to_string(),
+        None => "No character".to_string()
+    });
+}
+```
+The above return the following
+```
+Character at index 7 is No character
+```
+
+#### Generic Type Parameter
+ <T> means the Some variant of the Option enum can hold one piece of data of any type.
+	
 #### Constants
 Constants are there to provide information to the developer who is auditing the code (explicit). You might think that a constant is just like a standard variable which is immutable but constants have to have their type declared explicitly and also they can be all caps by convention to help programmers understand what the code is doing.
 ```
@@ -348,3 +574,6 @@ Balance 1: 0
 Balance 2: 2029697268026803386
 
 ```
+
+# Other reading
+I have also written [an article on HackerNoon which covers integer overflows](https://hackernoon.com/exploding-rockets-millions-of-free-tokens-lets-take-a-good-look-at-integer-overflows-2800794e48d9) in Rust. 
