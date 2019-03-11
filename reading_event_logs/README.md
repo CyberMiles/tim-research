@@ -2,6 +2,9 @@
 
 ## Server infrastructure
 
+## UPDATE 2019-03-11
+I wrote [this document which outlines a limitation](https://github.com/CyberMiles/tim-research/blob/master/reading_event_logs/elasticsearch.md) and whilst exploring alternative possibilities I learned about [the Ethereum-ETL software](https://github.com/blockchain-etl/ethereum-etl) which does a similar job of what we are performing below. I tested the Ethereum-ETL software by harvesting the CyberMiles mainnet and it worked perfectly. Please note: The Ethereum-ETL software is actually what feeds the public [Google BigQuery Ethereum](https://bigquery.cloud.google.com/dataset/bigquery-public-data:ethereum_blockchain) dataset.
+
 ### Ubuntu 16.04LTS
 For this demonstration I used an Amazon ec2 instance. I used the c5d.xlarge with an Ubuntu 16.04LTS Server instance. The [cost for this machine](https://aws.amazon.com/ec2/pricing/on-demand/), at the time of writing this was about 19 cents per hour. The c5d.xlarge instance has 8 GiB	RAM and a single 100Gb SSD drive. This is just the bare minimum spec for purposes of demonstrating event log harvesting. Feel free to increase specs as you wish.
 
