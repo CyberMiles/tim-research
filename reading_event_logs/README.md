@@ -68,7 +68,7 @@ Part of the output from the above mkfs command will include the Filesystem UUID.
 ```bash
 Filesystem UUID: 5bb95be7-3f67-4acf-936f-7ee5868a51a9
 ```
-I will not create an easily accesible mount point on the main drive (where the operating system runs) and then set the permissions of this mount point to the ubuntu user.
+I will now create an easily accesible mount point on the main drive (where the operating system runs) and then set the permissions of this mount point to the ubuntu user.
 ```bash
 sudo mkdir /media/nvme
 sudo chown -R ubuntu:ubuntu /media/nvme/
