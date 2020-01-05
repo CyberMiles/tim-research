@@ -319,6 +319,28 @@ black.0 is equal to 0,
 black.1 is equal to 0,
 black.2 is equal to 0
 ```
+
+#### How to find and then print the type of a Rust variable
+The following function will print the variable type
+```
+fn print_type_of<T>(_: &T) {
+    println!("{}", std::any::type_name::<T>())
+}
+```
+An example of usage is as follows (given that you have a few directories inside a directory called next_dir)
+```
+fn main() -> io::Result<()> {
+    let mut entries = fs::read_dir("./next_dir")?
+        .map(|res| res.map(|e| e.path()))
+        .collect::<Result<Vec<_>, io::Error>>()?;
+    print_type_of(&entries);
+    // alloc::vec::Vec<std::path::PathBuf>
+    print_type_of(&entries[entries.len()-1]);
+    // std::path::PathBuf
+    Ok(())
+}
+
+```
 #### Methods 
 Methods are diffferent to functions. They are indeed declared using the fn keyword however their first argument is always (&self). This is the giveaway.
 
