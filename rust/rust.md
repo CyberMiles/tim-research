@@ -84,6 +84,13 @@ Calling a Macro (requires !)
 myMacro!
 ```
 
+A very useful macro is `assert!`
+Assert is a macro invocation that tests if its arguments are true. Rust always checks assertions regarless of how the application was compiled. Here is an example.
+
+`assert!(_var_a != 0 && _var_b !=0)`
+
+This checks that variable a and variable b are both not equal to zero. If the arguments of the assert are not true then the application will terminate with a message every time (and provide a useful message).
+
 #### Function
 Rust doesn’t care where you define your functions, only that they’re defined somewhere. In other words, unlike Python, Rust has hoisting.
 
