@@ -164,6 +164,19 @@ fn another_function(_a: &mut i32) { //you must declare the type of each paramete
     println!("The value of _a is: {}", _a);
 }
 ```
+#### References
+A reference can point to any value anywhere; stack or the heap.
+&x borrows a reference to x.
+*r refers to the value that r points to
+
+There is no way to produce a null pointer in Rust.
+
+#### Boxes
+The simplest way to allocate a value to the heap is to use Box::new
+`let t = (12, "eggs");`
+`let b = Box::new(t); // allocate a new tuple to the heap`
+
+
 #### Variable mutability
 You can not reference a variable mutably more than once i.e. you can't do this
 ```
@@ -259,6 +272,17 @@ fn makes_copy(some_integer: i32) { // some_integer comes into scope
 ```
 The reason is that types such as integers that **have a known size at compile time** are stored entirely on the stack, so copies of the actual values are quick to make. Mutable string do not have a known size and are stored on the heap.
 
+##### ASCII characters as byte literals
+American Standard Code for Information Interchange (ASCII) characters can appear as byte literals. For example b'A' represents the ASCII character `A` which has as an actual decimal `u8` type value of `65`. Remember, only ASCII characters can appear as byte literals.
+
+##### Unicode characters as Rust's char type
+Rust's type `char` is used to represent each single Unicode character (as a 32-bit value). This refers exclusivel to single isolated character **not a complete string or a stream of text**.
+
+Strings **and streams of test** on the other hand, are represented by UTF-8 encoding i.e. a string or a sequence of text is represented as a series of UTF-8 bytes **not as an array of byte literals**.
+
+Rust never implicitly converts between `char` and any other type.
+
+
 #### Associated Functions
 Associated functions are called using the :: syntax and in general return an instance (commonly used in constructors). In the case below, the function fn square returns an instance of the Rectangle struct.
 ```
@@ -277,6 +301,25 @@ let s = String::from("hello world");
 let hello = &s[0..5]; // slice of the string from char 0 to 5 (but not including 5)
 let hello = &s[0..=4]; // slice of the string from char 0 to 4 (inclusive of 4 i.e. =4)
 ```
+
+#### Tuples
+
+Each element of a tuple can have a different data type i.e. ("this_string", 123) a.k.a. (&str, i32)
+Elements can only be accessed using dot notation like this t.0, t.1 etc.
+Elements can **not** be accessed like this t[0], t[1].
+Tuples are often used to return multiple values from a function.
+`fn split_string(&self, mid: usize) -> (&str, &str)`
+We then call this `split_string` function like this
+`let the_text = "left right"; `
+`let(left, right) = the_text.split_string(5);`
+`assert_eq!(left, "left ");`
+`assert_eq!(right, "right");`
+
+#### Commas
+You can always include an extra comma after a tuple's last element. 
+Rust consistently permits an extra trailing comma everywhere that commas are used i.e. function arguments etc.
+
+
 #### Vectors
 Create a vector and push values
 ```
