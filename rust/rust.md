@@ -1,4 +1,7 @@
 # Rust
+Rust is a statically typed language that uses ahead-of-time compilation.
+
+# Wasm
 Why Rust - WebAssembly (Wasm) is a technology that has the chance to reshape how we build DApps for the browser. There are [many reasons for choosing](https://rustwasm.github.io/docs/book/why-rust-and-webassembly.html) and [using Rust in WebAssembly](https://opensource.com/article/19/2/why-use-rust-webassembly). This page is a quick reference for the Rust programming language.
 
 ## Quick reference
@@ -76,6 +79,9 @@ fn plus_one(x: i32) -> i32 {
     x + 1; // This (with the added ;) is a Statement which does not evaluate (return to) a value. This will result in an error
 }
 ```
+
+#### Return values
+Unlike C++ etc. main has **no** return value. Hence you are unable to use the std::io::Result in main; instead use it an all other functions that are called from main.
 
 #### Macro
 
@@ -280,10 +286,34 @@ for x in 0..100000{
 	   println!("Adding {}", x);
 }
 ```
-Read the values of the vector
+You can also automatically fill all values of a vector when creating it. 
+Note that we are using a macro called `vec!` **not** `Vec::new`. Also note that each value is set to `8` the a `;` is used (semicolon not a comma) at which point we declare the length of the vec as `10`
 ```
-for i in &v {
-    println!("Reading {}", i)
+let mut v = vec!(8; 10);
+for m in &v {
+    // Dereference m which gives the actual value that m refers to
+    println!("{}", *m);
+}
+```
+The above code produces this result
+```
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+```
+Using the values of the vector
+```
+// Borrow the elements of v for the purpose of performing a loop using &v
+for m in &v {
+    // Dereference m which gives the actual value that m refers to
+    println!("{}", *m);
 }
 ```
 #### Structs
@@ -379,6 +409,26 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
+```
+
+#### Type conversion i.e. converting an i64 variable called "a" as an i32 variable called "c"
+```
+// Using the above print_type_of function
+fn main() {
+    let a: i64 = 1;
+    print_type_of(&a);
+    let b: i32 = 0;
+    print_type_of(&b);
+    let c = a as i32;
+    print_type_of(&c);
+
+}
+```
+Produces the following result
+```
+i64
+i32
+i32
 ```
 #### Methods 
 Methods are diffferent to functions. They are indeed declared using the fn keyword however their first argument is always (&self). This is the giveaway.
