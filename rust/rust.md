@@ -430,6 +430,60 @@ i64
 i32
 i32
 ```
+
+#### Overflow and underflow
+As I outline in [an article on HackerNoon which covers integer overflows](https://hackernoon.com/exploding-rockets-millions-of-free-tokens-lets-take-a-good-look-at-integer-overflows-2800794e48d9) in Rust. Rust **will** compile and deploy potential integer overflow issues when you compile in `--release` mode. Thankfully Rust will catch integer overflow issues when you compile in debug mode and run the `target/debug/...` excutable. Here is an example.
+
+##### Code
+
+```
+fn main() {
+    let big_val = std::i32::MAX;
+    println!("big_val: {:?}", big_val);
+    let overflow = big_val + 1;
+    println!("overflow: {:?}", overflow);
+}
+```
+
+##### Debug compilation and execution
+```
+$ cargo build
+$ ./target/debug/refe 
+big_val: 2147483647
+thread 'main' panicked at 'attempt to add with overflow', src/main.rs:4:20
+```
+
+##### Release compilation and execution
+```
+$ cargo build --release
+$ ./target/release/refe 
+big_val: 2147483647
+overflow: -2147483648
+```
+
+**Point being always compile your application in debug mode (by not specifying `--release` argument). Once you are satisfied, then feel free to use `--release` mode prior to your deployment.** 
+
+#### Deliberate overflow
+If you deliberately want overflow to occur (which is fine), you must still ensure that you use debug mode to test the rest of your application. To facilitate deliberate overflow in some areas of your code use `.wrapping_add()` for those specific cases; like this.
+```
+fn main() {
+    let big_val = std::i32::MAX;
+    println!("big_val: {:?}", big_val);
+    let deliberate_overflow = big_val.wrapping_add(1);
+    println!("overflow: {:?}", deliberate_overflow);
+}
+```
+This time, no panick in debug compilation and execution due to the deliberate use of `wrapping_add()` functionality.
+```
+$ cargo build
+Compiling refe v0.1.0 (/home/ubuntu/refe)
+Finished dev [unoptimized + debuginfo] target(s) in 0.23s
+
+$ ./target/debug/refe 
+big_val: 2147483647
+overflow: -2147483648
+```
+
 #### Methods 
 Methods are diffferent to functions. They are indeed declared using the fn keyword however their first argument is always (&self). This is the giveaway.
 
@@ -686,5 +740,3 @@ Balance 2: 2029697268026803386
 
 ```
 
-# Other reading
-I have also written [an article on HackerNoon which covers integer overflows](https://hackernoon.com/exploding-rockets-millions-of-free-tokens-lets-take-a-good-look-at-integer-overflows-2800794e48d9) in Rust. 
