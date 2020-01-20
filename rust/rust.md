@@ -81,7 +81,7 @@ fn plus_one(x: i32) -> i32 {
 ```
 
 #### Return values
-Unlike C++ etc. main has **no** return value. Hence you are unable to use the std::io::Result in main; instead use it an all other functions that are called from main.
+Unlike C++ etc. **main** has **no** return value. Hence you are unable to use the std::io::Result in main; instead use it an all other functions that are called from main.
 
 #### Macro
 
@@ -128,6 +128,43 @@ test test_add_two_numbers ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
+#### Option
+Here is an example of how you would use Option
+```
+fn add_four(x: i32) -> i32 {
+    x + 4
+}
+
+fn maybe_add_four(y: Option<i32>) -> Option<i32> {
+    match y {
+        Some(yy) => Some(add_four(yy)),
+        None => None,
+    }
+}
+```
+
+There is a method on the `Option` type called `map` which either will execute if valid and return None if not. Here is an example of the above code which is rewritten using `map`
+```
+fn add_four(x: i32) -> i32 {
+    x + 4
+}
+
+fn maybe_add_four(y: Option<i32>) -> Option<i32> {
+	y.map(add_four)
+}
+```
+
+#### Closure
+The above can also be rewritten (in just two lines) as a closure like this.
+```
+fn maybe_add_four(y: Option<i32>) -> Option<i32> {
+    y.map(|x| x + 4)
+}
+```
+
+
+#### Result
+TODO
 
 #### Function
 Rust doesn’t care where you define your functions, only that they’re defined somewhere. In other words, unlike Python, Rust has hoisting.
